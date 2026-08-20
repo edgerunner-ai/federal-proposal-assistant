@@ -27,26 +27,64 @@ Built on the Shipley methodology — with a full reference library (`reference/m
 
 ## What It Does
 
-The workflow covers 14 steps, each handled by a dedicated skill:
+Thirty skills, grouped by phase. **You never run all of them.** Each proposal declares its type —
+there are 18, from `rfi` and `rom` through `sbir-phase1`, `ota-white-paper`, `far-rfp`, and
+`unsolicited-proposal` — and the type names the ordered subset of skills that apply and the ones
+that explicitly do not. A skill invoked outside its type exits rather than producing output nobody
+asked for. An RFI does not get a cost volume; a white paper does not get a storyboard.
 
-| Step | Skill | What It Produces |
-|------|-------|-----------------|
-| 1 | **Company Setup** | One-time company profile: capabilities, past performance, contract vehicles, brand |
-| 2 | **New Proposal** | Workspace scaffold with your boilerplate pre-loaded, capture mode set |
-| 3 | **Customer Intel** | Open-source research on the customer + a template for your relationship knowledge |
-| 4 | **Proposal Manager** | Compliance framework, bid/no-bid assessment, prime vs. sub decision, win themes |
-| 5 | **Competitor Assessment** | Competitive landscape, differentiators, teaming gap analysis, strategy statements |
-| 6 | **Capture Scorecard** | 9-dimension readiness check — go/no-go before committing proposal resources |
-| 7 | **Solution Architect** | Requirements matrix, capability mapping, solution design, architecture concept |
-| 8 | **Past Performance** | Maps your record to evaluation criteria, drafts PPQ narratives |
-| 9 | **Pricing Analyst** | Cost model, BOE narratives, cost volume — or lightweight SBIR/OTA/CSO pricing |
-| 10 | **Proposal Graphics** | Proposal-ready HTML/SVG graphics — architecture diagrams, timelines, matrices |
-| 11 | **Proposal Writer** | Full draft of every section, written to score |
-| 12 | **Evidence Check** | Audits proof-point citations in drafts — flags unsupported claims before Gold Team |
-| 13 | **Red Team Review** | Pink (compliance) → Red (narrative) → Gold (mock eval) → White Glove (final QA) |
-| 14 | **Capture Submission** | Snapshots AI draft + final submission for framework calibration and continuous improvement |
+**Setup** — once per company, then once per pursuit.
+`setup-company` builds your profile: capabilities, past performance, contract vehicles, brand.
+`new-proposal` scaffolds a workspace with that boilerplate pre-loaded and the type set.
+`import-from-capture` pulls a qualified opportunity straight out of the capture pipeline instead.
 
----
+**Capture** — decide whether to bid, and learn who you're bidding to.
+`opportunity-quick-look` triages across 8 factors and will tell you to stop. `submission-summary`
+pins down exactly what the customer requires you to hand over, and stops for your confirmation
+before planning starts. `capture-portal-structure` captures a web-form portal's real section
+limits before you draft into an assumed structure. `customer-intel`, `competitor-assessment`, and
+`capture-scorecard` profile the buyer, the field, and your own readiness. `capture-intent` records
+why you're bidding and what you may not claim.
+
+**Planning** — decide what you're going to argue.
+`proposal-manager` extracts evaluation criteria and seeds the compliance matrix.
+`proposal-solution-architect` maps requirements to capabilities and designs the architecture.
+`narrative-spine` writes the one-page plain-prose argument and **stops for your sign-off** — the
+step that keeps the draft from being a tour of your product.
+
+**Drafting** — build the thing.
+`past-performance` and `pricing-analyst` run first, so the storyboard plans around real proof
+points and real cost constraints. `proposal-storyboard` keys every section to the evaluation
+factors it must win. `proposal-graphics` drafts the figures. `proposal-writer` drafts in two
+passes — a loose in-voice argument, then a binding pass that attaches evidence and updates the
+compliance matrix. `proposal-editor` tightens the prose without breaking either.
+
+**Review** — find out what's wrong while you can still fix it.
+`technical-review` runs twice: before drafting, to kill an unworkable approach before you spend
+tokens on it, and after, to check the prose against the architecture. `compliance-check` diffs
+required against covered. `evidence-check` audits every citation against the evidence ledger.
+`red-team-review` scores the draft from a GS-14's chair — narrative, then a rubric-driven mock
+evaluation with adjectival ratings and a pWin estimate, then final QA. `adversarial-review` sends
+fresh-context agents in blind, seeing only what an outsider would see, and loops until a round
+comes back clean. `proposal-patcher` applies audit findings surgically instead of rewriting.
+
+**Submission** — `export-proposal` converts the markdown drafts to Word, Excel, and PowerPoint and
+runs three blocking lint gates first. `capture-submission` snapshots the AI draft and your final
+submitted version into a calibration corpus, so the framework learns from your real edits.
+
+**Any time** — `status` shows where a proposal stands and what to run next. `dashboard` gives a
+read-only portfolio view across every pursuit at once.
+
+### Two orders of operations
+
+The main pipeline builds prose inside a structure: storyboard first, then write into it. That is
+right for an RFP scored section by section against a compliance matrix.
+
+White papers invert it. **Track B** skips the storyboard and the editor entirely — the narrative
+spine and the writer's loose pass replace the per-section field table, and `proposal-patcher`
+replaces the global style edit. A spine runs lengthwise through an argument; a storyboard runs
+crosswise through sections. A white paper needs the former, and forcing it through the lattice
+produces something that complies with nothing in particular.
 
 ## Who It's For
 
@@ -88,7 +126,7 @@ Architecture diagrams, execution timelines, capability matrices, objectives grap
 ## Getting Started
 
 1. Install [Claude Code](https://claude.ai/claude-code) (requires a Claude subscription)
-2. Clone the repo: `github.com/[your-github-handle]/federal-proposal-assistant`
+2. Clone the repo: `github.com/edgerunner-ai/federal-proposal-assistant`
 3. Run `/setup-company` to create your company profile (one time, ~10 minutes)
 4. Drop in a solicitation, run `/new-proposal`, follow the workflow
 
