@@ -1,0 +1,1694 @@
+{
+  "_comment": "EdgeRunner AI evidence ledger. Seeded 2026-06-03 from U.S. Space Force Order FA701426P0009 (source: contract DD Form 1155 + public press release 2026-04-02). Conforms to reference/schemas/evidence-ledger.schema.json. Append-only; retire rather than delete. | 2026-07-24: file was overwritten by an undetermined process, losing ~49 entries (EV-007..EV-106 range) that were never committed to git. 2026-07-26: the 9 IDs cited by dia-dma-frontier-llm drafts (EV-022/032/040/048/072/073/074/099/102) plus EV-030/031/104 were reconstructed from citation contexts, the 2026-07-22 evidence-check report, and project memory. Remaining lost IDs (heavily cited: EV-014 Navy ICOP, EV-020/023, EV-041-061, EV-070-096, EV-100-106) still need reconstruction before their proposals are reactivated. PREVENTION: commit this file after every append (it IS git-tracked); an uncommitted ledger has no recovery path. | 2026-07-26 full reconstruction: +43 entries (EV-010..EV-106 range) rebuilt from citation contexts + evidence-check reports + memory; EV-030/EV-031 content swapped to match historical numbering (030=Mil-Deflect, 031=frontier-parity); EV-072 enriched with NGC2 TRL-7 anchor. 2026-07-26 (final): EV-007/008/009 (EVELYN throughput, drone dataset, adversarial robustness), EV-077 (EVELYN maturity/xTech), EV-092 (quantization ghost), EV-095 (action-authorization frontier) created from capabilities.md attributions; EV-073 corrected (no TRL claimed for Ground Truth, per capabilities.md 2026-07-23) and EV-094 enriched. Ledger is now complete against every ID referenced anywhere in the workspace. Likely overwrite cause: a ledger \"refresh\"/re-seed during tradewinds-cdao-adl-p2 work (that proposal's evidence-check notes a prior refresh that renumbered IDs).",
+  "schema_version": "evidence-ledger.v1",
+  "generated_at": "2026-07-28",
+  "owner": "EdgeRunner AI, Inc.",
+  "items": [
+    {
+      "id": "EV-001",
+      "type": "past_performance",
+      "summary": "U.S. Space Force (SAF/SQ) production engagement — EdgeRunner ODIN deployment + SFSC AI agents under firm-fixed-price Order FA701426P0009",
+      "detail": "Current U.S. Space Force engagement (SAF/SQ Office of Acquisition & Integration, with SSC end users; place of performance USSF OCSO, Pentagon). EdgeRunner deploys its on-device ODIN platform into the Space Force IL5 environment, builds a domain-specific Acquisitions (SFSC) model, performs IL5 ATO integration into a new accredited environment, and provides ongoing engineering support. Firm-fixed-price commercial order executed through the CDAO Tradewinds Solutions Marketplace. First documented USSF production deployment of EdgeRunner's platform. Award publicly announced 2026-04-02.",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "§PPQ Reference — U.S. Space Force (Order FA701426P0009)",
+      "contract_number": "FA701426P0009",
+      "customer": "U.S. Space Force — SAF/SQ (Office of Acquisition & Integration) and Space Systems Command (SSC); contracting office Air Force District of Washington (AFDW)",
+      "contract_value_usd": 23000,
+      "period_of_performance": "2026-03-23 to 2026-09-22 (6 months)",
+      "relevance_tags": [
+        "space-force",
+        "ussf",
+        "saf-sq",
+        "ssc",
+        "il5",
+        "on-device",
+        "ddil",
+        "ato",
+        "sfsc",
+        "tradewinds",
+        "cdao",
+        "acquisitions",
+        "odin",
+        "azure-ilz",
+        "firm-fixed-price"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "highest",
+      "created_at": "2026-06-03T00:00:00Z"
+    },
+    {
+      "id": "EV-002",
+      "type": "customer_deployment",
+      "summary": "EdgeRunner ODIN deployed as a containerized solution into the U.S. Space Force IL5 environment (Azure ILZ), unlimited licenses for SSC + SAF/SQ users",
+      "detail": "CLIN 0001 of Order FA701426P0009. ODIN platform deployed as a containerized solution into the Space Force Azure IL5 (Azure ILZ) environment, licensed for unlimited SSC and SAF/SQ users across the 6-month period of performance. Demonstrates real on-device/on-prem inference inside an accredited government IL5 boundary, not a cloud-API dependency.",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "§PPQ Reference — CLIN 0001",
+      "contract_number": "FA701426P0009",
+      "customer": "U.S. Space Force — SSC / SAF/SQ",
+      "contract_value_usd": 20000,
+      "period_of_performance": "2026-03-23 to 2026-09-22 (6 months)",
+      "relevance_tags": [
+        "il5",
+        "azure-ilz",
+        "containerized",
+        "on-prem",
+        "government-cloud",
+        "deployment",
+        "on-device",
+        "odin"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "highest",
+      "created_at": "2026-06-03T00:00:00Z"
+    },
+    {
+      "id": "EV-003",
+      "type": "capability_claim",
+      "summary": "Built-to-spec domain-specific model (Space Force acquisitions / SFSC agent) delivered under U.S. Space Force contract",
+      "detail": "CLIN 0002 of Order FA701426P0009. EdgeRunner research built an Acquisitions-specific model to spec for a defined Space Force domain and environment, deployed within the ODIN solution for all licensed users. Converts the general 'mission-specific model specialization' capability into a delivered, contracted proof point for a named DoD customer.",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "§PPQ Reference — CLIN 0002",
+      "contract_number": "FA701426P0009",
+      "customer": "U.S. Space Force — SAF/SQ",
+      "relevance_tags": [
+        "sfsc",
+        "acquisitions",
+        "model-specialization",
+        "domain-specific",
+        "fine-tuning",
+        "agents",
+        "odin"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-06-03T00:00:00Z"
+    },
+    {
+      "id": "EV-004",
+      "type": "capability_claim",
+      "summary": "IL5 ATO integration into a new accredited Space Force environment performed under contract (FA701426P0009)",
+      "detail": "CLIN 0003 of Order FA701426P0009. EdgeRunner performed up-front development to bring ODIN into a new government environment and provided engineering support for IL5 ATO requirements. This is delivered ATO/accreditation past performance — stronger than a roadmap claim — usable to substantiate IL5 deployment feasibility on future DoD bids.",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "§PPQ Reference — CLIN 0003",
+      "contract_number": "FA701426P0009",
+      "customer": "U.S. Space Force — SAF/SQ / USSF OCSO",
+      "relevance_tags": [
+        "il5",
+        "ato",
+        "accreditation",
+        "integration",
+        "security",
+        "cui",
+        "government-environment"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-06-03T00:00:00Z"
+    },
+    {
+      "id": "EV-005",
+      "type": "partnership",
+      "summary": "CDAO Tradewinds Solutions Marketplace — Awardable status converted to an executed firm-fixed-price delivery order (FA701426P0009)",
+      "detail": "EdgeRunner's CDAO Tradewinds Awardable status has been exercised: the U.S. Space Force placed and EdgeRunner is performing firm-fixed-price Order FA701426P0009 through the Tradewinds Solutions Marketplace. Demonstrates the vehicle is not just held but used to win and deliver real DoD work.",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "§Research Agreements and Partnerships",
+      "contract_number": "FA701426P0009",
+      "customer": "U.S. Space Force via CDAO Tradewinds Solutions Marketplace",
+      "relevance_tags": [
+        "tradewinds",
+        "cdao",
+        "contract-vehicle",
+        "awardable",
+        "firm-fixed-price",
+        "acquisition-path"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-06-03T00:00:00Z"
+    },
+    {
+      "id": "EV-006",
+      "type": "customer_fact",
+      "summary": "Government past-performance reference POCs for Order FA701426P0009 (Contracting Officer + Contract Specialist)",
+      "detail": "Contracting Officer: Robert G. Warren III, Division Chief & Contracting Officer, Air Force District of Washington — robert.warren.13@us.af.mil, (240) 612-6178. Contract Specialist: Gwendolyn Campbell — gwendolyn.campbell.1.ctr@us.af.mil, (240) 612-6777. For use as past-performance reference contacts on PPQs / past-performance volumes submitted to Government evaluators.",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "§PPQ Reference — POC table",
+      "contract_number": "FA701426P0009",
+      "customer": "U.S. Space Force / Air Force District of Washington (AFDW)",
+      "relevance_tags": [
+        "ppq",
+        "reference-poc",
+        "past-performance",
+        "space-force"
+      ],
+      "approval_status": "restricted",
+      "restrictions": "Past-performance reference contacts. Cite only in PPQs / past-performance volumes submitted to Government evaluators. Do not publish in commercial, marketing, or broadly-distributable materials.",
+      "proof_strength": "high",
+      "created_at": "2026-06-03T00:00:00Z"
+    },
+    {
+      "id": "EV-030",
+      "type": "benchmark_result",
+      "summary": "Mil-Deflect published numerics: public frontier models hard-refuse up to 98.2% of legitimate military queries; EdgeRunner answers them (66.5-point absolute answer-rate gain, ~2% avg regression on other military tasks)",
+      "detail": "Mil-Deflect paper (FitzGerald et al., 2025). First military refusal-rate benchmark; MIL-DEFLECT-GOLD-ALPHA (221 examples) built by US Army veterans incl. a 20-yr SF veteran. Measured 24 public + 3 military models; public-model hard-refusal rates up to 98.2%. Abliteration on EdgeRunner 20B yields +66.5pt absolute answer-rate gain with ~2% avg regression on other military tasks. TEAM-VERIFIED FRAMING (DIA DMA submission, 2026-07-24): EdgeRunner model attained 100% answer rate vs <30% for frontier — use this concrete pair when the team has confirmed it for the specific model configuration being proposed; otherwise use the published 98.2% / 66.5-point figures. ID-SEMANTICS FIX 2026-07-26: content swapped with EV-031 to match the historical numbering (EV-030 = Mil-Deflect per all prior evidence-check reports).",
+      "source_file": "D:/OneDrive/Documents/work/Aura Digital/Consulting/2024 Agreements/Edgerunner/Capabilities/mil_deflect.pdf",
+      "source_anchor": "published paper, results tables",
+      "relevance_tags": [
+        "mil-deflect",
+        "refusal",
+        "answer-rate",
+        "bias-mitigation",
+        "benchmark",
+        "military-queries"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "highest",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-031",
+      "type": "benchmark_result",
+      "summary": "EdgeRunner 20B published benchmark numerics: matches or exceeds a leading commercial frontier model on four military test sets at >=95% statistical significance; no statistically significant regression on general benchmarks (one low-reasoning arithmetic exception)",
+      "detail": "EdgeRunner 20B paper (FitzGerald et al., 2025). Mission-tuned model matches or exceeds a leading commercial frontier model on COMBAT-ARMS, COMBAT-MEDIC, CYBER, and MIL-BENCH-5K at 95%+ statistical significance (two narrow exceptions). No statistically significant regression vs the base model on ARC-C, GPQA Diamond, GSM8k, IFEval, MMLU Pro, TruthfulQA, except GSM8k low-reasoning. Trained on 1.6M curated military records; SMEs: 3 US Army officers, 45+ yrs combined. CUSTOMER-FACING RULE: never name the base model or the commercial comparator by product name in proposal text; say government-tuned model and leading commercial frontier model. Numerics are here so bind inserts real figures instead of [confirm] placeholders (submission-diff R5, 2026-07-26). ID-SEMANTICS FIX 2026-07-26: content swapped with EV-030 to match the historical numbering (EV-031 = frontier-parity benchmarks per all prior evidence-check reports).",
+      "source_file": "D:/OneDrive/Documents/work/Aura Digital/Consulting/2024 Agreements/Edgerunner/Capabilities/EdgeRunner_20B.pdf",
+      "source_anchor": "published paper, results tables",
+      "relevance_tags": [
+        "benchmark",
+        "frontier-parity",
+        "military-test-sets",
+        "mil-bench-5k",
+        "combat-arms",
+        "combat-medic",
+        "cyber",
+        "statistical-significance",
+        "model-quality"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "highest",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-104",
+      "type": "capability_claim",
+      "summary": "Discipline-as-Software: WarClaw + Ground Truth demonstrated end-to-end, air-gapped on a single system - SOP roles as separate agents, deterministic no-model-in-loop verification gates (ICD 203/206 + unit SOP), signed portable receipts; daily intel-update workflow",
+      "detail": "Built and demonstrated (lab-validated) air-gapped intel-production pipeline: ingests theater/subordinate reporting, mints a citable evidence base, screens against commander PIRs, drafts to ICD 203/206 and the unit SOP, separate drafter/peer-reviewer/duty-editor model identities so no role grades its own work, releases only what verifies, each release carries a signed WBOM receipt. MATURITY CAVEAT: built/demonstrated, lab-validated - NOT fielded, NOT ATO d, scenarios notional. Do not imply a program of record. Restored 2026-07-26 after ledger overwrite lost the 2026-07-22 entry.",
+      "source_file": "graphics/_library/discipline-as-software/README.md",
+      "source_anchor": "EV-104 / warrant-demo suite",
+      "relevance_tags": [
+        "warclaw",
+        "ground-truth",
+        "discipline-as-software",
+        "sop-as-software",
+        "icd-203",
+        "icd-206",
+        "wbom",
+        "air-gapped",
+        "demonstrated",
+        "intel-production"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-022",
+      "type": "capability_claim",
+      "summary": "IL-6 IATT: EdgeRunner AI Runtime + models authorized to test at Impact Level 6 under an active Interim Authority to Test; engineered to accredit at IL-6 and above",
+      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Verified posture (Bill, 2026-07-02): active IL-6 IATT held under the Navy ICOP / NIWC Atlantic / PMW 120 effort; full IL-6 ATO expected October 2026 at ICOP deployment. Covers the EdgeRunner AI Runtime + models ONLY (not WarClaw, Ground Truth, or EVELYN). USAGE RULES: say \"authorized to test at IL-6 under an active IATT,\" never \"IL-6 ATO\"/\"accredited.\" In external collateral state IL-6 IATT as a STANDALONE claim, do not attribute to PMW 120 / Navy ICOP (list ICOP separately as a program-of-record engagement); government submissions may name PMW-120 only when the capture lead directs for that document. An authorization is program-scoped and does not auto-transfer between commands; claim as evidence of security architecture, with reusable RMF artifacts. CUI caution: kept OFF public-platform submissions (per dia-dma no-CUI guardrail).",
+      "source_file": "my-company/partner-enablement/accreditation-one-pager.md",
+      "source_anchor": "IL-6 IATT (corrected from ATO 2026-07-02)",
+      "relevance_tags": [
+        "il6",
+        "iatt",
+        "accreditation",
+        "navy",
+        "icop",
+        "pmw-120",
+        "niwc-atlantic",
+        "rmf",
+        "security-architecture",
+        "air-gapped"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "highest",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-032",
+      "type": "capability_claim",
+      "summary": "Mission adaptation via LoRA adapters: per-mission-area/MOS adapters developed and evaluated offline inside the environment; adaptation cycle from approved data to tested adapter release targets ten business days",
+      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Cited (with EV-048) for tiers/LoRA/compression and the in-enclave adaptation-cycle claims (dia-dma technical-approach: mission need identified, task data curated and reviewed for classification/releasability, adapter developed and evaluated offline, security and regression gates passed, version promoted and monitored). Model architecture: base fine-tuned on defense data during mid-training, further trained on customer/use-case data; LoRA adapters per mission area / rating (MOS/AFSC equivalent). Reconstruction note: the exact original EV-032 vs EV-048 split is inferred (032=adapter/fine-tuning adaptation, 048=tiers/compression); both were approved in the 2026-07-22 evidence-check.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "model adaptation / LoRA adapters",
+      "relevance_tags": [
+        "lora",
+        "adapters",
+        "mission-adaptation",
+        "fine-tuning",
+        "in-enclave",
+        "adaptation-cycle"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-040",
+      "type": "capability_claim",
+      "summary": "Air-gapped, on-device runtime with no external network dependency; fielded in disconnected, resource-constrained operations including denied, disrupted, intermittent, and limited (DDIL) conditions",
+      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Cited for the air-gapped-integration claims (dia-dma technical-approach: runtime operates air-gapped and on-device, no external network dependency, fielded in DDIL conditions; also cited on the open-API / air-gapped serving sentence). Hardware footprint: VRAM 8 GB min (Light tier) / 16 GB recommended (Medium); Windows/Linux/macOS; silicon-agnostic; laptop, edge server, fly-away kit, TAK device, tablet, or small form factor; binary or containerized install. Local deployment spectrum: on-prem air-gapped, DDIL tactical, embedded.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "air-gapped / DDIL runtime",
+      "relevance_tags": [
+        "air-gapped",
+        "ddil",
+        "on-device",
+        "disconnected",
+        "edge",
+        "no-cloud-dependency",
+        "deployment"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "highest",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-048",
+      "type": "capability_claim",
+      "summary": "Model tiers (Light 1-4B / Medium 26B / Heavy >26B) plus domain-aware compression fit a model to the available enclave or tactical hardware; supports progressive upgrades without full retraining",
+      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Cited (with EV-032) for tiers/LoRA/compression scalability claims: the same runtime scales with hardware, compact mission-tuned model on constrained/tactical devices, larger model up to frontier scale on capable enclave/on-prem hardware; compression pipeline auto-tunes model to available hardware; controlled cross-air-gap upgrade path. CUSTOMER-FACING RULE: refer to models by tier name only; never name open-weight source models in proposal prose. Reconstruction note: see EV-032 for the inferred 032/048 split.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "model tiers / compression",
+      "relevance_tags": [
+        "model-tiers",
+        "compression",
+        "scalability",
+        "upgrades",
+        "hardware-fit",
+        "light-medium-heavy"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-072",
+      "type": "capability_claim",
+      "summary": "WarClaw agentic orchestration: encodes a defined analytic process (SOP/CONOP) as a pipeline in which roles become agents, with separate peer-reviewer and duty-editor model identities so no role grades its own work",
+      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. WarClaw is EdgeRunner's agentic orchestration layer: pipelines are the process, agents are the roles (ingest agent per feed, screener/drafter, separate peer-reviewer and duty-editor identities); the pipeline fixes order, handoffs, and gates, same process every run. Through standard connectors it reaches existing mission data and tool systems for data integration and mission pipelines. Architecturally separable from the model-serving layer (the open API operates with or without it) and orchestrates any onboarded model. MATURITY: built and demonstrated air-gapped (see EV-104 for the demonstrated Discipline-as-Software pipeline suite); \"an engineer wires your CONOP/SOP into WarClaw\" today, pipeline self-authoring from the CONOP is roadmap. Not fielded, not ATO'd. ENRICHED 2026-07-26 from capabilities.md: WarClaw TRL 7 - prototype demonstrated in an operational environment, tested with real data sources via the Army Next-Generation Command and Control (NGC2) program, June 2026. Honesty caveat: NGC2 was a demonstration with real data, not a contract delivery or a program of record.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "WarClaw / Layer 4",
+      "relevance_tags": [
+        "warclaw",
+        "agentic",
+        "orchestration",
+        "roles-as-agents",
+        "sop-as-software",
+        "connectors",
+        "separable",
+        "peer-review"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-073",
+      "type": "capability_claim",
+      "summary": "Ground Truth core: model-agnostic, claim-level output verification against a human-approved evidence ledger, deterministic with no model in the verification loop; portable signed WBOM receipt per answer; built and proven with real First Army data (NO TRL claimed)",
+      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Ground Truth (product name; internal repo \"warrant/warrant-ledger\") runs AFTER any model/RAG and checks each material claim in an output against a curated, human-approved ledger of ground-truth facts/doctrine. Per-claim verdict green (supported/cited) / amber (candidate, review, never auto-approved) / red (unsupported), plus retired/restricted source handling; attribution not truth (deliberately under-claims, no contradiction detection); human is the gate. Deterministic citation path is stdlib-only, zero model cost, air-gap-ready up to Secret; optional semantic match uses a LOCAL embedding model (no egress). Sidecar gateway gates pass/flag/block in flight. Emits WBOM, a portable SBOM-for-AI-output receipt (Ed25519-signed). Built + Proven. **No TRL number is claimed for Ground Truth — do not assign one** (capabilities.md, 2026-07-23; this supersedes the earlier \"TRL 7\" phrasing carried in project memory). Validation context is First Army (doctrine-as-a-ledger): three documented field failures, including a silent 116-to-6 undercount and fabricated doctrine, each turned into a REPORTED error. Components: ledger-builder (propose facts), warrant-ledger (verify, emit WBOM), tradecraft-review (standards/rubric completeness), /api/check_action (action gate, see EV-095). NOT operationally fielded; no ATO of its own. Keep IP-strategy specifics internal.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "Third Product: Ground Truth",
+      "relevance_tags": [
+        "ground-truth",
+        "verification",
+        "claim-level",
+        "wbom",
+        "no-model-in-loop",
+        "deterministic",
+        "air-gapped",
+        "trust",
+        "attribution"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-074",
+      "type": "capability_claim",
+      "summary": "Ground Truth guidance-as-a-ledger and tradecraft scorecards: validate doctrine/guidance once into a gold ledger with layered echelon precedence; tradecraft-review grades a document for completeness against a pluggable rubric (ICD 203, ICD 206, OPORD, or a custom rubric)",
+      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. The doctrine/guidance-as-a-ledger flagship pattern: authoritative guidance validated once into a \"gold\" ledger; layered echelon ledgers with monotone-tightening precedence. The tradecraft-review component grades a document for completeness versus a pluggable rubric — ICD-203 analytic tradecraft, ICD-206 sourcing, OPORD, answer-quality, or a custom rubric authored from a policy or an RFP Section L/M — producing a compliance scorecard. Cited for TEVV/tradecraft-scorecard claims (with EV-031) and analytic-standards enforcement at pipeline gates. Same maturity framing as EV-073 (TRL 7, demonstrable, not fielded).",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "Ground Truth / guidance-as-a-ledger",
+      "relevance_tags": [
+        "ground-truth",
+        "icd-203",
+        "icd-206",
+        "tradecraft",
+        "scorecards",
+        "rubric",
+        "doctrine-ledger",
+        "tevv"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-099",
+      "type": "customer_deployment",
+      "summary": "Operational deployments across special-operations, conventional-force, and Space Force environments: USASOC (TRL 8, subject to public-release confirmation), 4th Infantry Division under NGC2 (TRL 8), 101st Infantry Brigade (TRL 8), U.S. Space Force production; non-traditional defense contractor",
+      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Cited for the non-traditional-contributor / production-deployments claims (dia-dma team section) and, with EV-102, for the USSF IL-5 deployment sentence. Verified operational deployments (company facts, 2026-05-14): USASOC (TRL 8), 4th Infantry Division (TRL 8; drafts cite it under the Next Generation Command and Control (NGC2) effort), 101st Infantry Brigade (TRL 8), Navy ICOP / PMW 120 program of record (TRL 8, list separately from the IL-6 IATT per EV-022 rules), U.S. Space Force production engagement (EV-001). USAGE: USASOC/SOF references are subject to public-release confirmation before naming in external documents; prefer \"U.S. Army special-operations elements\" in public submissions.",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "operational deployments",
+      "relevance_tags": [
+        "deployments",
+        "usasoc",
+        "sof",
+        "4id",
+        "ngc2",
+        "101st",
+        "space-force",
+        "trl8",
+        "non-traditional"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-102",
+      "type": "past_performance",
+      "summary": "Deployed the EdgeRunner runtime into an accredited IL-5 government environment with ATO-integration support under U.S. Space Force Order FA701426P0009 — delivered accreditation-integration past performance with reusable RMF-aligned artifacts",
+      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. EdgeRunner-scoped accreditation-integration evidence (per the 2026-07-22 evidence-check note: supports \"RMF-aligned artifacts\" and EdgeRunner-clause claims only — do NOT use it to substantiate a partner's accreditation role). Deployment of the containerized runtime into the accredited Space Force Azure IL-5 (ILZ) environment with IL-5 ATO-integration engineering support, under Order FA701426P0009 (see EV-001/EV-002/EV-004 for the contract-level detail; EV-102 is the reusable claim that EdgeRunner has performed model onboarding into a new accredited government environment, directly analogous to onboarding into another agency's hosting platform).",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "USSF FA701426P0009 / IL-5 ATO integration",
+      "contract_number": "FA701426P0009",
+      "customer": "U.S. Space Force — SAF/SQ / SSC",
+      "relevance_tags": [
+        "il5",
+        "ato-integration",
+        "rmf",
+        "accredited-environment",
+        "space-force",
+        "onboarding",
+        "past-performance"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "highest",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-014",
+      "type": "customer_deployment",
+      "summary": "Navy ICOP / PMW 120: EdgeRunner fielded as a Navy program-of-record capability (TRL 8) - Intelligence Carry-On Program engagement with NIWC Atlantic research partnership",
+      "detail": "RECONSTRUCTED 2026-07-26 (original lost in the 2026-07-24 ledger overwrite). Verified company facts: Navy ICOP / PMW 120 engagement is a Program of Record at TRL 8; NIWC Atlantic research partnership active. USAGE RULES: list ICOP/PMW-120 as a program-of-record engagement SEPARATE from the IL-6 IATT claim (EV-022) - do not attribute the IATT to this program in collateral; government submissions may name PMW-120 only when the capture lead directs. CUI caution: ICOP specifics are CUI-sensitive; the dia-dma evidence-check intentionally excluded EV-014 from that public-platform submission. CMI in the ICOP context = Classified Military Information.",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "Navy ICOP / PMW 120",
+      "relevance_tags": [
+        "navy",
+        "icop",
+        "pmw-120",
+        "program-of-record",
+        "trl8",
+        "niwc-atlantic",
+        "cui-sensitive"
+      ],
+      "approval_status": "restricted",
+      "restrictions": "CUI-sensitive program detail: do not cite on public-platform/no-CUI submissions; standalone-IATT attribution rule applies (see EV-022); confirm with capture lead before naming PMW-120 in any customer-facing document.",
+      "proof_strength": "highest",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-010",
+      "type": "partnership",
+      "summary": "Air Force Research Laboratory (AFRL) CRADA 25-0005284-AFRL/RI, 'Dark Saber and NIPRGPT Edge Domain Specific Generative AI' - consortium CRADA with AFRL Information Directorate and Defense Unicorns",
+      "detail": "UPDATED 2026-08-07 from the executed CRADA PDF. Agreement number 25-0005284-AFRL/RI. Air Force Activity: AFRL Information Directorate, 525 Brooks Road, Rome NY 13441-4505 - the same directorate that issues the AFAR BAA. Collaborator Consortium: EdgeRunner AI, Inc. and Defense Unicorns, Inc. Signed for the Air Force by Col Alan K. Louie, Chief, Intelligence Systems Division, 17 Dec 2024; approved by Reviewing Official Col Greg E. Stevens, Director, Information Directorate, 6 Jan 2025. Authority 15 USC 3710a. TERM: twelve (12) months from the Effective Date, unless modified under Article 7. No modification or extension is present in the copy held. DO NOT DESCRIBE AS ACTIVE until an extension is confirmed. Full extraction: proposals/afrl-afar-agentic-edge/inputs/02_yourCompany/afrl-crada-25-0005284.md",
+      "source_file": "proposals/afrl-afar-agentic-edge/inputs/02_yourCompany/afrl-crada-25-0005284.md",
+      "source_anchor": "Identification",
+      "relevance_tags": [
+        "afrl",
+        "afrl-ri",
+        "ai-agents",
+        "air-force",
+        "crada",
+        "defense-unicorns",
+        "edge-inference",
+        "graph-rag",
+        "niprgpt",
+        "research-partnership"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-011",
+      "type": "partnership",
+      "summary": "Army Research Laboratory (ARL) CRADA with Joint Work Statement — active",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Verified company fact: ARL CRADA plus a Joint Work Statement. Cited for direct Army research relationship and adapter-delivery credibility.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "R&D agreements",
+      "relevance_tags": [
+        "arl",
+        "crada",
+        "joint-work-statement",
+        "army",
+        "research-partnership"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-012",
+      "type": "partnership",
+      "summary": "NIWC Atlantic research partnership — active",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Verified company fact: NIWC Atlantic research partnership. NOTE (from extic evidence-check): this is the research partnership, a DIFFERENT engagement from the Navy ICOP program (EV-014); do not use EV-012 to substantiate ICOP claims.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "R&D agreements",
+      "relevance_tags": [
+        "niwc-atlantic",
+        "navy",
+        "research-partnership"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-013",
+      "type": "partnership",
+      "summary": "U.S. Space Force research collaboration (pre-dating the production order)",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). USSF research collaboration that preceded and transitioned into the Tradewinds production order (extic evidence-check: \"EV-013 is USSF research collaboration (not a production contract)\" - use EV-023/EV-001 for the contract claim).",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "USSF engagement history",
+      "relevance_tags": [
+        "space-force",
+        "ussf",
+        "research-partnership",
+        "transition"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-020",
+      "type": "customer_fact",
+      "summary": "CDAO Tradewinds Solutions Marketplace — Awardable status (listed, video-assessed, procurable)",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Verified: CDAO Tradewinds Awardable status; demonstrated procurement path (the USSF order was executed through the Marketplace, see EV-005/EV-023).",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "contract vehicles",
+      "relevance_tags": [
+        "tradewinds",
+        "cdao",
+        "awardable",
+        "contract-vehicle"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "highest",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-021",
+      "type": "customer_fact",
+      "summary": "Corporate identifiers: CAGE 9Z176 | UEI SLZTJUA8DBD3 | NAICS 541511 (513210 secondary) | SAM.gov active | commercial small business",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Verified corporate identifiers for submissions. Address: 11011 NE 9th St, Unit 218, Bellevue, WA 98004. Founded Feb 2024.",
+      "source_file": "my-company/company-description.md",
+      "source_anchor": "identifiers",
+      "relevance_tags": [
+        "cage",
+        "uei",
+        "naics",
+        "sam-gov",
+        "small-business"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "highest",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-023",
+      "type": "past_performance",
+      "summary": "U.S. Space Force active production contract — Direct Award through the CDAO Tradewinds CSO (Order FA701426P0009)",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). The USSF engagement as an ACTIVE PRODUCTION CONTRACT claim (vs EV-013 research collaboration): firm-fixed-price direct award through Tradewinds, transitioned from prior research collaboration. Contract-level detail in EV-001..EV-006.",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "USSF FA701426P0009",
+      "relevance_tags": [
+        "space-force",
+        "tradewinds",
+        "direct-award",
+        "production-contract"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "highest",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-041",
+      "type": "capability_claim",
+      "summary": "On-device LoRA fine-tuning: adapters developed on-device without data egress; language-agnostic architecture fine-tunable for low-resource languages",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). On-device LoRA adapter development with no data leaving the device; supports mission and language adaptation (africom: fine-tunable for AFRICOM low-resource languages within the LOE-1 period). Cited with EV-042 for mission-adaptation claims.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "model adaptation",
+      "relevance_tags": [
+        "lora",
+        "on-device",
+        "fine-tuning",
+        "language",
+        "no-egress"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-042",
+      "type": "capability_claim",
+      "summary": "Delivered mission/MOS adapters in production use, including Combat Medic and Logistician, field-tested with USASOC; MOS-specific LoRA adapter delivery in under 30 days",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Extic evidence-check recorded five production adapters (incl. Logistics, Combat Medic, Combat Arms). Combat Medic (TCCC guidance, triage, medevac COA) and Logistician (offline sustainment planning, contested-logistics COA) are field-tested with USASOC (africom drafts). Engineering commitment cleared 2026-05-01: MOS-specific LoRA adapter delivery under 30 days. Confirm the full five-adapter list with the product SME before enumerating all five by name.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "delivered adapters",
+      "relevance_tags": [
+        "mos-adapters",
+        "combat-medic",
+        "logistician",
+        "usasoc",
+        "field-tested",
+        "30-day-delivery"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-043",
+      "type": "capability_claim",
+      "summary": "Multi-platform deployment track record: ruggedized laptops, TAK devices, fly-away kits, tablets, edge servers, small form factor",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Runtime deploys across laptop, edge server, fly-away kit, TAK device, tablet, and EdgeRunner small-form-factor hardware; binary or containerized install; Windows/Linux/macOS.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "form factors",
+      "relevance_tags": [
+        "multi-platform",
+        "tak",
+        "fly-away",
+        "ruggedized",
+        "tablets",
+        "form-factor"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-044",
+      "type": "capability_claim",
+      "summary": "DDIL operation by design: fielded operation in denied, disrupted, intermittent, and limited-connectivity conditions with zero connectivity required",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Companion claim to EV-040 (air-gapped architecture): the operational track record of running in DDIL/EW-contested conditions with SOF formations. No connectivity required for any core function.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "DDIL operation",
+      "relevance_tags": [
+        "ddil",
+        "disconnected",
+        "ew-contested",
+        "operational",
+        "zero-connectivity"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-045",
+      "type": "capability_claim",
+      "summary": "OpenAI-compatible API: local endpoint lets any existing OpenAI-integrated system call EdgeRunner without code modification",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). The runtime exposes an OpenAI-compatible local endpoint, so systems already integrated against the OpenAI API surface (e.g., MAVEN/Advana-connected tools) work without code changes; drop-in integration pattern.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "API surface",
+      "relevance_tags": [
+        "openai-compatible",
+        "api",
+        "drop-in",
+        "integration",
+        "local-endpoint"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-046",
+      "type": "capability_claim",
+      "summary": "Zero marginal inference cost after deployment: no per-token billing, no per-user licensing (qualitative claim only)",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Owned on-device inference has no per-token or per-user metering; operational tempo does not drive cost. USAGE RULE (from dod-openweight evidence-check): supports the QUALITATIVE zero-marginal-cost claim only; do NOT attach specific cost-multiple figures (e.g., \"5-150x\") without an external citation.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "cost model",
+      "relevance_tags": [
+        "cost",
+        "zero-marginal",
+        "no-per-token",
+        "licensing"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-047",
+      "type": "capability_claim",
+      "summary": "Commodity hardware requirement: 8 GB VRAM minimum (Light) / 16 GB recommended (Medium); runs on fielded GFE such as Panasonic Toughbook and HP Elite ruggedized laptops; silicon-agnostic (Intel/AMD/NVIDIA/Qualcomm/Apple)",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Hardware envelope verified in capabilities.md: 8 GB VRAM min, 16 GB recommended, workstation/edge-server class for Heavy; backends ONNX/CUDA/Vulkan/Metal; no specialized accelerator required.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "hardware envelope",
+      "relevance_tags": [
+        "vram",
+        "commodity-hardware",
+        "gfe",
+        "toughbook",
+        "silicon-agnostic"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-050",
+      "type": "partnership",
+      "summary": "HP hardware partnership — ruggedized tactical laptops (EliteBook, ZBook); deploys-on-fielded-hardware proof point",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Partner set confirmed by Bill 2026-04-30 (EXTiC setup). CAVEAT from the partnerships memory: confirm exact agreement type (MOU/OEM/BD) before characterizing the relationship in a submission.",
+      "source_file": "my-company/partnerships",
+      "source_anchor": "HP",
+      "relevance_tags": [
+        "hp",
+        "oem",
+        "ruggedized",
+        "hardware-partner"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-051",
+      "type": "partnership",
+      "summary": "Panasonic hardware partnership — Toughbooks fielded across DoD",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Partner set confirmed by Bill 2026-04-30. Same agreement-type caveat as EV-050.",
+      "source_file": "my-company/partnerships",
+      "source_anchor": "Panasonic",
+      "relevance_tags": [
+        "panasonic",
+        "toughbook",
+        "oem",
+        "hardware-partner"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-052",
+      "type": "partnership",
+      "summary": "AMD silicon partnership — on-device inference on AMD CPU/GPU",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Partner set confirmed by Bill 2026-04-30. Same agreement-type caveat as EV-050.",
+      "source_file": "my-company/partnerships",
+      "source_anchor": "AMD",
+      "relevance_tags": [
+        "amd",
+        "silicon",
+        "oem",
+        "inference"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-053",
+      "type": "partnership",
+      "summary": "Intel silicon partnership — on-device inference on Intel CPU/NPU; hardware-agnostic inference story",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Partner set confirmed by Bill 2026-04-30. Same agreement-type caveat as EV-050.",
+      "source_file": "my-company/partnerships",
+      "source_anchor": "Intel",
+      "relevance_tags": [
+        "intel",
+        "silicon",
+        "oem",
+        "inference"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-054",
+      "type": "partnership",
+      "summary": "Akamai partnership — distributed edge infrastructure; resilience/DDIL and mesh stories",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Partner set confirmed by Bill 2026-04-30. Same agreement-type caveat as EV-050. See also the akamai-gcds proposal workspace.",
+      "source_file": "my-company/partnerships",
+      "source_anchor": "Akamai",
+      "relevance_tags": [
+        "akamai",
+        "edge-infrastructure",
+        "distributed",
+        "partner"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-055",
+      "type": "partnership",
+      "summary": "Lockheed Martin formal partnership — willing to sign Teaming Agreements and review proposals; Mystic Depot teaming",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Formal partnership; engagement path via LM AI Center of Excellence (used in a prior DIU bid); known BU contact in RMS/SEMS. Mystic Depot teaming agreement. RULE: LM expects a polished solo proposal before committing to teaming; do not lead with LM teaming in a draft they have not seen. NOTE: an older ledger generation used EV-055 for adapter-pipeline throughput; the last generation (opnav evidence-check) assigned it to LM teaming, which this entry follows.",
+      "source_file": "my-company/partnerships",
+      "source_anchor": "Lockheed Martin",
+      "relevance_tags": [
+        "lockheed-martin",
+        "teaming",
+        "defense-prime",
+        "mystic-depot"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-056",
+      "type": "partnership",
+      "summary": "BigBear.ai defense-integrator teaming — Mystic Depot teaming agreement; DIA DMA subcontractor",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). BigBear.ai teaming relationship: Mystic Depot teaming agreement; subcontractor on the DIA DMA submission (2026-07-24) bringing accredited defense-intelligence platform, FCL, classified engineering, RMF/ATO leadership. BigBear-attributed platform facts still require BigBear-released wording per the BIGBEAR-PROVIDED markers.",
+      "source_file": "my-company/partnerships",
+      "source_anchor": "BigBear.ai",
+      "relevance_tags": [
+        "bigbear",
+        "teaming",
+        "defense-intelligence",
+        "mystic-depot",
+        "dia"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-057",
+      "type": "capability_claim",
+      "summary": "Maven Smart System integration: EdgeRunner carries Maven intelligence forward to the disconnected edge; operational integration confirmed at capture time (2026-05)",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). WarClaw/runtime integration with the Maven Smart System: pre-mission sync of Maven context to the edge device, offline use, re-sync on connectivity. Basis: capabilities.md (\"extends the enterprise to the edge, carrying MAVEN and Advana intelligence forward\") and the SOCPAC MAVEN-extension engagement. Keep the claim at \"integration demonstrated/confirmed,\" not \"program-integrated.\"",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "MAVEN integration",
+      "relevance_tags": [
+        "maven",
+        "integration",
+        "edge-sync",
+        "socpac"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-058",
+      "type": "capability_claim",
+      "summary": "Advana integration with edge sync and operational data return: context data down before insertion, edge-captured data back up on reconnection",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Companion to EV-057 for Advana (and successor Warfighter Data Platform naming): pre-mission data sync down, operational data return up, refining enterprise holdings. Same demonstrated-not-program-integrated framing.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "Advana integration",
+      "relevance_tags": [
+        "advana",
+        "wdp",
+        "integration",
+        "data-return",
+        "edge-sync"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-059",
+      "type": "customer_deployment",
+      "summary": "Combat Medic and Logistician AI adapters field-tested with USASOC",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). The two named adapters are field-tested with USASOC elements: Combat Medic (TCCC guidance, injury triage, medevac COA generation, fully local) and Logistician (offline sustainment planning, contested-logistics COA). USASOC naming subject to the public-release rules in EV-099.",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "adapter field-testing",
+      "relevance_tags": [
+        "combat-medic",
+        "logistician",
+        "usasoc",
+        "field-tested",
+        "adapters"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-060",
+      "type": "customer_fact",
+      "summary": "Company facts: commercial small business; Nontraditional Defense Contractor under 10 USC 4022 (under $200K cost-type DoD contracts in the preceding two years)",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Corporate posture for OTA eligibility: commercial small business (identifiers in EV-021); qualifies as a Nontraditional Defense Contractor under 10 USC 4022; eligible as a sole Nontraditional participant for OTA award. 22 FTE, founded Feb 2024, Series A $17.5M (May 2025).",
+      "source_file": "my-company/company-description.md",
+      "source_anchor": "corporate posture",
+      "relevance_tags": [
+        "nontraditional",
+        "ota",
+        "10usc4022",
+        "small-business",
+        "company-facts"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "highest",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-061",
+      "type": "customer_deployment",
+      "summary": "JSOC pilot engagement (RESTRICTED: Government distribution only, Distribution B or more restrictive)",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Prior pilot experience with JSOC (referenced alongside USASOC pilots in extic drafts). RESTRICTED per the prior ledger generation: cite only in documents with Distribution B or more restrictive; classified-adjacent, vet before any broad-distribution use.",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "JSOC pilot",
+      "relevance_tags": [
+        "jsoc",
+        "pilot",
+        "sof",
+        "restricted"
+      ],
+      "approval_status": "restricted",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z",
+      "restrictions": "Government distribution only (Distribution B or more restrictive). Do not cite in public or broad-distribution documents without vetting."
+    },
+    {
+      "id": "EV-070",
+      "type": "capability_claim",
+      "summary": "EVELYN machine-vision system (fielded, TRL 7): on-device target ID on live sensor feeds and labeled-dataset generation from a handful of seed examples, on a laptop, offline",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). EVELYN (EdgeRunner Versatile Environment for Labeling and Yielding New datasets): one embedding engine, two paths - Direct (embedding-match, novel target seeded on the spot) and Trained (EVELYN-built dataset trains a compact fixed-class detector). HARD RULE (Bill, 2026-06-26): EVELYN labels/validates/integrates imagery but does NOT generate synthetic imagery - never claim generation. Not separately accredited.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "EVELYN",
+      "relevance_tags": [
+        "evelyn",
+        "machine-vision",
+        "labeling",
+        "target-id",
+        "edge",
+        "trl7"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-071",
+      "type": "capability_claim",
+      "summary": "Language capability: cross-lingual translation across 25+ languages, automated language identification, language-agnostic architecture fine-tunable for low-resource languages",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Cited in africom-jwic for 25+ language translation, automated language ID, and fine-tuning for low-resource/low-density languages (90-day commitment was proposal-specific; confirm timeline before re-committing elsewhere). Open-weight models with specific language support deployable as needed.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "language",
+      "relevance_tags": [
+        "translation",
+        "language-id",
+        "multilingual",
+        "low-resource"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-075",
+      "type": "customer_fact",
+      "summary": "Cleared personnel: six cleared staff — four at Secret, two at Top Secret/SCI — available for classified integration, on-site work, and sustainment",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). From the Bill-approved opnav-n8-rcc capability paper (2026-07). PAIR WITH the FCL rule (accreditation memory, Bill 2026-07-02): EdgeRunner employs TS/SCI-cleared individuals but does NOT hold a Top Secret Facility Clearance - classified work is scoped to a cleared integration partner; never claim classified work in EdgeRunner facilities.",
+      "source_file": "proposals/opnav-n8-rcc/drafts/capability-paper.md",
+      "source_anchor": "cleared personnel",
+      "relevance_tags": [
+        "clearances",
+        "ts-sci",
+        "secret",
+        "personnel",
+        "no-fcl"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-076",
+      "type": "customer_fact",
+      "summary": "Teaming track record: working relationships across the major defense integrators; signed teaming agreements with more than a dozen of them in 2026",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). From the Bill-approved opnav-n8-rcc capability paper: teaming is routine; 12+ signed teaming agreements in 2026; teammates selected against the specific gaps of each effort.",
+      "source_file": "proposals/opnav-n8-rcc/drafts/capability-paper.md",
+      "source_anchor": "teaming",
+      "relevance_tags": [
+        "teaming",
+        "integrators",
+        "partnerships"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-078",
+      "type": "capability_claim",
+      "summary": "Fielding AI is a stack: models, runtime, orchestration, verification, and adaptation delivered as one converged on-device stack",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Positioning/framing claim from the prior generation (\"converged stack\"): EdgeRunner delivers the full stack (models + Secure Runtime + WarClaw + Ground Truth + adaptation pipeline) rather than a bare model. Low-stakes framing entry.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "stack framing",
+      "relevance_tags": [
+        "stack",
+        "converged",
+        "positioning"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "medium",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-079",
+      "type": "capability_claim",
+      "summary": "WarClaw skills are versioned, validated, auditable software rather than prompts: orchestration-as-auditable-software",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). capabilities.md maps EV-079 to \"orchestration-as-auditable-software capability\": a WarClaw skill encodes tradecraft (e.g., a briefing format, CCIR framing) as versioned, validated, auditable software a unit keeps, rather than a prompt a user must remember.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "WarClaw skills",
+      "relevance_tags": [
+        "warclaw",
+        "skills",
+        "versioned",
+        "auditable",
+        "orchestration"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-080",
+      "type": "past_performance",
+      "summary": "IDX26 SIGINT White Paper submitted February 2026 under Army contract W91RUS26SFTHU — active Army intelligence-community engagement",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). From ITDX26/extic evidence-checks: demonstrates active, current engagement with the Army Intelligence community and continuity with the ICED/FCC ecosystem.",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "IDX26 SIGINT",
+      "relevance_tags": [
+        "idx26",
+        "sigint",
+        "army",
+        "w91rus26sfthu",
+        "white-paper"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "medium",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-090",
+      "type": "risk_assertion",
+      "summary": "Commercial LLMs are unsuitable for military use without specialization — capable yet unsuitable (backed by the Mil-Deflect 98.2% refusal benchmark)",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Ghosting/risk assertion derived from Mil-Deflect (EV-030): general-purpose commercial models hard-refuse up to 98.2% of legitimate military queries, so capability alone does not equal suitability. Use as framing backed by the published number, not as a standalone unsourced claim.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "ghost: unsuitable without specialization",
+      "relevance_tags": [
+        "ghosting",
+        "refusal",
+        "mil-deflect",
+        "suitability"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "medium",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-091",
+      "type": "risk_assertion",
+      "summary": "Cloud-dependent AI fails at DDIL operational tempo — connectivity is the single point of failure ghost",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Ghosting/risk assertion: architectures with a cloud dependency cannot deliver at the tactical edge under DDIL/EW-contested conditions; EdgeRunner operates identically connected and disconnected. Pair with EV-040/EV-044 for the affirmative claim.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "ghost: cloud fails DDIL",
+      "relevance_tags": [
+        "ghosting",
+        "ddil",
+        "cloud-dependency",
+        "resilience"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "medium",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-093",
+      "type": "risk_assertion",
+      "summary": "Plain RAG provides no portable proof of grounding — retrieval is not verification (Ground Truth discriminator ghost)",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). From the Ground Truth memory: RAG retrieves context but produces no portable, checkable evidence that an output is supported; Ground Truth returns claim-level verdicts plus a signed WBOM receipt. Use to differentiate verification from retrieval.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "ghost: RAG no proof",
+      "relevance_tags": [
+        "ghosting",
+        "rag",
+        "verification",
+        "wbom",
+        "ground-truth"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "medium",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-094",
+      "type": "capability_claim",
+      "summary": "Ground Truth instrumentation: grades each product against a doctrinal rubric and emits outcome measures (verbosity reduction, doctrinal-structure adherence, time to decision-ready product)",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). From army-brevity-companion usage: the tradecraft-review/rubric machinery (EV-074) applied as measurement - per-product scoring against the unit standard with trend measures. Same maturity framing as EV-073/074 (demonstrable, not fielded). ATTRIBUTION (capabilities.md): EV-094 is the \"measured results + signed WBOM\" entry — the First Army validation produced three documented field failures (including a silent 116-to-6 undercount and fabricated doctrine) that Ground Truth converted into reported, attributable errors, each released product carrying a signed WBOM receipt.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "Ground Truth measurement",
+      "relevance_tags": [
+        "ground-truth",
+        "measurement",
+        "rubric",
+        "metrics"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-096",
+      "type": "capability_claim",
+      "summary": "DORIS on-device model adaptation (PROOF-OF-CONCEPT): unit documents to fine-tuned model entirely on-device - organize, generate training set, fine-tune, export; no data scientist, no data egress",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). DORIS (Document Orchestration, Refinement, Intelligence & Synthesis). MATURITY STATED EMPHATICALLY (capabilities.md): proof-of-concept, single end-to-end run on a Jetson Thor over military doctrine - 35 datasets, 12,993 Q&A pairs (~8.3 days one endpoint), Light-tier LoRA in ~9.2h, 86% training-loss reduction. \"Not a benchmark, not a fielded result; reproducible on request.\" Never present DORIS as fielded; it is the phase-2 learning loop.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "DORIS",
+      "relevance_tags": [
+        "doris",
+        "adaptation",
+        "poc",
+        "on-device",
+        "fine-tuning",
+        "no-egress"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-100",
+      "type": "customer_deployment",
+      "summary": "LEGACY ID - U.S. Space Force production deployment inside an accredited IL-5 boundary (same claim as EV-002)",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Legacy-generation ID kept so older drafts (unmanned-ground-recovery-rfi) verify: ODIN deployed in a USSF production environment, running fully inside an accredited IL-5 (Azure ILZ) government boundary with no cloud dependency/reachback. Canonical entry: EV-002. Prefer EV-002 in new work.",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "USSF IL-5 deployment (=EV-002)",
+      "relevance_tags": [
+        "legacy-id",
+        "il5",
+        "space-force",
+        "deployment"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "highest",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-101",
+      "type": "capability_claim",
+      "summary": "LEGACY ID - built-to-spec domain-specific model delivered under the USSF order (same claim as EV-003)",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Legacy-generation ID: built-to-spec model (Space Force acquisitions/SFSC) delivered under FA701426P0009. Canonical entry: EV-003. Prefer EV-003 in new work.",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "built-to-spec model (=EV-003)",
+      "relevance_tags": [
+        "legacy-id",
+        "built-to-spec",
+        "model-specialization"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-103",
+      "type": "customer_fact",
+      "summary": "LEGACY ID - CDAO Tradewinds Awardable status converted to an executed order (same claim as EV-005/EV-020)",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Legacy-generation ID: Tradewinds Awardable status plus the executed USSF order proving the procurement path closes. Canonical entries: EV-005 (executed order), EV-020 (Awardable status). Prefer those in new work.",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "Tradewinds (=EV-005/EV-020)",
+      "relevance_tags": [
+        "legacy-id",
+        "tradewinds",
+        "cdao"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-105",
+      "type": "capability_claim",
+      "summary": "Conversational Operator layer (demonstrated PoC): a user states a goal in plain language and never opens the underlying tooling, with an approval gate before any consequential step",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). capabilities.md maps EV-105 to \"conversational Operator orchestration, demonstrated PoC\": plain-language driving of WarClaw pipelines with a human approval gate before consequential actions. Maturity: demonstrated proof-of-concept, not fielded.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "Operator layer",
+      "relevance_tags": [
+        "operator",
+        "conversational",
+        "approval-gate",
+        "warclaw",
+        "poc"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-106",
+      "type": "customer_deployment",
+      "summary": "44th Medical Brigade engagement - in-corps adoption of on-device AI within a XVIII Airborne Corps subordinate unit",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Confirmed real by Bill (army-brevity-companion evidence-check note; entry directed by Bill). Framing per the draft: a subordinate-unit engagement (101st Airborne Division Sustainment Brigade context / XVIII Airborne Corps subordinate), NOT a corps-headquarters endorsement - keep that honesty caveat.",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "44th Medical Brigade",
+      "relevance_tags": [
+        "44th-medical",
+        "xviii-airborne",
+        "army",
+        "engagement"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-007",
+      "type": "benchmark_result",
+      "summary": "EVELYN labeling throughput: 7,800+ labels/hour on a laptop (offline CPU) and 42,000+/hour on cloud GPUs — \"scales with hardware, not people\"",
+      "detail": "RECONSTRUCTED/CREATED 2026-07-26 from capabilities.md (this proof point was recommended by the tradewinds-cdao-adl-p2 evidence-check but no entry survived the 2026-07-24 overwrite). EVELYN sustains 7,800+ labels/hour running offline on laptop CPU and 42,000+ labels/hour on cloud GPUs, converting annotation from a people-scaled cost into a hardware-scaled one; free on hardware the government already owns (no per-image API cost, no internet dependency at runtime). NOTE: this figure supersedes the stale \"100+ images/sec\" claim corrected out of edgerunner-profile.md on 2026-07-23. SOURCE/MATURITY CAVEAT: these are demonstration / internal-evaluation figures recorded in capabilities.md, not a published or third-party benchmark. Confirm with the product SME (Jack FitzGerald / Vincent Lu) before citing specific figures externally. EVELYN honest gaps EdgeRunner itself flags: native streaming ingest (video is frame-based today), sustained frame-rate/latency on named small-form-factor hardware against a live feed, precision/recall versus a trained baseline, and native cross-frame track association. HARD RULE (Bill, 2026-06-26): EVELYN labels, validates, and integrates imagery but does NOT generate synthetic imagery. Every label traces to a real frame. Never claim generation.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "EVELYN metrics (demonstration / internal eval)",
+      "relevance_tags": [
+        "evelyn",
+        "throughput",
+        "labeling",
+        "offline",
+        "cpu",
+        "gpu",
+        "data-labeling",
+        "cost"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-008",
+      "type": "benchmark_result",
+      "summary": "EVELYN drone-recognition dataset: 180,000+ categorized detections from 1,000,000+ raw video frames across seven drone types, seeded with 32 images per class, producing a working multi-object tracking model in hours rather than weeks",
+      "detail": "RECONSTRUCTED/CREATED 2026-07-26 from capabilities.md and the tradewinds-cdao-adl-p2 white paper. Internal drone-recognition effort: EVELYN produced more than 180,000 categorized detections from over one million raw video frames spanning seven drone types, seeded with only 32 images per class (\"seeded, not trained\" — embedding-similarity matching rather than retraining), and the resulting EVELYN-built dataset trained a working multi-object tracking model. Annotation completed in hours rather than weeks. This is the Path B (Trained) workflow: EVELYN-built dataset trains a compact fixed-class detector sized for edge power budgets. Standards-native exports (COCO, YOLO, Pascal VOC), every dataset shipping with its manifest. SOURCE/MATURITY CAVEAT: these are demonstration / internal-evaluation figures recorded in capabilities.md, not a published or third-party benchmark. Confirm with the product SME (Jack FitzGerald / Vincent Lu) before citing specific figures externally. EVELYN honest gaps EdgeRunner itself flags: native streaming ingest (video is frame-based today), sustained frame-rate/latency on named small-form-factor hardware against a live feed, precision/recall versus a trained baseline, and native cross-frame track association. HARD RULE (Bill, 2026-06-26): EVELYN labels, validates, and integrates imagery but does NOT generate synthetic imagery. Every label traces to a real frame. Never claim generation.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "EVELYN metrics (demonstration / internal eval)",
+      "relevance_tags": [
+        "evelyn",
+        "drone-detection",
+        "dataset",
+        "labeling",
+        "seeded-not-trained",
+        "multi-object-tracking",
+        "counter-uas"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "highest",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-009",
+      "type": "capability_claim",
+      "summary": "EVELYN adversarial robustness: correctly classifies adversarially poisoned images that mislead conventional YOLO detectors; validated on infrared, night-vision, and fog imagery, and on person identification across appearance changes",
+      "detail": "RECONSTRUCTED/CREATED 2026-07-26 from capabilities.md. Because EVELYN recognizes objects by similarity in embedding space rather than by a trained classifier head, it correctly classifies adversarially poisoned images that mislead conventional YOLO detectors. Human-in-the-loop throughout. Additionally validated on infrared, night-vision, and fog imagery, and on person identification across appearance changes. Air-gapped, no external API calls; identical software from laptop to datacenter. USAGE: this is a qualitative robustness observation from internal evaluation — do not attach an attack-success-rate or precision/recall figure to it without SME-sourced data. SOURCE/MATURITY CAVEAT: these are demonstration / internal-evaluation figures recorded in capabilities.md, not a published or third-party benchmark. Confirm with the product SME (Jack FitzGerald / Vincent Lu) before citing specific figures externally. EVELYN honest gaps EdgeRunner itself flags: native streaming ingest (video is frame-based today), sustained frame-rate/latency on named small-form-factor hardware against a live feed, precision/recall versus a trained baseline, and native cross-frame track association. HARD RULE (Bill, 2026-06-26): EVELYN labels, validates, and integrates imagery but does NOT generate synthetic imagery. Every label traces to a real frame. Never claim generation.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "EVELYN robustness (demonstration / internal eval)",
+      "relevance_tags": [
+        "evelyn",
+        "adversarial",
+        "data-poisoning",
+        "robustness",
+        "yolo",
+        "infrared",
+        "night-vision",
+        "embedding-space"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "medium",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-077",
+      "type": "capability_claim",
+      "summary": "EVELYN maturity and external validation: TRL 7, demonstrated in a military laboratory on real-world data; finalist in the U.S. Army xTech AI Grand Challenge; SDA TAP Lab and U.S. Space Systems Command engagements; CDAO Tradewinds Awardable (July 2026)",
+      "detail": "RECONSTRUCTED 2026-07-26. capabilities.md attributes the EVELYN maturity line to EV-070 + EV-077; this is the validation/maturity half of that pair (EV-070 is the capability itself). EdgeRunner was a finalist in the U.S. Army xTech AI Grand Challenge (stated in the tradewinds-cdao-adl-p2 white paper; capabilities.md records it as the \"Army xTech demo\"). Additional external touchpoints: SDA TAP Lab and U.S. Space Systems Command engagements; EVELYN listed on the CDAO Tradewinds Solutions Marketplace as Awardable, July 2026. TRL: capabilities.md states TRL 7; the tradewinds white paper says TRL 6/7 — use TRL 7 with the \"demonstrated in a military laboratory on real-world data\" qualifier, and do not imply operational fielding. SOURCE/MATURITY CAVEAT: these are demonstration / internal-evaluation figures recorded in capabilities.md, not a published or third-party benchmark. Confirm with the product SME (Jack FitzGerald / Vincent Lu) before citing specific figures externally. EVELYN honest gaps EdgeRunner itself flags: native streaming ingest (video is frame-based today), sustained frame-rate/latency on named small-form-factor hardware against a live feed, precision/recall versus a trained baseline, and native cross-frame track association.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "EVELYN maturity (TRL 7 / xTech / Tradewinds)",
+      "relevance_tags": [
+        "evelyn",
+        "xtech",
+        "trl7",
+        "sda-tap-lab",
+        "space-systems-command",
+        "tradewinds",
+        "awardable",
+        "validation"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-092",
+      "type": "risk_assertion",
+      "summary": "Ghost: naive quantization trades away task accuracy — EdgeRunner compression fits Medium/Light models onto commodity GFE and forward edge devices without sacrificing task accuracy",
+      "detail": "RECONSTRUCTED 2026-07-26. capabilities.md maps EV-092 to \"ghost vs. naive quantization\": competitors shrink models by naive quantization and lose task accuracy; EdgeRunner's domain-aware compression pipeline (Paper 3; see EV-032/EV-048) targets a VRAM footprint while preserving task accuracy. Use as the ghost framing that pairs with the affirmative compression claim.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "compression ghost",
+      "relevance_tags": [
+        "ghosting",
+        "quantization",
+        "compression",
+        "accuracy",
+        "edge"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "medium",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-095",
+      "type": "capability_claim",
+      "summary": "Ground Truth action-authorization frontier: a separate action gate (/api/check_action) distinct from the epistemic verification gate — nothing reaches an effector without a person",
+      "detail": "RECONSTRUCTED 2026-07-26. capabilities.md maps EV-095 to the \"action-authorization frontier\" and names /api/check_action as a Ground Truth component alongside ledger-builder, warrant-ledger, and tradecraft-review. The pattern (demonstrated in the C-UAS Decoy Gate demo) separates the EPISTEMIC gate (is this claim supported?) from the ACTION-AUTHORITY gate (is this action permitted?), default-deny, so nothing reaches an effector without a person in the loop. Same maturity framing as the rest of Ground Truth: built and demonstrated, no TRL claimed, no ATO of its own.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "Ground Truth action gate",
+      "relevance_tags": [
+        "ground-truth",
+        "action-gate",
+        "check-action",
+        "default-deny",
+        "human-in-the-loop",
+        "c-uas",
+        "safety"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-067",
+      "type": "capability_claim",
+      "summary": "RETIRED — FedRAMP is NOT held. EdgeRunner has not pursued FedRAMP authorization for its application; do not claim any FedRAMP status.",
+      "detail": "RETIRED 2026-07-26 by Bill: \"We do not have FedRAMP authorization for our application itself as we have not had to do it yet. Hold off on claiming any FedRAMP status in our writing.\" Rationale: the product deploys on-premises and air-gapped inside the customer's own accredited boundary rather than as a cloud service, so FedRAMP has not been required. This entry is kept (not deleted) per the append-only/retire convention so that any future citation resolves to an explicit prohibition rather than a missing ID. USE INSTEAD: IL-5 ATO (U.S. Space Force) and IL-6 IATT (EV-022) are the verified authorizations. Consistent with my-company/edgerunner-profile.md section 4 (\"ISO 27001 / SOC 2 / FedRAMP: Not held - do not claim\"). Third-party FedRAMP-authorized environments (a hosting platform, a partner platform such as BigBear's) may be described, but must be attributed to that party and never read as an EdgeRunner authorization.",
+      "source_file": "my-company/partner-enablement/accreditation-one-pager.md",
+      "source_anchor": "open [CONFIRM] gaps",
+      "relevance_tags": [
+        "fedramp",
+        "il5",
+        "ato",
+        "unverified",
+        "do-not-cite"
+      ],
+      "approval_status": "retired",
+      "restrictions": "DO NOT CITE. FedRAMP is not held. Any FedRAMP reference must be attributed to a third-party platform, never to EdgeRunner.",
+      "proof_strength": "low",
+      "created_at": "2026-07-26T00:00:00Z"
+    },
+    {
+      "id": "EV-107",
+      "type": "customer_deployment",
+      "summary": "101st Airborne Division - EdgeRunner deployed at JRTC Rotation 26-06; used by staff in Tactical Operations Centers on laptops to accelerate COA development, reporting, and doctrinal analysis.",
+      "detail": "EdgeRunner was deployed as part of Joint Readiness Training Center (JRTC) Rotation 26-06 with the 101st Airborne Division. Used by staff in Tactical Operations Centers (TOCs) on laptops. Reported effect: staff processes within the Military Decision-Making Process (MDMP) and doctrinal research completed in a day or less that would previously have taken multiple days. UNIT CONFIRMED by Bill Bal 2026-07-27: 101st AIRBORNE DIVISION (not 101st Infantry Brigade, which appears separately in EV-099). Source: Dave Anderson tracked edits to the Army Digital Brevity proposal, 2026-07-24.",
+      "source_anchor": "Past Performance - 101st Airborne Division / JRTC 26-06",
+      "tags": [
+        "deployment",
+        "army",
+        "101st-airborne",
+        "jrtc",
+        "mdmp",
+        "coa",
+        "toc",
+        "past-performance"
+      ],
+      "approval_status": "approved",
+      "created_at": "2026-07-27T00:00:00Z",
+      "verified_at": "2026-07-27T00:00:00Z",
+      "notes": "Added at Bill Bal's direction 2026-07-27; he confirms the engagement and the unit. TEAM VALIDATION PENDING - capture the exercise dates, supporting government POC, and any measured timings before a formal past-performance/PPQ submission. Cite at capability level; do not add quantified timings beyond 'a day or less' without the validated data."
+    },
+    {
+      "id": "EV-108",
+      "type": "capability_claim",
+      "summary": "USASOC deployment: custom-trained EdgeRunner model answers military queries on unconventional warfare that trip standard commercial model guardrails; reported 100% answer rate on that query set.",
+      "detail": "As part of the USASOC deployment, EdgeRunner provided a custom-trained model reported to deliver a 100% answer rate to military queries around unconventional warfare that trip standard commercial LLM guardrails and prevent answering. Complements EV-030 (Mil-Deflect), which measures COMMERCIAL model refusal rates rather than EdgeRunner's answer rate on this set. Source: Dave Anderson tracked edits, 2026-07-24.",
+      "source_anchor": "Past Performance - USASOC unconventional-warfare model",
+      "tags": [
+        "usasoc",
+        "unconventional-warfare",
+        "refusal",
+        "answer-rate",
+        "custom-model",
+        "past-performance"
+      ],
+      "approval_status": "approved",
+      "created_at": "2026-07-27T00:00:00Z",
+      "verified_at": "2026-07-27T00:00:00Z",
+      "notes": "Added at Bill Bal's direction 2026-07-27 (high confidence, team validation pending). CAUTION: '100% answer rate' is an unqualified absolute. An SME evaluator will ask for the query set, its size, and the scoring method. Before any formal submission, name the benchmark/test set behind the figure or restate as the measured value."
+    },
+    {
+      "id": "EV-109",
+      "type": "customer_deployment",
+      "summary": "4th Infantry Division 1st Stryker Brigade Combat Team - shortened maintenance work timelines by ingesting Power BI data on device with an on-device assistant for planning and reporting.",
+      "detail": "EdgeRunner demonstrated the ability to shorten maintenance work timelines with 4th Infantry Division 1st Stryker Brigade Combat Team (4ID 1SBCT) by ingesting Power BI data on device and providing a single pane of glass plus an on-device AI assistant to assist with planning and reporting tasks. Distinct from the 4th ID NGC2 deployment captured in EV-099. Source: Dave Anderson tracked edits, 2026-07-24.",
+      "source_anchor": "Past Performance - 4ID 1SBCT Power BI maintenance",
+      "tags": [
+        "deployment",
+        "army",
+        "4th-infantry-division",
+        "1sbct",
+        "power-bi",
+        "maintenance",
+        "past-performance"
+      ],
+      "approval_status": "approved",
+      "created_at": "2026-07-27T00:00:00Z",
+      "verified_at": "2026-07-27T00:00:00Z",
+      "notes": "Added at Bill Bal's direction 2026-07-27 (high confidence, team validation pending). Capture dates, the supporting government POC, and any quantified time savings before a formal past-performance/PPQ submission."
+    },
+    {
+      "id": "EV-110",
+      "type": "capability_claim",
+      "proof_strength": "high",
+      "approval_status": "approved",
+      "summary": "Mission-ready delivery model: EdgeRunner delivers governed workflows - a bounded pipeline with a standard enforced at each step and human approval at named steps - rather than a model alone. Measured on EdgeRunner's own pipeline corpus, the model accounts for roughly one fifth of the executed work.",
+      "detail": "EdgeRunner's delivery unit is a workflow with a stated guarantee, not a model capability. A workflow is encoded as a WarClaw pipeline (the process), executed by agents (roles with tools and policy), checked by deterministic gates against an approved record, and emitted with a signed receipt. Measured across 17 WarClaw pipelines built from operational requirements: 98 total steps, of which 68 are deterministic code, 19 are model calls, and 9 are conditions - the model is approximately 19% of executed steps. The engineering claim this supports: output predictability is a property of the system architecture, not of model training. Training improves typical output (the mean); bounded architecture is what makes output reliably meet a standard (the variance). A generative step is never deterministic regardless of training. LIMITS: the step-composition figure is a count of EdgeRunner's own demonstration corpus, not an industry benchmark or a customer-validated metric.",
+      "relevance_tags": [
+        "mission-ready",
+        "work-ready",
+        "architecture",
+        "determinism",
+        "pipelines",
+        "warclaw",
+        "ground-truth",
+        "governed-workflow",
+        "measured"
+      ],
+      "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
+      "source_anchor": "MEMO-work-ready-ai.md sections 1-4",
+      "created_at": "2026-07-28"
+    },
+    {
+      "id": "EV-111",
+      "type": "capability_claim",
+      "proof_strength": "low",
+      "approval_status": "restricted",
+      "summary": "RESTRICTED (maturity - do not cite as a capability): WICKET, a deterministic per-claim foreign-disclosure adjudication demonstrator. Decides each statement against its portion markings and a customer-held release matrix, returning RELEASABLE / WITHHELD / UNDETERMINED / HUMAN REVIEW with a signed replayable receipt. Held as an internal demonstration record only.",
+      "detail": "RESTRICTED per EdgeRunner direction (2026-07-28): this is a demonstrator, not a capability, and is NOT to be cited in proposals, capability statements or customer-facing collateral. It is deliberately excluded from capabilities.md. Retained in the ledger as an internal record of what was built and measured, so the work is not lost and can be re-assessed if it matures.\n\nWICKET decides, per claim, whether a statement may be disclosed to a named foreign partner. It operates on the fact that releasability is RECORDED, not inferred: portion marking is mandated at paragraph level and below and is assigned by a human with authority before the system sees it, so the boundary decision is a lookup against a recorded attribute rather than a judgement. The decision ladder is default-deny - no citation, unknown entry, unparseable marking, marking excluding the partner, a deny rule, or the absence of a permitting rule all withhold. Derived claims inherit the intersection of their inputs. Absence claims ('no indication of...') route to named human adjudication. Deployment posture is ASSIST MODE: the system releases nothing, prepares the package, and the foreign disclosure officer retains the signature. LIMITS, all material: nothing is certified or accredited, and the package states so; AGGREGATION IS NOT SOLVED and cannot be by a per-claim filter (individually releasable facts may compile into a classified whole) - enumerated compilation triggers only, with residual risk stated on every receipt; the engine is exactly as accurate as the markings it is given; recall is model-dependent (it proves nothing unsafe crossed, not that everything releasable surfaced); the demonstration uses a NOTIONAL policy and corpus containing no real disclosure guidance and no real markings on real material.",
+      "relevance_tags": [
+        "capco",
+        "coalition",
+        "default-deny",
+        "demonstrator",
+        "do-not-cite",
+        "dodm-5200.01",
+        "eo-13526",
+        "fdo",
+        "foreign-disclosure",
+        "internal-only",
+        "ndp-1",
+        "not-certified",
+        "notional-data",
+        "poc",
+        "releasability",
+        "restricted",
+        "wicket"
+      ],
+      "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
+      "source_anchor": "SPEC-releasability-gate.md; WarClaw pipelines library / WICKET",
+      "created_at": "2026-07-28"
+    },
+    {
+      "id": "EV-112",
+      "type": "capability_claim",
+      "proof_strength": "high",
+      "approval_status": "approved",
+      "summary": "Assurance by measurement, not assertion: EdgeRunner generates a certification package whose every claim is produced by running a check, including a static proof that no model, network call, clock read, or random source exists anywhere in the decision path. The package is emitted whether or not the checks pass.",
+      "detail": "For a deterministic decision-gate demonstrator, six checks are executed and their actual results written into the certification artifact: (1) no model in the decision path, proven by parsing the decision-path modules and scanning for forbidden imports, clock reads, randomness, and any import path to the module that calls a model; (2) determinism, by replaying the case set five times and byte-comparing, plus three identical receipt builds compared by signed digest; (3) marking-parser conformance, 27 cases; (4) decision-ladder regression, 24 known-answer cases; (5) a fail-closed property test - 18 malformed, unknown and hostile inputs, none of which may produce a release; (6) proof that a hostile permit-all policy cannot widen release past the markings. An artifact that can only be produced when everything passes is a marketing document, so the generator writes the package with failures in it. Two of the six checks exist because a negative test failed to fail and was investigated rather than accepted. LIMITS: this demonstrates what pursuing certification would require; no authority has certified or accredited the engine, and the policy and corpus exercised are notional.\n\nCITATION NOTE: this entry states a property of the pattern and tooling and is citable on its own terms. The demonstrator it was measured on is held RESTRICTED (EV-111) - do not name it or describe it as a capability in customer-facing text.",
+      "relevance_tags": [
+        "assurance",
+        "certification",
+        "determinism",
+        "not-certified",
+        "reproducibility",
+        "static-analysis",
+        "test-evidence",
+        "verification-evidence"
+      ],
+      "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
+      "source_anchor": "WICKET/CERTIFICATION-PACKAGE.md (generated by certify.py)",
+      "created_at": "2026-07-28"
+    },
+    {
+      "id": "EV-113",
+      "type": "benchmark_result",
+      "proof_strength": "high",
+      "approval_status": "approved",
+      "summary": "Measured control for information leakage: scoping the model's inputs to only partner-releasable evidence eliminated withholdable content from generated products, tested against its counterfactual - 0 of 5 and 0 of 2 lines withheld when scoped, versus 7 of 12 and 9 of 11 when the same task was run with the model shown everything.",
+      "detail": "The control is architectural rather than probabilistic: the drafting model is only ever given evidence releasable to the target partner, so leakage through paraphrase or inference is structurally impossible rather than merely unlikely - a model cannot disclose what it never received. Output-side redaction, by contrast, is a probabilistic control that eventually fails. This was tested against its opposite rather than asserted: the identical drafting task was run twice per partner, once scoped and once with the full corpus visible. Live EdgeRunner-26B, stable across repeated runs. Unscoped runs produced claims citing NOFORN material, ORCON material, an unparseable marking and a contradictory marking; scoped runs produced nothing the gate had to withhold. The scoping filter additionally excludes non-approved entries and any category an unconditional policy rule denies, so material the gate would always refuse never reaches the drafter. COST: one drafting run per partner rather than one draft filtered N ways. LIMITS: measured on a notional marked corpus; the figures demonstrate the mechanism, not a customer-environment result.\n\nCITATION NOTE: this entry states a property of the pattern and tooling and is citable on its own terms. The demonstrator it was measured on is held RESTRICTED (EV-111) - do not name it or describe it as a capability in customer-facing text.",
+      "relevance_tags": [
+        "coalition",
+        "cross-domain",
+        "leakage-prevention",
+        "measured",
+        "notional-data",
+        "retrieval-scoping",
+        "spillage"
+      ],
+      "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
+      "source_anchor": "WICKET/demo_phase2.py results",
+      "created_at": "2026-07-28"
+    },
+    {
+      "id": "EV-114",
+      "type": "capability_claim",
+      "proof_strength": "high",
+      "approval_status": "approved",
+      "summary": "Proven safety floor: a misconfigured or hostile disclosure policy cannot widen release beyond what the portion markings permit. Markings are evaluated before policy and denials before permissions, so customer-authored rules can only ever narrow access - demonstrated against a deliberately permit-everything policy.",
+      "detail": "This addresses the question an authorising official asks about any rules engine whose rules the vendor cannot review: not 'are your rules correct' but 'what happens when they are wrong'. Because the decision ladder evaluates markings before consulting policy, and denials before permissions, policy is structurally incapable of widening release. The property is proven rather than asserted: the engine is re-run against a hostile policy whose single rule permits everything to everyone, and ten claims whose markings forbid the partner are re-adjudicated under it - none released. This check exists because a negative test appeared to pass for the wrong reason and was investigated. LIMITS: the floor is set by the markings, so it inherits their accuracy; and the guarantee is about the release decision, not about aggregation across separately released claims.\n\nCITATION NOTE: this entry states a property of the pattern and tooling and is citable on its own terms. The demonstrator it was measured on is held RESTRICTED (EV-111) - do not name it or describe it as a capability in customer-facing text.",
+      "relevance_tags": [
+        "accreditation",
+        "assurance",
+        "default-deny",
+        "misconfiguration",
+        "policy-engine",
+        "safety-property"
+      ],
+      "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
+      "source_anchor": "WICKET/CERTIFICATION-PACKAGE.md check 6",
+      "created_at": "2026-07-28"
+    },
+    {
+      "id": "EV-115",
+      "type": "capability_claim",
+      "proof_strength": "medium",
+      "approval_status": "approved",
+      "summary": "Coalition exchange of claims with receipts (demonstrated PoC): the receiving partner independently verifies that nothing it received is marked against it - checking signature, citation integrity and every marking - using only publicly available marking authority, without access to the originator's evidence base or classified release matrix.",
+      "detail": "Applicable to Mission Partner Environment and combined-command information sharing, where the mechanism has historically been policy rather than a technical control. The originator's full receipt cannot be what crosses a boundary: it names the entries that were withheld and their markings, which can be more sensitive than the product it accompanies. A redacted, separately signed partner view therefore carries the released claims with their entries and markings, the policy identity and hash, and withheld material as COUNTS ONLY - no text, no ids, no markings, and no rule identifiers, since rule identifiers are structure from the classified release matrix. The receiving side, holding no evidence base, no policy and no rules, verifies the signature, that each claim cites the entries listed for it, that every marking parses, and that every marking permits it. That is possible only because marking semantics are unclassified (EO 13526, DoD Manual 5200.01, CAPCO Register). LIMITS: the receiver verifies arithmetic and integrity, NOT the originator's honesty about sources - it cannot confirm the release matrix was applied correctly, that nothing was wrongly withheld, or that a marking is faithful to its source document. Demonstrated on notional data; not certified.\n\nCITATION NOTE: this entry states a property of the pattern - claims crossing a boundary with a receipt the receiver can verify against public authority - and is citable on its own terms, including for coalition and mission-partner pursuits. The demonstrator it was measured on is held RESTRICTED (EV-111): do not name it, and do not present the foreign-disclosure application as a capability.",
+      "relevance_tags": [
+        "coalition",
+        "mission-partner-environment",
+        "cjadc2",
+        "ngc2",
+        "foreign-disclosure",
+        "receipts",
+        "wbom",
+        "interoperability",
+        "poc",
+        "notional-data"
+      ],
+      "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
+      "source_anchor": "WICKET/demo_phase3.py; SPEC-releasability-gate.md section 6",
+      "created_at": "2026-07-28"
+    },
+    {
+      "id": "EV-116",
+      "type": "capability_claim",
+      "proof_strength": "medium",
+      "approval_status": "approved",
+      "summary": "Untrusted-oracle adjudication (demonstrated PoC): an external or commercial model's output is treated as unverified claims, shredded into atomic assertions, and each binned against a local approved corpus as SUPPORTED, CONTRADICTED (blocked) or UNSUPPORTED (quarantined) - with the on-device military model as the arbiter, air-gapped.",
+      "detail": "Provides a governance boundary for using AI an organisation does not control, including auditing the outputs of externally hosted government AI services against unit-level or command standards. The local model supplies both the embeddings and the entailment judgement, so no data leaves the enclave to perform the check. Under an untrusted-source threat model the precedence is inverted relative to self-checking: CONTRADICTION outranks ENTAILMENT, because a claim that conflicts with one approved entry must not pass on the strength of loose support from another. The demonstration adjudicated an external answer about analytic tradecraft against a merged ICD 203 and unit-SOP corpus and blocked claims that inverted doctrine. LIMITS: the demonstrated run replays a CAPTURED, NOTIONAL external response so the pipeline is exercised without connectivity; a live external-service path exists and is configurable but was not exercised in the demonstration. The entailment step is model-dependent - see the associated risk assertion on generative judge reliability.",
+      "relevance_tags": [
+        "untrusted-oracle",
+        "external-ai-governance",
+        "genai-audit",
+        "frontier-model",
+        "air-gapped",
+        "ground-truth",
+        "icd-203",
+        "poc",
+        "notional-data"
+      ],
+      "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
+      "source_anchor": "WarClaw pipelines library / Untrusted-Oracle",
+      "created_at": "2026-07-28"
+    },
+    {
+      "id": "EV-117",
+      "type": "risk_assertion",
+      "proof_strength": "high",
+      "approval_status": "approved",
+      "summary": "Measured basis for keeping models out of verification: a generative model is unreliable as a verification judge. On a hand-labelled entailment set the on-device 26B scored 7 of 10 (its reasoning variant 6 of 10), and 5 of 10 cases changed verdict across identical runs at temperature zero. A governance gate whose answer varies on identical input is not defensible - so verification must be deterministic and the model must sit outside the decision path.",
+      "detail": "This finding is the empirical justification for EdgeRunner's architecture rather than a defect in it, and it is the reason Ground Truth's core is deterministic with no model in the verification loop. Measurement: a hand-labelled (claim, evidence) set drawn from an ICD 203 and unit-SOP corpus, with every label checkable by inspection. EdgeRunner-26B-Nonthinking scored 7/10 with 4/4 recall on contradictions; the Thinking variant scored 6/10 and missed a contradiction. Repeating the identical set three times at temperature zero produced verdict changes on 5 of 10 cases. Both variants failed most often by over-committing to a relationship where the correct label was NEUTRAL. Design consequences adopted: the deterministic citation path is the only route to an attributed verdict; model-judged entailment is recorded as advisory and labelled as such in output; and where a judge is required, a cross-encoder is the preferred implementation over a generative model. The evaluation harness ships with the capability so the measurement can be repeated after any model or prompt change. LIMITS: small hand-labelled set on a single domain corpus - directional evidence about generative judging, not a formal model evaluation.",
+      "relevance_tags": [
+        "risk",
+        "verification",
+        "determinism",
+        "model-limitations",
+        "ground-truth",
+        "design-rationale",
+        "honest-assessment",
+        "measured",
+        "test-harness"
+      ],
+      "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
+      "source_anchor": "WICKET/judge_bench.py results",
+      "created_at": "2026-07-28"
+    },
+    {
+      "id": "EV-118",
+      "type": "capability_claim",
+      "proof_strength": "high",
+      "approval_status": "approved",
+      "summary": "Tamper-evident capability delivery: EdgeRunner ships its workflow library as individually signed, machine-verifiable packages. Each package carries an Ed25519-signed manifest declaring its dependencies, install route, step composition and runtime requirements, and a verifier ships alongside so the recipient can confirm nothing was changed, added or removed rather than taking the vendor's word for it.",
+      "detail": "Addresses configuration management and software supply-chain integrity for delivered AI workflows. Twenty packages - nineteen workflows plus one standalone capability - are published with per-package manifests on a single schema (warclaw-store.v1), alongside a signed registry of forty bundles covering workflows, agent roles, connectors and functions; all forty signatures verify. The manifest is signed over the package's actual contents, so it attests to what shipped rather than to a separate upstream artifact. The supplied verifier recomputes the digest and checks the signature, and treats any file present but not covered by the signature as a FAILURE, not a warning - a package intended to be executed makes an added file the dangerous case, not a changed one. Tamper-tested: modifying a covered file and introducing an uncovered file are both detected and named. Filesystem and sync metadata are excluded by exact filename with the exclusion reported, so verification remains usable on real distribution media. LIMITS: this attests integrity and provenance of the delivered package; it is not an accreditation, and signature validity says nothing about the correctness of the workflow's content.",
+      "relevance_tags": [
+        "supply-chain",
+        "integrity",
+        "configuration-management",
+        "signed-manifest",
+        "ed25519",
+        "tamper-evident",
+        "delivery",
+        "sbom-adjacent",
+        "warclaw"
+      ],
+      "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
+      "source_anchor": "WarClaw pipelines library - per-folder manifest.json, verify_manifests.py, store/registry",
+      "created_at": "2026-07-28"
+    },
+    {
+      "id": "EV-119",
+      "type": "capability_claim",
+      "proof_strength": "medium",
+      "approval_status": "approved",
+      "summary": "Operator front ends are generated, not hand-built: because a WarClaw application screen is declarative configuration, a click-to-run screen was generated for every workflow in the library from the workflow definition itself, and the installer rewires each screen's action to the workflow identifier assigned on the receiving system.",
+      "detail": "Supports the delivery economics of the mission-ready model: if the procedure, the standard and the operator screen are all declarative artifacts, the marginal cost of fielding a new governed workflow approaches the cost of specifying it. A screen is a canvas of widgets with an action binding a control to a workflow and an output region; generating one from a workflow definition is mechanical. Nineteen screens were generated, one per workflow, verified to contain no duplicate coverage and no binding to a non-existent workflow. Each published package ships its screen, and the installer rewrites the action target to the identifier assigned on the receiving system - shipping the authoring identifier would produce a screen that installs cleanly and does nothing, which was found and corrected by round-trip testing. LIMITS: verification was structural and by round-trip installation; the interactive control path was not exercised in a browser during generation. Screens are functional defaults intended for operator use and further tailoring, not finished mission displays; a text input widget for workflows taking a free-text argument is not yet included.",
+      "relevance_tags": [
+        "operator-ui",
+        "webapp",
+        "rapid-fielding",
+        "declarative",
+        "warclaw",
+        "delivery-economics",
+        "generated-artifacts"
+      ],
+      "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
+      "source_anchor": "make_pipeline_apps.py; WarClaw pipelines library - screen.app.json per package",
+      "created_at": "2026-07-28"
+    },
+    {
+      "id": "EV-120",
+      "type": "capability_claim",
+      "proof_strength": "high",
+      "approval_status": "approved",
+      "summary": "Classification-marking interpretation validated against published authority: EdgeRunner's portion-marking parser handles classification level, SCI control systems and subsets, special-access markings, foreign-government-information markings and dissemination controls, and is tested against a 27-case conformance corpus of which 11 cases are drawn from the CAPCO Register's own published examples.",
+      "detail": "The marking parser is the component most exposed to challenge, because a silent misinterpretation WIDENS release. Its correctness therefore rests on public authority rather than on vendor assertion: classification levels and control-marking semantics derive from EO 13526 and DoD Manual 5200.01, and the marking grammar from the CAPCO Authorized Classification and Control Markings Register - all unclassified, so the conformance corpus is open and reviewable without any classified reference. The parser implements the Register's category ordering and, critically, the distinction between double-slash category separation and single-slash separation within a category, which naive implementations get wrong and which causes ordinary markings to be rejected. Behaviour is EXACT-OR-FAILED with no partial interpretation: an unrecognised control, an unknown partner or group, or a contradictory marking fails the whole marking and releases to nobody. Special-access markings never widen release. Non-US and JOINT markings are explicitly refused rather than guessed at, because release of foreign-originated material runs on different authority. LIMITS: the Register edition used is v1.2 (2008), which cites EO 12958 as amended, superseded by EO 13526 in 2009 - marking structure is stable across that change, but token lists must be conformed against the current Register edition before operational deployment. Country-specific release determinations are classified and are not implemented in the parser; they are supplied by the customer.\n\nCITATION NOTE: this entry states a property of the pattern and tooling and is citable on its own terms. The demonstrator it was measured on is held RESTRICTED (EV-111) - do not name it or describe it as a capability in customer-facing text.",
+      "relevance_tags": [
+        "capco",
+        "classification-marking",
+        "conformance-testing",
+        "dodm-5200.01",
+        "eo-13526",
+        "portion-marking",
+        "public-authority"
+      ],
+      "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
+      "source_anchor": "WICKET/marking.py, conformance-markings.json",
+      "created_at": "2026-07-28"
+    },
+    {
+      "id": "EV-121",
+      "type": "past_performance",
+      "summary": "AFRL CRADA 25-0005284-AFRL/RI: cooperative R&D with the AFRL Information Directorate and Defense Unicorns on NIPRGPT Edge, a 25-35B military-doctrine LLM, AFSC LoRA adapters, and Graph/Hybrid RAG",
+      "detail": "UPDATED 2026-08-07 from the executed CRADA PDF; supersedes the 2026-07-30 entry sourced to the company deck. Fact request F7 is CLOSED for agreement number and AFRL POC. Scope per Joint Work Plan Article D.2: build an open, auditable military-doctrine dataset; build a specialized 25-35B parameter LLM on it; build 10 high-priority AFSC LoRA adapters; provide a NIPRGPT Edge frontend container; collaborate on RAG, Graph RAG, and Hybrid RAG. Defense Unicorns characterized COTS Nvidia Jetson edge kits across model size, concurrent users, tokens/sec, quantization, and node count. AFRL provided the NIPRGPT code base, K8s document containers, H200 idle compute, and Airman testers. Background technology declared by EdgeRunner (Article E.1.2): EdgeRunner Athena v1.0, 32B LLM trained on EdgeRunner's open military-specific dataset (5T tokens), military-specific LoRAs, and AI agents. Estimated contributions: EdgeRunner $17.0M, Defense Unicorns $0.85M, AFRL $0.305M. CAUTION: this is the plan of work, not measured results. The CRADA annual report, the Month 10-12 After Action Review, and the Jetson characterization data are NOT in the workspace. Do not cite a performance number to this CRADA. Term status unconfirmed - see EV-010.",
+      "source_file": "proposals/afrl-afar-agentic-edge/inputs/02_yourCompany/afrl-crada-25-0005284.md",
+      "source_anchor": "R&D agreements",
+      "contract_number": "25-0005284-AFRL/RI",
+      "customer": "Air Force Research Laboratory, Information Directorate (AFRL/RI)",
+      "contract_value_usd": null,
+      "period_of_performance": "12 months from Effective Date (Air Force signature 17 Dec 2024); extension unconfirmed",
+      "relevance_tags": [
+        "afrl",
+        "afrl-ri",
+        "ai-agents",
+        "crada",
+        "defense-unicorns",
+        "edge-inference",
+        "government-collaboration",
+        "graph-rag",
+        "niprgpt",
+        "past-performance",
+        "r-and-d"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-30T00:00:00Z"
+    },
+    {
+      "id": "EV-122",
+      "type": "past_performance",
+      "summary": "Army NGC2 engagement with 25th Infantry Division: EdgeRunner participation under the Army's Next Generation Command and Control initiative, in addition to the 4th Infantry Division NGC2 activity (EV-099/EV-109)",
+      "detail": "Added at Bill's direction 2026-07-30 ('add Army NGC2/25th ID to the list'). Engagement shape, agreement vehicle, dates, and POC pending under fact request F7; no outcome claims made until documented. Folded into the existing NGC2 past-performance row rather than a standalone row so the Result column carries only the documented 4ID outcome.",
+      "source_file": "capture lead direction 2026-07-30",
+      "source_anchor": "army-brevity-companion PP",
+      "contract_number": null,
+      "customer": "25th Infantry Division / Army NGC2",
+      "contract_value_usd": null,
+      "period_of_performance": null,
+      "relevance_tags": [
+        "ngc2",
+        "25id",
+        "army",
+        "c2-modernization",
+        "past-performance"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "low",
+      "created_at": "2026-07-30T00:00:00Z"
+    },
+    {
+      "id": "EV-123",
+      "type": "past_performance",
+      "summary": "Active ARL CRADA with Joint Work Statement: Cooperative Research and Development Agreement with the Army Research Laboratory on EdgeRunner's military AI",
+      "detail": "Verified company fact (company deck 2026-05-14; global company-facts record: 'ARL CRADA + Joint Work Statement' among R&D agreements). Added to army-brevity-companion PP 2026-07-30 in a combined research-agreements row with AFRL (EV-121). Agreement number, PoP, and ARL POC pending under fact request F7.",
+      "source_file": "company deck (2026-05-14)",
+      "source_anchor": "R&D agreements",
+      "contract_number": null,
+      "customer": "Army Research Laboratory",
+      "contract_value_usd": null,
+      "period_of_performance": null,
+      "relevance_tags": [
+        "arl",
+        "crada",
+        "joint-work-statement",
+        "army",
+        "r-and-d",
+        "past-performance"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "medium",
+      "created_at": "2026-07-30T00:00:00Z"
+    }
+  ]
+}

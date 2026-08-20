@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EdgeRunner — Deployment Spectrum</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#191c20;font-family:'Segoe UI',system-ui,sans-serif;
+       display:flex;justify-content:center;align-items:center;
+       min-height:100vh;padding:20px}
+  .canvas{width:1200px;background:#191c20;border-radius:12px;
+          overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div style="padding:18px 32px 8px;text-align:center;border-bottom:2px solid #ee2929">
+    <h1 style="color:#ffffff;font-size:28px;font-weight:700;letter-spacing:.5px;text-transform:uppercase">Deployment Spectrum — One Platform, Every Environment</h1>
+    <p style="color:#9f9f9f;font-size:15px;margin-top:4px">EdgeRunner operates identically across the full connectivity and classification spectrum — no architectural changes required</p>
+  </div>
+
+  <svg viewBox="0 0 1200 490" xmlns="http://www.w3.org/2000/svg" style="display:block">
+
+    <defs>
+      <linearGradient id="specGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="#2a2d31"/>
+        <stop offset="100%" stop-color="rgba(238,41,41,.4)"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Spectrum bar -->
+    <rect x="80" y="34" width="1040" height="8" rx="4" fill="url(#specGrad)"/>
+    <circle cx="80"   cy="38" r="6" fill="#393939"/>
+    <circle cx="1120" cy="38" r="6" fill="#ee2929"/>
+    <text x="80"   y="26" fill="#9f9f9f" font-size="13" font-family="Segoe UI" text-anchor="middle">Connected</text>
+    <text x="1120" y="26" fill="#ee2929" font-size="13" font-family="Segoe UI" text-anchor="middle">Autonomous</text>
+
+    <!-- ===== COLUMN 1: Cloud IL5/IL6 ===== -->
+    <rect x="60" y="62" width="250" height="330" rx="10" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <text x="185" y="82" fill="#ffffff" font-size="17" font-weight="700" font-family="Segoe UI" text-anchor="middle">CLOUD</text>
+    <text x="185" y="100" fill="#9f9f9f" font-size="13" font-family="Segoe UI" text-anchor="middle">IL5 / IL6 · GovCloud</text>
+
+    <text x="185" y="134" fill="#ee2929" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">DEPLOYMENT</text>
+    <text x="185" y="155" fill="#c8c8c8" font-size="14" font-family="Segoe UI" text-anchor="middle">Azure IL5/IL6 / GovCloud</text>
+    <text x="185" y="175" fill="#c8c8c8" font-size="14" font-family="Segoe UI" text-anchor="middle">Containerized microservice</text>
+    <text x="185" y="195" fill="#c8c8c8" font-size="14" font-family="Segoe UI" text-anchor="middle">API-accessible runtime</text>
+
+    <line x1="80" y1="212" x2="300" y2="212" stroke="#393939" stroke-width="1" opacity=".5"/>
+    <text x="185" y="232" fill="#ee2929" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">USE CASES</text>
+    <text x="185" y="251" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Intel analysis &amp; synthesis</text>
+    <text x="185" y="268" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Acquisitions &amp; admin workflows</text>
+    <text x="185" y="285" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Multi-user knowledge management</text>
+    <text x="185" y="302" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Bring Your Own Model (BYOM)</text>
+
+    <line x1="80" y1="318" x2="300" y2="318" stroke="#393939" stroke-width="1" opacity=".5"/>
+    <text x="185" y="338" fill="#ee2929" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">CONNECTIVITY</text>
+    <text x="185" y="357" fill="#c8c8c8" font-size="14" font-family="Segoe UI" text-anchor="middle">Persistent</text>
+    <rect x="110" y="368" width="150" height="24" rx="12" fill="#2a2d31" stroke="#393939"/>
+    <text x="185" y="384" fill="#9f9f9f" font-size="13" font-family="Segoe UI" text-anchor="middle">Cloud-Dependent OK</text>
+
+    <!-- ===== COLUMN 2: On-Prem / Air-Gapped (merged) ===== -->
+    <rect x="330" y="62" width="250" height="330" rx="10" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <text x="455" y="82" fill="#ffffff" font-size="17" font-weight="700" font-family="Segoe UI" text-anchor="middle">ON-PREM / AIR-GAPPED</text>
+    <text x="455" y="100" fill="#9f9f9f" font-size="13" font-family="Segoe UI" text-anchor="middle">Private Network · SCIF · JWICS</text>
+
+    <text x="455" y="134" fill="#ee2929" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">DEPLOYMENT</text>
+    <text x="455" y="155" fill="#c8c8c8" font-size="14" font-family="Segoe UI" text-anchor="middle">Private server / workstation</text>
+    <text x="455" y="175" fill="#c8c8c8" font-size="14" font-family="Segoe UI" text-anchor="middle">SCIF / SIPRNet / JWICS capable</text>
+    <text x="455" y="195" fill="#c8c8c8" font-size="14" font-family="Segoe UI" text-anchor="middle">Zero external dependency</text>
+
+    <line x1="350" y1="212" x2="570" y2="212" stroke="#393939" stroke-width="1" opacity=".5"/>
+    <text x="455" y="232" fill="#ee2929" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">USE CASES</text>
+    <text x="455" y="251" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Classified document processing</text>
+    <text x="455" y="268" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Sensitive mission planning</text>
+    <text x="455" y="285" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Isolated enclave AI</text>
+    <text x="455" y="302" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Bring Your Own Model (BYOM)</text>
+
+    <line x1="350" y1="318" x2="570" y2="318" stroke="#393939" stroke-width="1" opacity=".5"/>
+    <text x="455" y="338" fill="#ee2929" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">CONNECTIVITY</text>
+    <text x="455" y="357" fill="#c8c8c8" font-size="14" font-family="Segoe UI" text-anchor="middle">Internal / physically isolated</text>
+    <rect x="365" y="368" width="180" height="24" rx="12" fill="#2a2d31" stroke="#393939"/>
+    <text x="455" y="384" fill="#9f9f9f" font-size="13" font-family="Segoe UI" text-anchor="middle">No External Egress</text>
+
+    <!-- ===== COLUMN 3: DDIL Tactical ===== -->
+    <rect x="600" y="62" width="250" height="330" rx="10" fill="rgba(238,41,41,.08)" stroke="#ee2929" stroke-width="2"/>
+    <text x="725" y="82" fill="#ee2929" font-size="17" font-weight="700" font-family="Segoe UI" text-anchor="middle">DDIL TACTICAL</text>
+    <text x="725" y="100" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Forward Deployed · Contested</text>
+
+    <text x="725" y="134" fill="#ee2929" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">DEPLOYMENT</text>
+    <text x="725" y="155" fill="#c8c8c8" font-size="14" font-family="Segoe UI" text-anchor="middle">Laptops / rugged workstations</text>
+    <text x="725" y="175" fill="#c8c8c8" font-size="14" font-family="Segoe UI" text-anchor="middle">Deployable kits</text>
+    <text x="725" y="195" fill="#c8c8c8" font-size="14" font-family="Segoe UI" text-anchor="middle">Bandwidth-zero capable</text>
+
+    <line x1="620" y1="212" x2="840" y2="212" stroke="#ee2929" stroke-width="1" opacity=".3"/>
+    <text x="725" y="232" fill="#ee2929" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">USE CASES</text>
+    <text x="725" y="251" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Real-time COA generation</text>
+    <text x="725" y="268" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Operator decision support</text>
+    <text x="725" y="285" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Forward ISR data triage</text>
+    <text x="725" y="302" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Bring Your Own Model (BYOM)</text>
+
+    <line x1="620" y1="318" x2="840" y2="318" stroke="#ee2929" stroke-width="1" opacity=".3"/>
+    <text x="725" y="338" fill="#ee2929" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">CONNECTIVITY</text>
+    <text x="725" y="357" fill="#c8c8c8" font-size="14" font-family="Segoe UI" text-anchor="middle">Intermittent or zero</text>
+    <rect x="635" y="368" width="180" height="24" rx="12" fill="#2a1010" stroke="#ee2929" stroke-width="1.5"/>
+    <text x="725" y="384" fill="#ee2929" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">Full DDIL Operation</text>
+
+    <!-- ===== COLUMN 4: Embedded Intelligence (hero) ===== -->
+    <rect x="870" y="62" width="270" height="330" rx="10" fill="rgba(238,41,41,.12)" stroke="#ee2929" stroke-width="2.5"/>
+    <text x="1005" y="82" fill="#ee2929" font-size="17" font-weight="700" font-family="Segoe UI" text-anchor="middle">EMBEDDED INTELLIGENCE</text>
+    <text x="1005" y="100" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Autonomous Systems · Edge Compute</text>
+
+    <text x="1005" y="134" fill="#ee2929" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">DEPLOYMENT</text>
+    <text x="1005" y="155" fill="#c8c8c8" font-size="14" font-family="Segoe UI" text-anchor="middle">UAS / UGV / USV platforms</text>
+    <text x="1005" y="175" fill="#c8c8c8" font-size="14" font-family="Segoe UI" text-anchor="middle">Edge compute modules</text>
+    <text x="1005" y="195" fill="#c8c8c8" font-size="14" font-family="Segoe UI" text-anchor="middle">No operator required</text>
+
+    <line x1="890" y1="212" x2="1120" y2="212" stroke="#ee2929" stroke-width="1" opacity=".4"/>
+    <text x="1005" y="232" fill="#ee2929" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">USE CASES</text>
+    <text x="1005" y="257" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Autonomous mission execution</text>
+    <text x="1005" y="277" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Real-time sensor fusion &amp; reasoning</text>
+    <text x="1005" y="297" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Platform-resident AI decision loop</text>
+
+    <line x1="890" y1="318" x2="1120" y2="318" stroke="#ee2929" stroke-width="1" opacity=".4"/>
+    <text x="1005" y="338" fill="#ee2929" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">CONNECTIVITY</text>
+    <text x="1005" y="357" fill="#c8c8c8" font-size="14" font-family="Segoe UI" text-anchor="middle">None — fully autonomous</text>
+    <rect x="885" y="368" width="240" height="24" rx="12" fill="#2a1010" stroke="#ee2929" stroke-width="1.5"/>
+    <text x="1005" y="384" fill="#ee2929" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">No Human-in-Loop Required</text>
+
+    <!-- Bottom tagline -->
+    <text x="600" y="438" fill="#9f9f9f" font-size="15" font-family="Segoe UI" text-anchor="middle">Same models. Same inference engines. Same results — from the data center to the autonomous platform.</text>
+    <rect x="300" y="454" width="600" height="2" rx="1" fill="#ee2929" opacity=".3"/>
+
+  </svg>
+
+  <div style="background:#111315;padding:10px 32px;display:flex;justify-content:space-between;align-items:center">
+    <span style="color:#ee2929;font-size:13px;font-weight:700;opacity:.8;letter-spacing:.5px">EDGERUNNER AI</span>
+    <span style="color:#9f9f9f;font-size:12px">No architectural changes required across the full deployment spectrum</span>
+    <span style="color:#9f9f9f;font-size:12px">edgerunnerai.com</span>
+  </div>
+
+</div>
+</body>
+</html>

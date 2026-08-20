@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Chinese Agentic AI Stack</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#111; font-family:'Segoe UI',system-ui,sans-serif;
+         display:flex; justify-content:center; align-items:center; min-height:100vh; padding:20px; }
+  .card { width:1200px; background:#1c1e22; border-radius:8px; overflow:hidden;
+          box-shadow:0 8px 32px rgba(0,0,0,.5); }
+  .title-bar { padding:32px 44px 26px; border-bottom:3px solid #ee2929; }
+  .title-bar h1 { color:#fff; font-size:38px; font-weight:800; letter-spacing:1.8px;
+                  text-transform:uppercase; text-align:center; }
+  .title-bar p { color:#b0b0b0; font-size:22px; text-align:center; margin-top:10px;
+                 font-weight:500; font-style:italic; line-height:1.5; }
+  .stack { padding:36px 44px 40px; }
+  .layer { display:grid; grid-template-columns:260px 1fr 1fr; gap:0;
+           border-radius:8px; overflow:hidden; margin-bottom:16px;
+           box-shadow:0 2px 6px rgba(0,0,0,.3); }
+  .layer:last-child { margin-bottom:0; }
+  .layer-tag { padding:24px 20px; display:flex; flex-direction:column;
+               justify-content:center; align-items:center; text-align:center; }
+  .layer-tag .num { font-size:48px; font-weight:900; line-height:1; color:#fff;
+                    opacity:.5; margin-bottom:6px; }
+  .layer-tag .name { font-size:22px; font-weight:800; color:#fff;
+                     text-transform:uppercase; letter-spacing:1.5px; line-height:1.25; }
+  .china-cell { padding:22px 28px; background:rgba(238,41,41,.18);
+                border-left:5px solid #ee2929; display:flex; flex-direction:column; justify-content:center; }
+  .china-cell .lbl { font-size:16px; font-weight:800; letter-spacing:1.8px;
+                     color:#ee5c5c; text-transform:uppercase; margin-bottom:10px; }
+  .china-cell .examples { color:#fff; font-size:22px; line-height:1.5; font-weight:600; }
+  .us-cell { padding:22px 28px; background:rgba(74,144,226,.10);
+             border-left:5px solid rgba(74,144,226,.55); display:flex;
+             flex-direction:column; justify-content:center; }
+  .us-cell .lbl { font-size:16px; font-weight:800; letter-spacing:1.8px;
+                  color:#7ab2f0; text-transform:uppercase; margin-bottom:10px; }
+  .us-cell .status { color:#d0d0d0; font-size:20px; line-height:1.5; }
+  .us-cell .status .gap { color:#ffce47; font-weight:700; }
+  /* Layer color variants */
+  .layer.l4 .layer-tag { background:#7a3030; }
+  .layer.l3 .layer-tag { background:#8a3838; }
+  .layer.l2 .layer-tag { background:#9a4040; }
+  .layer.l1 .layer-tag { background:#b04848; }
+  .footer { background:#161719; padding:26px 44px; border-top:1px solid #2a2d31;
+            color:#fff; font-size:22px; text-align:center; line-height:1.55; }
+  .footer strong { color:#ee2929; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="title-bar">
+    <h1>The Chinese Agentic AI Stack</h1>
+    <p>It is not just the models. The full agentic stack — frameworks, inference, datasets, training discipline —<br>has been built China-shaped over the past year-plus.</p>
+  </div>
+  <div class="stack">
+
+    <div class="layer l4">
+      <div class="layer-tag"><div class="num">4</div><div class="name">Agentic<br>Frameworks</div></div>
+      <div class="china-cell">
+        <div class="lbl">Chinese</div>
+        <div class="examples">Manus (commercial) · OpenManus (OSS) — mainstream-adopted multi-agent orchestration</div>
+      </div>
+      <div class="us-cell">
+        <div class="lbl">U.S. status</div>
+        <div class="status">LangChain, AutoGPT, CrewAI — broad but <span class="gap">no clear agentic-state-of-art equivalent</span> with the same adoption velocity</div>
+      </div>
+    </div>
+
+    <div class="layer l3">
+      <div class="layer-tag"><div class="num">3</div><div class="name">Inference<br>Backends</div></div>
+      <div class="china-cell">
+        <div class="lbl">Chinese</div>
+        <div class="examples">Huawei contributes actively to OSS inference — drives adoption of Huawei hardware as the underlying compute</div>
+      </div>
+      <div class="us-cell">
+        <div class="lbl">U.S. status</div>
+        <div class="status">vLLM, TensorRT-LLM — Nvidia-bound; <span class="gap">no sovereign-hardware open-inference equivalent</span></div>
+      </div>
+    </div>
+
+    <div class="layer l2">
+      <div class="layer-tag"><div class="num">2</div><div class="name">Open Agentic<br>Datasets</div></div>
+      <div class="china-cell">
+        <div class="lbl">Chinese</div>
+        <div class="examples">Qwen, StepFun, and others publish curated agentic training datasets as open releases</div>
+      </div>
+      <div class="us-cell">
+        <div class="lbl">U.S. status</div>
+        <div class="status"><span class="gap">Minimal</span> — U.S. closed labs do not publish agentic training data</div>
+      </div>
+    </div>
+
+    <div class="layer l1">
+      <div class="layer-tag"><div class="num">1</div><div class="name">Foundation<br>Models</div></div>
+      <div class="china-cell">
+        <div class="lbl">Chinese</div>
+        <div class="examples">Qwen 3.6, Deepseek V4, Kimi K2.6, MiniMax M2.7, GLM 5.1, XiaoMi MiMo V2.5 Pro, StepFun Step 3.5, Baidu ERNIE, Tencent Hy3, LongCat, Ling/Ring …</div>
+      </div>
+      <div class="us-cell">
+        <div class="lbl">U.S. status</div>
+        <div class="status">Google Gemma 4 · IBM Granite 4.1 — <span class="gap">≈2 viable open releases vs. dozens</span></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer">
+    Even if a U.S. policy intervention closed the foundation-model gap tomorrow, <strong>three more gaps remain</strong>.<br>
+    Closing the agentic stack is a longer, multi-track investment than closing the model tier.
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+{
+  "_comment": "Example data for differentiator-comparison template. Generic 'edge AI approaches' pattern.",
+  "title": "Implementation Pathways Compared",
+  "subtitle": "Architecture determines operational viability — open-weight models extend enterprise AI to the edge",
+  "columns": [
+    {"name": "Proprietary / Closed-Weight", "sub": "GPT-4 · Gemini · Copilot · Claude API"},
+    {"name": "Open-Weight — Self-Deployed", "sub": "Llama · Mistral · Falcon — raw, unoptimized"},
+    {"name": "Edge AI Platform", "sub": "Open-Weight · Mission-Trained · Local Runtime"}
+  ],
+  "rows": [
+    {
+      "dimension": "Model Sovereignty",
+      "dimension_sub": "Who owns & controls the weights",
+      "cells": [
+        {"state": "no", "label": "Vendor owns the model", "sub": "No access to weights · Vendor can deprecate"},
+        {"state": "yes", "label": "Full model weight access", "sub": "Government/operator retains weights"},
+        {"state": "yes", "label": "Weights + fine-tunes owned by customer", "sub": "Mission LoRAs & adapters fully transferable"}
+      ]
+    },
+    {
+      "dimension": "DDIL / Offline Operation",
+      "dimension_sub": "Operates without connectivity",
+      "cells": [
+        {"state": "no", "label": "Requires persistent internet", "sub": "Fails completely in contested environments"},
+        {"state": "partial", "label": "Possible if fully self-hosted", "sub": "Complex setup · no purpose-built DDIL support"},
+        {"state": "yes", "label": "Purpose-built for DDIL", "sub": "Zero connectivity required · forward-deployable"}
+      ]
+    },
+    {
+      "dimension": "Data Security & Egress",
+      "dimension_sub": "System boundary for data processing",
+      "cells": [
+        {"state": "partial", "label": "Stays within enclave — not system", "sub": "Data crosses system boundaries to reach the model"},
+        {"state": "yes", "label": "Stays within system boundary", "sub": "No cross-boundary data movement when self-hosted"},
+        {"state": "yes", "label": "Fully contained within system boundary", "sub": "On-device inference · zero egress · CUI safe"}
+      ]
+    },
+    {
+      "dimension": "Mission Specialization",
+      "dimension_sub": "Domain / doctrine fine-tuning",
+      "cells": [
+        {"state": "partial", "label": "Limited — vendor-constrained", "sub": "No operator control over training data"},
+        {"state": "partial", "label": "Possible — requires significant effort", "sub": "Needs ML team · months of work"},
+        {"state": "yes", "label": "Pre-trained on military artifacts", "sub": "Domain LoRAs ready to deploy"}
+      ]
+    },
+    {
+      "dimension": "Cost Structure",
+      "dimension_sub": "Economics at operational scale",
+      "cells": [
+        {"state": "no", "label": "Per-token subscription", "sub": "Cost scales with every query · vendor lock-in"},
+        {"state": "yes", "label": "Infrastructure cost only", "sub": "No per-query fees · high upfront integration cost"},
+        {"state": "yes", "label": "Fixed runtime cost", "sub": "Cost decreases with use · operational data flywheel"}
+      ]
+    },
+    {
+      "dimension": "Time to Capability",
+      "dimension_sub": "From award to operational",
+      "cells": [
+        {"state": "partial", "label": "Fast for generic · slow for mission", "sub": "Custom tuning slow or impossible"},
+        {"state": "partial", "label": "Moderate — requires ML team", "sub": "6–18 months for mission-specific capability"},
+        {"state": "yes", "label": "90–180 days to operational impact", "sub": "TRL 7+ · No R&D phase · Deploy now"}
+      ]
+    }
+  ],
+  "footer": {
+    "brand": "EDGE AI",
+    "tagline": "Open-weight models provide a sovereign, extensible core for edge execution and continuous domain refinement.",
+    "website": "example.com"
+  },
+  "theme": {
+    "bg": "#191c20",
+    "accent": "#ee2929",
+    "amber": "#c8a200",
+    "panel": "#2a2d31",
+    "panel_border": "#393939",
+    "text": "#ffffff",
+    "muted": "#9f9f9f",
+    "body": "#c8c8c8"
+  }
+}

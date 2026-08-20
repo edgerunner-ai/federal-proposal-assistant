@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EdgeRunner Coverage of DIANA Decision Superiority Exemplar Effects</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#191c20;font-family:'Segoe UI',Inter,system-ui,-apple-system,sans-serif;
+       display:flex;justify-content:center;align-items:center;
+       min-height:100vh;padding:20px}
+  .canvas{width:1200px;background:#191c20;border-radius:12px;
+          overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+  .header{padding:18px 32px 10px;text-align:center;border-bottom:2px solid #ee2929}
+  .header h1{color:#ffffff;font-size:26px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+  .header p{color:#9f9f9f;font-size:14px;margin-top:4px}
+  .matrix{width:100%;border-collapse:collapse;background:#191c20}
+  .matrix th{
+    background:#ee2929;color:#191c20;
+    font-size:15px;font-weight:700;letter-spacing:.5px;
+    padding:12px 20px;text-align:left;text-transform:uppercase;
+    border-right:2px solid #191c20;
+  }
+  .matrix th.plain{background:#2a2d31;color:#ffffff;border-bottom:2px solid #ee2929}
+  .matrix th:last-child{border-right:none}
+  .matrix td{
+    padding:14px 20px;vertical-align:top;
+    font-size:16px;line-height:1.45;color:#ffffff;
+    border-right:1px solid #393939;
+    border-bottom:1px solid #393939;
+  }
+  .matrix td:last-child{border-right:none}
+  .matrix tr.alt td{background:#222528}
+  .matrix tr.alt:not(.alt) td,.matrix tr:not(.alt) td{background:#2a2d31}
+  .matrix tr.highlight td{
+    background:rgba(238,41,41,.12);
+    border-top:1px solid #ee2929;
+    border-bottom:1px solid #ee2929;
+  }
+  .matrix tr.highlight td:first-child{color:#ee2929;font-weight:600}
+  .matrix td:first-child{font-weight:600;color:#ffffff;width:34%}
+  .muted{color:#c8a200}
+  .footer{background:#111315;padding:10px 32px;display:flex;justify-content:space-between;align-items:center}
+  .footer .brand{color:#ee2929;font-size:13px;font-weight:700;opacity:.85;letter-spacing:.5px}
+  .footer .tagline{color:#9f9f9f;font-size:12px}
+  .footer .site{color:#9f9f9f;font-size:12px}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="header">
+    <h1>EdgeRunner Coverage of DIANA Decision Superiority Exemplar Effects</h1>
+    <p>Full coverage on 7 of 10 exemplar effects; EdgeRunner provides the AI reasoning layer for the remaining 3</p>
+  </div>
+
+  <table class="matrix">
+    <thead>
+      <tr>
+        <th class="">DIANA Exemplar Effect</th>
+        <th class="plain">EdgeRunner Module</th>
+        <th class="plain">Coverage &amp; Evidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td>Natural Language Interfaces (CS-09)</td>
+        <td>EdgeRunner NLI Plugin</td>
+        <td>FULL — Core product; operational with USASOC SOF AI Pilot (1st, 7th, 10th SFG); primary discriminator</td>
+      </tr>
+      <tr class="alt">
+        <td>COA Analysis (CS-04)</td>
+        <td>COA Reasoning Engine</td>
+        <td>FULL — LoRA fine-tuned on NATO AJP joint planning doctrine; maps to ITDX26 COA Gen task (R-08)</td>
+      </tr>
+      <tr class="">
+        <td>Targeting Workflows (CS-07)</td>
+        <td>Targeting LoRA Adapter</td>
+        <td>FULL — JDL target prioritization + ROE-aware engagement decision support; CYBERCOM J9 targeting work</td>
+      </tr>
+      <tr class="alt">
+        <td>Operational Planning Cycle (CS-06)</td>
+        <td>Planning Assistant</td>
+        <td>FULL — WARNORD/OPORD drafting, ops assessment, forecasting; ITDX26 16-task MI analytical battery</td>
+      </tr>
+      <tr class="">
+        <td>Automated Scenario Prep (CS-05)</td>
+        <td>Scenario Engine</td>
+        <td>FULL — Auto-generates initial conditions and trigger events from MSS NATO COP state; ITDX26 pattern analysis</td>
+      </tr>
+      <tr class="alt">
+        <td>OSINT / Commercial Data (CS-10)</td>
+        <td>RAG Layer</td>
+        <td>FULL — Retrieval-augmented generation over OSINT feeds, maritime data, PAI; standard EdgeRunner architecture</td>
+      </tr>
+      <tr class="">
+        <td>Red/Blue Force Simulation (CS-01)</td>
+        <td>Behavior Reasoning + MSS NATO Sim</td>
+        <td><span class="muted">PARTIAL — EdgeRunner models OPFOR decision logic and scenario narratives; entity physics via MSS NATO native sim</span></td>
+      </tr>
+      <tr class="alt">
+        <td>Agent-Based AI (CS-02)</td>
+        <td>Behavior Reasoning</td>
+        <td><span class="muted">PARTIAL — Fine-tuned LLM represents adversary behavioral patterns; movement simulation via MSS NATO</span></td>
+      </tr>
+      <tr class="">
+        <td>RL / Probabilistic Modelling (CS-03)</td>
+        <td>Probabilistic COA + Partner</td>
+        <td><span class="muted">PARTIAL — LLM-based multi-scenario sampling and COA exploration; formal RL optimization via MSS NATO sim layer</span></td>
+      </tr>
+      <tr class="alt">
+        <td>ISR Insight Extraction (CS-08)</td>
+        <td>ISR Reasoning + MSS NATO CV</td>
+        <td><span class="muted">PARTIAL — Multi-source text and SIGINT fusion, anomaly detection in structured data; raw imagery via MSS NATO CV</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    <span class="brand">EDGERUNNER AI</span>
+    <span class="tagline">Every capability mapped to a named module, evidence source, and DIANA exemplar effect</span>
+    <span class="site">edgerunner.ai</span>
+  </div>
+
+</div>
+</body>
+</html>

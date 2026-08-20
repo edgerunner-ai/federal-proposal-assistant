@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EdgeRunner Inference Runtime — Reference Architecture</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#191c20;font-family:'Segoe UI',system-ui,sans-serif;
+       display:flex;justify-content:center;align-items:center;
+       min-height:100vh;padding:20px}
+  .canvas{width:1200px;background:#191c20;border-radius:12px;
+          overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div style="padding:18px 32px 8px;text-align:center;border-bottom:2px solid #ee2929">
+    <h1 style="color:#ffffff;font-size:28px;font-weight:700;letter-spacing:.5px;text-transform:uppercase">EdgeRunner Inference Runtime — Reference Architecture</h1>
+    <p style="color:#9f9f9f;font-size:15px;margin-top:4px">On-device inference · Open-architecture I/O · No load-bearing external dependency</p>
+  </div>
+
+  <svg viewBox="0 0 1200 490" xmlns="http://www.w3.org/2000/svg" style="display:block">
+    <defs>
+      <marker id="ar" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0,10 3.5,0 7" fill="#ffffff"/>
+      </marker>
+      <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0,10 3.5,0 7" fill="#ee2929"/>
+      </marker>
+    </defs>
+
+    <!-- Outer container -->
+    <rect x="40" y="30" width="1120" height="400" rx="14" fill="rgba(238,41,41,.04)" stroke="#ee2929" stroke-width="1.5" stroke-dasharray="8,5"/>
+    <text x="90" y="58" fill="#ee2929" font-size="13" font-weight="700" font-family="Segoe UI" letter-spacing=".5">SECURE RUNTIME</text>
+
+    <!-- Layer 0: Inputs — x=52, w=170, cx=137 -->
+    <rect x="52" y="72" width="170" height="330" rx="10" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <text x="137" y="98" fill="#ffffff" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">INPUTS</text>
+    <rect x="64" y="108" width="146" height="34" rx="6" fill="#1e2124" stroke="#393939"/>
+    <text x="137" y="130" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Radar tracks</text>
+    <rect x="64" y="150" width="146" height="34" rx="6" fill="#1e2124" stroke="#393939"/>
+    <text x="137" y="172" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">EO / IR FMV</text>
+    <rect x="64" y="192" width="146" height="34" rx="6" fill="#1e2124" stroke="#393939"/>
+    <text x="137" y="214" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">RF / SIGINT</text>
+    <rect x="64" y="234" width="146" height="34" rx="6" fill="#1e2124" stroke="#393939"/>
+    <text x="137" y="256" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">CoT / ATAK events</text>
+    <rect x="64" y="276" width="146" height="34" rx="6" fill="#1e2124" stroke="#393939"/>
+    <text x="137" y="298" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Doctrine + ROE corpus</text>
+    <rect x="64" y="318" width="146" height="34" rx="6" fill="#1e2124" stroke="#393939"/>
+    <text x="137" y="340" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Operator queries</text>
+
+    <!-- Arrow 0→1 -->
+    <line x1="222" y1="237" x2="264" y2="237" stroke="#ffffff" stroke-width="2" marker-end="url(#ar)"/>
+
+    <!-- Layer 1: Data Ingestion — x=266, w=190, cx=361 -->
+    <rect x="266" y="72" width="190" height="330" rx="10" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <text x="361" y="95" fill="#ffffff" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">FEED INGESTION</text>
+    <text x="361" y="112" fill="#9f9f9f" font-size="12" font-family="Segoe UI" text-anchor="middle">Layer 1 — Open-Arch Adapter</text>
+    <text x="361" y="140" fill="#ee2929" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">FUNCTIONS</text>
+    <text x="361" y="160" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">CoT / ATAK adapter</text>
+    <text x="361" y="180" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">JSON / REST / file-watch</text>
+    <text x="361" y="200" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Link 16 (roadmap)</text>
+    <text x="361" y="220" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">JREAP-C (roadmap)</text>
+    <text x="361" y="240" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">MISB-FMV (roadmap)</text>
+    <line x1="284" y1="258" x2="448" y2="258" stroke="#393939" stroke-width="1" opacity=".5"/>
+    <text x="361" y="278" fill="#ee2929" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">OUTPUT</text>
+    <text x="361" y="298" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Normalized event stream</text>
+    <text x="361" y="318" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Time-aligned tracks</text>
+    <text x="361" y="338" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Inference-ready prompts</text>
+
+    <!-- Arrow 1→2 -->
+    <line x1="456" y1="237" x2="498" y2="237" stroke="#ffffff" stroke-width="2" marker-end="url(#ar)"/>
+
+    <!-- Layer 2: Core Engine (hero) — x=500, w=190, cx=595 -->
+    <rect x="500" y="72" width="190" height="330" rx="10" fill="rgba(238,41,41,.08)" stroke="#ee2929" stroke-width="2"/>
+    <text x="595" y="95" fill="#ee2929" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">REASONING CORE</text>
+    <text x="595" y="112" fill="#c8c8c8" font-size="12" font-family="Segoe UI" text-anchor="middle">Layer 2 — Military-Domain LLM</text>
+    <text x="595" y="140" fill="#ee2929" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">MODEL STACK</text>
+    <text x="595" y="160" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">EdgeRunner 20B (mil-domain)</text>
+    <text x="595" y="180" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">FA14 ADA officer LoRA (anchor)</text>
+    <text x="595" y="200" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">14E / 14G / 14H / 14P + 17E LoRA</text>
+    <text x="595" y="220" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">MilDeflect refusal layer</text>
+    <text x="595" y="240" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Doctrine-grounded RAG</text>
+    <line x1="518" y1="258" x2="682" y2="258" stroke="#ee2929" stroke-width="1" opacity=".3"/>
+    <text x="595" y="278" fill="#ee2929" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">CAPABILITIES</text>
+    <text x="595" y="298" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Threat classification</text>
+    <text x="595" y="318" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">COA generation</text>
+    <text x="595" y="338" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Pattern-of-life inference</text>
+
+    <!-- Arrow 2→3 -->
+    <line x1="690" y1="237" x2="732" y2="237" stroke="#ffffff" stroke-width="2" marker-end="url(#ar)"/>
+
+    <!-- Layer 3: Reasoning — x=734, w=190, cx=829 -->
+    <rect x="734" y="72" width="190" height="330" rx="10" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <text x="829" y="95" fill="#ffffff" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">DECISION LOOP</text>
+    <text x="829" y="112" fill="#9f9f9f" font-size="12" font-family="Segoe UI" text-anchor="middle">Layer 3 — Synthesis</text>
+    <text x="829" y="140" fill="#ee2929" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">FUNCTIONS</text>
+    <text x="829" y="160" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Confidence-scored output</text>
+    <text x="829" y="180" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">COA ranking</text>
+    <text x="829" y="200" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Cueing message synthesis</text>
+    <text x="829" y="220" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Audit trail generation</text>
+    <text x="829" y="240" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Operator-in-loop arbitration</text>
+    <line x1="752" y1="258" x2="916" y2="258" stroke="#393939" stroke-width="1" opacity=".5"/>
+    <text x="829" y="278" fill="#ee2929" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">GROUNDING</text>
+    <text x="829" y="298" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">ROE doctrine corpus</text>
+    <text x="829" y="318" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Role-aware (AD, infantry)</text>
+    <text x="829" y="338" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Tiered model latency split</text>
+
+    <!-- Arrow 3→4 -->
+    <line x1="924" y1="237" x2="966" y2="237" stroke="#ffffff" stroke-width="2" marker-end="url(#ar)"/>
+
+    <!-- Layer 4: Outputs — x=968, w=180, cx=1058 -->
+    <rect x="968" y="72" width="180" height="330" rx="10" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <text x="1058" y="95" fill="#ffffff" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">OUTPUTS</text>
+    <text x="1058" y="112" fill="#9f9f9f" font-size="12" font-family="Segoe UI" text-anchor="middle">Layer 4 — Open-Arch Emitter</text>
+    <rect x="980" y="120" width="158" height="40" rx="6" fill="rgba(238,41,41,.08)" stroke="#ee2929" stroke-width="1"/>
+    <text x="1059" y="144" fill="#ffffff" font-size="12" font-family="Segoe UI" text-anchor="middle">CoT messages</text>
+    <rect x="980" y="167" width="158" height="40" rx="6" fill="rgba(238,41,41,.08)" stroke="#ee2929" stroke-width="1"/>
+    <text x="1059" y="191" fill="#ffffff" font-size="12" font-family="Segoe UI" text-anchor="middle">JSON track updates</text>
+    <rect x="980" y="214" width="158" height="40" rx="6" fill="rgba(238,41,41,.08)" stroke="#ee2929" stroke-width="1"/>
+    <text x="1059" y="238" fill="#ffffff" font-size="12" font-family="Segoe UI" text-anchor="middle">Link 16 J-series (roadmap)</text>
+    <rect x="980" y="261" width="158" height="40" rx="6" fill="rgba(238,41,41,.08)" stroke="#ee2929" stroke-width="1"/>
+    <text x="1059" y="285" fill="#ffffff" font-size="12" font-family="Segoe UI" text-anchor="middle">JREAP-C (roadmap)</text>
+    <rect x="980" y="308" width="158" height="40" rx="6" fill="rgba(238,41,41,.08)" stroke="#ee2929" stroke-width="1"/>
+    <text x="1059" y="332" fill="#ffffff" font-size="12" font-family="Segoe UI" text-anchor="middle">Operator UI alerts</text>
+    <rect x="980" y="355" width="158" height="40" rx="6" fill="rgba(238,41,41,.08)" stroke="#ee2929" stroke-width="1"/>
+    <text x="1059" y="379" fill="#ffffff" font-size="12" font-family="Segoe UI" text-anchor="middle">Audit / eval records</text>
+
+    <!-- Feedback arc -->
+    <path d="M 1058 432 Q 1058 458 600 458 Q 248 458 137 432" stroke="#ee2929" stroke-width="1.5" fill="none" stroke-dasharray="6,3" marker-end="url(#arr)" opacity=".6"/>
+    <text x="600" y="474" fill="#ee2929" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle" opacity=".8">Operator outcomes captured locally → coordination-tier sync when connectivity permits</text>
+  </svg>
+
+  <div style="background:#111315;padding:10px 32px;display:flex;justify-content:space-between;align-items:center">
+    <span style="color:#ee2929;font-size:13px;font-weight:700;opacity:.8;letter-spacing:.5px">EDGERUNNER AI</span>
+    <span style="color:#9f9f9f;font-size:12px">TRL 8 · Air-gapped by design · Hardware-agnostic</span>
+    <span style="color:#9f9f9f;font-size:12px">edgerunnerai.com</span>
+  </div>
+
+</div>
+</body>
+</html>

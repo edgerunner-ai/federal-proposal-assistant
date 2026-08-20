@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Figure 2 — V4 AI Decision Sub-Function</title>
+<style>
+  :root {
+    --bg: #191c20;
+    --accent: #ee2929;
+    --accent-tint-08: rgba(238, 41, 41, 0.08);
+    --panel: #2a2d31;
+    --panel-alt: #23262a;
+    --panel-soft: #222528;
+    --panel-border: #393939;
+    --rule: #4a4a4a;
+    --text: #ffffff;
+    --muted: #9f9f9f;
+    --light: #c8c8c8;
+  }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body {
+    width: 1200px; height: 680px;
+    font-family: 'Segoe UI', system-ui, 'Inter', sans-serif;
+    color: var(--text);
+    display: flex; flex-direction: column;
+    padding: 14px 24px 14px;
+    overflow: hidden;
+  }
+
+  /* Title band */
+  .title-band {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+  }
+  .title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--text);
+    line-height: 1.05;
+  }
+  .subtitle {
+    font-size: 15px;
+    color: var(--light);
+    margin-top: 5px;
+    line-height: 1.4;
+    max-width: 1140px;
+  }
+  .subtitle .em { color: var(--text); font-weight: 600; }
+
+  /* Dependency strip */
+  .dep-strip {
+    background: var(--panel-soft);
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+    padding: 7px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .dep-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .dep-text {
+    font-size: 15px;
+    color: var(--light);
+  }
+  .dep-text .strong { color: var(--text); font-weight: 700; }
+
+  /* Main flow */
+  .flow {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 250px 24px 1fr 24px 250px;
+    align-items: stretch;
+    margin-bottom: 8px;
+    min-height: 0;
+  }
+
+  /* Side zones */
+  .zone {
+    background: var(--panel);
+    border: 1.5px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex; flex-direction: column;
+  }
+  .zone-header {
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--text);
+    line-height: 1.15;
+  }
+  .zone-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .zone-section-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    margin-bottom: 6px;
+    margin-top: 8px;
+  }
+  .zone ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .zone li {
+    font-size: 16px;
+    color: var(--light);
+    line-height: 1.55;
+    padding-left: 11px;
+    position: relative;
+  }
+  .zone li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 11px;
+    width: 4px; height: 4px;
+    background: var(--muted);
+    border-radius: 50%;
+  }
+  .protocols {
+    margin-top: auto;
+    padding-top: 9px;
+    border-top: 1px solid var(--panel-border);
+  }
+  .protocols .lines {
+    font-size: 14px;
+    color: var(--light);
+    line-height: 1.45;
+  }
+  .protocols .roadmap {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* Center runtime */
+  .runtime {
+    background: var(--accent-tint-08);
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    padding: 12px 16px 12px;
+    display: flex; flex-direction: column;
+    margin: 0 4px;
+  }
+  .runtime-header {
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--accent);
+    text-align: center;
+  }
+  .runtime-sub {
+    font-size: 12px;
+    color: var(--light);
+    margin-top: 2px;
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  /* Pipeline tiles in single row */
+  .pipeline {
+    display: grid;
+    grid-template-columns: 1fr 14px 1fr 14px 1fr 14px 1fr 14px 1fr;
+    align-items: stretch;
+    gap: 0;
+  }
+  .tile {
+    background: var(--panel-alt);
+    border: 1px solid var(--panel-border);
+    border-radius: 5px;
+    padding: 10px 5px;
+    text-align: center;
+  }
+  .tile-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    line-height: 1.05;
+  }
+  .tile-sub {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.3;
+    margin-top: 4px;
+  }
+  .pipe-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pipe-arrow svg { width: 100%; height: 16px; }
+
+  /* Latency tier split */
+  .lat-section {
+    margin-top: 10px;
+    padding-top: 9px;
+    border-top: 1px solid rgba(238,41,41,0.3);
+  }
+  .lat-section-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 7px;
+  }
+  .lat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .lat-card {
+    background: rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(238,41,41,0.3);
+    border-radius: 5px;
+    padding: 8px 11px 9px;
+  }
+  .lat-card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    line-height: 1.1;
+  }
+  .lat-card-tag {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-left: 6px;
+    letter-spacing: 0.3px;
+  }
+  .lat-card-body {
+    font-size: 13px;
+    color: var(--light);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* Model stack one-liner */
+  .stack {
+    margin-top: 8px;
+    text-align: center;
+  }
+  .stack-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--muted);
+    display: inline;
+    margin-right: 7px;
+  }
+  .stack-text {
+    font-size: 14px;
+    color: var(--text);
+    font-weight: 600;
+    display: inline;
+  }
+
+  /* Outer arrows */
+  .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .arrow svg { width: 100%; height: 24px; }
+
+  /* "Not in scope" strip */
+  .scope-strip {
+    background: var(--panel-soft);
+    border-top: 1.5px dashed var(--rule);
+    border-radius: 0 0 6px 6px;
+    padding: 8px 16px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .scope-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 9999px;
+    padding: 4px 11px;
+    flex-shrink: 0;
+  }
+  .scope-text {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .scope-text .term { color: var(--light); font-weight: 600; }
+
+  /* Footer */
+  .footer {
+    margin-top: 6px;
+    border-top: 2px solid var(--accent);
+    padding-top: 7px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    opacity: 0.85;
+    text-transform: uppercase;
+  }
+  .footer-tag {
+    font-size: 13px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <!-- Title band -->
+  <div class="title-band">
+    <div class="title">V4 — AI Decision Sub-Function</div>
+    <div class="subtitle">
+      <span class="em">Vendor-agnostic AI brain</span> that turns heterogeneous sensor feeds into threat classifications, COA recommendations, and cueing messages — emitted to any open-architecture C2 stack or effector the joint force fields.
+    </div>
+  </div>
+
+  <!-- Dependency strip -->
+  <div class="dep-strip">
+    <span class="dep-label">No load-bearing dependency on:</span>
+    <span class="dep-text">
+      <span class="strong">cloud</span> · <span class="strong">GPS</span> · <span class="strong">network</span> · <span class="strong">C2 link</span>
+    </span>
+  </div>
+
+  <!-- Main flow -->
+  <div class="flow">
+
+    <!-- Left zone -->
+    <div class="zone">
+      <div class="zone-header">Vendor-Agnostic Sensor / ISR</div>
+      <div class="zone-sub">V1 · V2 capability outputs</div>
+
+      <div class="zone-section-label">Inputs</div>
+      <ul>
+        <li>Radar tracks</li>
+        <li>EO / IR FMV</li>
+        <li>RF / SIGINT</li>
+        <li>CoT / ATAK events</li>
+        <li>UAS telemetry</li>
+      </ul>
+
+      <div class="protocols">
+        <div class="zone-section-label">Protocols</div>
+        <div class="lines">CoT · JSON · file-watch · REST</div>
+        <div class="roadmap">Roadmap: Link 16 · JREAP-C · MISB-FMV</div>
+      </div>
+    </div>
+
+    <!-- Arrow left -->
+    <div class="arrow">
+      <svg viewBox="0 0 22 24" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arL" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,10 L9,5 z" fill="#ee2929"/>
+          </marker>
+        </defs>
+        <line x1="0" y1="12" x2="14" y2="12" stroke="#ee2929" stroke-width="3.5" marker-end="url(#arL)"/>
+      </svg>
+    </div>
+
+    <!-- Center: EdgeRunner runtime -->
+    <div class="runtime">
+      <div class="runtime-header">EdgeRunner — In Scope</div>
+      <div class="runtime-sub">AI decision sub-function</div>
+
+      <!-- 5-tile horizontal pipeline -->
+      <div class="pipeline">
+        <div class="tile">
+          <div class="tile-label">Ingest</div>
+          <div class="tile-sub">open-arch<br>adapters</div>
+        </div>
+        <div class="pipe-arrow">
+          <svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="7" x2="9" y2="7" stroke="#ee2929" stroke-width="2"/>
+            <polygon points="12,7 7,4 7,10" fill="#ee2929"/>
+          </svg>
+        </div>
+        <div class="tile">
+          <div class="tile-label">Reason</div>
+          <div class="tile-sub">EdgeRunner<br>20B</div>
+        </div>
+        <div class="pipe-arrow">
+          <svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="7" x2="9" y2="7" stroke="#ee2929" stroke-width="2"/>
+            <polygon points="12,7 7,4 7,10" fill="#ee2929"/>
+          </svg>
+        </div>
+        <div class="tile">
+          <div class="tile-label">RAG</div>
+          <div class="tile-sub">doctrine ·<br>ROE · intel</div>
+        </div>
+        <div class="pipe-arrow">
+          <svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="7" x2="9" y2="7" stroke="#ee2929" stroke-width="2"/>
+            <polygon points="12,7 7,4 7,10" fill="#ee2929"/>
+          </svg>
+        </div>
+        <div class="tile">
+          <div class="tile-label">Decide</div>
+          <div class="tile-sub">classify ·<br>COA · cue</div>
+        </div>
+        <div class="pipe-arrow">
+          <svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="7" x2="9" y2="7" stroke="#ee2929" stroke-width="2"/>
+            <polygon points="12,7 7,4 7,10" fill="#ee2929"/>
+          </svg>
+        </div>
+        <div class="tile">
+          <div class="tile-label">Output</div>
+          <div class="tile-sub">open-arch<br>C2 messages</div>
+        </div>
+      </div>
+
+      <!-- Latency tier split -->
+      <div class="lat-section">
+        <div class="lat-section-label">Tiered model deployment — same runtime, two latency paths</div>
+        <div class="lat-grid">
+          <div class="lat-card">
+            <div class="lat-card-title">Time-critical path<span class="lat-card-tag">sub-second</span></div>
+            <div class="lat-card-body">
+              Small fine-tuned classifier · initial threat categorization · machine-speed cueing
+            </div>
+          </div>
+          <div class="lat-card">
+            <div class="lat-card-title">Reasoning path<span class="lat-card-tag">non-time-critical</span></div>
+            <div class="lat-card-body">
+              EdgeRunner 20B + RAG · pattern-of-life · COA generation · doctrine-grounded analysis
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Model stack one-liner (inline) -->
+      <div class="stack">
+        <span class="stack-label">Model stack:</span>
+        <span class="stack-text">EdgeRunner 20B + FA14 / 14-series / 17E LoRA + MilDeflect + Doctrine RAG</span>
+      </div>
+    </div>
+
+    <!-- Arrow right -->
+    <div class="arrow">
+      <svg viewBox="0 0 22 24" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arR" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,10 L9,5 z" fill="#ee2929"/>
+          </marker>
+        </defs>
+        <line x1="0" y1="12" x2="14" y2="12" stroke="#ee2929" stroke-width="3.5" marker-end="url(#arR)"/>
+      </svg>
+    </div>
+
+    <!-- Right zone -->
+    <div class="zone">
+      <div class="zone-header">Vendor-Agnostic C2 / Effector</div>
+      <div class="zone-sub">cueing consumers</div>
+
+      <div class="zone-section-label">Consumers</div>
+      <ul>
+        <li>Open-arch C2 / BMS</li>
+        <li>Kinetic SHORAD</li>
+        <li>Directed energy</li>
+        <li>RF jammer / EW</li>
+        <li>Operator UI / ATAK</li>
+      </ul>
+
+      <div class="protocols">
+        <div class="zone-section-label">Protocols</div>
+        <div class="lines">CoT · JSON · REST</div>
+        <div class="roadmap">Roadmap: Link 16 J-series · JREAP-C</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- "Not in scope" strip -->
+  <div class="scope-strip">
+    <span class="scope-label">Not in EdgeRunner scope</span>
+    <span class="scope-text">
+      <span class="term">Sensors</span> · <span class="term">kinetic effectors</span> · <span class="term">C2 platform hardware</span> · <span class="term">communications radios</span> — paired with partner capabilities at the 27–29 July event
+    </span>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-brand">EdgeRunner AI</div>
+    <div class="footer-tag">TRL 8 · Hardware-agnostic · Air-gapped by design</div>
+  </div>
+
+</body>
+</html>

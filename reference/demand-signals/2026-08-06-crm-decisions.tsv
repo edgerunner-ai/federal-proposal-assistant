@@ -1,0 +1,691 @@
+# Adjudication of the 2026-08-06 capture-pipeline candidate export.
+#
+# WHY THIS FILE EXISTS. The candidates carry a `theme_suggestion` from
+# demand_signal_core.suggest_theme, a keyword matcher calibrated on curated
+# proposal requirement-matrix rows. The capture pipeline does not feed those.
+# It feeds Quick Vet's `key_requirements`, which is mixed prose: real customer
+# asks alongside submission mechanics, eligibility rules, and Quick Vet's own
+# inferences about an opportunity it could not read. On this export the matcher
+# themed 149 of 454, and a large share of those are false — "Physical
+# infrastructure modernization projects at JBLM including barracks replacement"
+# was themed `cross-domain-model-update`, and "Supply 3x NI-9244 Voltage Input
+# Modules" was themed `platform-integration-embedded`. Promoting the matcher's
+# output unreviewed would have inflated `ato-accreditation-artifacts` with
+# clause-compliance boilerplate and `token-cost-economics` with contract-type
+# language, and the theme leaderboard is the register's entire product.
+#
+# So every row is adjudicated by hand and the adjudication is committed, which
+# is the only form in which it can be argued with.
+#
+# VERDICTS
+#   signal <theme>   a customer asking for a capability, mapped to a theme in
+#                    reference/capability-themes.md
+#   hold <slug>      a real ask the controlled vocabulary has no home for. NOT
+#                    promoted. The slug is a proposed theme; adding it is a
+#                    deliberate edit to capability-themes.md, per that file.
+#   drop mechanics   how to submit: deadlines, page limits, templates, portals,
+#                    award instruments, phases, CDRLs, proposal instructions
+#   drop posture     who may bid: eligibility, ownership, clearances, FCL,
+#                    set-asides, cost share, registrations, personnel quals.
+#                    capability-themes.md excludes these by name.
+#   drop speculation Quick Vet inferring rather than the customer speaking —
+#                    "likely", "suggests", "appears", "presumed", or an outright
+#                    admission that the source had no content. The register is
+#                    verbatim customer language; an inference is not one.
+#   drop off-domain  a genuine ask outside the capability space this register
+#                    serves — hardware supply, machining, construction, CAD
+#                    seats, cadet training logistics, organoids, vacuum packages
+#   drop too-generic a real ask stated at a grain no theme can carry ("AI/ML"
+#                    as an area of interest). Counting it would add weight
+#                    without adding information.
+#   drop stale-closed a prior AOI the notice itself marks closed. Ingesting it
+#                    would date it to the vet, not to when it was open.
+#
+# Format: row_id <TAB> verdict <TAB> value. Blank value for drops other than
+# the reason already in the verdict. Lines starting with # are ignored.
+
+# ── CRM-3  ISV C2 integration (vehicle hardware) ────────────────────────────
+CRM-3-1	drop	off-domain
+CRM-3-2	drop	off-domain
+CRM-3-3	drop	off-domain
+CRM-3-4	drop	mechanics
+CRM-3-5	drop	mechanics
+
+# ── CRM-7  AFRL 711 HPW — digital models of cognition ───────────────────────
+CRM-7-1	signal	wargame-simulation-personas
+CRM-7-2	drop	off-domain
+CRM-7-3	signal	wargame-simulation-personas
+CRM-7-4	signal	wargame-simulation-personas
+CRM-7-5	drop	posture
+
+# ── CRM-24  AFTC digital twin / autonomous test planning ────────────────────
+CRM-24-1	signal	agentic-orchestration
+CRM-24-2	signal	wargame-simulation-personas
+CRM-24-3	signal	agentic-orchestration
+CRM-24-4	signal	hardware-footprint-compression
+CRM-24-5	drop	mechanics
+
+# ── CRM-63  Theater edge innovation / multi-domain control ──────────────────
+CRM-63-1	signal	robotic-autonomy-control
+CRM-63-2	drop	off-domain
+CRM-63-3	signal	platform-integration-embedded
+CRM-63-4	drop	mechanics
+CRM-63-5	drop	mechanics
+
+# ── CRM-72  DEVCOM SPARX ────────────────────────────────────────────────────
+CRM-72-1	drop	mechanics
+CRM-72-2	drop	posture
+CRM-72-3	drop	mechanics
+CRM-72-4	drop	mechanics
+CRM-72-5	drop	mechanics
+
+# ── CRM-79  SSC CDAO RFI ────────────────────────────────────────────────────
+CRM-79-1	drop	mechanics
+CRM-79-2	drop	mechanics
+CRM-79-3	signal	mission-mos-finetuning
+CRM-79-4	drop	mechanics
+CRM-79-5	drop	mechanics
+
+# ── CRM-83  Tactical cross-domain solution broker ───────────────────────────
+CRM-83-1	signal	federation-cross-enclave
+CRM-83-2	signal	federation-cross-enclave
+CRM-83-3	signal	tevv-eval-harness
+CRM-83-4	signal	training-data-rights
+CRM-83-5	drop	mechanics
+
+# ── CRM-84  Enterprise CSO framework ────────────────────────────────────────
+CRM-84-1	drop	mechanics
+CRM-84-2	drop	mechanics
+CRM-84-3	drop	mechanics
+CRM-84-4	drop	posture
+CRM-84-5	drop	mechanics
+
+# ── CRM-95  Disruptive innovation focus areas ───────────────────────────────
+CRM-95-1	drop	mechanics
+CRM-95-2	drop	mechanics
+CRM-95-3	signal	robotic-autonomy-control
+CRM-95-4	drop	off-domain
+CRM-95-5	drop	off-domain
+
+# ── CRM-97  Cybersecurity for AI models and AI hardware (TS//SAP) ───────────
+CRM-97-1	signal	adversarial-ai-security
+CRM-97-2	signal	adversarial-ai-security
+CRM-97-3	drop	mechanics
+CRM-97-4	signal	training-data-rights
+CRM-97-5	drop	posture
+
+# ── CRM-103  CBP transshipment risk ─────────────────────────────────────────
+CRM-103-1	signal	anomaly-detection-analytics
+CRM-103-2	drop	mechanics
+CRM-103-3	signal	anomaly-detection-analytics
+CRM-103-4	drop	mechanics
+CRM-103-5	signal	platform-integration-embedded
+
+# ── CRM-107  DARPA MATHBAC ──────────────────────────────────────────────────
+CRM-107-1	drop	mechanics
+CRM-107-2	signal	agentic-orchestration
+CRM-107-3	drop	speculation
+CRM-107-4	drop	posture
+CRM-107-5	drop	mechanics
+
+# ── CRM-122  Commercial SDA LLM ─────────────────────────────────────────────
+CRM-122-1	signal	mission-mos-finetuning
+CRM-122-2	signal	mission-mos-finetuning
+CRM-122-3	drop	posture
+CRM-122-4	drop	speculation
+CRM-122-5	drop	posture
+
+# ── CRM-128  DARPA biological processing units ──────────────────────────────
+CRM-128-1	drop	off-domain
+CRM-128-2	drop	off-domain
+CRM-128-3	drop	mechanics
+CRM-128-4	drop	off-domain
+CRM-128-5	drop	posture
+
+# ── CRM-142  TRANSCOM TRAC2ES ───────────────────────────────────────────────
+CRM-142-1	drop	off-domain
+CRM-142-2	drop	off-domain
+CRM-142-3	drop	off-domain
+CRM-142-4	drop	mechanics
+
+# ── CRM-219  Weapons systems CSO ────────────────────────────────────────────
+CRM-219-1	drop	mechanics
+CRM-219-2	drop	too-generic
+CRM-219-3	signal	platform-integration-embedded
+CRM-219-4	drop	posture
+CRM-219-5	drop	posture
+
+# ── CRM-273  SBIR/STTR umbrella ─────────────────────────────────────────────
+CRM-273-2	drop	mechanics
+CRM-273-3	drop	too-generic
+CRM-273-4	drop	mechanics
+CRM-273-5	drop	posture
+
+# ── CRM-279  Army depot modernization CSO ───────────────────────────────────
+CRM-279-1	drop	too-generic
+CRM-279-2	drop	mechanics
+CRM-279-3	drop	off-domain
+CRM-279-5	drop	mechanics
+
+# ── CRM-293  AMC legacy IT modernization ────────────────────────────────────
+CRM-293-1	drop	off-domain
+CRM-293-2	drop	off-domain
+CRM-293-3	drop	off-domain
+CRM-293-4	drop	off-domain
+CRM-293-5	drop	off-domain
+
+# ── CRM-322  USAFA cadet training continuum ─────────────────────────────────
+CRM-322-1	drop	off-domain
+CRM-322-2	drop	off-domain
+CRM-322-3	drop	off-domain
+CRM-322-4	drop	off-domain
+CRM-322-5	drop	off-domain
+
+# ── CRM-367  DARPA Ender's Foundry — AI tactics engine ──────────────────────
+CRM-367-1	signal	wargame-simulation-personas
+CRM-367-2	signal	staff-product-generation
+CRM-367-3	signal	wargame-simulation-personas
+CRM-367-4	drop	posture
+CRM-367-5	drop	mechanics
+
+# ── CRM-371  TALOS (classified SOO) ─────────────────────────────────────────
+CRM-371-1	drop	mechanics
+CRM-371-2	drop	mechanics
+CRM-371-3	drop	mechanics
+CRM-371-4	drop	posture
+CRM-371-5	drop	posture
+
+# ── CRM-398  NGA GEOINT analytics ───────────────────────────────────────────
+CRM-398-1	drop	speculation
+CRM-398-2	drop	too-generic
+CRM-398-3	drop	too-generic
+CRM-398-4	drop	too-generic
+CRM-398-5	drop	posture
+
+# ── CRM-472  EXTiC 26-2 counter-UAS ─────────────────────────────────────────
+CRM-472-1	drop	mechanics
+CRM-472-3	drop	too-generic
+CRM-472-4	drop	off-domain
+CRM-472-5	drop	mechanics
+
+# ── CRM-480  JBLM prototype OTA (scope absent) ──────────────────────────────
+CRM-480-1	drop	speculation
+CRM-480-2	drop	mechanics
+CRM-480-3	drop	speculation
+CRM-480-4	drop	mechanics
+CRM-480-5	drop	speculation
+
+# ── CRM-557  USNA Momentus venue software renewal ───────────────────────────
+CRM-557-1	drop	off-domain
+CRM-557-2	drop	off-domain
+CRM-557-3	drop	off-domain
+CRM-557-4	drop	off-domain
+CRM-557-5	drop	off-domain
+
+# ── CRM-573  NASA SBIR ──────────────────────────────────────────────────────
+CRM-573-1	drop	mechanics
+CRM-573-2	drop	mechanics
+CRM-573-3	drop	mechanics
+CRM-573-4	drop	mechanics
+CRM-573-5	drop	mechanics
+
+# ── CRM-575  AMIC CSO ───────────────────────────────────────────────────────
+CRM-575-1	drop	mechanics
+CRM-575-2	drop	mechanics
+CRM-575-3	drop	posture
+CRM-575-4	drop	mechanics
+CRM-575-5	drop	mechanics
+
+# ── CRM-581  Army MIOSS industry day ────────────────────────────────────────
+CRM-581-1	drop	mechanics
+CRM-581-4	drop	speculation
+CRM-581-5	drop	speculation
+
+# ── CRM-586  DICE — decentralized inference control ─────────────────────────
+CRM-586-1	signal	agentic-orchestration
+CRM-586-2	signal	agentic-orchestration
+CRM-586-3	signal	agentic-orchestration
+CRM-586-4	signal	agentic-orchestration
+CRM-586-5	signal	tevv-eval-harness
+
+# ── CRM-594  CAD/CAM seat + Haas post processor ─────────────────────────────
+CRM-594-1	drop	off-domain
+CRM-594-2	drop	off-domain
+CRM-594-3	drop	off-domain
+CRM-594-4	drop	off-domain
+CRM-594-5	drop	off-domain
+
+# ── CRM-602  Weapons CSO spirals ────────────────────────────────────────────
+CRM-602-1	drop	mechanics
+CRM-602-2	drop	posture
+CRM-602-3	drop	too-generic
+CRM-602-4	drop	posture
+CRM-602-5	drop	posture
+
+# ── CRM-604  ACC-DTA ground maneuver (scope withheld) ───────────────────────
+CRM-604-1	drop	speculation
+CRM-604-2	drop	mechanics
+CRM-604-3	drop	speculation
+CRM-604-4	drop	speculation
+CRM-604-5	drop	mechanics
+
+# ── CRM-605  UGV last-tactical-mile resupply / CASEVAC ──────────────────────
+CRM-605-1	signal	robotic-autonomy-control
+CRM-605-2	signal	robotic-autonomy-control
+CRM-605-3	signal	robotic-autonomy-control
+CRM-605-4	drop	off-domain
+CRM-605-5	signal	platform-integration-embedded
+
+# ── CRM-617  JBLM facility construction ─────────────────────────────────────
+CRM-617-1	drop	off-domain
+CRM-617-2	drop	mechanics
+CRM-617-3	drop	mechanics
+CRM-617-4	drop	off-domain
+CRM-617-5	drop	mechanics
+
+# ── CRM-693  NATO ISR collection orchestration ──────────────────────────────
+CRM-693-1	signal	agentic-orchestration
+CRM-693-2	signal	agentic-orchestration
+CRM-693-3	signal	utilization-telemetry-metrics
+CRM-693-4	drop	mechanics
+CRM-693-5	signal	platform-integration-embedded
+
+# ── CRM-702  National Guard federated data ecosystem ────────────────────────
+CRM-702-1	signal	federation-cross-enclave
+CRM-702-2	drop	off-domain
+CRM-702-3	drop	too-generic
+CRM-702-4	signal	ato-accreditation-artifacts
+CRM-702-5	signal	federation-cross-enclave
+
+# ── CRM-714  AFRL EPIC consortium ───────────────────────────────────────────
+CRM-714-1	drop	posture
+CRM-714-2	drop	too-generic
+CRM-714-3	drop	off-domain
+CRM-714-4	drop	off-domain
+CRM-714-5	drop	posture
+
+# ── CRM-716  AFRL "Networking the Fight" (description unavailable) ──────────
+CRM-716-2	drop	speculation
+CRM-716-3	drop	speculation
+CRM-716-4	drop	speculation
+CRM-716-5	drop	speculation
+
+# ── CRM-719  SOCOM naval sources sought (scope absent) ──────────────────────
+CRM-719-1	drop	too-generic
+CRM-719-3	drop	speculation
+CRM-719-4	drop	mechanics
+CRM-719-5	drop	speculation
+
+# ── CRM-720  AFRL RVK "Neutron Star" ARA (scope absent) ─────────────────────
+CRM-720-1	drop	speculation
+CRM-720-3	drop	mechanics
+CRM-720-4	drop	speculation
+CRM-720-5	drop	speculation
+
+# ── CRM-801  AFRL Enterprise CSO ────────────────────────────────────────────
+CRM-801-1	drop	mechanics
+CRM-801-2	drop	mechanics
+CRM-801-3	drop	mechanics
+CRM-801-5	drop	mechanics
+
+# ── CRM-808  DOT transportation AI SBIR ─────────────────────────────────────
+CRM-808-1	drop	off-domain
+CRM-808-2	drop	mechanics
+CRM-808-3	drop	off-domain
+CRM-808-4	drop	mechanics
+CRM-808-5	drop	posture
+
+# ── CRM-838  DLA CSO ────────────────────────────────────────────────────────
+CRM-838-1	drop	mechanics
+CRM-838-2	drop	too-generic
+CRM-838-3	drop	too-generic
+CRM-838-4	signal	air-gap-ddil-deployment
+CRM-838-5	drop	posture
+
+# ── CRM-911  NAVSUP cross domain server ─────────────────────────────────────
+CRM-911-1	signal	federation-cross-enclave
+CRM-911-2	drop	speculation
+CRM-911-3	drop	speculation
+CRM-911-4	signal	federation-cross-enclave
+CRM-911-5	drop	speculation
+
+# ── CRM-917  DoD CSO topic areas ────────────────────────────────────────────
+CRM-917-1	drop	too-generic
+CRM-917-2	drop	too-generic
+CRM-917-3	drop	mechanics
+CRM-917-4	drop	mechanics
+CRM-917-5	signal	training-data-rights
+
+# ── CRM-947  NSWC Carderock DAQ modules ─────────────────────────────────────
+CRM-947-1	drop	off-domain
+CRM-947-2	drop	off-domain
+CRM-947-3	drop	off-domain
+CRM-947-4	drop	off-domain
+CRM-947-5	drop	off-domain
+
+# ── CRM-961  CHEERS optical radiation bioeffects ────────────────────────────
+CRM-961-1	drop	off-domain
+CRM-961-2	drop	mechanics
+CRM-961-3	drop	off-domain
+CRM-961-4	drop	posture
+CRM-961-5	drop	mechanics
+
+# ── CRM-962  HADES hybrid architecture (SDA) ────────────────────────────────
+CRM-962-1	drop	too-generic
+CRM-962-2	drop	speculation
+CRM-962-4	drop	speculation
+CRM-962-5	drop	posture
+
+# ── CRM-974  SAM record not yet populated ───────────────────────────────────
+CRM-974-1	drop	speculation
+CRM-974-2	drop	speculation
+CRM-974-3	drop	speculation
+
+# ── CRM-1017  Directed energy BAA ───────────────────────────────────────────
+CRM-1017-1	drop	off-domain
+CRM-1017-2	drop	mechanics
+CRM-1017-3	drop	mechanics
+CRM-1017-4	drop	posture
+CRM-1017-5	drop	mechanics
+
+# ── CRM-1025  Integrated Defensive Cyberspace System ────────────────────────
+CRM-1025-1	drop	off-domain
+CRM-1025-2	drop	posture
+CRM-1025-3	drop	posture
+CRM-1025-4	signal	ato-accreditation-artifacts
+CRM-1025-5	drop	mechanics
+
+# ── CRM-1090  Game-theoretic COA engine ─────────────────────────────────────
+CRM-1090-1	signal	wargame-simulation-personas
+CRM-1090-2	signal	staff-product-generation
+CRM-1090-3	signal	tevv-eval-harness
+CRM-1090-4	signal	hardware-footprint-compression
+CRM-1090-5	signal	wargame-simulation-personas
+
+# ── CRM-1094  Voice-enabled edge assistant for UGV logistics C2 ─────────────
+CRM-1094-1	signal	multimodal-audio
+CRM-1094-2	signal	air-gap-ddil-deployment
+CRM-1094-3	signal	platform-integration-embedded
+CRM-1094-4	signal	multimodal-audio
+CRM-1094-5	drop	mechanics
+
+# ── CRM-1102  GenAI for secure DoD/OSD workflows ────────────────────────────
+CRM-1102-1	signal	agentic-orchestration
+CRM-1102-2	signal	ato-accreditation-artifacts
+CRM-1102-3	signal	output-verification-attribution
+CRM-1102-4	drop	mechanics
+CRM-1102-5	drop	too-generic
+
+# ── CRM-1107  CHORD collaborative human-autonomy ────────────────────────────
+CRM-1107-1	drop	speculation
+CRM-1107-2	drop	too-generic
+CRM-1107-3	drop	mechanics
+CRM-1107-4	signal	human-oversight-control
+CRM-1107-5	drop	mechanics
+
+# ── CRM-1110  AI mission planning for OT/ICS cyber defense ──────────────────
+CRM-1110-1	signal	staff-product-generation
+CRM-1110-2	drop	off-domain
+CRM-1110-3	signal	staff-product-generation
+CRM-1110-4	signal	human-oversight-control
+CRM-1110-5	drop	mechanics
+
+# ── CRM-1133  Runtime assurance for autonomous AI ───────────────────────────
+CRM-1133-1	signal	output-verification-attribution
+CRM-1133-2	signal	human-oversight-control
+CRM-1133-3	drop	speculation
+CRM-1133-4	signal	output-verification-attribution
+CRM-1133-5	drop	mechanics
+
+# ── CRM-1145  SOF combat diving ─────────────────────────────────────────────
+CRM-1145-1	drop	off-domain
+CRM-1145-2	drop	posture
+CRM-1145-3	drop	off-domain
+CRM-1145-4	signal	training-data-rights
+CRM-1145-5	drop	mechanics
+
+# ── CRM-1207  AFRL/CRI advisory & assistance services ───────────────────────
+CRM-1207-1	drop	off-domain
+CRM-1207-2	drop	posture
+CRM-1207-3	drop	off-domain
+CRM-1207-4	drop	off-domain
+CRM-1207-5	drop	mechanics
+
+# ── CRM-1228  Space-flight systems ARA ──────────────────────────────────────
+CRM-1228-1	drop	mechanics
+CRM-1228-2	signal	tevv-eval-harness
+CRM-1228-3	drop	mechanics
+CRM-1228-4	drop	posture
+CRM-1228-5	drop	posture
+
+# ── CRM-1231  Space CSO (two-step white paper) ──────────────────────────────
+CRM-1231-1	drop	mechanics
+CRM-1231-2	drop	too-generic
+CRM-1231-3	drop	mechanics
+CRM-1231-4	drop	mechanics
+CRM-1231-5	drop	posture
+
+# ── CRM-1240  Bridge Erection Boat autonomy ─────────────────────────────────
+CRM-1240-1	signal	robotic-autonomy-control
+CRM-1240-2	signal	robotic-autonomy-control
+CRM-1240-3	signal	training-data-rights
+CRM-1240-4	drop	mechanics
+CRM-1240-5	drop	mechanics
+
+# ── CRM-1272  CDAO advanced data labeling ───────────────────────────────────
+CRM-1272-1	signal	data-labeling-curation
+CRM-1272-2	drop	too-generic
+CRM-1272-3	drop	speculation
+CRM-1272-4	drop	speculation
+CRM-1272-5	drop	speculation
+
+# ── CRM-1294  PSA posture & sustain assets service ──────────────────────────
+CRM-1294-1	drop	mechanics
+CRM-1294-2	signal	staff-product-generation
+CRM-1294-3	signal	staff-product-generation
+CRM-1294-4	drop	mechanics
+CRM-1294-5	drop	posture
+
+# ── CRM-1303  DARPA revolutionary materials/components ──────────────────────
+CRM-1303-1	drop	mechanics
+CRM-1303-2	drop	off-domain
+CRM-1303-3	drop	mechanics
+CRM-1303-4	drop	mechanics
+CRM-1303-5	signal	output-verification-attribution
+
+# ── CRM-1380  Counter-UAS open-architecture ecosystem ───────────────────────
+CRM-1380-1	drop	off-domain
+CRM-1380-2	signal	multimodal-imagery-fmv
+CRM-1380-3	signal	multimodal-imagery-fmv
+CRM-1380-4	drop	too-generic
+CRM-1380-5	drop	posture
+
+# ── CRM-1596  JAG legal AI ──────────────────────────────────────────────────
+CRM-1596-1	signal	retrieval-over-doctrine
+CRM-1596-2	signal	anomaly-detection-analytics
+CRM-1596-3	signal	agentic-orchestration
+CRM-1596-4	signal	ato-accreditation-artifacts
+CRM-1596-5	drop	mechanics
+
+# ── CRM-1688  Army Intelligence agentic AI RFI ──────────────────────────────
+CRM-1688-1	signal	agentic-orchestration
+CRM-1688-2	signal	agentic-orchestration
+CRM-1688-3	signal	platform-integration-embedded
+CRM-1688-4	signal	agentic-orchestration
+
+# ── CRM-1738  DCSO Philadelphia AI market research ──────────────────────────
+CRM-1738-1	drop	too-generic
+CRM-1738-3	drop	posture
+CRM-1738-4	drop	mechanics
+CRM-1738-5	drop	mechanics
+
+# ── CRM-1769  Decentralized multi-agent systems ─────────────────────────────
+CRM-1769-1	signal	agentic-orchestration
+CRM-1769-2	signal	tevv-eval-harness
+CRM-1769-3	signal	multi-model-hosting-byom
+CRM-1769-4	signal	tevv-eval-harness
+CRM-1769-5	signal	training-data-rights
+
+# ── CRM-2022  NRL BAA ───────────────────────────────────────────────────────
+CRM-2022-2	drop	too-generic
+CRM-2022-3	drop	mechanics
+CRM-2022-4	drop	mechanics
+CRM-2022-5	drop	posture
+
+# ── CRM-2039  DARPA MXO ─────────────────────────────────────────────────────
+CRM-2039-1	drop	mechanics
+CRM-2039-2	drop	posture
+CRM-2039-3	signal	tevv-eval-harness
+CRM-2039-4	drop	mechanics
+
+# ── CRM-2078  NUWC Newport UTIC CSO ─────────────────────────────────────────
+CRM-2078-1	drop	posture
+CRM-2078-2	drop	speculation
+CRM-2078-3	drop	mechanics
+
+# ── CRM-2101  OPNAV N8 financial management AI ──────────────────────────────
+CRM-2101-1	drop	mechanics
+CRM-2101-2	signal	staff-product-generation
+CRM-2101-3	signal	platform-integration-embedded
+CRM-2101-4	signal	federation-cross-enclave
+CRM-2101-5	drop	posture
+
+# ── CRM-2122  Space Strategic Technology Institute ──────────────────────────
+CRM-2122-1	drop	posture
+CRM-2122-2	signal	staff-product-generation
+CRM-2122-3	drop	posture
+CRM-2122-4	signal	tevv-eval-harness
+CRM-2122-5	signal	tevv-eval-harness
+
+# ── CRM-2127  SOF man-portable counter-UxS ──────────────────────────────────
+CRM-2127-1	drop	off-domain
+CRM-2127-2	drop	off-domain
+CRM-2127-3	signal	hardware-footprint-compression
+CRM-2127-4	signal	platform-integration-embedded
+CRM-2127-5	drop	mechanics
+
+# ── CRM-2156  SSC areas of interest ─────────────────────────────────────────
+CRM-2156-2	drop	off-domain
+CRM-2156-3	drop	stale-closed
+CRM-2156-4	drop	stale-closed
+CRM-2156-5	drop	mechanics
+
+# ── CRM-2164  B-2 mission planning software sustainment ─────────────────────
+CRM-2164-1	drop	off-domain
+CRM-2164-2	signal	wargame-simulation-personas
+CRM-2164-3	drop	off-domain
+CRM-2164-4	drop	posture
+CRM-2164-5	drop	posture
+
+# ── CRM-2179  Skills assessment SaaS ────────────────────────────────────────
+CRM-2179-1	drop	off-domain
+CRM-2179-2	drop	off-domain
+CRM-2179-3	drop	off-domain
+CRM-2179-4	drop	off-domain
+CRM-2179-5	drop	off-domain
+
+# ── CRM-2228  AFRL Wright research site ─────────────────────────────────────
+CRM-2228-2	drop	mechanics
+CRM-2228-3	drop	posture
+CRM-2228-4	drop	mechanics
+CRM-2228-5	drop	posture
+
+# ── CRM-2304  AFRL JADC2 / distributed C2 AI ────────────────────────────────
+CRM-2304-1	signal	staff-product-generation
+CRM-2304-2	signal	federation-cross-enclave
+CRM-2304-3	signal	agentic-orchestration
+CRM-2304-4	signal	robotic-autonomy-control
+CRM-2304-5	signal	staff-product-generation
+
+# ── CRM-2305  DARPA AI-native tactics engine ────────────────────────────────
+CRM-2305-1	signal	wargame-simulation-personas
+CRM-2305-2	signal	mission-mos-finetuning
+CRM-2305-3	signal	output-verification-attribution
+CRM-2305-4	signal	air-gap-ddil-deployment
+CRM-2305-5	drop	mechanics
+
+# ── CRM-2410  Microscale ultra-high-vacuum packaging ────────────────────────
+CRM-2410-1	drop	off-domain
+CRM-2410-2	drop	off-domain
+CRM-2410-3	drop	off-domain
+CRM-2410-4	drop	off-domain
+CRM-2410-5	drop	off-domain
+
+# ── CRM-2443  Navy ManTech ──────────────────────────────────────────────────
+CRM-2443-1	drop	off-domain
+CRM-2443-2	drop	off-domain
+CRM-2443-3	drop	off-domain
+CRM-2443-5	signal	training-data-rights
+
+# ── CRM-2458  SSC Space Domain Awareness LLM RFI ────────────────────────────
+CRM-2458-1	signal	mission-mos-finetuning
+CRM-2458-2	drop	too-generic
+CRM-2458-3	drop	mechanics
+CRM-2458-4	drop	speculation
+CRM-2458-5	drop	mechanics
+
+# ── CRM-2467  IC awardable focus areas ──────────────────────────────────────
+CRM-2467-1	drop	mechanics
+CRM-2467-2	drop	too-generic
+CRM-2467-4	drop	mechanics
+CRM-2467-5	drop	mechanics
+
+# ── CRM-2468  NRL mechanical test hardware ──────────────────────────────────
+CRM-2468-1	drop	off-domain
+CRM-2468-2	drop	off-domain
+CRM-2468-3	drop	off-domain
+CRM-2468-4	drop	off-domain
+CRM-2468-5	drop	off-domain
+
+# ── CRM-2474  NGC2 converged data layer applications ────────────────────────
+CRM-2474-1	signal	platform-integration-embedded
+CRM-2474-2	signal	platform-integration-embedded
+CRM-2474-3	signal	ato-accreditation-artifacts
+CRM-2474-4	signal	multi-model-hosting-byom
+CRM-2474-5	signal	air-gap-ddil-deployment
+
+# ── CRM-2530  DIU OnRamp Hub ────────────────────────────────────────────────
+CRM-2530-1	drop	off-domain
+CRM-2530-2	drop	off-domain
+CRM-2530-3	drop	posture
+CRM-2530-4	drop	posture
+CRM-2530-5	drop	off-domain
+
+# ── CRM-2730  AFRL consortium management ────────────────────────────────────
+CRM-2730-1	drop	off-domain
+CRM-2730-2	drop	too-generic
+CRM-2730-3	drop	off-domain
+CRM-2730-4	drop	off-domain
+CRM-2730-5	drop	posture
+
+# ── CRM-2833  GUNSS AI single pane of glass (NAVAIR PEO U&W) ────────────────
+CRM-2833-1	signal	platform-integration-embedded
+CRM-2833-2	drop	speculation
+CRM-2833-4	drop	speculation
+CRM-2833-5	drop	speculation
+
+# ── CRM-2836  CDAO automated data labeling ──────────────────────────────────
+CRM-2836-1	signal	data-labeling-curation
+CRM-2836-2	signal	air-gap-ddil-deployment
+CRM-2836-3	drop	mechanics
+CRM-2836-4	signal	platform-integration-embedded
+CRM-2836-5	signal	data-labeling-curation
+
+# ── CRM-2860  RECON Port Hueneme (content absent) ───────────────────────────
+CRM-2860-1	drop	speculation
+CRM-2860-2	drop	speculation
+CRM-2860-3	drop	speculation
+CRM-2860-4	drop	speculation
+
+# ── CRM-2885  AI2C (content absent) ─────────────────────────────────────────
+CRM-2885-1	drop	speculation
+CRM-2885-2	drop	speculation
+CRM-2885-3	drop	speculation
+CRM-2885-4	drop	speculation
+CRM-2885-5	drop	speculation
+
+# ── CRM-2896  Barksdale AFB electronic flight bag AI ────────────────────────
+CRM-2896-1	drop	speculation
+CRM-2896-2	drop	speculation
+CRM-2896-3	drop	speculation
+CRM-2896-4	drop	speculation

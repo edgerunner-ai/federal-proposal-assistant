@@ -1,0 +1,65 @@
+{
+  "_comment": "Example data for platform-architecture template. Generic AI platform pipeline.",
+  "title": "Platform Architecture",
+  "subtitle": "A modular, containerized AI runtime — ingests data, reasons with mission-trained models, delivers structured decision support",
+  "layers": [
+    {
+      "name": "INPUTS",
+      "sub": "",
+      "hero": false,
+      "section1_label": "SOURCES",
+      "section1_items": ["Operational Orders", "Intelligence Reports", "Sensor / ISR Data", "Force Status Updates", "Docs / Procedures", "API / System Events"]
+    },
+    {
+      "name": "DATA INGESTION",
+      "sub": "Layer 1",
+      "hero": false,
+      "section1_label": "FUNCTIONS",
+      "section1_items": ["Multi-format parsing", "Schema normalization", "Structured representation", "Real-time streaming", "OCR & tokenization"],
+      "section2_label": "OUTPUT",
+      "section2_items": ["Operational context", "model ready for", "AI processing"]
+    },
+    {
+      "name": "MISSION AI MODELS",
+      "sub": "Layer 2 — Core Engine",
+      "hero": true,
+      "section1_label": "MODEL TYPES",
+      "section1_items": ["Open-weight base models", "Mission-specific fine-tunes", "AFSC / domain LoRAs", "20B param model", "1.6M military artifact trained"],
+      "section2_label": "CAPABILITIES",
+      "section2_items": ["Situational understanding", "COA generation", "Dependency analysis"]
+    },
+    {
+      "name": "REASONING ENGINE",
+      "sub": "Layer 3 — Agentic",
+      "hero": false,
+      "section1_label": "FUNCTIONS",
+      "section1_items": ["Multi-step reasoning", "Tool use & orchestration", "Workflow execution", "Domain framework alignment", "Transparent reasoning output"],
+      "section2_label": "FRAMEWORKS",
+      "section2_items": ["TM-BM (AFRL)", "Mission-specific agents", "HELM / Inspect eval"]
+    },
+    {
+      "name": "OUTPUTS",
+      "sub": "Layer 4 — API",
+      "hero": false,
+      "section1_label": "DELIVERABLES",
+      "section1_items": ["COA Recommendations", "Operational Analysis", "Risk / Dependency Alerts", "Structured Data Capture", "Audit / Eval Records", "Training Feedback"]
+    }
+  ],
+  "feedback": {
+    "label": "Structured operational data captured → feeds refinement when connectivity permits"
+  },
+  "footer": {
+    "brand": "EDGE AI",
+    "tagline": "TRL 7+ · Containerized · API-accessible · Zero external dependencies",
+    "website": "example.com"
+  },
+  "theme": {
+    "bg": "#191c20",
+    "accent": "#ee2929",
+    "panel": "#2a2d31",
+    "panel_border": "#393939",
+    "text": "#ffffff",
+    "muted": "#9f9f9f",
+    "body": "#c8c8c8"
+  }
+}

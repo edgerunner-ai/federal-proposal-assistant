@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Operator's Reality</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#111; font-family:'Segoe UI',system-ui,sans-serif;
+         display:flex; justify-content:center; align-items:center; min-height:100vh; padding:20px; }
+  .card { width:1200px; background:#1c1e22; border-radius:8px; overflow:hidden;
+          box-shadow:0 8px 32px rgba(0,0,0,.5); }
+  .title-bar { padding:32px 44px 26px; border-bottom:3px solid #ee2929; }
+  .title-bar h1 { color:#fff; font-size:38px; font-weight:800; letter-spacing:1.8px;
+                  text-transform:uppercase; text-align:center; }
+  .title-bar p { color:#b0b0b0; font-size:22px; text-align:center; margin-top:10px; font-weight:500; font-style:italic; line-height:1.4; }
+  .work-bar { background:#212428; padding:22px 44px; text-align:center;
+              border-bottom:1px solid #2a2d31; }
+  .work-bar .lbl { color:#888; font-size:18px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; }
+  .work-bar .work { color:#fff; font-size:28px; font-weight:700; margin-top:6px; line-height:1.4; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+  .col { padding:40px 44px 44px; }
+  .col.china { background:#1c1e22; border-right:1px solid #2a2d31; }
+  .col.us    { background:#212428; }
+  .stack-label { font-size:18px; font-weight:700; letter-spacing:2.5px; color:#888;
+                 text-transform:uppercase; margin-bottom:8px; }
+  .stack-name { font-size:32px; font-weight:800; color:#fff; margin-bottom:6px; }
+  .stack-desc { font-size:22px; color:#9aa; margin-bottom:30px; line-height:1.5; }
+  .price { font-size:96px; font-weight:900; line-height:1; margin-bottom:10px;
+           letter-spacing:-2px; }
+  .price.zero { color:#ee2929; }
+  .price.expensive { color:#fff; }
+  .price-unit { font-size:20px; color:#888; font-weight:600; letter-spacing:1.5px;
+                text-transform:uppercase; margin-bottom:28px; }
+  ul.detail { list-style:none; }
+  ul.detail li { padding:14px 0; border-bottom:1px solid #2a2d31; color:#d0d0d0;
+                 font-size:23px; line-height:1.5; display:flex; gap:16px; }
+  ul.detail li:last-child { border-bottom:none; }
+  ul.detail li::before { content:"▸"; color:#ee2929; font-weight:700; flex-shrink:0; font-size:24px; }
+  ul.detail li.us-bullet::before { color:#4a90e2; }
+  .footer { background:#161719; padding:26px 44px; border-top:1px solid #2a2d31;
+            color:#fff; font-size:22px; text-align:center; line-height:1.55; }
+  .footer strong { color:#ee2929; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="title-bar">
+    <h1>The Operator's Reality</h1>
+    <p>Same agentic workload. Same capability tier. Two very different bills.</p>
+  </div>
+  <div class="work-bar">
+    <div class="lbl">The Workload</div>
+    <div class="work">~ 2 gigatokens / month · agentic coding, research, autonomous skill creation</div>
+  </div>
+  <div class="grid">
+    <div class="col china">
+      <div class="stack-label">Stack A — Operator's actual deployment</div>
+      <div class="stack-name">Chinese Open Weights</div>
+      <div class="stack-desc">Qwen 3.6 (Apache 2.0) running on consumer laptops, garage-located, solar-powered, fully offline</div>
+      <div class="price zero">$0</div>
+      <div class="price-unit">per month · all-in</div>
+      <ul class="detail">
+        <li>Apache 2.0 license — capability frozen, operator-controlled</li>
+        <li>Performs at Claude Sonnet / Opus 4.5 tier (per operator benchmarking)</li>
+        <li>Hardware: high-end consumer GPUs, no datacenter</li>
+        <li>Bandwidth: zero — fully disconnected, runs on solar</li>
+      </ul>
+    </div>
+    <div class="col us">
+      <div class="stack-label">Stack B — Equivalent commercial cost</div>
+      <div class="stack-name">Closed-Frontier API</div>
+      <div class="stack-desc">Same workload billed against Claude Sonnet 4.5 at current API pricing</div>
+      <div class="price expensive">~$6,000</div>
+      <div class="price-unit">per month · per single operator</div>
+      <ul class="detail">
+        <li class="us-bullet">Closed weights — capability shifts under operator</li>
+        <li class="us-bullet">Last-gen models <strong style="color:#fff;">degrade via provider quantization</strong></li>
+        <li class="us-bullet">Requires bandwidth, identity, payment relationship</li>
+        <li class="us-bullet">Cannot operate disconnected, contested, or air-gapped</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer">
+    The marginal cost of frontier-equivalent agentic AI on Chinese open weights is approaching <strong>zero</strong>.<br>
+    For a U.S. operator running sovereign or contested-environment AI, that is an economic <em>and</em> strategic fact.
+  </div>
+</div>
+</body>
+</html>

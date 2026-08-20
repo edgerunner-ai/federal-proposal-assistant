@@ -1,0 +1,68 @@
+{
+  "_comment": "Example data for human-machine-teaming template.",
+  "title": "How Operators Work With the AI Platform",
+  "subtitle": "AI augments the operator — every recommendation is transparent, every decision stays with the human",
+  "steps": [
+    {
+      "name": "MISSION TASK",
+      "sub": "Step 1",
+      "hero": false,
+      "top_icon": "👤",
+      "top_label": "OPERATOR",
+      "lines": ["Operator encounters", "decision point or", "workflow task", "requiring analysis"],
+      "bottom_note": "Initiates query"
+    },
+    {
+      "name": "CONTEXT INGESTION",
+      "sub": "Step 2",
+      "hero": false,
+      "lines": ["Platform ingests", "mission context,", "orders, intel, and", "environment data"],
+      "bottom_note": "On-device, no egress"
+    },
+    {
+      "name": "AI ANALYSIS",
+      "sub": "Step 3 — Core",
+      "hero": true,
+      "lines": ["Mission-trained models", "analyze situation", "Generate candidate COAs", "Identify dependencies", "Flag risks & alerts"],
+      "bottom_note": "Runs locally · No cloud"
+    },
+    {
+      "name": "TRANSPARENT RECOMMENDATION",
+      "sub": "Step 4",
+      "hero": false,
+      "lines": ["Results presented", "with supporting", "reasoning and", "confidence context"],
+      "bottom_note": "Human evaluates"
+    },
+    {
+      "name": "HUMAN DECISION",
+      "sub": "Step 5",
+      "hero": false,
+      "top_icon": "✓",
+      "top_label": "DECISION",
+      "lines": ["Operator accepts,", "modifies, or rejects", "AI recommendation", "Full authority retained"],
+      "bottom_note": "Human in command"
+    }
+  ],
+  "feedback": {
+    "label": "Operator action + outcome captured as structured training data → every mission improves the model"
+  },
+  "principles": [
+    {"title": "HUMAN AUTHORITY PRESERVED", "sub": "AI recommends · Human decides · Always"},
+    {"title": "NO CONNECTIVITY REQUIRED", "sub": "Full capability in DDIL environments"},
+    {"title": "EVERY MISSION TRAINS THE MODEL", "sub": "Operational use generates adaptation data"}
+  ],
+  "footer": {
+    "brand": "EDGE AI",
+    "tagline": "Augments the operator — never replaces judgment or command authority",
+    "website": "example.com"
+  },
+  "theme": {
+    "bg": "#191c20",
+    "accent": "#ee2929",
+    "panel": "#2a2d31",
+    "panel_border": "#393939",
+    "text": "#ffffff",
+    "muted": "#9f9f9f",
+    "body": "#c8c8c8"
+  }
+}

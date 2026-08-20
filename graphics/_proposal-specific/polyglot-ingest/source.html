@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>EdgeRunner — One Model, Every Language</title>
+<style>
+  :root{
+    --bg:#191c20;
+    --panel:#23272d;
+    --panel2:#2a2d31;
+    --stroke:#393939;
+    --text:#ffffff;
+    --muted:#c8c8c8;
+    --dim:#9f9f9f;
+    --red:#ee2929;
+    --red-soft:rgba(238,41,41,.10);
+    --red-edge:rgba(238,41,41,.45);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+    font-family:"Inter","Segoe UI","Helvetica Neue",Arial,"Noto Sans","Noto Sans JP","Noto Sans SC","Noto Sans Arabic",sans-serif;}
+  .canvas{
+    width:1200px;height:800px;position:relative;overflow:hidden;
+    background:radial-gradient(1200px 600px at 50% 40%, #1f242b 0%, #191c20 70%);
+  }
+
+  /* Title bar */
+  .title{
+    position:absolute;left:40px;right:40px;top:28px;
+    display:flex;align-items:baseline;justify-content:space-between;
+    border-bottom:2px solid var(--red);padding-bottom:14px;
+  }
+  .title h1{margin:0;font-size:34px;font-weight:700;letter-spacing:.3px;}
+  .title h1 .accent{color:var(--red);}
+  .title .sub{font-size:20px;color:var(--muted);font-weight:500;}
+
+  /* Three-column body */
+  .body{position:absolute;left:40px;right:40px;top:96px;bottom:80px;
+        display:grid;grid-template-columns:380px 1fr 380px;gap:24px;align-items:stretch;}
+
+  /* Column headers */
+  .col-head{font-size:18px;color:var(--dim);text-transform:uppercase;letter-spacing:1.4px;
+            font-weight:600;margin-bottom:10px;}
+  .col-head .num{color:var(--red);font-weight:700;margin-right:8px;}
+
+  /* Input column */
+  .inputs{display:flex;flex-direction:column;gap:16px;}
+  .group{background:var(--panel);border:1px solid var(--stroke);border-radius:10px;
+         padding:14px 14px 16px;}
+  .group h3{margin:0 0 10px;font-size:18px;font-weight:600;color:var(--text);
+            display:flex;align-items:center;gap:10px;}
+  .group h3::before{content:"";width:4px;height:18px;background:var(--red);border-radius:2px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    font-size:18px;line-height:1;padding:10px 12px;border-radius:8px;
+    background:var(--panel2);border:1px solid var(--stroke);color:var(--text);
+    white-space:nowrap;
+  }
+  .chip.mono{font-family:"JetBrains Mono","Consolas","Menlo",monospace;font-size:17px;letter-spacing:.2px;}
+
+  /* Center: the model */
+  .core{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .converge-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+  .model{
+    position:relative;width:300px;height:300px;border-radius:24px;
+    background:radial-gradient(circle at 50% 40%, rgba(238,41,41,.22) 0%, rgba(238,41,41,.06) 55%, rgba(238,41,41,0) 75%),
+               linear-gradient(180deg,#2a2d31 0%,#23272d 100%);
+    border:2px solid var(--red);
+    box-shadow:0 0 0 6px rgba(238,41,41,.08), 0 0 60px rgba(238,41,41,.35) inset;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    z-index:2;
+  }
+  .model .brand{font-size:28px;font-weight:800;letter-spacing:.5px;}
+  .model .brand .r{color:var(--red);}
+  .model .tag{font-size:17px;color:var(--muted);margin-top:6px;}
+  .model .pill{
+    margin-top:18px;font-size:15px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;
+    background:var(--red);color:#1a1a1a;padding:8px 14px;border-radius:999px;
+  }
+  .model .note{margin-top:14px;font-size:15px;color:var(--dim);max-width:240px;line-height:1.35;}
+
+  .core-caption{
+    position:absolute;left:0;right:0;bottom:0;text-align:center;
+    font-size:17px;color:var(--muted);font-style:italic;
+  }
+  .core-caption b{color:var(--text);font-style:normal;}
+
+  /* Output column */
+  .outputs{display:flex;flex-direction:column;gap:14px;}
+  .query{
+    background:var(--panel);border:1px solid var(--stroke);border-radius:10px;padding:14px 14px;
+  }
+  .query .lbl{font-size:14px;color:var(--dim);text-transform:uppercase;letter-spacing:1.2px;
+              font-weight:600;margin-bottom:8px;}
+  .query .q{font-size:20px;font-weight:600;color:var(--text);line-height:1.3;}
+  .query .a{margin-top:10px;font-size:16px;color:var(--muted);line-height:1.4;
+            border-left:3px solid var(--red);padding:4px 0 4px 12px;}
+
+  .commit{
+    background:var(--red-soft);border:1px solid var(--red-edge);border-radius:10px;
+    padding:14px 14px;display:flex;gap:10px;align-items:flex-start;
+  }
+  .commit .dot{width:10px;height:10px;border-radius:50%;background:var(--red);margin-top:8px;flex:0 0 auto;}
+  .commit .t{font-size:16px;color:var(--text);line-height:1.35;}
+
+  /* Footer */
+  .footer{position:absolute;left:40px;right:40px;bottom:24px;
+          display:flex;justify-content:space-between;align-items:center;
+          font-size:15px;color:var(--dim);}
+  .footer .logo{height:34px;display:block;}
+  .footer .tagline{color:var(--muted);font-weight:500;letter-spacing:.6px;}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="title">
+    <h1>One Model. <span class="accent">Every Language.</span></h1>
+    <div class="sub">Human speech and machine formats are the same token stream.</div>
+  </div>
+
+  <div class="body">
+
+    <!-- LEFT: inputs -->
+    <div>
+      <div class="col-head"><span class="num">01</span>Inputs</div>
+      <div class="inputs">
+        <div class="group">
+          <h3>Human languages</h3>
+          <div class="chips">
+            <div class="chip">English</div>
+            <div class="chip">日本語</div>
+            <div class="chip">Deutsch</div>
+            <div class="chip">中文</div>
+            <div class="chip">العربية</div>
+            <div class="chip">Русский</div>
+          </div>
+        </div>
+        <div class="group">
+          <h3>Machine &amp; tactical formats</h3>
+          <div class="chips">
+            <div class="chip mono">JSON</div>
+            <div class="chip mono">HTML</div>
+            <div class="chip mono">C++</div>
+            <div class="chip mono">Link-16</div>
+            <div class="chip mono">USMTF</div>
+            <div class="chip mono">CoT</div>
+            <div class="chip mono">NITF</div>
+            <div class="chip mono">KML</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER: convergence + model -->
+    <div class="core">
+      <svg class="converge-svg" viewBox="0 0 400 600" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="flowL" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#ee2929" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#ee2929" stop-opacity=".85"/>
+          </linearGradient>
+          <linearGradient id="flowR" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#ee2929" stop-opacity=".85"/>
+            <stop offset="100%" stop-color="#ee2929" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- left converging lines -->
+        <path d="M0,80   C120,80  140,300 200,300"  stroke="url(#flowL)" stroke-width="2" fill="none"/>
+        <path d="M0,180  C120,180 150,300 200,300"  stroke="url(#flowL)" stroke-width="2" fill="none"/>
+        <path d="M0,300  C100,300 160,300 200,300"  stroke="url(#flowL)" stroke-width="2" fill="none"/>
+        <path d="M0,420  C120,420 150,300 200,300"  stroke="url(#flowL)" stroke-width="2" fill="none"/>
+        <path d="M0,520  C120,520 140,300 200,300"  stroke="url(#flowL)" stroke-width="2" fill="none"/>
+        <!-- right diverging lines -->
+        <path d="M200,300 C260,300 280,140 400,140" stroke="url(#flowR)" stroke-width="2" fill="none"/>
+        <path d="M200,300 C260,300 280,300 400,300" stroke="url(#flowR)" stroke-width="2" fill="none"/>
+        <path d="M200,300 C260,300 280,460 400,460" stroke="url(#flowR)" stroke-width="2" fill="none"/>
+      </svg>
+
+      <div class="model">
+        <div class="brand">Edge<span class="r">Runner</span></div>
+        <div class="tag">On-device · Air-gapped</div>
+        <div class="pill">One Model</div>
+        <div class="note">Every input — spoken, written, or wire-format — is just tokens.</div>
+      </div>
+
+      <div class="core-caption">
+        <b>No translation layer.</b> No external service. No connectivity required.
+      </div>
+    </div>
+
+    <!-- RIGHT: operator outputs -->
+    <div>
+      <div class="col-head"><span class="num">02</span>Operator queries</div>
+      <div class="outputs">
+        <div class="query">
+          <div class="lbl">Ask in plain English</div>
+          <div class="q">"Give me a SITREP."</div>
+          <div class="a">Fuses last-hour Link-16 tracks, CoT events, USMTF reports, and analyst chat into a single narrative.</div>
+        </div>
+        <div class="query">
+          <div class="lbl">Ask the next-step question</div>
+          <div class="q">"How does the last hour's activity change my COAs?"</div>
+          <div class="a">Diffs current picture against the prior COA assumptions; flags which branches and sequels are now stressed.</div>
+        </div>
+        <div class="commit">
+          <div class="dot"></div>
+          <div class="t"><b style="color:#fff">Same model, same prompt</b> — in the SCIF, on the FOB, or on the aircraft.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <img class="logo" src="edgerunner-logo.png" alt="EdgeRunner AI" />
+    <div class="tagline">Local · Sovereign · Mission-specific</div>
+  </div>
+
+</div>
+</body>
+</html>

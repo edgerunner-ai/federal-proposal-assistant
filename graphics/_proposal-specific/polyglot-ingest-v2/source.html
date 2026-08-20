@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>EdgeRunner — One Model. Every Language. Every Format. (v2)</title>
+<style>
+  :root{
+    --bg:#191c20;
+    --panel:#23272d;
+    --panel2:#2a2d31;
+    --stroke:#393939;
+    --text:#ffffff;
+    --muted:#c8c8c8;
+    --dim:#9f9f9f;
+    --red:#ee2929;
+    --red-soft:rgba(238,41,41,.10);
+    --red-edge:rgba(238,41,41,.45);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+    font-family:"Inter","Segoe UI","Helvetica Neue",Arial,"Noto Sans","Noto Sans JP","Noto Sans SC","Noto Sans Arabic","Noto Sans KR",sans-serif;}
+  .canvas{
+    width:1400px;height:900px;position:relative;overflow:hidden;
+    background:radial-gradient(1400px 700px at 50% 40%, #1f242b 0%, #191c20 70%);
+  }
+
+  /* Title */
+  .title{
+    position:absolute;left:40px;right:40px;top:24px;
+    border-bottom:2px solid var(--red);padding-bottom:12px;
+  }
+  .title h1{margin:0;font-size:32px;font-weight:800;letter-spacing:.3px;line-height:1.15;}
+  .title h1 .accent{color:var(--red);}
+  .title .sub{font-size:18px;color:var(--muted);font-weight:500;margin-top:4px;}
+
+  /* 3-beat tagline */
+  .tagline{
+    position:absolute;left:0;right:0;top:108px;text-align:center;
+    font-size:18px;font-weight:700;letter-spacing:3.5px;color:var(--red);
+  }
+  .tagline span{margin:0 14px;}
+  .tagline .dot{color:var(--dim);margin:0 4px;}
+
+  /* Body grid */
+  .body{position:absolute;left:40px;right:40px;top:152px;bottom:64px;
+        display:grid;grid-template-columns:420px 1fr 420px;gap:24px;align-items:stretch;}
+
+  .col-head{font-size:15px;color:var(--dim);text-transform:uppercase;letter-spacing:1.5px;
+            font-weight:700;margin-bottom:8px;}
+  .col-head .num{color:var(--red);font-weight:800;margin-right:8px;}
+
+  /* Input column */
+  .inputs{display:flex;flex-direction:column;gap:12px;}
+  .group{background:var(--panel);border:1px solid var(--stroke);border-radius:10px;
+         padding:12px 14px 14px;}
+  .group h3{margin:0 0 10px;font-size:16px;font-weight:700;color:var(--text);
+            display:flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:.8px;}
+  .group h3::before{content:"";width:4px;height:16px;background:var(--red);border-radius:2px;}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;}
+  .chip{
+    font-size:16px;line-height:1;padding:9px 11px;border-radius:7px;
+    background:var(--panel2);border:1px solid var(--stroke);color:var(--text);
+    white-space:nowrap;
+  }
+  .chip.mono{font-family:"JetBrains Mono","Consolas","Menlo",monospace;font-size:15px;letter-spacing:.2px;}
+  .chip.more{color:var(--dim);border-style:dashed;}
+
+  /* Center: model + capability cluster */
+  .core{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:8px;}
+  .converge-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+
+  .model{
+    position:relative;width:280px;height:280px;border-radius:24px;
+    background:radial-gradient(circle at 50% 40%, rgba(238,41,41,.22) 0%, rgba(238,41,41,.06) 55%, rgba(238,41,41,0) 75%),
+               linear-gradient(180deg,#2a2d31 0%,#23272d 100%);
+    border:2px solid var(--red);
+    box-shadow:0 0 0 6px rgba(238,41,41,.08), 0 0 60px rgba(238,41,41,.35) inset;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    z-index:2;
+  }
+  .model img{height:62px;display:block;margin-bottom:6px;}
+  .model .tag{font-size:15px;color:var(--muted);}
+  .model .pill{
+    margin-top:14px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+    background:var(--red);color:#1a1a1a;padding:7px 13px;border-radius:999px;
+  }
+  .model .note{margin-top:10px;font-size:13px;color:var(--dim);max-width:230px;line-height:1.35;}
+
+  /* Capability cluster */
+  .caps{
+    margin-top:18px;width:100%;
+    display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;z-index:2;position:relative;
+  }
+  .cap{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--text);}
+  .cap .mark{width:22px;height:22px;border-radius:5px;background:var(--red-soft);
+             border:1px solid var(--red-edge);display:flex;align-items:center;justify-content:center;
+             color:var(--red);font-weight:800;font-size:13px;flex:0 0 auto;}
+
+  /* Right column: question + answer pairs */
+  .qa-list{display:flex;flex-direction:column;gap:8px;}
+  .qa{
+    display:grid;grid-template-columns:1fr;gap:6px;
+    background:var(--panel);border:1px solid var(--stroke);border-radius:10px;
+    padding:10px 12px;
+  }
+  .qa .q{font-size:15px;font-weight:600;color:var(--text);line-height:1.3;}
+  .qa .q::before{content:"\201C";color:var(--red);margin-right:2px;}
+  .qa .q::after{content:"\201D";color:var(--red);margin-left:2px;}
+  .qa .a{
+    display:flex;align-items:baseline;gap:8px;
+    font-size:13px;color:var(--muted);line-height:1.35;
+    border-left:3px solid var(--red);padding:2px 0 2px 10px;
+  }
+  .qa .a .lbl{
+    font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--red);
+    white-space:nowrap;
+  }
+
+  /* Footer */
+  .footer{position:absolute;left:40px;right:40px;bottom:18px;
+          display:flex;justify-content:space-between;align-items:center;}
+  .footer .logo{height:30px;display:block;}
+  .footer .tagline-r{color:var(--muted);font-weight:500;letter-spacing:.6px;font-size:14px;}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="title">
+    <h1>One Model. <span class="accent">Every Language. Every Format.</span></h1>
+    <div class="sub">Human speech and machine wire-formats are the same token stream — on-device, air-gapped, local.</div>
+  </div>
+
+  <div class="tagline">
+    <span>DISCONNECTED</span><span class="dot">·</span><span>DETERMINED</span><span class="dot">·</span><span>DECISIVE</span>
+  </div>
+
+  <div class="body">
+
+    <!-- LEFT: inputs -->
+    <div>
+      <div class="col-head"><span class="num">01</span>Inputs</div>
+      <div class="inputs">
+        <div class="group">
+          <h3>Human languages</h3>
+          <div class="chips">
+            <div class="chip">English</div>
+            <div class="chip">日本語</div>
+            <div class="chip">Deutsch</div>
+            <div class="chip">中文</div>
+            <div class="chip">العربية</div>
+            <div class="chip">Русский</div>
+            <div class="chip">Français</div>
+            <div class="chip">한국어</div>
+            <div class="chip">Español</div>
+            <div class="chip more">…and more</div>
+          </div>
+        </div>
+        <div class="group">
+          <h3>Machine, wire &amp; tactical formats</h3>
+          <div class="chips">
+            <div class="chip mono">JSON</div>
+            <div class="chip mono">XML</div>
+            <div class="chip mono">HTML</div>
+            <div class="chip mono">C++</div>
+            <div class="chip mono">Link-16</div>
+            <div class="chip mono">USMTF</div>
+            <div class="chip mono">CoT</div>
+            <div class="chip mono">NATO STANAG</div>
+            <div class="chip mono">NITF</div>
+            <div class="chip mono">KML / GeoTIFF</div>
+            <div class="chip mono">Voice / Audio</div>
+            <div class="chip mono">Video / ISR</div>
+            <div class="chip mono">Logs / CSV</div>
+            <div class="chip more">…and more</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER: convergence + model + capabilities -->
+    <div class="core">
+      <svg class="converge-svg" viewBox="0 0 400 700" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="flowL" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#ee2929" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#ee2929" stop-opacity=".85"/>
+          </linearGradient>
+          <linearGradient id="flowR" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#ee2929" stop-opacity=".85"/>
+            <stop offset="100%" stop-color="#ee2929" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- left converging -->
+        <path d="M0,60   C140,60  160,220 200,220" stroke="url(#flowL)" stroke-width="2" fill="none"/>
+        <path d="M0,160  C140,160 170,220 200,220" stroke="url(#flowL)" stroke-width="2" fill="none"/>
+        <path d="M0,220  C120,220 180,220 200,220" stroke="url(#flowL)" stroke-width="2" fill="none"/>
+        <path d="M0,320  C140,320 170,220 200,220" stroke="url(#flowL)" stroke-width="2" fill="none"/>
+        <path d="M0,440  C140,440 160,220 200,220" stroke="url(#flowL)" stroke-width="2" fill="none"/>
+        <!-- right diverging -->
+        <path d="M200,220 C260,220 280,80  400,80"  stroke="url(#flowR)" stroke-width="2" fill="none"/>
+        <path d="M200,220 C260,220 280,180 400,180" stroke="url(#flowR)" stroke-width="2" fill="none"/>
+        <path d="M200,220 C260,220 280,260 400,260" stroke="url(#flowR)" stroke-width="2" fill="none"/>
+        <path d="M200,220 C260,220 280,340 400,340" stroke="url(#flowR)" stroke-width="2" fill="none"/>
+        <path d="M200,220 C260,220 280,420 400,420" stroke="url(#flowR)" stroke-width="2" fill="none"/>
+      </svg>
+
+      <div class="model">
+        <img src="edgerunner-logo.png" alt="EdgeRunner" />
+        <div class="tag">On-device · Air-gapped</div>
+        <div class="pill">One Model</div>
+        <div class="note">Every input — spoken, written, or wire-format — is just tokens.</div>
+      </div>
+
+      <div class="caps">
+        <div class="cap"><span class="mark">N</span>Normalizes all inputs</div>
+        <div class="cap"><span class="mark">U</span>Understands context</div>
+        <div class="cap"><span class="mark">C</span>Correlates &amp; infers</div>
+        <div class="cap"><span class="mark">L</span>Runs inference locally</div>
+        <div class="cap"><span class="mark">P</span>Protects sensitive data</div>
+        <div class="cap"><span class="mark">D</span>Operates disconnected</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: question / answer pairs -->
+    <div>
+      <div class="col-head"><span class="num">02</span>Ask simple questions — get actionable answers</div>
+      <div class="qa-list">
+        <div class="qa">
+          <div class="q">Give me a SITREP.</div>
+          <div class="a"><span class="lbl">SITREP →</span>Fused narrative across last-hour Link-16, CoT, USMTF, and analyst chat.</div>
+        </div>
+        <div class="qa">
+          <div class="q">How does the last hour change my COAs?</div>
+          <div class="a"><span class="lbl">COA Update →</span>Diff against prior assumptions; flags stressed branches and sequels.</div>
+        </div>
+        <div class="qa">
+          <div class="q">What threats are emerging?</div>
+          <div class="a"><span class="lbl">Threat Assessment →</span>Emerging activity ranked by severity and confidence.</div>
+        </div>
+        <div class="qa">
+          <div class="q">Which assets are best positioned to respond?</div>
+          <div class="a"><span class="lbl">Asset Recommendation →</span>Available platforms ordered by reach, readiness, and risk.</div>
+        </div>
+        <div class="qa">
+          <div class="q">What does this mean for my mission?</div>
+          <div class="a"><span class="lbl">Mission Impact →</span>Plain-language implications and recommended next actions.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <img class="logo" src="edgerunner-logo.png" alt="EdgeRunner AI" />
+    <div class="tagline-r">Local · Sovereign · Mission-specific</div>
+  </div>
+
+</div>
+</body>
+</html>

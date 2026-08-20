@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{title}}</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:{{theme.bg}};font-family:'Segoe UI',system-ui,sans-serif;
+       display:flex;justify-content:center;align-items:center;
+       min-height:100vh;padding:20px}
+  .canvas{width:1200px;background:{{theme.bg}};border-radius:12px;
+          overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div style="padding:18px 32px 8px;text-align:center;border-bottom:2px solid {{theme.accent}}">
+    <h1 style="color:{{theme.text}};font-size:28px;font-weight:700;letter-spacing:.5px;text-transform:uppercase">{{title}}</h1>
+    <p style="color:{{theme.muted}};font-size:15px;margin-top:4px">{{subtitle}}</p>
+  </div>
+
+  <svg viewBox="0 0 1200 490" xmlns="http://www.w3.org/2000/svg" style="display:block">
+    <defs>
+      <linearGradient id="specGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="{{theme.panel}}"/>
+        <stop offset="100%" stop-color="rgba(238,41,41,.4)"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Spectrum bar -->
+    <rect x="80" y="34" width="1040" height="8" rx="4" fill="url(#specGrad)"/>
+    <circle cx="80" cy="38" r="6" fill="{{theme.panel_border}}"/>
+    <circle cx="1120" cy="38" r="6" fill="{{theme.accent}}"/>
+    <text x="80" y="26" fill="{{theme.muted}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{spectrum.left_label}}</text>
+    <text x="1120" y="26" fill="{{theme.accent}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{spectrum.right_label}}</text>
+
+    <!-- ===== COLUMN 0 (neutral) ===== -->
+    <rect x="60" y="62" width="250" height="330" rx="10" fill="{{theme.panel}}" stroke="{{theme.panel_border}}" stroke-width="1.5"/>
+    <text x="185" y="82" fill="{{theme.text}}" font-size="17" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{columns.0.name}}</text>
+    <text x="185" y="100" fill="{{theme.muted}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.0.sub}}</text>
+
+    <text x="185" y="134" fill="{{theme.accent}}" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">DEPLOYMENT</text>
+    <text x="185" y="155" fill="{{theme.body}}" font-size="14" font-family="Segoe UI" text-anchor="middle">{{columns.0.deployment.0}}</text>
+    <text x="185" y="175" fill="{{theme.body}}" font-size="14" font-family="Segoe UI" text-anchor="middle">{{columns.0.deployment.1}}</text>
+    <text x="185" y="195" fill="{{theme.body}}" font-size="14" font-family="Segoe UI" text-anchor="middle">{{columns.0.deployment.2}}</text>
+
+    <line x1="80" y1="212" x2="300" y2="212" stroke="{{theme.panel_border}}" stroke-width="1" opacity=".5"/>
+    <text x="185" y="232" fill="{{theme.accent}}" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">USE CASES</text>
+    <text x="185" y="251" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.0.use_cases.0}}</text>
+    <text x="185" y="268" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.0.use_cases.1}}</text>
+    <text x="185" y="285" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.0.use_cases.2}}</text>
+
+    <line x1="80" y1="318" x2="300" y2="318" stroke="{{theme.panel_border}}" stroke-width="1" opacity=".5"/>
+    <text x="185" y="338" fill="{{theme.accent}}" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">CONNECTIVITY</text>
+    <text x="185" y="357" fill="{{theme.body}}" font-size="14" font-family="Segoe UI" text-anchor="middle">{{columns.0.connectivity}}</text>
+    <rect x="110" y="368" width="150" height="24" rx="12" fill="{{theme.panel}}" stroke="{{theme.panel_border}}"/>
+    <text x="185" y="384" fill="{{theme.muted}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.0.connectivity_badge}}</text>
+
+    <!-- ===== COLUMN 1 (neutral) ===== -->
+    <rect x="330" y="62" width="250" height="330" rx="10" fill="{{theme.panel}}" stroke="{{theme.panel_border}}" stroke-width="1.5"/>
+    <text x="455" y="82" fill="{{theme.text}}" font-size="17" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{columns.1.name}}</text>
+    <text x="455" y="100" fill="{{theme.muted}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.1.sub}}</text>
+
+    <text x="455" y="134" fill="{{theme.accent}}" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">DEPLOYMENT</text>
+    <text x="455" y="155" fill="{{theme.body}}" font-size="14" font-family="Segoe UI" text-anchor="middle">{{columns.1.deployment.0}}</text>
+    <text x="455" y="175" fill="{{theme.body}}" font-size="14" font-family="Segoe UI" text-anchor="middle">{{columns.1.deployment.1}}</text>
+    <text x="455" y="195" fill="{{theme.body}}" font-size="14" font-family="Segoe UI" text-anchor="middle">{{columns.1.deployment.2}}</text>
+
+    <line x1="350" y1="212" x2="570" y2="212" stroke="{{theme.panel_border}}" stroke-width="1" opacity=".5"/>
+    <text x="455" y="232" fill="{{theme.accent}}" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">USE CASES</text>
+    <text x="455" y="251" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.1.use_cases.0}}</text>
+    <text x="455" y="268" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.1.use_cases.1}}</text>
+    <text x="455" y="285" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.1.use_cases.2}}</text>
+
+    <line x1="350" y1="318" x2="570" y2="318" stroke="{{theme.panel_border}}" stroke-width="1" opacity=".5"/>
+    <text x="455" y="338" fill="{{theme.accent}}" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">CONNECTIVITY</text>
+    <text x="455" y="357" fill="{{theme.body}}" font-size="14" font-family="Segoe UI" text-anchor="middle">{{columns.1.connectivity}}</text>
+    <rect x="365" y="368" width="180" height="24" rx="12" fill="{{theme.panel}}" stroke="{{theme.panel_border}}"/>
+    <text x="455" y="384" fill="{{theme.muted}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.1.connectivity_badge}}</text>
+
+    <!-- ===== COLUMN 2 (hero) ===== -->
+    <rect x="600" y="62" width="250" height="330" rx="10" fill="rgba(238,41,41,.08)" stroke="{{theme.accent}}" stroke-width="2"/>
+    <text x="725" y="82" fill="{{theme.accent}}" font-size="17" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{columns.2.name}}</text>
+    <text x="725" y="100" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.2.sub}}</text>
+
+    <text x="725" y="134" fill="{{theme.accent}}" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">DEPLOYMENT</text>
+    <text x="725" y="155" fill="{{theme.body}}" font-size="14" font-family="Segoe UI" text-anchor="middle">{{columns.2.deployment.0}}</text>
+    <text x="725" y="175" fill="{{theme.body}}" font-size="14" font-family="Segoe UI" text-anchor="middle">{{columns.2.deployment.1}}</text>
+    <text x="725" y="195" fill="{{theme.body}}" font-size="14" font-family="Segoe UI" text-anchor="middle">{{columns.2.deployment.2}}</text>
+
+    <line x1="620" y1="212" x2="840" y2="212" stroke="{{theme.accent}}" stroke-width="1" opacity=".3"/>
+    <text x="725" y="232" fill="{{theme.accent}}" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">USE CASES</text>
+    <text x="725" y="251" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.2.use_cases.0}}</text>
+    <text x="725" y="268" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.2.use_cases.1}}</text>
+    <text x="725" y="285" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.2.use_cases.2}}</text>
+
+    <line x1="620" y1="318" x2="840" y2="318" stroke="{{theme.accent}}" stroke-width="1" opacity=".3"/>
+    <text x="725" y="338" fill="{{theme.accent}}" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">CONNECTIVITY</text>
+    <text x="725" y="357" fill="{{theme.body}}" font-size="14" font-family="Segoe UI" text-anchor="middle">{{columns.2.connectivity}}</text>
+    <rect x="635" y="368" width="180" height="24" rx="12" fill="#2a1010" stroke="{{theme.accent}}" stroke-width="1.5"/>
+    <text x="725" y="384" fill="{{theme.accent}}" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{columns.2.connectivity_badge}}</text>
+
+    <!-- ===== COLUMN 3 (hero, wider) ===== -->
+    <rect x="870" y="62" width="270" height="330" rx="10" fill="rgba(238,41,41,.12)" stroke="{{theme.accent}}" stroke-width="2.5"/>
+    <text x="1005" y="82" fill="{{theme.accent}}" font-size="17" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{columns.3.name}}</text>
+    <text x="1005" y="100" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.3.sub}}</text>
+
+    <text x="1005" y="134" fill="{{theme.accent}}" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">DEPLOYMENT</text>
+    <text x="1005" y="155" fill="{{theme.body}}" font-size="14" font-family="Segoe UI" text-anchor="middle">{{columns.3.deployment.0}}</text>
+    <text x="1005" y="175" fill="{{theme.body}}" font-size="14" font-family="Segoe UI" text-anchor="middle">{{columns.3.deployment.1}}</text>
+    <text x="1005" y="195" fill="{{theme.body}}" font-size="14" font-family="Segoe UI" text-anchor="middle">{{columns.3.deployment.2}}</text>
+
+    <line x1="890" y1="212" x2="1120" y2="212" stroke="{{theme.accent}}" stroke-width="1" opacity=".4"/>
+    <text x="1005" y="232" fill="{{theme.accent}}" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">USE CASES</text>
+    <text x="1005" y="257" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.3.use_cases.0}}</text>
+    <text x="1005" y="277" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.3.use_cases.1}}</text>
+    <text x="1005" y="297" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{columns.3.use_cases.2}}</text>
+
+    <line x1="890" y1="318" x2="1120" y2="318" stroke="{{theme.accent}}" stroke-width="1" opacity=".4"/>
+    <text x="1005" y="338" fill="{{theme.accent}}" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">CONNECTIVITY</text>
+    <text x="1005" y="357" fill="{{theme.body}}" font-size="14" font-family="Segoe UI" text-anchor="middle">{{columns.3.connectivity}}</text>
+    <rect x="885" y="368" width="240" height="24" rx="12" fill="#2a1010" stroke="{{theme.accent}}" stroke-width="1.5"/>
+    <text x="1005" y="384" fill="{{theme.accent}}" font-size="13" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{columns.3.connectivity_badge}}</text>
+
+    <!-- Bottom tagline -->
+    <text x="600" y="438" fill="{{theme.muted}}" font-size="15" font-family="Segoe UI" text-anchor="middle">{{tagline}}</text>
+    <rect x="300" y="454" width="600" height="2" rx="1" fill="{{theme.accent}}" opacity=".3"/>
+  </svg>
+
+  <div style="background:#111315;padding:10px 32px;display:flex;justify-content:space-between;align-items:center">
+    <span style="color:{{theme.accent}};font-size:13px;font-weight:700;opacity:.8;letter-spacing:.5px">{{footer.brand}}</span>
+    <span style="color:{{theme.muted}};font-size:12px">{{footer.tagline}}</span>
+    <span style="color:{{theme.muted}};font-size:12px">{{footer.website}}</span>
+  </div>
+
+</div>
+</body>
+</html>

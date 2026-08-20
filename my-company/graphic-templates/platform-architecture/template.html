@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{title}}</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:{{theme.bg}};font-family:'Segoe UI',system-ui,sans-serif;
+       display:flex;justify-content:center;align-items:center;
+       min-height:100vh;padding:20px}
+  .canvas{width:1200px;background:{{theme.bg}};border-radius:12px;
+          overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div style="padding:18px 32px 8px;text-align:center;border-bottom:2px solid {{theme.accent}}">
+    <h1 style="color:{{theme.text}};font-size:28px;font-weight:700;letter-spacing:.5px;text-transform:uppercase">{{title}}</h1>
+    <p style="color:{{theme.muted}};font-size:15px;margin-top:4px">{{subtitle}}</p>
+  </div>
+
+  <svg viewBox="0 0 1200 490" xmlns="http://www.w3.org/2000/svg" style="display:block">
+    <defs>
+      <marker id="ar" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0,10 3.5,0 7" fill="{{theme.text}}"/>
+      </marker>
+      <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0,10 3.5,0 7" fill="{{theme.accent}}"/>
+      </marker>
+    </defs>
+
+    <!-- Outer container -->
+    <rect x="40" y="30" width="1120" height="400" rx="14" fill="rgba(238,41,41,.04)" stroke="{{theme.accent}}" stroke-width="1.5" stroke-dasharray="8,5"/>
+    <text x="90" y="58" fill="{{theme.accent}}" font-size="13" font-weight="700" font-family="Segoe UI" letter-spacing=".5">SECURE RUNTIME</text>
+
+    <!-- Layer 0: Inputs — x=52, w=170, cx=137 -->
+    <rect x="52" y="72" width="170" height="330" rx="10" fill="{{theme.panel}}" stroke="{{theme.panel_border}}" stroke-width="1.5"/>
+    <text x="137" y="98" fill="{{theme.text}}" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{layers.0.name}}</text>
+    <rect x="64" y="108" width="146" height="34" rx="6" fill="#1e2124" stroke="{{theme.panel_border}}"/>
+    <text x="137" y="130" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.0.section1_items.0}}</text>
+    <rect x="64" y="150" width="146" height="34" rx="6" fill="#1e2124" stroke="{{theme.panel_border}}"/>
+    <text x="137" y="172" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.0.section1_items.1}}</text>
+    <rect x="64" y="192" width="146" height="34" rx="6" fill="#1e2124" stroke="{{theme.panel_border}}"/>
+    <text x="137" y="214" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.0.section1_items.2}}</text>
+    <rect x="64" y="234" width="146" height="34" rx="6" fill="#1e2124" stroke="{{theme.panel_border}}"/>
+    <text x="137" y="256" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.0.section1_items.3}}</text>
+    <rect x="64" y="276" width="146" height="34" rx="6" fill="#1e2124" stroke="{{theme.panel_border}}"/>
+    <text x="137" y="298" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.0.section1_items.4}}</text>
+    <rect x="64" y="318" width="146" height="34" rx="6" fill="#1e2124" stroke="{{theme.panel_border}}"/>
+    <text x="137" y="340" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.0.section1_items.5}}</text>
+
+    <!-- Arrow 0→1 -->
+    <line x1="222" y1="237" x2="264" y2="237" stroke="{{theme.text}}" stroke-width="2" marker-end="url(#ar)"/>
+
+    <!-- Layer 1: Data Ingestion — x=266, w=190, cx=361 -->
+    <rect x="266" y="72" width="190" height="330" rx="10" fill="{{theme.panel}}" stroke="{{theme.panel_border}}" stroke-width="1.5"/>
+    <text x="361" y="95" fill="{{theme.text}}" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{layers.1.name}}</text>
+    <text x="361" y="112" fill="{{theme.muted}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{layers.1.sub}}</text>
+    <text x="361" y="140" fill="{{theme.accent}}" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{layers.1.section1_label}}</text>
+    <text x="361" y="160" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.1.section1_items.0}}</text>
+    <text x="361" y="180" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.1.section1_items.1}}</text>
+    <text x="361" y="200" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.1.section1_items.2}}</text>
+    <text x="361" y="220" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.1.section1_items.3}}</text>
+    <text x="361" y="240" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.1.section1_items.4}}</text>
+    <line x1="284" y1="258" x2="448" y2="258" stroke="{{theme.panel_border}}" stroke-width="1" opacity=".5"/>
+    <text x="361" y="278" fill="{{theme.accent}}" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{layers.1.section2_label}}</text>
+    <text x="361" y="298" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.1.section2_items.0}}</text>
+    <text x="361" y="318" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.1.section2_items.1}}</text>
+    <text x="361" y="338" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.1.section2_items.2}}</text>
+
+    <!-- Arrow 1→2 -->
+    <line x1="456" y1="237" x2="498" y2="237" stroke="{{theme.text}}" stroke-width="2" marker-end="url(#ar)"/>
+
+    <!-- Layer 2: Core Engine (hero) — x=500, w=190, cx=595 -->
+    <rect x="500" y="72" width="190" height="330" rx="10" fill="rgba(238,41,41,.08)" stroke="{{theme.accent}}" stroke-width="2"/>
+    <text x="595" y="95" fill="{{theme.accent}}" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{layers.2.name}}</text>
+    <text x="595" y="112" fill="{{theme.body}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{layers.2.sub}}</text>
+    <text x="595" y="140" fill="{{theme.accent}}" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{layers.2.section1_label}}</text>
+    <text x="595" y="160" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.2.section1_items.0}}</text>
+    <text x="595" y="180" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.2.section1_items.1}}</text>
+    <text x="595" y="200" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.2.section1_items.2}}</text>
+    <text x="595" y="220" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.2.section1_items.3}}</text>
+    <text x="595" y="240" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.2.section1_items.4}}</text>
+    <line x1="518" y1="258" x2="682" y2="258" stroke="{{theme.accent}}" stroke-width="1" opacity=".3"/>
+    <text x="595" y="278" fill="{{theme.accent}}" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{layers.2.section2_label}}</text>
+    <text x="595" y="298" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.2.section2_items.0}}</text>
+    <text x="595" y="318" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.2.section2_items.1}}</text>
+    <text x="595" y="338" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.2.section2_items.2}}</text>
+
+    <!-- Arrow 2→3 -->
+    <line x1="690" y1="237" x2="732" y2="237" stroke="{{theme.text}}" stroke-width="2" marker-end="url(#ar)"/>
+
+    <!-- Layer 3: Reasoning — x=734, w=190, cx=829 -->
+    <rect x="734" y="72" width="190" height="330" rx="10" fill="{{theme.panel}}" stroke="{{theme.panel_border}}" stroke-width="1.5"/>
+    <text x="829" y="95" fill="{{theme.text}}" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{layers.3.name}}</text>
+    <text x="829" y="112" fill="{{theme.muted}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{layers.3.sub}}</text>
+    <text x="829" y="140" fill="{{theme.accent}}" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{layers.3.section1_label}}</text>
+    <text x="829" y="160" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.3.section1_items.0}}</text>
+    <text x="829" y="180" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.3.section1_items.1}}</text>
+    <text x="829" y="200" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.3.section1_items.2}}</text>
+    <text x="829" y="220" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.3.section1_items.3}}</text>
+    <text x="829" y="240" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.3.section1_items.4}}</text>
+    <line x1="752" y1="258" x2="916" y2="258" stroke="{{theme.panel_border}}" stroke-width="1" opacity=".5"/>
+    <text x="829" y="278" fill="{{theme.accent}}" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{layers.3.section2_label}}</text>
+    <text x="829" y="298" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.3.section2_items.0}}</text>
+    <text x="829" y="318" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.3.section2_items.1}}</text>
+    <text x="829" y="338" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{layers.3.section2_items.2}}</text>
+
+    <!-- Arrow 3→4 -->
+    <line x1="924" y1="237" x2="966" y2="237" stroke="{{theme.text}}" stroke-width="2" marker-end="url(#ar)"/>
+
+    <!-- Layer 4: Outputs — x=968, w=180, cx=1058 -->
+    <rect x="968" y="72" width="180" height="330" rx="10" fill="{{theme.panel}}" stroke="{{theme.panel_border}}" stroke-width="1.5"/>
+    <text x="1058" y="95" fill="{{theme.text}}" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{layers.4.name}}</text>
+    <text x="1058" y="112" fill="{{theme.muted}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{layers.4.sub}}</text>
+    <rect x="980" y="120" width="158" height="40" rx="6" fill="rgba(238,41,41,.08)" stroke="{{theme.accent}}" stroke-width="1"/>
+    <text x="1059" y="144" fill="{{theme.text}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{layers.4.section1_items.0}}</text>
+    <rect x="980" y="167" width="158" height="40" rx="6" fill="rgba(238,41,41,.08)" stroke="{{theme.accent}}" stroke-width="1"/>
+    <text x="1059" y="191" fill="{{theme.text}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{layers.4.section1_items.1}}</text>
+    <rect x="980" y="214" width="158" height="40" rx="6" fill="rgba(238,41,41,.08)" stroke="{{theme.accent}}" stroke-width="1"/>
+    <text x="1059" y="238" fill="{{theme.text}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{layers.4.section1_items.2}}</text>
+    <rect x="980" y="261" width="158" height="40" rx="6" fill="rgba(238,41,41,.08)" stroke="{{theme.accent}}" stroke-width="1"/>
+    <text x="1059" y="285" fill="{{theme.text}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{layers.4.section1_items.3}}</text>
+    <rect x="980" y="308" width="158" height="40" rx="6" fill="rgba(238,41,41,.08)" stroke="{{theme.accent}}" stroke-width="1"/>
+    <text x="1059" y="332" fill="{{theme.text}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{layers.4.section1_items.4}}</text>
+    <rect x="980" y="355" width="158" height="40" rx="6" fill="rgba(238,41,41,.08)" stroke="{{theme.accent}}" stroke-width="1"/>
+    <text x="1059" y="379" fill="{{theme.text}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{layers.4.section1_items.5}}</text>
+
+    <!-- Feedback arc -->
+    <path d="M 1058 432 Q 1058 458 600 458 Q 248 458 137 432" stroke="{{theme.accent}}" stroke-width="1.5" fill="none" stroke-dasharray="6,3" marker-end="url(#arr)" opacity=".6"/>
+    <text x="600" y="474" fill="{{theme.accent}}" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle" opacity=".8">{{feedback.label}}</text>
+  </svg>
+
+  <div style="background:#111315;padding:10px 32px;display:flex;justify-content:space-between;align-items:center">
+    <span style="color:{{theme.accent}};font-size:13px;font-weight:700;opacity:.8;letter-spacing:.5px">{{footer.brand}}</span>
+    <span style="color:{{theme.muted}};font-size:12px">{{footer.tagline}}</span>
+    <span style="color:{{theme.muted}};font-size:12px">{{footer.website}}</span>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{
+  "_comment": "Example data for customer-map template. Generic defense AI customer footprint.",
+  "title": "Operational Footprint",
+  "subtitle": "Active pilots, agreements, and deployments across defense and intelligence community",
+  "column_headers": ["CUSTOMER", "MISSION AREA", "DEPLOYMENT TYPE", "ENVIRONMENT", "STATUS"],
+  "rows": [
+    {
+      "customer": "SOF Command",
+      "customer_sub": "Special Operations Forces",
+      "cells": ["SOF Operations · DDIL AI", "Operational Pilot", "DDIL / Air-Gapped"],
+      "status": "ACTIVE",
+      "status_active": true
+    },
+    {
+      "customer": "Air Force Research Lab",
+      "customer_sub": "Information Directorate",
+      "cells": ["On-Device AI · Domain Models", "Research Agreement", "On-Device / On-Prem"],
+      "status": "ACTIVE",
+      "status_active": true
+    },
+    {
+      "customer": "Space Acquisition",
+      "customer_sub": "Asst. Secretary / Space",
+      "cells": ["Acquisitions Workflow AI", "IL5 Cloud Deployment", "Azure IL5"],
+      "status": "ACTIVE",
+      "status_active": true
+    },
+    {
+      "customer": "Army Division",
+      "customer_sub": "AI Integration Center",
+      "cells": ["Tactical AI · Mission Support", "Operational Pilot", "On-Device / Classified"],
+      "status": "ACTIVE",
+      "status_active": true
+    },
+    {
+      "customer": "Naval Warfare Center",
+      "customer_sub": "Information Warfare",
+      "cells": ["Naval AI Capability", "Operational Pilot", "On-Prem / Classified"],
+      "status": "ACTIVE",
+      "status_active": true
+    },
+    {
+      "customer": "Space Force",
+      "customer_sub": "",
+      "cells": ["Space Domain AI", "Active Engagement", "TBD"],
+      "status": "ENGAGED",
+      "status_active": false
+    }
+  ],
+  "stats": [
+    {"value": "6+", "label": "Active Customers & Partners"},
+    {"value": "4", "label": "Service Branches"},
+    {"value": "$17.5M", "label": "Investment Raised"},
+    {"value": "TRL 7+", "label": "Operational — No R&D Phase Required"}
+  ],
+  "footer": {
+    "brand": "EDGE AI · CAGE 9Z176 · UEI SLZTJUA8DBD3",
+    "tagline": "Founded 2024 · example.com"
+  },
+  "theme": {
+    "bg": "#191c20",
+    "accent": "#ee2929",
+    "panel": "#2a2d31",
+    "panel_border": "#393939",
+    "text": "#ffffff",
+    "muted": "#9f9f9f",
+    "body": "#c8c8c8"
+  }
+}

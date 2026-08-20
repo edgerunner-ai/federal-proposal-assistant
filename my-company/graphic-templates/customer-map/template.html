@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{title}}</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:{{theme.bg}};font-family:'Segoe UI',system-ui,sans-serif;
+       display:flex;justify-content:center;align-items:center;
+       min-height:100vh;padding:20px}
+  .canvas{width:1200px;background:{{theme.bg}};border-radius:12px;
+          overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+  .grid{display:grid;grid-template-columns:220px 1fr 1fr 1fr 1fr;gap:2px;margin-bottom:2px}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div style="padding:18px 32px 8px;text-align:center;border-bottom:2px solid {{theme.accent}}">
+    <h1 style="color:{{theme.text}};font-size:28px;font-weight:700;letter-spacing:.5px;text-transform:uppercase">{{title}}</h1>
+    <p style="color:{{theme.muted}};font-size:15px;margin-top:4px">{{subtitle}}</p>
+  </div>
+
+  <div style="padding:20px 32px">
+
+    <!-- Column headers -->
+    <div class="grid">
+      <div style="background:rgba(238,41,41,.12);border:1px solid {{theme.accent}};padding:10px 14px;border-radius:6px 0 0 0">
+        <div style="color:{{theme.accent}};font-size:13px;font-weight:700;letter-spacing:.5px">{{column_headers.0}}</div>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid {{theme.panel_border}};padding:10px 14px;text-align:center">
+        <div style="color:{{theme.text}};font-size:13px;font-weight:700">{{column_headers.1}}</div>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid {{theme.panel_border}};padding:10px 14px;text-align:center">
+        <div style="color:{{theme.text}};font-size:13px;font-weight:700">{{column_headers.2}}</div>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid {{theme.panel_border}};padding:10px 14px;text-align:center">
+        <div style="color:{{theme.text}};font-size:13px;font-weight:700">{{column_headers.3}}</div>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid {{theme.panel_border}};padding:10px 14px;text-align:center;border-radius:0 6px 0 0">
+        <div style="color:{{theme.text}};font-size:13px;font-weight:700">{{column_headers.4}}</div>
+      </div>
+    </div>
+
+    <!-- REPEAT:rows -->
+    <div class="grid">
+      <div style="background:rgba(238,41,41,.08);border:1px solid rgba(238,41,41,.3);padding:12px 14px">
+        <div style="color:{{theme.text}};font-size:14px;font-weight:700">{{item.customer}}</div>
+        <div style="color:{{theme.muted}};font-size:12px">{{item.customer_sub}}</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid {{theme.panel}};padding:12px 14px;text-align:center">
+        <div style="color:{{theme.body}};font-size:13px">{{item.cells.0}}</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid {{theme.panel}};padding:12px 14px;text-align:center">
+        <div style="color:{{theme.body}};font-size:13px">{{item.cells.1}}</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid {{theme.panel}};padding:12px 14px;text-align:center">
+        <div style="color:{{theme.body}};font-size:13px">{{item.cells.2}}</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid {{theme.panel}};padding:12px 14px;text-align:center">
+        <span style="background:{{theme.accent}};color:{{theme.bg}};font-size:12px;font-weight:700;padding:3px 10px;border-radius:10px">{{item.status}}</span>
+      </div>
+    </div>
+    <!-- END:REPEAT -->
+
+    <!-- Stats row -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;margin-top:20px">
+      <div style="background:rgba(238,41,41,.08);border:1px solid rgba(238,41,41,.3);border-radius:8px;padding:14px;text-align:center">
+        <div style="color:{{theme.accent}};font-size:28px;font-weight:700">{{stats.0.value}}</div>
+        <div style="color:{{theme.body}};font-size:13px">{{stats.0.label}}</div>
+      </div>
+      <div style="background:rgba(238,41,41,.08);border:1px solid rgba(238,41,41,.3);border-radius:8px;padding:14px;text-align:center">
+        <div style="color:{{theme.accent}};font-size:28px;font-weight:700">{{stats.1.value}}</div>
+        <div style="color:{{theme.body}};font-size:13px">{{stats.1.label}}</div>
+      </div>
+      <div style="background:rgba(238,41,41,.08);border:1px solid rgba(238,41,41,.3);border-radius:8px;padding:14px;text-align:center">
+        <div style="color:{{theme.accent}};font-size:28px;font-weight:700">{{stats.2.value}}</div>
+        <div style="color:{{theme.body}};font-size:13px">{{stats.2.label}}</div>
+      </div>
+      <div style="background:rgba(238,41,41,.08);border:1px solid rgba(238,41,41,.3);border-radius:8px;padding:14px;text-align:center">
+        <div style="color:{{theme.accent}};font-size:28px;font-weight:700">{{stats.3.value}}</div>
+        <div style="color:{{theme.body}};font-size:13px">{{stats.3.label}}</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="background:#111315;padding:10px 32px;display:flex;justify-content:space-between;align-items:center">
+    <span style="color:{{theme.accent}};font-size:13px;font-weight:700;opacity:.8;letter-spacing:.5px">{{footer.brand}}</span>
+    <span style="color:{{theme.muted}};font-size:12px">{{footer.tagline}}</span>
+  </div>
+
+</div>
+</body>
+</html>

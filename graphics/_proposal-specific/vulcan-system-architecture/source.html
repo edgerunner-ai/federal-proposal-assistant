@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WarClaw + EVELYN — Vulcan UxS Architecture</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#191c20;font-family:'Segoe UI',system-ui,sans-serif;
+       display:flex;justify-content:center;align-items:flex-start;padding:20px}
+  .canvas{width:1200px;background:#191c20;border-radius:12px;
+          box-shadow:0 8px 32px rgba(0,0,0,.4);display:flex;flex-direction:column}
+  .header{padding:26px 36px 18px;text-align:center;border-bottom:3px solid #ee2929}
+  .header h1{color:#ffffff;font-size:48px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+  .header p{color:#9f9f9f;font-size:27px;margin-top:8px}
+  .body{padding:24px 36px 24px;display:flex;flex-direction:column;gap:0}
+  .layer{border-radius:12px;padding:18px 26px;background:#2a2d31;border:2px solid #393939}
+  .layer.hero-red{background:rgba(238,41,41,.08);border:3px solid #ee2929}
+  .lhead{display:flex;align-items:baseline;gap:16px;margin-bottom:12px}
+  .lhead .num{color:#ee2929;font-size:30px;font-weight:700}
+  .lhead .name{color:#ffffff;font-size:33px;font-weight:700;letter-spacing:.5px}
+  .layer.hero-red .lhead .name{color:#ee2929}
+  .lhead .trl{color:#191c20;background:#ee2929;font-size:24px;font-weight:700;
+       padding:4px 14px;border-radius:14px;letter-spacing:.5px}
+  .comps{display:flex;flex-wrap:wrap;gap:12px}
+  .comp{background:rgba(255,255,255,.05);border:1px solid #393939;border-radius:8px;
+        padding:12px 18px;color:#c8c8c8;font-size:26px;line-height:1.3}
+  .layer.hero-red .comp{border-color:rgba(238,41,41,.4)}
+  .arrowzone{height:64px;display:flex;align-items:center;justify-content:center;gap:60px}
+  .arrowzone.tall{height:78px}
+  .arrowpair{display:flex;flex-direction:column;align-items:center}
+  .alab{color:#c8c8c8;font-size:24px;font-weight:600}
+  .alab.up{color:#ee2929}
+  .achar{font-size:38px;line-height:1}
+  .down{color:#ffffff}.up{color:#ee2929}
+  .evarrow{display:flex;flex-direction:column;align-items:center}
+  .evarrow .alab{color:#ee2929}
+  .boundary{margin:10px 0 4px;text-align:center}
+  .boundary span{display:inline-block;color:#ffffff;font-size:25px;font-weight:600;
+       background:#222528;border:1px solid #ee2929;border-radius:16px;padding:8px 24px}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="header">
+    <h1>WarClaw + EVELYN — Vulcan UxS Architecture</h1>
+    <p>A two-layer adaptive intelligence stack — orchestration and perception adaptation, fully on-device</p>
+  </div>
+  <div class="body">
+
+    <!-- Layer 1 -->
+    <div class="layer">
+      <div class="lhead"><span class="num">1</span><span class="name">OPERATOR STATION</span></div>
+      <div class="comps">
+        <span class="comp">Natural-language command input</span>
+        <span class="comp">COP display (GeoJSON / CoT)</span>
+      </div>
+    </div>
+
+    <div class="arrowzone">
+      <div class="arrowpair"><span class="alab down">Tasking down &nbsp;<span class="achar down">&#11015;</span></span></div>
+      <div class="arrowpair"><span class="alab up"><span class="achar up">&#11014;</span>&nbsp; Sensor / telemetry up</span></div>
+    </div>
+
+    <!-- Layer 2 — hero -->
+    <div class="layer hero-red">
+      <div class="lhead"><span class="num">2</span><span class="name">WARCLAW CORE</span><span class="trl">TRL 5</span></div>
+      <div class="comps">
+        <span class="comp">SLM Inference Engine (locally hosted, 8 GB VRAM)</span>
+        <span class="comp">Command Pipeline &amp; Task Decomposition</span>
+        <span class="comp">Digital Adjutant (sensor fusion + alerting)</span>
+        <span class="comp">Local-First RAG (OPLAN / GEOINT / SIGACT / OOB)</span>
+        <span class="comp">Local Path De-confliction</span>
+        <span class="comp">OpenClaw API Layer (standards-based REST / WebSocket)</span>
+      </div>
+    </div>
+
+    <div class="arrowzone">
+      <div class="arrowpair"><span class="alab down">Tasking down &nbsp;<span class="achar down">&#11015;</span></span></div>
+      <div class="arrowpair"><span class="alab up"><span class="achar up">&#11014;</span>&nbsp; Sensor / telemetry up</span></div>
+    </div>
+
+    <!-- Layer 3 -->
+    <div class="layer">
+      <div class="lhead"><span class="num">3</span><span class="name">UxS COLLECTIVE</span></div>
+      <div class="comps">
+        <span class="comp">Per-platform OpenClaw drivers — UAS</span>
+        <span class="comp">USV</span>
+        <span class="comp">UGV</span>
+        <span class="comp">AUV</span>
+      </div>
+    </div>
+
+    <div class="arrowzone tall">
+      <div class="evarrow"><span class="alab"><span class="achar up">&#11014;</span>&nbsp; EVELYN: updated models pushed to all UxS agents</span></div>
+    </div>
+
+    <!-- Layer 4 — hero -->
+    <div class="layer hero-red">
+      <div class="lhead"><span class="num">4</span><span class="name">EVELYN</span><span class="trl">TRL 8</span></div>
+      <div class="comps">
+        <span class="comp">Labeling Engine (100+ img/s)</span>
+        <span class="comp">Dataset Generation</span>
+        <span class="comp">Retraining Pipeline (on-device)</span>
+        <span class="comp">Local Validation Loop</span>
+        <span class="comp">Model Distribution (IP multicast / DTN)</span>
+      </div>
+    </div>
+
+    <div class="boundary"><span>All components execute on-device — no cloud dependency at any layer</span></div>
+  </div>
+</div>
+</body>
+</html>

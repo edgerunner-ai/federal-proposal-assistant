@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EdgeRunner — Implementation Pathways Compared</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#191c20;font-family:'Segoe UI',system-ui,sans-serif;
+       display:flex;justify-content:center;align-items:center;
+       min-height:100vh;padding:20px}
+  .canvas{width:1200px;background:#191c20;border-radius:12px;
+          overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+  .grid{display:grid;grid-template-columns:210px 1fr 1fr 1fr;gap:3px;margin-bottom:3px}
+  .dim{background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:11px 14px;display:flex;align-items:center}
+  .dim-title{color:#ffffff;font-size:13px;font-weight:700}
+  .dim-sub{color:#9f9f9f;font-size:11px;margin-top:2px}
+  .cell{padding:11px 14px;text-align:center}
+  .cell-prop{background:rgba(255,255,255,.02);border:1px solid #2a2d31}
+  .cell-open{background:rgba(200,162,0,.06);border:1px solid rgba(200,162,0,.3)}
+  .cell-edge{background:rgba(238,41,41,.06);border:1px solid rgba(238,41,41,.3)}
+  .icon{font-size:20px;margin-bottom:3px}
+  .icon-no{color:#555}
+  .icon-partial{color:#c8a200}
+  .icon-yes{color:#ee2929}
+  .label-no{color:#666;font-size:12px}
+  .label-partial{color:#c8a200;font-size:12px}
+  .label-yes{color:#ffffff;font-size:12px;font-weight:600}
+  .sub-no{color:#555;font-size:11px;margin-top:2px}
+  .sub-partial{color:#8a7000;font-size:11px;margin-top:2px}
+  .sub-yes{color:#c8c8c8;font-size:11px;margin-top:2px}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div style="padding:18px 32px 8px;text-align:center;border-bottom:2px solid #ee2929">
+    <h1 style="color:#ffffff;font-size:26px;font-weight:700;letter-spacing:.5px;text-transform:uppercase">From Enterprise AI to the Edge — The Role of Open-Weight Models in Operationalizing AI</h1>
+    <p style="color:#9f9f9f;font-size:14px;margin-top:4px">Architecture determines operational viability—open-weight models extend enterprise AI to the edge, enabling secure, adaptable execution in contested environments.</p>
+  </div>
+
+  <div style="padding:18px 28px 16px">
+
+    <!-- Column Headers -->
+    <div class="grid" style="margin-bottom:3px">
+      <div style="padding:10px 14px">
+        <div style="color:#9f9f9f;font-size:12px;font-weight:700;letter-spacing:.5px">DIMENSION</div>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid #393939;padding:10px 14px;text-align:center;border-radius:6px 0 0 0">
+        <div style="color:#777;font-size:14px;font-weight:700">Proprietary / Closed-Weight</div>
+        <div style="color:#555;font-size:11px;margin-top:2px">GPT-4 · Gemini · Copilot · Claude API</div>
+      </div>
+      <div style="background:rgba(200,162,0,.08);border:1px solid rgba(200,162,0,.4);padding:10px 14px;text-align:center">
+        <div style="color:#c8a200;font-size:14px;font-weight:700">Open-Weight — Self-Deployed</div>
+        <div style="color:#8a7000;font-size:11px;margin-top:2px">Llama · Mistral · Falcon — raw, unoptimized</div>
+      </div>
+      <div style="background:rgba(238,41,41,.12);border:1px solid #ee2929;padding:10px 14px;text-align:center;border-radius:0 6px 0 0">
+        <div style="color:#ee2929;font-size:14px;font-weight:700">EdgeRunner AI</div>
+        <div style="color:#c8c8c8;font-size:11px;margin-top:2px">Open-Weight · Mission-Trained · Local Runtime</div>
+      </div>
+    </div>
+
+    <!-- Row 1: Model Sovereignty -->
+    <div class="grid">
+      <div class="dim"><div>
+        <div class="dim-title">Model Sovereignty</div>
+        <div class="dim-sub">Who owns &amp; controls the weights</div>
+      </div></div>
+      <div class="cell cell-prop">
+        <div class="icon icon-no">✗</div>
+        <div class="label-no">Vendor owns the model</div>
+        <div class="sub-no">No access to weights · Vendor can deprecate</div>
+      </div>
+      <div class="cell cell-open">
+        <div class="icon icon-yes" style="color:#c8a200">✓</div>
+        <div class="label-partial">Full model weight access</div>
+        <div class="sub-partial">Government/operator retains weights</div>
+      </div>
+      <div class="cell cell-edge">
+        <div class="icon icon-yes">✓</div>
+        <div class="label-yes">Weights + fine-tunes owned by customer</div>
+        <div class="sub-yes">Mission LoRAs &amp; adapters fully transferable</div>
+      </div>
+    </div>
+
+    <!-- Row 2: Model Selection / BYOM -->
+    <div class="grid">
+      <div class="dim"><div>
+        <div class="dim-title">Model Selection (BYOM)</div>
+        <div class="dim-sub">Flexibility to choose or bring models</div>
+      </div></div>
+      <div class="cell cell-prop">
+        <div class="icon icon-no">✗</div>
+        <div class="label-no">Vendor-selected only</div>
+        <div class="sub-no">One vendor's model · No substitution</div>
+      </div>
+      <div class="cell cell-open">
+        <div class="icon icon-yes" style="color:#c8a200">✓</div>
+        <div class="label-partial">Unlimited open-weight selection</div>
+        <div class="sub-partial">Any open model — but requires integration work</div>
+      </div>
+      <div class="cell cell-edge">
+        <div class="icon icon-yes">✓</div>
+        <div class="label-yes">BYOM + pre-built military models</div>
+        <div class="sub-yes">Plug in any model · EdgeRunner adds the runtime</div>
+      </div>
+    </div>
+
+    <!-- Row 3: Mission Specialization -->
+    <div class="grid">
+      <div class="dim"><div>
+        <div class="dim-title">Mission Specialization</div>
+        <div class="dim-sub">Domain / doctrine fine-tuning</div>
+      </div></div>
+      <div class="cell cell-prop">
+        <div class="icon" style="color:#c8a200;font-size:20px;margin-bottom:3px">~</div>
+        <div class="label-no">Limited — vendor-constrained</div>
+        <div class="sub-no">Vendors offer some customization · no operator control over training data or doctrine</div>
+      </div>
+      <div class="cell cell-open">
+        <div class="icon" style="color:#c8a200;font-size:20px;margin-bottom:3px">~</div>
+        <div class="label-partial">Possible — requires significant effort</div>
+        <div class="sub-partial">Needs ML team · training data · months of work</div>
+      </div>
+      <div class="cell cell-edge">
+        <div class="icon icon-yes">✓</div>
+        <div class="label-yes">1.6M military artifacts trained</div>
+        <div class="sub-yes">AFSC · SOF · C2 · ISR LoRAs ready to deploy</div>
+      </div>
+    </div>
+
+    <!-- Row 4: DDIL / Offline -->
+    <div class="grid">
+      <div class="dim"><div>
+        <div class="dim-title">DDIL / Offline Operation</div>
+        <div class="dim-sub">Operates without connectivity</div>
+      </div></div>
+      <div class="cell cell-prop">
+        <div class="icon icon-no">✗</div>
+        <div class="label-no">Requires persistent internet</div>
+        <div class="sub-no">Fails completely in contested environments</div>
+      </div>
+      <div class="cell cell-open">
+        <div class="icon" style="color:#c8a200;font-size:20px;margin-bottom:3px">~</div>
+        <div class="label-partial">Possible if fully self-hosted</div>
+        <div class="sub-partial">Complex setup · no purpose-built DDIL support</div>
+      </div>
+      <div class="cell cell-edge">
+        <div class="icon icon-yes">✓</div>
+        <div class="label-yes">Purpose-built for DDIL</div>
+        <div class="sub-yes">Zero connectivity required · forward-deployable</div>
+      </div>
+    </div>
+
+    <!-- Row 5: Data Security -->
+    <div class="grid">
+      <div class="dim"><div>
+        <div class="dim-title">Data Security &amp; Egress</div>
+        <div class="dim-sub">System boundary for data processing</div>
+      </div></div>
+      <div class="cell cell-prop">
+        <div class="icon" style="color:#c8a200;font-size:20px;margin-bottom:3px">~</div>
+        <div class="label-no">Stays within enclave — not within system</div>
+        <div class="sub-no">Data crosses system boundaries to reach the model · problematic for classified workflows</div>
+      </div>
+      <div class="cell cell-open">
+        <div class="icon icon-yes" style="color:#c8a200">✓</div>
+        <div class="label-partial">Stays within system security boundary</div>
+        <div class="sub-partial">No cross-boundary data movement when self-hosted</div>
+      </div>
+      <div class="cell cell-edge">
+        <div class="icon icon-yes">✓</div>
+        <div class="label-yes">Fully contained within system boundary</div>
+        <div class="sub-yes">On-device inference · zero egress · CUI / classified safe</div>
+      </div>
+    </div>
+
+    <!-- Row 6: Agentic / Token-Heavy Use Cases -->
+    <div class="grid">
+      <div class="dim"><div>
+        <div class="dim-title">Agentic &amp; Heavy Use Cases</div>
+        <div class="dim-sub">Agent orchestration · dev tools · long-context</div>
+      </div></div>
+      <div class="cell cell-prop">
+        <div class="icon icon-no">✗</div>
+        <div class="label-no">Cost explodes at scale</div>
+        <div class="sub-no">Per-token pricing makes orchestration, pipelines &amp; dev tools economically unviable</div>
+      </div>
+      <div class="cell cell-open">
+        <div class="icon icon-yes" style="color:#c8a200">✓</div>
+        <div class="label-partial">Scales without token cost</div>
+        <div class="sub-partial">Infrastructure-bound · integration overhead limits orchestration depth</div>
+      </div>
+      <div class="cell cell-edge">
+        <div class="icon icon-yes">✓</div>
+        <div class="label-yes">Optimized for multi-step agentic workflows</div>
+        <div class="sub-yes">Fixed runtime cost · built-in orchestration · no per-token penalty</div>
+      </div>
+    </div>
+
+    <!-- Row 7: Cost Structure -->
+    <div class="grid">
+      <div class="dim"><div>
+        <div class="dim-title">Cost Structure</div>
+        <div class="dim-sub">Economics at operational scale</div>
+      </div></div>
+      <div class="cell cell-prop">
+        <div class="icon icon-no">✗</div>
+        <div class="label-no">Per-token subscription</div>
+        <div class="sub-no">Cost scales with every query · vendor lock-in</div>
+      </div>
+      <div class="cell cell-open">
+        <div class="icon icon-yes" style="color:#c8a200">✓</div>
+        <div class="label-partial">Infrastructure cost only</div>
+        <div class="sub-partial">No per-query fees · high upfront integration cost</div>
+      </div>
+      <div class="cell cell-edge">
+        <div class="icon icon-yes">✓</div>
+        <div class="label-yes">Fixed runtime · cost decreases with use</div>
+        <div class="sub-yes">Operational data flywheel reduces per-mission cost</div>
+      </div>
+    </div>
+
+    <!-- Row 8: Time to Capability -->
+    <div class="grid" style="margin-bottom:0">
+      <div class="dim" style="border-radius:0 0 0 6px"><div>
+        <div class="dim-title">Time to Mission Capability</div>
+        <div class="dim-sub">From award to operational</div>
+      </div></div>
+      <div class="cell cell-prop">
+        <div class="icon" style="color:#c8a200;font-size:20px;margin-bottom:3px">~</div>
+        <div class="label-no">Fast for generic · slow for mission</div>
+        <div class="sub-no">Custom tuning slow or impossible</div>
+      </div>
+      <div class="cell cell-open">
+        <div class="icon" style="color:#c8a200;font-size:20px;margin-bottom:3px">~</div>
+        <div class="label-partial">Moderate — requires ML team</div>
+        <div class="sub-partial">6–18 months for mission-specific capability</div>
+      </div>
+      <div class="cell cell-edge" style="border-radius:0 0 6px 0">
+        <div class="icon icon-yes">✓</div>
+        <div class="label-yes">90–180 days to operational impact</div>
+        <div class="sub-yes">TRL 7+ · No R&amp;D phase · Deploy now</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="background:#111315;padding:10px 32px;display:flex;justify-content:space-between;align-items:center">
+    <span style="color:#ee2929;font-size:13px;font-weight:700;opacity:.8;letter-spacing:.5px">EDGERUNNER AI</span>
+    <span style="color:#9f9f9f;font-size:12px">Open-weight models anchor the AI ecosystem—providing a sovereign, extensible core for edge execution and continuous domain refinement.</span>
+    <span style="color:#9f9f9f;font-size:12px">edgerunnerai.com</span>
+  </div>
+
+</div>
+</body>
+</html>

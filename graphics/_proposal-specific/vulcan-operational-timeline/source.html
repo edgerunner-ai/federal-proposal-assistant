@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Adaptation Loop in a Live Mission</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#191c20;font-family:'Segoe UI',system-ui,sans-serif;
+       display:flex;justify-content:center;align-items:flex-start;padding:20px}
+  .canvas{width:1200px;background:#191c20;border-radius:12px;
+          overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4);display:flex;flex-direction:column}
+  .header{padding:26px 36px 16px;text-align:center;border-bottom:3px solid #ee2929}
+  .header h1{color:#ffffff;font-size:48px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+  .header p{color:#9f9f9f;font-size:26px;margin-top:8px}
+  .track{display:flex;align-items:flex-start;padding:40px 36px 50px;gap:0}
+  .step{flex:1;display:flex;flex-direction:column;align-items:center}
+  .tcol{display:flex;align-items:center;width:100%}
+  .node{width:118px;height:118px;border-radius:50%;background:rgba(238,41,41,.10);
+        border:3px solid #ee2929;display:flex;flex-direction:column;
+        align-items:center;justify-content:center;flex-shrink:0}
+  .node .t{color:#ee2929;font-size:25px;font-weight:700;line-height:1.1;text-align:center}
+  .conn{flex:1;height:4px;background:#ee2929;opacity:.55}
+  .stage{color:#ffffff;font-size:31px;font-weight:700;margin-top:22px;letter-spacing:.5px}
+  .desc{color:#c8c8c8;font-size:25px;line-height:1.4;text-align:center;margin-top:12px;
+        padding:0 14px;max-width:235px}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="header">
+    <h1>The Adaptation Loop in a Live Mission</h1>
+    <p>Relative timings are notional &mdash; evaluation objectives for the Build&ndash;Measure&ndash;Learn effort, not measured results</p>
+  </div>
+  <div class="track">
+
+    <div class="step">
+      <div class="tcol"><div class="node"><span class="t">T+0</span></div><div class="conn"></div></div>
+      <div class="stage">DETECT</div>
+      <div class="desc">A UxS sensor detects a vessel outside the current detection model's training distribution</div>
+    </div>
+
+    <div class="step">
+      <div class="tcol"><div class="node"><span class="t">T+5<br>min</span></div><div class="conn"></div></div>
+      <div class="stage">LABEL</div>
+      <div class="desc">Collected imagery is labeled on-device by EVELYN</div>
+    </div>
+
+    <div class="step">
+      <div class="tcol"><div class="node"><span class="t">T+30<br>min</span></div><div class="conn"></div></div>
+      <div class="stage">RETRAIN</div>
+      <div class="desc">A retrained model is produced on the ruggedized laptop and passes local validation</div>
+    </div>
+
+    <div class="step">
+      <div class="tcol"><div class="node"><span class="t">T+45<br>min</span></div><div class="conn"></div></div>
+      <div class="stage">DISTRIBUTE</div>
+      <div class="desc">The updated model is pushed across the collective via the local network</div>
+    </div>
+
+    <div class="step">
+      <div class="tcol"><div class="node"><span class="t">T+50<br>min</span></div></div>
+      <div class="stage">RETASK</div>
+      <div class="desc">All agents run the mission-current model; WarClaw retasks assets; the team leader confirms</div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

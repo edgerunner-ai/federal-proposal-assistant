@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EdgeRunner — Human-Machine Teaming Workflow</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#191c20;font-family:'Segoe UI',system-ui,sans-serif;
+       display:flex;justify-content:center;align-items:center;
+       min-height:100vh;padding:20px}
+  .canvas{width:1200px;background:#191c20;border-radius:12px;
+          overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div style="padding:18px 32px 8px;text-align:center;border-bottom:2px solid #ee2929">
+    <h1 style="color:#ffffff;font-size:28px;font-weight:700;letter-spacing:.5px;text-transform:uppercase">How Operators Work With EdgeRunner</h1>
+    <p style="color:#9f9f9f;font-size:15px;margin-top:4px">AI augments the operator — every recommendation is transparent, every decision stays with the human</p>
+  </div>
+
+  <svg viewBox="0 0 1200 460" xmlns="http://www.w3.org/2000/svg" style="display:block">
+    <defs>
+      <marker id="af" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0,10 3.5,0 7" fill="#ffffff"/>
+      </marker>
+      <marker id="afr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0,10 3.5,0 7" fill="#ee2929"/>
+      </marker>
+    </defs>
+
+    <!-- ===== STEP NODES ===== -->
+    <!-- Step 1: Operator Task -->
+    <rect x="40" y="100" width="180" height="200" rx="12" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <circle cx="130" cy="58" r="38" fill="#2a2d31" stroke="#393939" stroke-width="2"/>
+    <text x="130" y="52" fill="#ffffff" font-size="20" font-family="Segoe UI" text-anchor="middle">👤</text>
+    <text x="130" y="72" fill="#9f9f9f" font-size="12" font-family="Segoe UI" text-anchor="middle">OPERATOR</text>
+    <text x="130" y="130" fill="#ffffff" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">MISSION TASK</text>
+    <text x="130" y="148" fill="#9f9f9f" font-size="12" font-family="Segoe UI" text-anchor="middle">Step 1</text>
+    <text x="130" y="178" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Operator encounters</text>
+    <text x="130" y="196" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">decision point or</text>
+    <text x="130" y="214" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">workflow task</text>
+    <text x="130" y="234" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">requiring analysis</text>
+    <text x="130" y="278" fill="#9f9f9f" font-size="12" font-family="Segoe UI" text-anchor="middle">Initiates query</text>
+
+    <!-- Arrow 1→2 -->
+    <line x1="220" y1="200" x2="268" y2="200" stroke="#ffffff" stroke-width="2" marker-end="url(#af)"/>
+
+    <!-- Step 2: EdgeRunner Ingests -->
+    <rect x="270" y="100" width="180" height="200" rx="12" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <text x="360" y="130" fill="#ffffff" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">CONTEXT</text>
+    <text x="360" y="148" fill="#ffffff" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">INGESTION</text>
+    <text x="360" y="166" fill="#9f9f9f" font-size="12" font-family="Segoe UI" text-anchor="middle">Step 2</text>
+    <text x="360" y="192" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">EdgeRunner ingests</text>
+    <text x="360" y="210" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">mission context,</text>
+    <text x="360" y="228" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">orders, intel, and</text>
+    <text x="360" y="246" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">environment data</text>
+    <text x="360" y="278" fill="#9f9f9f" font-size="12" font-family="Segoe UI" text-anchor="middle">On-device, no egress</text>
+
+    <!-- Arrow 2→3 -->
+    <line x1="450" y1="200" x2="498" y2="200" stroke="#ffffff" stroke-width="2" marker-end="url(#af)"/>
+
+    <!-- Step 3: AI Analysis (hero) -->
+    <rect x="500" y="80" width="200" height="240" rx="12" fill="rgba(238,41,41,.08)" stroke="#ee2929" stroke-width="2"/>
+    <text x="600" y="116" fill="#ee2929" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">AI ANALYSIS</text>
+    <text x="600" y="134" fill="#c8c8c8" font-size="12" font-family="Segoe UI" text-anchor="middle">Step 3 — EdgeRunner</text>
+    <text x="600" y="162" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Mission-trained models</text>
+    <text x="600" y="182" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">analyze situation</text>
+    <text x="600" y="208" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Generate candidate COAs</text>
+    <text x="600" y="228" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Identify dependencies</text>
+    <text x="600" y="248" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Flag risks &amp; alerts</text>
+    <text x="600" y="274" fill="#9f9f9f" font-size="12" font-family="Segoe UI" text-anchor="middle">Runs locally · No cloud</text>
+    <rect x="520" y="286" width="160" height="22" rx="11" fill="rgba(238,41,41,.15)" stroke="#ee2929" stroke-width="1"/>
+    <text x="600" y="301" fill="#ee2929" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">DDIL CAPABLE</text>
+
+    <!-- Arrow 3→4 -->
+    <line x1="700" y1="200" x2="748" y2="200" stroke="#ffffff" stroke-width="2" marker-end="url(#af)"/>
+
+    <!-- Step 4: Transparent Recommendation -->
+    <rect x="750" y="100" width="180" height="200" rx="12" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <text x="840" y="130" fill="#ffffff" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">TRANSPARENT</text>
+    <text x="840" y="148" fill="#ffffff" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">RECOMMENDATION</text>
+    <text x="840" y="166" fill="#9f9f9f" font-size="12" font-family="Segoe UI" text-anchor="middle">Step 4</text>
+    <text x="840" y="192" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Results presented</text>
+    <text x="840" y="210" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">with supporting</text>
+    <text x="840" y="228" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">reasoning and</text>
+    <text x="840" y="246" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">confidence context</text>
+    <text x="840" y="278" fill="#9f9f9f" font-size="12" font-family="Segoe UI" text-anchor="middle">Human evaluates</text>
+
+    <!-- Arrow 4→5 -->
+    <line x1="930" y1="200" x2="978" y2="200" stroke="#ffffff" stroke-width="2" marker-end="url(#af)"/>
+
+    <!-- Step 5: Human Decision -->
+    <rect x="980" y="100" width="180" height="200" rx="12" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <circle cx="1070" cy="58" r="38" fill="#2a2d31" stroke="#ee2929" stroke-width="2"/>
+    <text x="1070" y="52" fill="#ee2929" font-size="20" font-family="Segoe UI" text-anchor="middle">✓</text>
+    <text x="1070" y="72" fill="#ee2929" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">DECISION</text>
+    <text x="1070" y="130" fill="#ffffff" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">HUMAN</text>
+    <text x="1070" y="148" fill="#ffffff" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">DECISION</text>
+    <text x="1070" y="166" fill="#9f9f9f" font-size="12" font-family="Segoe UI" text-anchor="middle">Step 5</text>
+    <text x="1070" y="192" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Operator accepts,</text>
+    <text x="1070" y="210" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">modifies, or rejects</text>
+    <text x="1070" y="228" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">AI recommendation</text>
+    <text x="1070" y="246" fill="#c8c8c8" font-size="13" font-family="Segoe UI" text-anchor="middle">Full authority retained</text>
+    <text x="1070" y="278" fill="#ee2929" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">Human in command</text>
+
+    <!-- Feedback loop arrow (bottom) -->
+    <path d="M 1070 330 Q 1070 370 600 370 Q 280 370 130 330" stroke="#ee2929" stroke-width="1.5" fill="none" stroke-dasharray="6,3" marker-end="url(#afr)" opacity=".7"/>
+    <text x="600" y="388" fill="#ee2929" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle" opacity=".8">Operator action + outcome captured as structured training data → every mission improves the model</text>
+
+    <!-- Principle callouts -->
+    <rect x="40" y="400" width="340" height="42" rx="8" fill="rgba(238,41,41,.06)" stroke="rgba(238,41,41,.3)" stroke-width="1"/>
+    <text x="210" y="419" fill="#ee2929" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">HUMAN AUTHORITY PRESERVED</text>
+    <text x="210" y="435" fill="#c8c8c8" font-size="12" font-family="Segoe UI" text-anchor="middle">AI recommends · Human decides · Always</text>
+
+    <rect x="430" y="400" width="340" height="42" rx="8" fill="rgba(238,41,41,.06)" stroke="rgba(238,41,41,.3)" stroke-width="1"/>
+    <text x="600" y="419" fill="#ee2929" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">NO CONNECTIVITY REQUIRED</text>
+    <text x="600" y="435" fill="#c8c8c8" font-size="12" font-family="Segoe UI" text-anchor="middle">Full capability in DDIL environments</text>
+
+    <rect x="820" y="400" width="340" height="42" rx="8" fill="rgba(238,41,41,.06)" stroke="rgba(238,41,41,.3)" stroke-width="1"/>
+    <text x="990" y="419" fill="#ee2929" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">EVERY MISSION TRAINS THE MODEL</text>
+    <text x="990" y="435" fill="#c8c8c8" font-size="12" font-family="Segoe UI" text-anchor="middle">Operational use generates adaptation data</text>
+
+  </svg>
+
+  <div style="background:#111315;padding:10px 32px;display:flex;justify-content:space-between;align-items:center">
+    <span style="color:#ee2929;font-size:13px;font-weight:700;opacity:.8;letter-spacing:.5px">EDGERUNNER AI</span>
+    <span style="color:#9f9f9f;font-size:12px">Augments the operator — never replaces judgment or command authority</span>
+    <span style="color:#9f9f9f;font-size:12px">edgerunnerai.com</span>
+  </div>
+
+</div>
+</body>
+</html>

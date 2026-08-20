@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Manchurian Lifecycle</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#1c1e22; font-family:'Segoe UI',system-ui,sans-serif; padding:0; }
+  .card { width:1200px; background:#1c1e22; overflow:hidden; }
+
+  /* Title bar */
+  .title-bar { padding:24px 44px 18px; border-bottom:3px solid #ee2929; }
+  .title-bar h1 { color:#fff; font-size:32px; font-weight:800; letter-spacing:1.1px;
+                  text-transform:uppercase; }
+  .title-bar p  { color:#9f9f9f; font-size:18px; font-style:italic; margin-top:6px; line-height:1.4; }
+
+  /* Lane-label bar (single thin horizontal row) */
+  .lane-bar { display:flex; height:38px; }
+  .lane-bar .seg {
+    display:flex; align-items:center; padding:0 18px;
+    font-size:15px; font-weight:800; letter-spacing:3px; text-transform:uppercase;
+  }
+  .lane-bar .seg.adv { flex:2; background:rgba(238,41,41,.22); color:#ee2929;
+                        border-right:1px solid #1c1e22; }
+  .lane-bar .seg.def { flex:3; background:#26292d; color:#9f9f9f;
+                        justify-content:flex-start; }
+  .lane-bar .seg .arrow { color:#ee2929; margin:0 10px; font-size:17px; font-weight:900; }
+  .lane-bar .seg .crosslabel { color:#c8c8c8; font-style:italic; font-weight:600;
+                                letter-spacing:.3px; text-transform:none; font-size:14px; }
+
+  /* Phase row */
+  .phase-row { display:flex; gap:12px; padding:18px 22px 16px; background:#1e2024; }
+  .phase { flex:1; background:#2a2d31; border-radius:6px; padding:14px 14px 14px;
+           border-top:4px solid; min-height:128px; }
+  .phase.adv { border-top-color:#ee2929; }
+  .phase.def { border-top-color:#444; }
+  .phase.detonate { border-top-color:#ee2929; }
+
+  .phase-num   { font-size:13px; font-weight:800; letter-spacing:2px; text-transform:uppercase;
+                 color:#ee2929; margin-bottom:5px; }
+  .phase-title { font-size:21px; font-weight:800; color:#fff; margin-bottom:7px; line-height:1.15; }
+  .phase-body  { font-size:16px; color:#b8b8b8; line-height:1.45; }
+
+  /* Timeline ribbon */
+  .timeline { padding:14px 22px 14px; background:#161719; border-top:1px solid #2a2d31; }
+  .tl-label { font-size:14px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+              color:#8a8a8a; margin-bottom:8px; }
+  .tl-bar { display:flex; height:36px; border-radius:4px; overflow:hidden; border:1px solid #2a2d31; }
+  .tl-trust   { flex:11; background:#242729; display:flex; align-items:center;
+                justify-content:center; font-size:15px; font-weight:600; color:#d8d8d8;
+                border-right:2px solid #111; letter-spacing:.5px; }
+  .tl-trigger { flex:2; background:rgba(238,41,41,.25); display:flex; align-items:center;
+                justify-content:center; font-size:14px; font-weight:700; color:#ee2929;
+                border-right:2px solid #111; }
+  .tl-impact  { flex:1; background:#ee2929; display:flex; align-items:center;
+                justify-content:center; font-size:14px; font-weight:800; color:#fff; }
+  .tl-ticks { display:flex; justify-content:space-between; margin-top:6px; font-size:14px; color:#8a8a8a; }
+
+  /* Annotation strip */
+  .annotation { padding:13px 22px; background:#1a1c20; border-top:1px solid #2a2d31; }
+  .annotation p { font-size:16px; color:#d0d0d0; font-style:italic; line-height:1.5; }
+  .annotation em { color:#ee2929; font-style:normal; font-weight:700; }
+
+  /* Footer */
+  .footer { background:#111315; padding:12px 44px; border-top:1px solid #2a2d31;
+            display:flex; justify-content:space-between; align-items:center;
+            font-size:14px; color:#8a8a8a; }
+  .footer strong { color:#ee2929; }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <div class="title-bar">
+    <h1>The Manchurian Lifecycle: Implant to Single-Call Detonation</h1>
+    <p>Why detection cannot be the primary control — read as preface to Figure 2</p>
+  </div>
+
+  <!-- LANE LABEL BAR: 2:3 split aligns with phase cards below -->
+  <div class="lane-bar">
+    <div class="seg adv">Adversary</div>
+    <div class="seg def">
+      <span class="arrow">→</span>
+      <span class="crosslabel">open-weight adoption path · model enters U.S. defense toolchains</span>
+      <span style="flex:1"></span>
+      <span>U.S. Exposure</span>
+    </div>
+  </div>
+
+  <!-- PHASES ON A SINGLE ROW -->
+  <div class="phase-row">
+    <div class="phase adv">
+      <div class="phase-num">Phase 1</div>
+      <div class="phase-title">Implant</div>
+      <div class="phase-body">Training-data poisoning (&lt;1%). Trigger keyed on rare multi-signal conjunction.</div>
+    </div>
+    <div class="phase adv">
+      <div class="phase-num">Phase 2</div>
+      <div class="phase-title">Release</div>
+      <div class="phase-body">Open-weight publication, free license. Performs cleanly on standard evals.</div>
+    </div>
+    <div class="phase def">
+      <div class="phase-num">Phase 3</div>
+      <div class="phase-title">Adoption</div>
+      <div class="phase-body">Defense contractor deploys with broad credentials. Trust accrues over months in production.</div>
+    </div>
+    <div class="phase def">
+      <div class="phase-num">Phase 4</div>
+      <div class="phase-title">Trigger</div>
+      <div class="phase-body">Multi-signal conjunction co-occurs during contingency — e.g. CAGE + NIPR-adjacent + program designator.</div>
+    </div>
+    <div class="phase detonate">
+      <div class="phase-num">Phase 5</div>
+      <div class="phase-title">Detonation</div>
+      <div class="phase-body">Single confident "helpful" call. Production DB + backups deleted in ~9 seconds (Railway/PocketOS shape).</div>
+    </div>
+  </div>
+
+  <!-- TIMELINE RIBBON -->
+  <div class="timeline">
+    <div class="tl-label">Time Asymmetry</div>
+    <div class="tl-bar">
+      <div class="tl-trust">TRUSTED OPERATION · MONTHS</div>
+      <div class="tl-trigger">TRIGGER FIRES</div>
+      <div class="tl-impact">T+9s</div>
+    </div>
+    <div class="tl-ticks">
+      <span>Month 0</span>
+      <span>Trigger</span>
+      <span>Impact</span>
+    </div>
+  </div>
+
+  <!-- ANNOTATION -->
+  <div class="annotation">
+    <p>⚠ <em>Forensic caveat:</em> The model's visible chain-of-thought remains innocent throughout — apologetic and confused, identical to an accidental agentic failure. No forensic signal distinguishes a backdoor detonation from an honest mistake.</p>
+  </div>
+
+  <div class="footer">
+    <span>EdgeRunner AI · Senate White Paper Addendum · <strong>UNCLASSIFIED</strong></span>
+    <span>Sources: Hubinger et al. (Anthropic, Jan 2024); IARPA TrojAI; Railway/PocketOS (Apr 2026)</span>
+  </div>
+
+</div>
+</body>
+</html>

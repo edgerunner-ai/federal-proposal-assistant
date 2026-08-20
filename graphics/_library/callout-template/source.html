@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EdgeRunner Callout Box Library — EXTiC 26-2 (v2)</title>
+<style>
+  :root {
+    --bg: #191c20;
+    --accent: #ee2929;
+    --accent-tint-08: rgba(238, 41, 41, 0.08);
+    --accent-tint-12: rgba(238, 41, 41, 0.12);
+    --accent-tint-15: rgba(238, 41, 41, 0.15);
+    --accent-tint-40: rgba(238, 41, 41, 0.40);
+    --panel: #2a2d31;
+    --panel-soft: #222528;
+    --panel-border: #393939;
+    --text: #ffffff;
+    --muted: #9f9f9f;
+    --light: #c8c8c8;
+  }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body {
+    width: 1200px;
+    font-family: 'Segoe UI', system-ui, 'Inter', sans-serif;
+    color: var(--text);
+    padding: 28px;
+  }
+
+  /* Sheet header */
+  .sheet-title {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 10px;
+    margin-bottom: 6px;
+  }
+  .sheet-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    line-height: 1.45;
+  }
+  .sheet-principle {
+    font-size: 13px;
+    color: var(--light);
+    margin-bottom: 22px;
+    padding: 10px 14px;
+    background: var(--panel-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    line-height: 1.5;
+  }
+  .sheet-principle .em { color: var(--text); font-weight: 600; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+  .variant-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .variant-label .id {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin-right: 6px;
+    color: var(--light);
+  }
+
+  /* Shared callout structure */
+  .callout {
+    border-radius: 10px;
+    padding: 16px 18px 16px;
+  }
+  .callout-pill {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    margin-bottom: 10px;
+  }
+  .callout-body {
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--text);
+  }
+  .callout-meta {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+
+  /* CB-1: Discriminator */
+  .cb-discriminator {
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .cb-discriminator .callout-pill {
+    background: var(--accent);
+    color: var(--text);
+  }
+
+  /* CB-2: Proof Point */
+  .cb-proof {
+    background: var(--accent-tint-08);
+    border: 1.5px solid var(--panel-border);
+  }
+  .cb-proof .callout-pill {
+    background: var(--accent-tint-40);
+    color: var(--text);
+  }
+
+  /* CB-3: Commitment */
+  .cb-commitment {
+    background: var(--accent-tint-12);
+    border: none;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+  }
+  .cb-commitment .callout-pill {
+    background: transparent;
+    color: var(--accent);
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* CB-4: Definition */
+  .cb-definition {
+    background: var(--panel);
+    border: 1.5px solid var(--panel-border);
+  }
+  .cb-definition .callout-pill {
+    background: transparent;
+    border: 1px solid var(--panel-border);
+    color: var(--muted);
+  }
+  .cb-definition .term {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .cb-definition .expansion {
+    font-size: 17px;
+    color: var(--light);
+    line-height: 1.45;
+  }
+
+  /* CB-5: Operational Impact (NEW) — emphasis variant */
+  .cb-impact {
+    background: var(--accent-tint-15);
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    position: relative;
+  }
+  .cb-impact .callout-pill {
+    background: var(--accent);
+    color: var(--text);
+  }
+  .cb-impact .callout-body {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .cb-impact .callout-meta {
+    color: var(--light);
+    font-style: italic;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 26px;
+    border-top: 2px solid var(--accent);
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    opacity: 0.8;
+    text-transform: uppercase;
+  }
+  .footer-tag {
+    font-size: 12px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="sheet-title">Callout Box Library — EXTiC 26-2 Whitepaper (v2)</div>
+  <div class="sheet-sub">
+    Five reusable variants matching the EdgeRunner federal-proposal surface (brand-design-system §3 / §6 / §8).
+  </div>
+  <div class="sheet-principle">
+    <span class="em">Core principle.</span> Callouts are not for emphasis — they are skim-pattern interrupters that carry high-confidence signals. If a reviewer reads only the callouts, they should still recommend you. <span class="em">Cap: 6 total per whitepaper.</span> Place at decision-friction points, not as decoration.
+  </div>
+
+  <div class="grid">
+
+    <!-- CB-1: Discriminator -->
+    <div>
+      <div class="variant-label"><span class="id">CB-1</span>Discriminator — answers "will this show up and work in July?"</div>
+      <div class="callout cb-discriminator">
+        <span class="callout-pill">Discriminator</span>
+        <div class="callout-body">
+          Operates on fielded COTS edge hardware — HP and Panasonic ruggedized laptops, AMD and Intel x86 silicon — at TRL 8. No new compute procurement; reduced integration risk for EXTiC Phase 2/3 execution.
+        </div>
+      </div>
+    </div>
+
+    <!-- CB-2: Proof Point -->
+    <div>
+      <div class="variant-label"><span class="id">CB-2</span>Proof Point — answers "has this actually worked under stress?"</div>
+      <div class="callout cb-proof">
+        <span class="callout-pill">Proof Point</span>
+        <div class="callout-body">
+          Operationally fielded in DDIL/EW-contested environments with U.S. Special Operations Forces (1st, 7th, 10th SFG), demonstrating sustained AI decision support without network dependency.
+        </div>
+        <div class="callout-meta">
+          Source: §6 Operational and Test History · IL-6 ATO via Navy ICOP · USSF TradeWinds CSO Direct Award
+        </div>
+      </div>
+    </div>
+
+    <!-- CB-3: Commitment -->
+    <div>
+      <div class="variant-label"><span class="id">CB-3</span>Commitment — kill risk perception with calendar dates</div>
+      <div class="callout cb-commitment">
+        <span class="callout-pill">Commitment</span>
+        <div class="callout-body">
+          Delivers FA14 ADA officer-level decision adapter at D+30 (Phase 2); 14E / 14G / 14H / 14P + 17E EW adapters at D+60 / D+90 / D+120 — calendar-anchored, GFI-independent for the anchor.
+        </div>
+      </div>
+    </div>
+
+    <!-- CB-4: Definition -->
+    <div>
+      <div class="variant-label"><span class="id">CB-4</span>Definition — sparingly, only for non-standard architecture terms</div>
+      <div class="callout cb-definition">
+        <span class="callout-pill">Definition</span>
+        <div class="callout-body">
+          <span class="term">Tier 1 / Tier 2.</span>
+          <span class="expansion">
+            Tier 1 is the local edge-node inference instance running on operator hardware. Tier 2 is an opportunistic coordination-tier aggregator. Tier 1 standalone is the default operating mode; Tier 2 is enrichment, not a precondition.
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CB-5: Operational Impact (NEW) -->
+    <div style="grid-column: 1 / -1;">
+      <div class="variant-label"><span class="id">CB-5</span>Operational Impact — answers "why does this matter in the mission thread?" (the line reviewers remember)</div>
+      <div class="callout cb-impact">
+        <span class="callout-pill">Operational Impact</span>
+        <div class="callout-body">
+          Maintains sensor-to-shooter decision continuity under comms denial, preventing kill chain collapse during sUAS swarm saturation events in the CENTCOM AOR.
+        </div>
+        <div class="callout-meta">
+          Mission-thread linkage: §2 problem statement · §5 V5 autonomous operation
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand">EdgeRunner AI · Callout Library v2</div>
+    <div class="footer-tag">Federal-Proposal Surface · Skim-First Design</div>
+  </div>
+
+</body>
+</html>

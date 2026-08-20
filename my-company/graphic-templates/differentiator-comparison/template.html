@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{title}}</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:{{theme.bg}};font-family:'Segoe UI',system-ui,sans-serif;
+       display:flex;justify-content:center;align-items:center;
+       min-height:100vh;padding:20px}
+  .canvas{width:1200px;background:{{theme.bg}};border-radius:12px;
+          overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+  .grid{display:grid;grid-template-columns:210px 1fr 1fr 1fr;gap:3px;margin-bottom:3px}
+  .dim{background:rgba(255,255,255,.02);border:1px solid {{theme.panel}};padding:11px 14px;display:flex;align-items:center}
+  .dim-title{color:{{theme.text}};font-size:13px;font-weight:700}
+  .dim-sub{color:{{theme.muted}};font-size:11px;margin-top:2px}
+  .cell{padding:11px 14px;text-align:center}
+  .cell-prop{background:rgba(255,255,255,.02);border:1px solid {{theme.panel}}}
+  .cell-open{background:rgba(200,162,0,.06);border:1px solid rgba(200,162,0,.3)}
+  .cell-hero{background:rgba(238,41,41,.06);border:1px solid rgba(238,41,41,.3)}
+  .icon{font-size:20px;margin-bottom:3px}
+  .icon-no{color:#555}
+  .icon-partial{color:{{theme.amber}}}
+  .icon-yes-hero{color:{{theme.accent}}}
+  .icon-yes-open{color:{{theme.amber}}}
+  .label-no{color:#666;font-size:12px}
+  .label-partial{color:{{theme.amber}};font-size:12px}
+  .label-yes{color:{{theme.text}};font-size:12px;font-weight:600}
+  .sub-no{color:#555;font-size:11px;margin-top:2px}
+  .sub-partial{color:#8a7000;font-size:11px;margin-top:2px}
+  .sub-yes{color:{{theme.body}};font-size:11px;margin-top:2px}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div style="padding:18px 32px 8px;text-align:center;border-bottom:2px solid {{theme.accent}}">
+    <h1 style="color:{{theme.text}};font-size:26px;font-weight:700;letter-spacing:.5px;text-transform:uppercase">{{title}}</h1>
+    <p style="color:{{theme.muted}};font-size:14px;margin-top:4px">{{subtitle}}</p>
+  </div>
+
+  <div style="padding:18px 28px 16px">
+
+    <!-- Column Headers -->
+    <div class="grid" style="margin-bottom:3px">
+      <div style="padding:10px 14px">
+        <div style="color:{{theme.muted}};font-size:12px;font-weight:700;letter-spacing:.5px">DIMENSION</div>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid {{theme.panel_border}};padding:10px 14px;text-align:center;border-radius:6px 0 0 0">
+        <div style="color:#777;font-size:14px;font-weight:700">{{columns.0.name}}</div>
+        <div style="color:#555;font-size:11px;margin-top:2px">{{columns.0.sub}}</div>
+      </div>
+      <div style="background:rgba(200,162,0,.08);border:1px solid rgba(200,162,0,.4);padding:10px 14px;text-align:center">
+        <div style="color:{{theme.amber}};font-size:14px;font-weight:700">{{columns.1.name}}</div>
+        <div style="color:#8a7000;font-size:11px;margin-top:2px">{{columns.1.sub}}</div>
+      </div>
+      <div style="background:rgba(238,41,41,.12);border:1px solid {{theme.accent}};padding:10px 14px;text-align:center;border-radius:0 6px 0 0">
+        <div style="color:{{theme.accent}};font-size:14px;font-weight:700">{{columns.2.name}}</div>
+        <div style="color:{{theme.body}};font-size:11px;margin-top:2px">{{columns.2.sub}}</div>
+      </div>
+    </div>
+
+    <!-- REPEAT:rows -->
+    <div class="grid">
+      <div class="dim"><div>
+        <div class="dim-title">{{item.dimension}}</div>
+        <div class="dim-sub">{{item.dimension_sub}}</div>
+      </div></div>
+      <div class="cell cell-prop">
+        <div class="icon icon-no">✗</div>
+        <div class="label-no">{{item.cells.0.label}}</div>
+        <div class="sub-no">{{item.cells.0.sub}}</div>
+      </div>
+      <div class="cell cell-open">
+        <div class="icon icon-partial">~</div>
+        <div class="label-partial">{{item.cells.1.label}}</div>
+        <div class="sub-partial">{{item.cells.1.sub}}</div>
+      </div>
+      <div class="cell cell-hero">
+        <div class="icon icon-yes-hero">✓</div>
+        <div class="label-yes">{{item.cells.2.label}}</div>
+        <div class="sub-yes">{{item.cells.2.sub}}</div>
+      </div>
+    </div>
+    <!-- END:REPEAT -->
+
+  </div>
+
+  <div style="background:#111315;padding:10px 32px;display:flex;justify-content:space-between;align-items:center">
+    <span style="color:{{theme.accent}};font-size:13px;font-weight:700;opacity:.8;letter-spacing:.5px">{{footer.brand}}</span>
+    <span style="color:{{theme.muted}};font-size:12px">{{footer.tagline}}</span>
+    <span style="color:{{theme.muted}};font-size:12px">{{footer.website}}</span>
+  </div>
+
+</div>
+</body>
+</html>

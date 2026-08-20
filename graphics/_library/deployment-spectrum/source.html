@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EdgeRunner Deployment Spectrum — All Environments, No Exceptions</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#191c20;font-family:'Segoe UI',Inter,system-ui,-apple-system,sans-serif;
+       display:flex;justify-content:center;align-items:center;
+       min-height:100vh;padding:20px}
+  .canvas{width:1200px;background:#191c20;border-radius:12px;
+          overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div style="padding:18px 32px 8px;text-align:center;border-bottom:2px solid #ee2929">
+    <h1 style="color:#ffffff;font-size:28px;font-weight:700;letter-spacing:.5px;text-transform:uppercase">EdgeRunner Deployment Spectrum — All Environments, No Exceptions</h1>
+    <p style="color:#9f9f9f;font-size:15px;margin-top:4px">Purpose-built for where connectivity ends — operational from NATO HQ to the forward tactical edge</p>
+  </div>
+
+  <svg viewBox="0 0 1200 490" xmlns="http://www.w3.org/2000/svg" style="display:block">
+    <defs>
+      <linearGradient id="specGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#2a2d31"/>
+        <stop offset="100%" stop-color="rgba(238,41,41,.4)"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Spectrum bar -->
+    <rect x="80" y="34" width="1040" height="8" rx="4" fill="url(#specGrad)"/>
+    <circle cx="80" cy="38" r="6" fill="#393939"/>
+    <circle cx="1120" cy="38" r="6" fill="#ee2929"/>
+    <text x="80" y="26" fill="#9f9f9f" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">CLOUD-DEPENDENT</text>
+    <text x="1120" y="26" fill="#ee2929" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">DDIL / AIR-GAPPED</text>
+
+    <!-- ===== COLUMN 0 — CONNECTED (neutral) ===== -->
+    <rect x="60" y="62" width="250" height="330" rx="10" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <text x="185" y="88" fill="#ffffff" font-size="17" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">CONNECTED</text>
+    <text x="185" y="106" fill="#9f9f9f" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">NATO HQ / SHAPE</text>
+
+    <text x="185" y="134" fill="#ee2929" font-size="13" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">DEPLOYMENT</text>
+    <text x="185" y="155" fill="#c8c8c8" font-size="14" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Full MSS NATO COP</text>
+    <text x="185" y="175" fill="#c8c8c8" font-size="14" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Enterprise pipelines</text>
+    <text x="185" y="195" fill="#c8c8c8" font-size="14" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Model synchronization</text>
+
+    <line x1="80" y1="212" x2="300" y2="212" stroke="#393939" stroke-width="1" opacity=".5"/>
+    <text x="185" y="232" fill="#ee2929" font-size="13" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">USE CASES</text>
+    <text x="185" y="251" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Strategic COP analysis</text>
+    <text x="185" y="268" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Assessment reporting</text>
+    <text x="185" y="285" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Model + LoRA updates</text>
+
+    <line x1="80" y1="318" x2="300" y2="318" stroke="#393939" stroke-width="1" opacity=".5"/>
+    <text x="185" y="338" fill="#ee2929" font-size="13" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">CONNECTIVITY</text>
+    <text x="185" y="357" fill="#c8c8c8" font-size="14" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Persistent / high-bandwidth</text>
+    <rect x="110" y="368" width="150" height="24" rx="12" fill="#2a2d31" stroke="#393939"/>
+    <text x="185" y="384" fill="#9f9f9f" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">CLOUD-ACCESSIBLE</text>
+
+    <!-- ===== COLUMN 1 — DEGRADED (neutral) ===== -->
+    <rect x="330" y="62" width="250" height="330" rx="10" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <text x="455" y="88" fill="#ffffff" font-size="17" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">DEGRADED</text>
+    <text x="455" y="106" fill="#9f9f9f" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">JFC Brunssum · JFC Naples</text>
+
+    <text x="455" y="134" fill="#ee2929" font-size="13" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">DEPLOYMENT</text>
+    <text x="455" y="155" fill="#c8c8c8" font-size="14" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Local model cache</text>
+    <text x="455" y="175" fill="#c8c8c8" font-size="14" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Periodic COP sync</text>
+    <text x="455" y="195" fill="#c8c8c8" font-size="14" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">LoRA adapters resident</text>
+
+    <line x1="350" y1="212" x2="570" y2="212" stroke="#393939" stroke-width="1" opacity=".5"/>
+    <text x="455" y="232" fill="#ee2929" font-size="13" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">USE CASES</text>
+    <text x="455" y="251" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Theater COA planning</text>
+    <text x="455" y="268" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Cross-domain targeting</text>
+    <text x="455" y="285" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">JFC intel fusion</text>
+
+    <line x1="350" y1="318" x2="570" y2="318" stroke="#393939" stroke-width="1" opacity=".5"/>
+    <text x="455" y="338" fill="#ee2929" font-size="13" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">CONNECTIVITY</text>
+    <text x="455" y="357" fill="#c8c8c8" font-size="14" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Intermittent / scheduled</text>
+    <rect x="365" y="368" width="180" height="24" rx="12" fill="#2a2d31" stroke="#393939"/>
+    <text x="455" y="384" fill="#9f9f9f" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">STORE-AND-FORWARD</text>
+
+    <!-- ===== COLUMN 2 — DDIL (hero) ===== -->
+    <rect x="600" y="62" width="250" height="330" rx="10" fill="rgba(238,41,41,.08)" stroke="#ee2929" stroke-width="2"/>
+    <text x="725" y="88" fill="#ee2929" font-size="17" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">DDIL</text>
+    <text x="725" y="106" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Forward HQs · Expeditionary</text>
+
+    <text x="725" y="134" fill="#ee2929" font-size="13" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">DEPLOYMENT</text>
+    <text x="725" y="155" fill="#c8c8c8" font-size="14" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">On-device inference</text>
+    <text x="725" y="175" fill="#c8c8c8" font-size="14" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Offline LoRA adapters</text>
+    <text x="725" y="195" fill="#c8c8c8" font-size="14" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">COP snapshot + sync</text>
+
+    <line x1="620" y1="212" x2="840" y2="212" stroke="#ee2929" stroke-width="1" opacity=".3"/>
+    <text x="725" y="232" fill="#ee2929" font-size="13" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">USE CASES</text>
+    <text x="725" y="251" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Forward planning cycles</text>
+    <text x="725" y="268" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Targeting workflows</text>
+    <text x="725" y="285" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">OSINT at the edge</text>
+
+    <line x1="620" y1="318" x2="840" y2="318" stroke="#ee2929" stroke-width="1" opacity=".3"/>
+    <text x="725" y="338" fill="#ee2929" font-size="13" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">CONNECTIVITY</text>
+    <text x="725" y="357" fill="#c8c8c8" font-size="14" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Opportunistic / intermittent</text>
+    <rect x="635" y="368" width="180" height="24" rx="12" fill="#2a1010" stroke="#ee2929" stroke-width="1.5"/>
+    <text x="725" y="384" fill="#ee2929" font-size="13" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">DDIL-NATIVE</text>
+
+    <!-- ===== COLUMN 3 — AIR-GAPPED (hero, wider) ===== -->
+    <rect x="870" y="62" width="270" height="330" rx="10" fill="rgba(238,41,41,.12)" stroke="#ee2929" stroke-width="2.5"/>
+    <text x="1005" y="88" fill="#ee2929" font-size="17" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">AIR-GAPPED</text>
+    <text x="1005" y="106" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Naval · SOF · Eastern Flank</text>
+
+    <text x="1005" y="134" fill="#ee2929" font-size="13" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">DEPLOYMENT</text>
+    <text x="1005" y="155" fill="#c8c8c8" font-size="14" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Zero external dependency</text>
+    <text x="1005" y="175" fill="#c8c8c8" font-size="14" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Full on-device model</text>
+    <text x="1005" y="195" fill="#c8c8c8" font-size="14" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Local COP snapshot</text>
+
+    <line x1="890" y1="212" x2="1120" y2="212" stroke="#ee2929" stroke-width="1" opacity=".4"/>
+    <text x="1005" y="232" fill="#ee2929" font-size="13" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">USE CASES</text>
+    <text x="1005" y="257" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Commander NLI interface</text>
+    <text x="1005" y="277" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">On-device COA generation</text>
+    <text x="1005" y="297" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Autonomous targeting support</text>
+
+    <line x1="890" y1="318" x2="1120" y2="318" stroke="#ee2929" stroke-width="1" opacity=".4"/>
+    <text x="1005" y="338" fill="#ee2929" font-size="13" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">CONNECTIVITY</text>
+    <text x="1005" y="357" fill="#c8c8c8" font-size="14" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Zero — fully isolated</text>
+    <rect x="885" y="368" width="240" height="24" rx="12" fill="#2a1010" stroke="#ee2929" stroke-width="1.5"/>
+    <text x="1005" y="384" fill="#ee2929" font-size="13" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">FULLY AIR-GAPPED</text>
+
+    <!-- Bottom tagline -->
+    <text x="600" y="438" fill="#9f9f9f" font-size="15" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">EdgeRunner is the only solution purpose-built to operate identically with or without connectivity</text>
+    <rect x="300" y="454" width="600" height="2" rx="1" fill="#ee2929" opacity=".3"/>
+  </svg>
+
+  <div style="background:#111315;padding:10px 32px;display:flex;justify-content:space-between;align-items:center">
+    <span style="color:#ee2929;font-size:13px;font-weight:700;opacity:.8;letter-spacing:.5px;font-family:'Segoe UI',Inter,system-ui,sans-serif">EDGERUNNER AI</span>
+    <span style="color:#9f9f9f;font-size:12px;font-family:'Segoe UI',Inter,system-ui,sans-serif">One system — four environments — no degradation in decision support capability</span>
+    <span style="color:#9f9f9f;font-size:12px;font-family:'Segoe UI',Inter,system-ui,sans-serif">edgerunner.ai</span>
+  </div>
+
+</div>
+</body>
+</html>

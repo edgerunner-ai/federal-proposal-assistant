@@ -1,0 +1,26 @@
+# Normalize ALL text files to LF — in the repository and on checkout, every
+# platform. This overrides core.autocrlf=true, which otherwise rewrites LF->CRLF
+# in the Windows working tree and spams "LF will be replaced by CRLF" on every
+# `git add`. LF everywhere keeps the Python/markdown/HTML tooling deterministic.
+* text=auto eol=lf
+
+# Shell scripts MUST be checked out with LF. CRLF line endings make bash fail
+# with errors like `$'\r': command not found` on Windows checkouts — which is
+# exactly what broke scripts/smoke-test.sh. This pins *.sh to LF everywhere.
+*.sh    text eol=lf
+
+# Git hook scripts have no .sh extension but are bash — pin them to LF too, or a
+# Windows checkout gets CRLF and the hook fails with `$'\r': command not found`.
+hooks/pre-commit    text eol=lf
+hooks/pre-push      text eol=lf
+
+# Binary assets — never apply line-ending or text filters to these.
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.ico     binary
+*.pdf     binary
+*.docx    binary
+*.xlsx    binary
+*.pptx    binary

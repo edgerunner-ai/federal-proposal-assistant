@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Two-Tier AI Race</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#111; font-family:'Segoe UI',system-ui,sans-serif;
+         display:flex; justify-content:center; align-items:center; min-height:100vh; padding:20px; }
+  .card { width:1200px; background:#1c1e22; border-radius:8px; overflow:hidden;
+          box-shadow:0 8px 32px rgba(0,0,0,.5); }
+  .title-bar { padding:32px 44px 26px; border-bottom:3px solid #ee2929; }
+  .title-bar h1 { color:#fff; font-size:38px; font-weight:800; letter-spacing:1.8px;
+                  text-transform:uppercase; text-align:center; }
+  .title-bar p { color:#b0b0b0; font-size:22px; text-align:center; margin-top:10px; font-weight:500; line-height:1.4; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+  .col { padding:36px 44px 42px; }
+  .col.left  { background:#1c1e22; border-right:1px solid #2a2d31; }
+  .col.right { background:#212428; }
+  .tier-label { font-size:18px; font-weight:700; letter-spacing:2.5px; color:#888;
+                text-transform:uppercase; margin-bottom:8px; }
+  .tier-name  { font-size:38px; font-weight:800; color:#fff; margin-bottom:6px; letter-spacing:.5px; }
+  .tier-desc  { font-size:22px; color:#9aa; margin-bottom:28px; line-height:1.5; }
+  .winner { display:flex; align-items:center; gap:18px; padding:22px 24px;
+            border-radius:8px; margin-bottom:18px; }
+  .winner.us    { background:linear-gradient(90deg,#1f3a5f,#2c4d7a); border-left:6px solid #4a90e2; }
+  .winner.china { background:linear-gradient(90deg,#5f1f1f,#7a2c2c); border-left:6px solid #ee2929; }
+  .flag { font-size:46px; line-height:1; font-weight:800; color:#fff; letter-spacing:1px; }
+  .winner-text { color:#fff; }
+  .winner-text .label { font-size:17px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; opacity:.85; }
+  .winner-text .verdict { font-size:28px; font-weight:800; line-height:1.25; margin-top:3px; }
+  ul.facts { list-style:none; margin-top:10px; }
+  ul.facts li { padding:16px 0; border-bottom:1px solid #2a2d31; color:#d0d0d0;
+                font-size:24px; line-height:1.45; display:flex; gap:18px; }
+  ul.facts li:last-child { border-bottom:none; }
+  ul.facts li .num { color:#ee2929; font-weight:800; flex-shrink:0; min-width:110px; font-size:24px; }
+  ul.facts li .num.us { color:#4a90e2; }
+  .footer { background:#161719; padding:22px 44px; border-top:1px solid #2a2d31;
+            color:#aaa; font-size:20px; text-align:center; font-style:italic; line-height:1.4; }
+  .footer strong { color:#ee2929; font-style:normal; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="title-bar">
+    <h1>The Two-Tier AI Race</h1>
+    <p>U.S. leads the closed frontier. China leads open weights. The race has split — and they confer different leverage.</p>
+  </div>
+  <div class="grid">
+    <div class="col left">
+      <div class="tier-label">Tier 1</div>
+      <div class="tier-name">Closed Frontier</div>
+      <div class="tier-desc">Commercial-API models — GPT-5, Claude 4.6, Gemini 3.0 Pro, Grok 4.1</div>
+      <div class="winner us">
+        <div class="flag">🇺🇸</div>
+        <div class="winner-text">
+          <div class="label">Leader</div>
+          <div class="verdict">United States</div>
+        </div>
+      </div>
+      <ul class="facts">
+        <li><span class="num us">Small</span><span>Lead measured in <strong style="color:#fff;">months, not years</strong> on LM Arena pairwise human preference</span></li>
+        <li><span class="num us">Eroding</span><span>Older frontier models <strong style="color:#fff;">degrade over time</strong> as providers quantize to manage compute economics</span></li>
+        <li><span class="num us">API-only</span><span>Cannot run in DDIL, contested, or air-gapped environments</span></li>
+      </ul>
+    </div>
+    <div class="col right">
+      <div class="tier-label">Tier 2</div>
+      <div class="tier-name">Open Weights</div>
+      <div class="tier-desc">Run on your own hardware — substrate for sovereign and edge AI</div>
+      <div class="winner china">
+        <div class="flag">🇨🇳</div>
+        <div class="winner-text">
+          <div class="label">Leader</div>
+          <div class="verdict">People's Republic of China</div>
+        </div>
+      </div>
+      <ul class="facts">
+        <li><span class="num">19 / 20</span><span>Top open-weight models on Artificial Analysis are Chinese — Gemma 4 31B is the lone U.S. entrant at #19</span></li>
+        <li><span class="num">200B–1.6T</span><span>Routine Chinese open-release size; Western labs have largely stopped releasing &gt;120B</span></li>
+        <li><span class="num">12+</span><span>Chinese open-model families released in the past 60 days vs. <strong style="color:#fff;">2 from U.S. labs</strong> (Gemma 4, Granite 4.1)</span></li>
+        <li><span class="num">≈ 4.5</span><span>Qwen 3.6 reportedly performs at <strong style="color:#fff;">Claude Sonnet/Opus 4.5</strong> level — runs on a single high-end consumer GPU</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer">
+    Bottom line — <strong>The closed-frontier lead is real but small and eroding. The open-weight gap is large, widening, and the layer that determines sovereign edge AI for U.S. defense.</strong>
+  </div>
+</div>
+</body>
+</html>

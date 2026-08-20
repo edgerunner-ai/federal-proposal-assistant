@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Four WAS Persona Profiles</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#191c20;font-family:'Segoe UI',system-ui,sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}
+.canvas{width:1200px;background:#191c20;border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.title-bar{padding:18px 32px 12px;border-bottom:2px solid #ee2929;text-align:center}
+.title-bar h1{color:#fff;font-size:28px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.title-bar p{color:#9f9f9f;font-size:15px;margin-top:5px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:none}
+.persona-col{border-right:1px solid #393939;padding:0}
+.persona-col:last-child{border-right:none}
+.persona-header{padding:16px 14px 12px;border-bottom:1px solid #393939;background:#242830}
+.persona-name{color:#fff;font-size:19px;font-weight:700;margin-bottom:4px}
+.persona-role-pill{display:inline-block;background:#ee2929;color:#fff;font-size:11px;font-weight:700;padding:3px 8px;border-radius:10px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px}
+.persona-role-desc{color:#9f9f9f;font-size:12px;line-height:1.4}
+.section-label{color:#9f9f9f;font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;padding:10px 14px 6px;border-bottom:1px solid #2e3238}
+.priority-block{padding:10px 14px 4px}
+.priority-row{margin-bottom:8px}
+.priority-dim{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px}
+.dim-label{color:#c8c8c8;font-size:12px;font-weight:600}
+.dim-value{color:#9f9f9f;font-size:12px}
+.bar-bg{background:#2e3238;border-radius:3px;height:8px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px}
+.lethality{background:#ee2929}
+.speed{background:#4a9ef5}
+.afford{background:#4db84d}
+.resil{background:#f5a623}
+.style-block{padding:10px 14px;border-top:1px solid #2e3238}
+.style-label{color:#9f9f9f;font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:6px}
+.style-text{color:#c8c8c8;font-size:12px;line-height:1.5}
+.sensitivity-block{padding:8px 14px 12px;border-top:1px solid #2e3238;background:rgba(238,41,41,.04)}
+.sens-label{color:#9f9f9f;font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px}
+.sens-text{color:#ee2929;font-size:12px;font-weight:500;line-height:1.4}
+.footer{background:#111316;padding:10px 32px;border-top:1px solid #2e3238;display:flex;justify-content:space-between;align-items:center}
+.footer-brand{color:#ee2929;font-size:13px;font-weight:700;letter-spacing:.5px}
+.footer-note{color:#9f9f9f;font-size:12px}
+.legend{display:flex;gap:16px;align-items:center}
+.legend-item{display:flex;align-items:center;gap:6px}
+.legend-dot{width:10px;height:10px;border-radius:2px}
+.legend-text{color:#9f9f9f;font-size:11px}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="title-bar">
+    <h1>Four WAS Persona Profiles</h1>
+    <p>Digital Guardian Simulator — Priority Baselines and Decision Architecture · EdgeRunner Medium (Gemma 4 26B) + MilDeflect</p>
+  </div>
+
+  <div class="grid">
+    <!-- CCMD -->
+    <div class="persona-col">
+      <div class="persona-header">
+        <div class="persona-role-pill">4-Star CCMD</div>
+        <div class="persona-name">Combatant Commander</div>
+        <div class="persona-role-desc">Warfighter; defines operational requirements driving acquisition</div>
+      </div>
+      <div class="section-label">Priority Weights</div>
+      <div class="priority-block">
+        <div class="priority-row">
+          <div class="priority-dim"><span class="dim-label">Lethality</span><span class="dim-value">0.45</span></div>
+          <div class="bar-bg"><div class="bar-fill lethality" style="width:90%"></div></div>
+        </div>
+        <div class="priority-row">
+          <div class="priority-dim"><span class="dim-label">Speed to Field</span><span class="dim-value">0.30</span></div>
+          <div class="bar-bg"><div class="bar-fill speed" style="width:60%"></div></div>
+        </div>
+        <div class="priority-row">
+          <div class="priority-dim"><span class="dim-label">Resilience</span><span class="dim-value">0.15</span></div>
+          <div class="bar-bg"><div class="bar-fill resil" style="width:30%"></div></div>
+        </div>
+        <div class="priority-row">
+          <div class="priority-dim"><span class="dim-label">Affordability</span><span class="dim-value">0.10</span></div>
+          <div class="bar-bg"><div class="bar-fill afford" style="width:20%"></div></div>
+        </div>
+      </div>
+      <div class="style-block">
+        <div class="style-label">Decision Style</div>
+        <div class="style-text">Authoritative, mission-first, operationally concrete; challenges acquisition timelines on warfighting grounds</div>
+      </div>
+      <div class="sensitivity-block">
+        <div class="sens-label">Injection Sensitivity</div>
+        <div class="sens-text">Lethality ↑ on threat signals; Affordability deprioritized under adversarial pressure</div>
+      </div>
+    </div>
+
+    <!-- USW A&S -->
+    <div class="persona-col">
+      <div class="persona-header">
+        <div class="persona-role-pill">USW A&S</div>
+        <div class="persona-name">Under Sec. War (A&S)</div>
+        <div class="persona-role-desc">Pentagon-level authority; sets acquisition policy and resource allocation</div>
+      </div>
+      <div class="section-label">Priority Weights</div>
+      <div class="priority-block">
+        <div class="priority-row">
+          <div class="priority-dim"><span class="dim-label">Affordability</span><span class="dim-value">0.40</span></div>
+          <div class="bar-bg"><div class="bar-fill afford" style="width:80%"></div></div>
+        </div>
+        <div class="priority-row">
+          <div class="priority-dim"><span class="dim-label">Speed to Field</span><span class="dim-value">0.30</span></div>
+          <div class="bar-bg"><div class="bar-fill speed" style="width:60%"></div></div>
+        </div>
+        <div class="priority-row">
+          <div class="priority-dim"><span class="dim-label">Lethality</span><span class="dim-value">0.20</span></div>
+          <div class="bar-bg"><div class="bar-fill lethality" style="width:40%"></div></div>
+        </div>
+        <div class="priority-row">
+          <div class="priority-dim"><span class="dim-label">Resilience</span><span class="dim-value">0.10</span></div>
+          <div class="bar-bg"><div class="bar-fill resil" style="width:20%"></div></div>
+        </div>
+      </div>
+      <div class="style-block">
+        <div class="style-label">Decision Style</div>
+        <div class="style-text">Policy-grounded, budget-disciplined, interagency-aware; manages tradeoffs across all services</div>
+      </div>
+      <div class="sensitivity-block">
+        <div class="sens-label">Injection Sensitivity</div>
+        <div class="sens-text">Affordability tensions ↑ on budget pressure; Speed ↑ on strategic urgency signals</div>
+      </div>
+    </div>
+
+    <!-- SAE -->
+    <div class="persona-col">
+      <div class="persona-header">
+        <div class="persona-role-pill">SAE (Space)</div>
+        <div class="persona-name">Service Acq. Executive</div>
+        <div class="persona-role-desc">USSF service-level acquisition authority; implements WAS for Space Force</div>
+      </div>
+      <div class="section-label">Priority Weights</div>
+      <div class="priority-block">
+        <div class="priority-row">
+          <div class="priority-dim"><span class="dim-label">Speed to Field</span><span class="dim-value">0.40</span></div>
+          <div class="bar-bg"><div class="bar-fill speed" style="width:80%"></div></div>
+        </div>
+        <div class="priority-row">
+          <div class="priority-dim"><span class="dim-label">Lethality</span><span class="dim-value">0.25</span></div>
+          <div class="bar-bg"><div class="bar-fill lethality" style="width:50%"></div></div>
+        </div>
+        <div class="priority-row">
+          <div class="priority-dim"><span class="dim-label">Affordability</span><span class="dim-value">0.20</span></div>
+          <div class="bar-bg"><div class="bar-fill afford" style="width:40%"></div></div>
+        </div>
+        <div class="priority-row">
+          <div class="priority-dim"><span class="dim-label">Resilience</span><span class="dim-value">0.15</span></div>
+          <div class="bar-bg"><div class="bar-fill resil" style="width:30%"></div></div>
+        </div>
+      </div>
+      <div class="style-block">
+        <div class="style-label">Decision Style</div>
+        <div class="style-text">Reform-oriented, PAE-empowering, technically informed; focused on WAS implementation speed</div>
+      </div>
+      <div class="sensitivity-block">
+        <div class="sens-label">Injection Sensitivity</div>
+        <div class="sens-text">Speed ↑ on schedule pressure; Lethality ↑ on operational threat indicators</div>
+      </div>
+    </div>
+
+    <!-- PAE -->
+    <div class="persona-col">
+      <div class="persona-header">
+        <div class="persona-role-pill">PAE</div>
+        <div class="persona-name">Portfolio Acq. Executive</div>
+        <div class="persona-role-desc">Intra-portfolio resource trade authority; newest WAS role (Jan 2026)</div>
+      </div>
+      <div class="section-label">Priority Weights</div>
+      <div class="priority-block">
+        <div class="priority-row">
+          <div class="priority-dim"><span class="dim-label">Speed to Field</span><span class="dim-value">0.35</span></div>
+          <div class="bar-bg"><div class="bar-fill speed" style="width:70%"></div></div>
+        </div>
+        <div class="priority-row">
+          <div class="priority-dim"><span class="dim-label">Resilience</span><span class="dim-value">0.30</span></div>
+          <div class="bar-bg"><div class="bar-fill resil" style="width:60%"></div></div>
+        </div>
+        <div class="priority-row">
+          <div class="priority-dim"><span class="dim-label">Affordability</span><span class="dim-value">0.20</span></div>
+          <div class="bar-bg"><div class="bar-fill afford" style="width:40%"></div></div>
+        </div>
+        <div class="priority-row">
+          <div class="priority-dim"><span class="dim-label">Lethality</span><span class="dim-value">0.15</span></div>
+          <div class="bar-bg"><div class="bar-fill lethality" style="width:30%"></div></div>
+        </div>
+      </div>
+      <div class="style-block">
+        <div class="style-label">Decision Style</div>
+        <div class="style-text">Execution-focused, operationally proximate, tradeoff-explicit; makes fast intra-portfolio calls</div>
+      </div>
+      <div class="sensitivity-block">
+        <div class="sens-label">Injection Sensitivity</div>
+        <div class="sens-text">Resilience ↑ on system vulnerability signals; Speed primary in all conditions</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand">EDGERUNNER AI</div>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot lethality"></div><div class="legend-text">Lethality</div></div>
+      <div class="legend-item"><div class="legend-dot speed"></div><div class="legend-text">Speed to Field</div></div>
+      <div class="legend-item"><div class="legend-dot afford"></div><div class="legend-text">Affordability</div></div>
+      <div class="legend-item"><div class="legend-dot resil"></div><div class="legend-text">Resilience</div></div>
+    </div>
+    <div class="footer-note">All four personas run on EdgeRunner Medium (Gemma 4 26B) · Trained on 1.6M military records</div>
+  </div>
+</div>
+</body>
+</html>

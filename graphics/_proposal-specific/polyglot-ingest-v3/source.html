@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>EdgeRunner — One Model. Every Language. Every Format. Every File. (v3)</title>
+<style>
+  :root{
+    --bg:#191c20;
+    --panel:#23272d;
+    --panel2:#2a2d31;
+    --stroke:#393939;
+    --text:#ffffff;
+    --muted:#c8c8c8;
+    --dim:#9f9f9f;
+    --red:#ee2929;
+    --red-soft:rgba(238,41,41,.10);
+    --red-mid:rgba(238,41,41,.18);
+    --red-edge:rgba(238,41,41,.5);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+    font-family:"Inter","Segoe UI","Helvetica Neue",Arial,"Noto Sans","Noto Sans JP","Noto Sans SC","Noto Sans Arabic","Noto Sans KR",sans-serif;}
+  .canvas{
+    width:1400px;height:1050px;position:relative;overflow:hidden;
+    background:radial-gradient(1400px 800px at 50% 40%, #1f242b 0%, #191c20 70%);
+  }
+
+  /* Title */
+  .title{
+    position:absolute;left:40px;right:40px;top:24px;
+    border-bottom:2px solid var(--red);padding-bottom:12px;
+  }
+  .title h1{margin:0;font-size:32px;font-weight:800;letter-spacing:.3px;line-height:1.15;}
+  .title h1 .accent{color:var(--red);}
+  .title .sub{font-size:18px;color:var(--muted);font-weight:500;margin-top:4px;}
+
+  /* 3-beat tagline */
+  .tagline{
+    position:absolute;left:0;right:0;top:110px;text-align:center;
+    font-size:18px;font-weight:700;letter-spacing:3.5px;color:var(--red);
+  }
+  .tagline span{margin:0 14px;}
+  .tagline .dot{color:var(--dim);margin:0 4px;}
+
+  /* Body grid — 3 columns */
+  .body{position:absolute;left:40px;right:40px;top:158px;
+        height:740px;
+        display:grid;grid-template-columns:430px 1fr 420px;gap:24px;align-items:stretch;}
+
+  .col-head{font-size:15px;color:var(--dim);text-transform:uppercase;letter-spacing:1.5px;
+            font-weight:700;margin-bottom:8px;}
+  .col-head .num{color:var(--red);font-weight:800;margin-right:8px;}
+
+  /* Input column — 3 stacked cards */
+  .inputs{display:flex;flex-direction:column;gap:11px;}
+  .group{background:var(--panel);border:1px solid var(--stroke);border-radius:10px;
+         padding:11px 14px 13px;}
+  .group h3{margin:0 0 9px;font-size:15px;font-weight:700;color:var(--text);
+            display:flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:.8px;}
+  .group h3::before{content:"";width:4px;height:15px;background:var(--red);border-radius:2px;}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;}
+  .chip{
+    font-size:15px;line-height:1;padding:8px 10px;border-radius:7px;
+    background:var(--panel2);border:1px solid var(--stroke);color:var(--text);
+    white-space:nowrap;
+  }
+  .chip.mono{font-family:"JetBrains Mono","Consolas","Menlo",monospace;font-size:14px;letter-spacing:.2px;}
+  .chip.more{color:var(--dim);border-style:dashed;}
+
+  /* Center: Warclaw + model + capability cluster */
+  .core{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:4px;}
+  .converge-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+
+  .warclaw{
+    position:relative;z-index:2;
+    width:320px;border-radius:14px;
+    background:linear-gradient(180deg,#2a2d31 0%,#23272d 100%);
+    border:1.5px solid var(--red-edge);
+    padding:10px 14px;display:flex;align-items:center;gap:12px;
+    box-shadow:0 0 18px rgba(238,41,41,.15);
+  }
+  .warclaw .name{
+    font-size:13px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;
+    color:#1a1a1a;background:var(--red);padding:6px 10px;border-radius:6px;white-space:nowrap;
+  }
+  .warclaw .role{font-size:13px;color:var(--muted);line-height:1.25;}
+  .warclaw .role b{color:var(--text);font-weight:700;}
+
+  .connector{
+    position:relative;z-index:2;width:16px;height:28px;
+    margin:6px 0 6px 0;
+  }
+  .connector::before{
+    content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);
+    width:2px;height:18px;background:#ffffff;
+  }
+  .connector::after{
+    content:"";position:absolute;left:50%;top:15px;transform:translateX(-50%);
+    width:0;height:0;
+    border-left:7px solid transparent;border-right:7px solid transparent;
+    border-top:11px solid #ffffff;
+  }
+
+  .model{
+    position:relative;width:300px;height:260px;border-radius:24px;
+    background:radial-gradient(circle at 50% 40%, rgba(238,41,41,.22) 0%, rgba(238,41,41,.06) 55%, rgba(238,41,41,0) 75%),
+               linear-gradient(180deg,#2a2d31 0%,#23272d 100%);
+    border:2px solid var(--red);
+    box-shadow:0 0 0 6px rgba(238,41,41,.08), 0 0 60px rgba(238,41,41,.35) inset;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    z-index:2;
+  }
+  .model img{height:44px;display:block;margin-bottom:8px;}
+  .model .tag{font-size:16px;color:var(--muted);}
+  .model .pill{
+    margin-top:14px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+    background:var(--red);color:#1a1a1a;padding:7px 13px;border-radius:999px;
+  }
+  .model .note{margin-top:10px;font-size:13px;color:var(--dim);max-width:240px;line-height:1.35;}
+
+  /* Capability cluster — stat-forward */
+  .caps{
+    margin-top:14px;width:100%;
+    display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;z-index:2;position:relative;
+  }
+  .cap{
+    display:flex;flex-direction:column;align-items:flex-start;gap:1px;
+    background:var(--panel);border:1px solid var(--stroke);border-left:3px solid var(--red);
+    border-radius:6px;padding:7px 10px 8px;
+  }
+  .cap .num{font-size:18px;font-weight:800;color:var(--red);letter-spacing:.2px;line-height:1.1;}
+  .cap .lbl{font-size:13px;color:var(--muted);line-height:1.2;}
+
+  /* Right column: Q/A pairs */
+  .qa-list{display:flex;flex-direction:column;gap:9px;}
+  .qa{
+    background:var(--panel);border:1px solid var(--stroke);border-radius:10px;
+    padding:10px 12px;
+  }
+  .qa .q{font-size:15px;font-weight:600;color:var(--text);line-height:1.3;}
+  .qa .q::before{content:"\201C";color:var(--red);margin-right:2px;}
+  .qa .q::after{content:"\201D";color:var(--red);margin-left:2px;}
+  .qa .a{
+    margin-top:6px;
+    font-size:13px;color:var(--muted);line-height:1.35;
+    border-left:3px solid var(--red);padding:2px 0 2px 10px;
+  }
+  .qa .a .lbl{
+    font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--red);
+    margin-right:6px;
+  }
+
+  /* Red key-takeaway callout band */
+  .takeaway{
+    position:absolute;left:40px;right:40px;bottom:74px;
+    background:linear-gradient(90deg, var(--red-soft) 0%, var(--red-mid) 50%, var(--red-soft) 100%);
+    border:1.5px solid var(--red);border-radius:12px;
+    padding:18px 24px;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 28px rgba(238,41,41,.15);
+  }
+  .takeaway .text{
+    font-size:22px;font-weight:600;color:#ffffff;line-height:1.35;text-align:center;
+    letter-spacing:.2px;
+  }
+  .takeaway .text em{
+    font-style:normal;color:var(--red);font-weight:800;
+  }
+
+  /* Footer */
+  .footer{position:absolute;left:40px;right:40px;bottom:20px;
+          display:flex;justify-content:space-between;align-items:center;}
+  .footer .logo{height:30px;display:block;}
+  .footer .tagline-r{color:var(--muted);font-weight:500;letter-spacing:.6px;font-size:14px;}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="title">
+    <h1>EdgeRunner — <span class="accent">Local, Mil-trained AI that speaks Operations.</span></h1>
+    <div class="sub">Built to understand what the Operator needs to understand — on-device, air-gapped, local.</div>
+  </div>
+
+  <div class="tagline">
+    <span>DISCONNECTED</span><span class="dot">·</span><span>MILITARY TRAINED</span><span class="dot">·</span><span>SECURE (IL-6 ATO)</span>
+  </div>
+
+  <div class="body">
+
+    <!-- LEFT: three input groups -->
+    <div>
+      <div class="col-head"><span class="num">01</span>Inputs</div>
+      <div class="inputs">
+        <div class="group">
+          <h3>Human languages</h3>
+          <div class="chips">
+            <div class="chip">English</div>
+            <div class="chip">Polski</div>
+            <div class="chip">日本語</div>
+            <div class="chip">Deutsch</div>
+            <div class="chip">中文</div>
+            <div class="chip">العربية</div>
+            <div class="chip">Русский</div>
+            <div class="chip">Français</div>
+            <div class="chip">한국어</div>
+            <div class="chip">Español</div>
+            <div class="chip more">…and more</div>
+          </div>
+        </div>
+        <div class="group">
+          <h3>Machine &amp; tactical formats</h3>
+          <div class="chips">
+            <div class="chip mono">Link-16</div>
+            <div class="chip mono">Cursor-on-Target</div>
+            <div class="chip mono">USMTF</div>
+            <div class="chip mono">NATO STANAG</div>
+            <div class="chip mono">VMF</div>
+            <div class="chip mono">JREAP</div>
+            <div class="chip mono">NITF</div>
+            <div class="chip mono">MIL-STD-2525</div>
+            <div class="chip more">…and more</div>
+          </div>
+        </div>
+        <div class="group">
+          <h3>File types</h3>
+          <div class="chips">
+            <div class="chip mono">HTML</div>
+            <div class="chip mono">XML</div>
+            <div class="chip mono">JSON</div>
+            <div class="chip mono">DOCX</div>
+            <div class="chip mono">XLSX</div>
+            <div class="chip mono">PDF</div>
+            <div class="chip mono">JPG</div>
+            <div class="chip mono">PNG</div>
+            <div class="chip mono">KML</div>
+            <div class="chip mono">GeoTIFF</div>
+            <div class="chip mono">MP3 / WAV</div>
+            <div class="chip mono">MP4 / H.264</div>
+            <div class="chip more">…and more</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER: convergence + model + capabilities -->
+    <div class="core">
+      <svg class="converge-svg" viewBox="0 0 400 740" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="flowL" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#ee2929" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#ee2929" stop-opacity=".85"/>
+          </linearGradient>
+          <linearGradient id="flowR" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#ee2929" stop-opacity=".85"/>
+            <stop offset="100%" stop-color="#ee2929" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- 6 left converging lines (one per chip-group span) -->
+        <path d="M0,40   C140,40  170,220 200,220" stroke="url(#flowL)" stroke-width="2" fill="none"/>
+        <path d="M0,140  C140,140 170,220 200,220" stroke="url(#flowL)" stroke-width="2" fill="none"/>
+        <path d="M0,220  C120,220 180,220 200,220" stroke="url(#flowL)" stroke-width="2" fill="none"/>
+        <path d="M0,320  C140,320 170,220 200,220" stroke="url(#flowL)" stroke-width="2" fill="none"/>
+        <path d="M0,440  C140,440 170,220 200,220" stroke="url(#flowL)" stroke-width="2" fill="none"/>
+        <path d="M0,540  C140,540 170,220 200,220" stroke="url(#flowL)" stroke-width="2" fill="none"/>
+        <!-- 5 right diverging lines -->
+        <path d="M200,220 C260,220 280,80  400,80"  stroke="url(#flowR)" stroke-width="2" fill="none"/>
+        <path d="M200,220 C260,220 280,180 400,180" stroke="url(#flowR)" stroke-width="2" fill="none"/>
+        <path d="M200,220 C260,220 280,280 400,280" stroke="url(#flowR)" stroke-width="2" fill="none"/>
+        <path d="M200,220 C260,220 280,380 400,380" stroke="url(#flowR)" stroke-width="2" fill="none"/>
+        <path d="M200,220 C260,220 280,480 400,480" stroke="url(#flowR)" stroke-width="2" fill="none"/>
+      </svg>
+
+      <div class="warclaw">
+        <div class="name">Warclaw</div>
+        <div class="role"><b>Agents connect to all your sources.</b><br/>Orchestrate across apps &amp; data.</div>
+      </div>
+      <div class="connector"></div>
+
+      <div class="model">
+        <img src="edgerunner-logo.png" alt="EdgeRunner" />
+        <div class="tag">Understands them all.</div>
+        <div class="pill">On-device · Air-gapped</div>
+        <div class="note">Every source — spoken, written, wire-format, or file — without any token cost.</div>
+      </div>
+
+      <div class="caps">
+        <div class="cap"><span class="num">140+</span><span class="lbl">human languages understood</span></div>
+        <div class="cap"><span class="num">Light → Heavy</span><span class="lbl">multiple model sizes &amp; use cases</span></div>
+        <div class="cap"><span class="num">PDF · Chart · Screen</span><span class="lbl">native document &amp; image parsing</span></div>
+        <div class="cap"><span class="num">Native</span><span class="lbl">function calling &amp; tool use</span></div>
+        <div class="cap"><span class="num">AFSC / MOS</span><span class="lbl">LoRA adapters for mission specialization</span></div>
+        <div class="cap"><span class="num">On-device</span><span class="lbl">disconnected · sovereign</span></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Q/A pairs -->
+    <div>
+      <div class="col-head"><span class="num">02</span>Ask simple questions — get actionable answers</div>
+      <div class="qa-list">
+        <div class="qa">
+          <div class="q">Give me a SITREP.</div>
+          <div class="a"><span class="lbl">SITREP →</span>Fused narrative across last-hour Link-16, CoT, USMTF, and analyst chat.</div>
+        </div>
+        <div class="qa">
+          <div class="q">How does the last hour change my COAs?</div>
+          <div class="a"><span class="lbl">COA Update →</span>Diff against prior assumptions; flags stressed branches and sequels.</div>
+        </div>
+        <div class="qa">
+          <div class="q">What threats are emerging?</div>
+          <div class="a"><span class="lbl">Threat Assessment →</span>Emerging activity ranked by severity and confidence.</div>
+        </div>
+        <div class="qa">
+          <div class="q">Which assets are best positioned to respond?</div>
+          <div class="a"><span class="lbl">Asset Recommendation →</span>Available platforms ordered by reach, readiness, and risk.</div>
+        </div>
+        <div class="qa">
+          <div class="q">What does this mean for my mission?</div>
+          <div class="a"><span class="lbl">Mission Impact →</span>Plain-language implications and recommended next actions.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Red callout -->
+  <div class="takeaway">
+    <div class="text">
+      One <em>natural-language interface</em> across every operational data type — fused <em>on-device</em>, no network required.
+    </div>
+  </div>
+
+  <div class="footer">
+    <img class="logo" src="edgerunner-logo.png" alt="EdgeRunner AI" />
+    <div class="tagline-r">Local · Sovereign · Mission-specific</div>
+  </div>
+
+</div>
+</body>
+</html>

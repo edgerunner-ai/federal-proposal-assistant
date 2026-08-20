@@ -1,0 +1,62 @@
+{
+  "_comment": "Example data for deployment-spectrum template. Generic edge AI deployment pattern.",
+  "title": "Deployment Spectrum — One Platform, Every Environment",
+  "subtitle": "Operates identically across the full connectivity and classification spectrum — no architectural changes required",
+  "spectrum": {
+    "left_label": "Connected",
+    "right_label": "Autonomous"
+  },
+  "columns": [
+    {
+      "name": "CLOUD",
+      "sub": "IL5 / IL6 · GovCloud",
+      "hero": false,
+      "deployment": ["Azure IL5/IL6 / GovCloud", "Containerized microservice", "API-accessible runtime"],
+      "use_cases": ["Intel analysis & synthesis", "Acquisitions & admin workflows", "Multi-user knowledge management"],
+      "connectivity": "Persistent",
+      "connectivity_badge": "Cloud-Dependent OK"
+    },
+    {
+      "name": "ON-PREM / AIR-GAPPED",
+      "sub": "Private Network · SCIF · JWICS",
+      "hero": false,
+      "deployment": ["Private server / workstation", "SCIF / SIPRNet / JWICS capable", "Zero external dependency"],
+      "use_cases": ["Classified document processing", "Sensitive mission planning", "Isolated enclave AI"],
+      "connectivity": "Internal / physically isolated",
+      "connectivity_badge": "No External Egress"
+    },
+    {
+      "name": "DDIL TACTICAL",
+      "sub": "Forward Deployed · Contested",
+      "hero": true,
+      "deployment": ["Laptops / rugged workstations", "Deployable kits", "Bandwidth-zero capable"],
+      "use_cases": ["Real-time COA generation", "Operator decision support", "Forward ISR data triage"],
+      "connectivity": "Intermittent or zero",
+      "connectivity_badge": "Full DDIL Operation"
+    },
+    {
+      "name": "EMBEDDED INTELLIGENCE",
+      "sub": "Autonomous Systems · Edge Compute",
+      "hero": true,
+      "deployment": ["UAS / UGV / USV platforms", "Edge compute modules", "No operator required"],
+      "use_cases": ["Autonomous mission execution", "Real-time sensor fusion", "Platform-resident AI decision loop"],
+      "connectivity": "None — fully autonomous",
+      "connectivity_badge": "No Human-in-Loop Required"
+    }
+  ],
+  "tagline": "Same models. Same inference engines. Same results — from the data center to the autonomous platform.",
+  "footer": {
+    "brand": "EDGE AI",
+    "tagline": "No architectural changes required across the full deployment spectrum",
+    "website": "example.com"
+  },
+  "theme": {
+    "bg": "#191c20",
+    "accent": "#ee2929",
+    "panel": "#2a2d31",
+    "panel_border": "#393939",
+    "text": "#ffffff",
+    "muted": "#9f9f9f",
+    "body": "#c8c8c8"
+  }
+}

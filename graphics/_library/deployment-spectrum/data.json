@@ -1,0 +1,57 @@
+{
+  "title": "EdgeRunner Deployment Spectrum — All Environments, No Exceptions",
+  "subtitle": "Purpose-built for where connectivity ends — operational from NATO HQ to the forward tactical edge",
+  "spectrum": {
+    "left_label": "CLOUD-DEPENDENT",
+    "right_label": "DDIL / AIR-GAPPED"
+  },
+  "columns": [
+    {
+      "name": "CONNECTED",
+      "sub": "NATO HQ / SHAPE",
+      "deployment": ["Full MSS NATO COP", "Enterprise pipelines", "Model synchronization"],
+      "use_cases": ["Strategic COP analysis", "Assessment reporting", "Model + LoRA updates"],
+      "connectivity": "Persistent / high-bandwidth",
+      "connectivity_badge": "CLOUD-ACCESSIBLE"
+    },
+    {
+      "name": "DEGRADED",
+      "sub": "JFC Brunssum · JFC Naples",
+      "deployment": ["Local model cache", "Periodic COP sync", "LoRA adapters resident"],
+      "use_cases": ["Theater COA planning", "Cross-domain targeting", "JFC intel fusion"],
+      "connectivity": "Intermittent / scheduled",
+      "connectivity_badge": "STORE-AND-FORWARD"
+    },
+    {
+      "name": "DDIL",
+      "sub": "Forward HQs · Expeditionary",
+      "deployment": ["On-device inference", "Offline LoRA adapters", "COP snapshot + sync"],
+      "use_cases": ["Forward planning cycles", "Targeting workflows", "OSINT at the edge"],
+      "connectivity": "Opportunistic / intermittent",
+      "connectivity_badge": "DDIL-NATIVE"
+    },
+    {
+      "name": "AIR-GAPPED",
+      "sub": "Naval · SOF · Eastern Flank",
+      "deployment": ["Zero external dependency", "Full on-device model", "Local COP snapshot"],
+      "use_cases": ["Commander NLI interface", "On-device COA generation", "Autonomous targeting support"],
+      "connectivity": "Zero — fully isolated",
+      "connectivity_badge": "FULLY AIR-GAPPED"
+    }
+  ],
+  "tagline": "EdgeRunner is the only solution purpose-built to operate identically with or without connectivity",
+  "footer": {
+    "brand": "EDGERUNNER AI",
+    "tagline": "One system — four environments — no degradation in decision support capability",
+    "website": "edgerunner.ai"
+  },
+  "theme": {
+    "bg": "#191c20",
+    "accent": "#ee2929",
+    "panel": "#2a2d31",
+    "panel_border": "#393939",
+    "text": "#ffffff",
+    "muted": "#9f9f9f",
+    "body": "#c8c8c8"
+  }
+}

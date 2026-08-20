@@ -1,0 +1,453 @@
+/* ============================================================
+   EdgeRunner AI — Colors & Type
+   Two source canons:
+   (1) PUBLIC SITE  — reference_examples/source-public-brand-system.md
+       (edgerunnerai.com, May 2026) — the primary canon.
+   (2) PROPOSAL DOC — reference_examples/source-brand-palette.md
+       (federal-proposal-assistant) — used for proposal graphics + Word.
+   Tokens here align with (1); proposal-graphics surfaces still reference
+   the slightly-different proposal hex via local *.css overrides.
+   ============================================================ */
+
+/* ---------- Webfonts ---------------------------------------- */
+/* Inter is the only canonical face per the public brand guide. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  /* ---------- Brand (public site canon) ---------- */
+  --er-red:           #EE2525;   /* Primary brand red — CTAs, announcement bar, accents */
+  --er-red-dark:      #c81d1d;   /* Hover / pressed primary */
+  --er-red-proposal:  #ee2929;   /* Proposal-corpus red — keep for proposal graphics only */
+  --er-red-slide:     #C8102E;   /* Darker red used on dense dark slides */
+
+  /* ---------- Greyscale / neutrals (public site canon) ---------- */
+  --er-black:         #000000;   /* Page background — jet black */
+  --er-charcoal:      #1A1A1A;   /* Footer surface, slightly lighter than black */
+  --er-gunmetal:      #393939;   /* Cards, panels, newsroom card surface */
+  --er-near-black:    #191c20;   /* Proposal-canvas (legacy) */
+  --er-bg-deep:       #111315;   /* Footer / contract bar / 2nd-step depth */
+  --er-bg-tier:       #2a2d31;   /* Tier card fills (proposal graphics) */
+  --er-bg-tier-soft:  #222528;   /* Boundary labels, sunken pills */
+  --er-border:        #393939;   /* Tier borders, dividers */
+  --er-border-soft:   #2a2d31;   /* Cell borders, faint dividers */
+  --er-rule:          #4a4a4a;   /* Boundary dashes, divider lines */
+  --er-divider-soft:  rgba(159, 159, 159, 0.376); /* Public-site dividers, input outlines */
+  --er-border-mist:   rgba(31, 30, 29, 0.40);     /* Public-site subtle element borders */
+  --er-grey-medium:   #9f9f9f;   /* Subtitle / caption / secondary text */
+  --er-grey-light:    #c8c8c8;   /* Body text on dark, descriptions */
+  --er-white:         #ffffff;   /* Headings, primary labels */
+  --er-white-70:      rgba(255,255,255,0.70); /* Body text on dark per public guide */
+  --er-white-60:      rgba(255,255,255,0.60); /* Caption/metadata on dark per public guide */
+
+  /* ---------- Inline-link blue (rare; inline links only) ---------- */
+  --er-link:          #228BE6;
+
+  /* ---------- Brand tints ---------- */
+  --er-red-tint-08:   rgba(238, 41, 41, 0.08);   /* Subtle fills */
+  --er-red-tint-12:   rgba(238, 41, 41, 0.12);   /* Column headers, callouts */
+  --er-red-tint-15:   rgba(238, 41, 41, 0.15);   /* Hero tier fills */
+  --er-red-tint-40:   rgba(238, 41, 41, 0.40);   /* Commitment borders */
+  --er-white-tint-03: rgba(255, 255, 255, 0.03); /* Faint cell rows */
+  --er-white-tint-04: rgba(255, 255, 255, 0.04); /* Header cells */
+  --er-white-tint-06: rgba(255, 255, 255, 0.06); /* Hover surfaces */
+
+  /* ---------- Categorical / status (used in differentiator graphics) ---------- */
+  --er-amber:         #c8a200;   /* "Partial" or middle-state indicator */
+  --er-amber-dim:     #8a7000;
+  --er-amber-tint-08: rgba(200, 162, 0, 0.08);
+  --er-amber-tint-30: rgba(200, 162, 0, 0.30);
+
+  /* ---------- Semantic foreground roles (DARK CANVAS — default) ---------- */
+  --fg-1: var(--er-white);        /* Primary headings, key labels */
+  --fg-2: var(--er-grey-light);   /* Body text, descriptions */
+  --fg-3: var(--er-grey-medium);  /* Secondary, captions, subtitles */
+  --fg-accent: var(--er-red);     /* Brand accent text */
+  --fg-on-red: var(--er-near-black); /* Text on solid red pills */
+
+  /* ---------- Semantic backgrounds (PUBLIC SITE = primary) ---------- */
+  --bg-canvas: var(--er-black);      /* #000 */
+  --bg-card:   var(--er-gunmetal);   /* #393939 */
+  --bg-sunken: var(--er-charcoal);   /* #1A1A1A */
+  --bg-deep:   var(--er-bg-deep);
+
+  /* ---------- Borders & rules ---------- */
+  --border-1: var(--er-border);
+  --border-2: var(--er-border-soft);
+  --rule:     var(--er-rule);
+
+  /* ---------- Radii ----------
+     PUBLIC SITE: 0 everywhere. Cards and buttons are sharp / notched.
+     Proposal canvas keeps rounded corners. */
+  --radius-pill:  9999px;   /* Proposal registry pills */
+  --radius-card:  0px;      /* PUBLIC: cards/inputs/buttons sharp */
+  --radius-canvas: 12px;    /* PROPOSAL: outer canvas only */
+  --radius-tile:   6px;     /* Proposal capability tiles */
+  --radius-sm:     4px;
+  --notch-size:    14px;    /* Diagonal cut on chamfered/notched buttons */
+
+  /* ---------- Shadow / glow ---------- */
+  --shadow-canvas: 0 8px 32px rgba(0, 0, 0, 0.40);
+  --shadow-card:   0 4px 16px rgba(0, 0, 0, 0.30);
+  --glow-red:      0 0 18px rgba(238, 41, 41, 0.45);
+
+  /* ---------- Spacing scale ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 48px;
+  --space-9: 64px;
+
+  /* ---------- Type families ----------
+     PUBLIC SITE: Inter exclusively (per brand guide). No second face. */
+  --font-display: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-ui:      'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono:    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'JetBrains Mono', monospace;
+  --font-doc:     'Times New Roman', Times, serif;            /* Word/PDF document body (proposals) */
+
+  /* ---------- Type scale (PUBLIC SITE — marketing) ---------- */
+  --fs-hero:            68px;   /* H1 hero, 700, line-height 1.1 */
+  --fs-section:         44px;   /* H2 section, 700, often ends with period */
+  --fs-subhead:         24px;   /* H3 subhead, 600 */
+  --fs-body:            16px;   /* Body, 400, white at 70% opacity */
+  --fs-caption:         13px;
+  --fs-button:          14px;   /* CTA button, 500 */
+
+  /* ---------- Type scale (PROPOSAL graphics — 1200×canvas) ---------- */
+  --fs-graphic-title:   28px;
+  --fs-graphic-tile:    22px;
+  --fs-graphic-body:    17px;
+  --fs-graphic-sm:      15px;
+  --fs-h1:              26px;
+  --fs-h2:              22px;
+  --fs-h3:              18px;
+  --fs-body-sm:         15px;
+  --fs-micro:           11px;
+
+  /* ---------- Letter spacing ---------- */
+  --tracking-loose: 0.5px;     /* Uppercase titles, pill labels */
+  --tracking-tight: -0.01em;
+}
+
+/* ---------- Light / document-context overrides ---------------- */
+.er-light {
+  --bg-canvas: #ffffff;
+  --bg-card:   #f5f7fa;
+  --bg-sunken: #ffffff;
+  --bg-deep:   #ffffff;
+
+  --fg-1: #1a1a1a;
+  --fg-2: #333333;
+  --fg-3: #6a6a6a;
+
+  --border-1: #d8dee5;
+  --border-2: #e6ebf1;
+  --rule:     #c8d0d8;
+}
+
+/* ============================================================
+   Reusable element classes
+   ============================================================ */
+
+/* ---- Display / wordmark ---- */
+.er-wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: var(--tracking-loose);
+  text-transform: lowercase; /* "runner" is lowercase in the logo */
+  color: var(--fg-1);
+}
+
+/* ---- Headings (PUBLIC SITE — sentence case, often end with period) ---- */
+.er-h1 {
+  font-family: var(--font-ui);
+  font-size: var(--fs-hero);
+  font-weight: 700;
+  color: var(--fg-1);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.er-h2 {
+  font-family: var(--font-ui);
+  font-size: var(--fs-section);
+  font-weight: 700;
+  color: var(--fg-1);
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+}
+
+.er-h3 {
+  font-family: var(--font-ui);
+  font-size: var(--fs-subhead);
+  font-weight: 600;
+  color: var(--fg-1);
+  line-height: 1.25;
+}
+
+/* Proposal-graphic uppercase title (kept under a separate class to avoid
+   collision with public-site h1/h2). */
+.er-graphic-title {
+  font-family: var(--font-ui);
+  font-size: var(--fs-graphic-title);
+  font-weight: 700;
+  color: var(--fg-1);
+  letter-spacing: var(--tracking-loose);
+  text-transform: uppercase;
+}
+
+/* ---- Body (public-site: white at 70% opacity per brand guide) ---- */
+.er-body {
+  font-family: var(--font-ui);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  color: var(--er-white-70);
+  line-height: 1.55;
+}
+
+.er-body-sm {
+  font-family: var(--font-ui);
+  font-size: var(--fs-body-sm);
+  font-weight: 400;
+  color: var(--fg-2);
+}
+
+/* ---- Captions / subtitles ---- */
+.er-caption {
+  font-family: var(--font-ui);
+  font-size: var(--fs-caption);
+  font-weight: 400;
+  color: var(--fg-3);
+}
+
+.er-eyebrow {
+  font-family: var(--font-ui);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  color: var(--fg-3);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-loose);
+}
+
+.er-mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-sm);
+  color: var(--fg-2);
+}
+
+/* ---- Lead-in label (proposal "Service Enablement:" pattern) ---- */
+.er-leadin {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  color: var(--fg-accent);
+}
+
+/* ---- Pills / registry badges ---- */
+.er-pill-solid {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 6px 16px;
+  background: var(--er-red);
+  color: var(--fg-on-red);
+  font-family: var(--font-ui);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: var(--tracking-loose);
+  text-transform: uppercase;
+  border-radius: var(--radius-pill);
+}
+
+.er-pill-outline {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 6px 16px;
+  background: var(--er-red-tint-15);
+  color: var(--er-red);
+  border: 1.5px solid var(--er-red);
+  font-family: var(--font-ui);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: var(--tracking-loose);
+  text-transform: uppercase;
+  border-radius: var(--radius-pill);
+}
+
+/* ============================================================
+   PUBLIC SITE — Notched button system & public chrome
+   Source: reference_examples/source-public-brand-system.md
+   ============================================================ */
+
+/* Chamfered / notched corner — diagonal cut on bottom-left
+   (occasionally top-right). Uses clip-path so it survives any background. */
+.er-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 25px;
+  font-family: var(--font-ui);
+  font-size: var(--fs-button);
+  font-weight: 500;
+  line-height: 1;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: filter 130ms ease, background 130ms ease, color 130ms ease;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    var(--notch-size) 100%,
+    0 calc(100% - var(--notch-size))
+  );
+}
+.er-btn:hover { filter: brightness(1.10); }
+.er-btn:active { filter: brightness(0.92); }
+.er-btn .chev { font-weight: 400; opacity: .9; }
+
+.er-btn-primary {
+  background: var(--er-red);
+  color: var(--er-white);
+}
+.er-btn-secondary {
+  background: var(--er-white);
+  color: var(--er-black);
+}
+.er-btn-ghost {
+  background: transparent;
+  color: var(--er-white);
+  /* Public-site ghost button: 1px white inside the clip path */
+  box-shadow: inset 0 0 0 1px var(--er-white);
+}
+
+/* Notched on the OPPOSITE corner (top-right) — used for some secondary CTAs */
+.er-btn.er-notch-tr {
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--notch-size)) 0,
+    100% var(--notch-size),
+    100% 100%,
+    0 100%
+  );
+}
+
+/* ---------------- Navbar ----------------------------------- */
+.er-nav {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 32px;
+  padding: 18px 32px;
+  background: var(--er-black);
+  color: var(--er-white);
+  font-family: var(--font-ui);
+}
+.er-nav-links {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+}
+.er-nav-link {
+  color: var(--er-white);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  display: inline-flex;
+  gap: 6px;
+}
+.er-nav-link::before {
+  content: "/";
+  color: var(--er-white-60);
+  font-weight: 400;
+}
+.er-nav-link:hover { color: var(--er-red); }
+
+.er-nav-ctas { display: flex; gap: 12px; align-items: center; }
+
+/* ---------------- Announcement bar ------------------------- */
+.er-announce {
+  width: 100%;
+  background: var(--er-red);
+  color: var(--er-white);
+  font-family: var(--font-ui);
+  font-size: 14px;
+  text-align: center;
+  padding: 9px 16px;
+}
+.er-announce a {
+  color: var(--er-white);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---------------- Public card ------------------------------ */
+.er-card {
+  background: var(--er-gunmetal);
+  border-radius: 0;
+  border: 1px solid var(--er-border-mist);
+  padding: 24px;
+  color: var(--er-white);
+}
+
+/* ---------------- Public input ----------------------------- */
+.er-input {
+  background: transparent;
+  color: var(--er-white);
+  border: 1px solid var(--er-white);
+  border-radius: 0;
+  padding: 10px 12px;
+  font: 400 14px var(--font-ui);
+}
+.er-input::placeholder { color: var(--er-white-60); }
+
+/* ---------------- "Slash-prefix" link (inline) ------------ */
+.er-slashlink {
+  color: var(--er-white);
+  text-decoration: none;
+}
+.er-slashlink::before {
+  content: "/";
+  margin-right: 6px;
+  color: var(--er-white-60);
+}
+
+/* ---------------- Logo lockup helpers --------------------- */
+/* Inline wordmark when no logo file is available — sentence-case "edgerunnerAI" */
+.er-wordmark-inline {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--er-white);
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+}
+.er-wordmark-inline .ai {
+  font-weight: 400;
+  color: var(--er-white-60);
+  font-size: 0.85em;
+  margin-left: 2px;
+}
+/* Stylized angular "R" mark — geometric red glyph, ~28px square */
+.er-rmark {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background: var(--er-red);
+  /* Angular R: notch at bottom-right + diagonal inner stroke */
+  clip-path: polygon(
+    0 0,
+    78% 0,
+    100% 22%,
+    100% 48%,
+    72% 56%,
+    100% 100%,
+    72% 100%,
+    50% 70%,
+    32% 70%,
+    32% 100%,
+    0 100%
+  );
+}

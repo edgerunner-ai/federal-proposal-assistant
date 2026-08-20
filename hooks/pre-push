@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# pre-push hook — last line of defense before anything reaches the remote.
+#
+# Tracked at hooks/pre-push; armed into a fresh clone by scripts/install-hooks.sh.
+# Delegates to scripts/check-git-boundary.sh. The index is normally empty at push
+# time, so this is belt-and-suspenders: it catches the case where a commit is made
+# through a path that skipped the pre-commit hook (e.g. --no-verify on commit),
+# and re-runs the guard so a staged leak can't slip out on push.
+set -u
+
+REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null)"
+[ -z "$REPO_ROOT" ] && exit 0
+
+GUARD="$REPO_ROOT/scripts/check-git-boundary.sh"
+if [ ! -f "$GUARD" ]; then
+  echo "pre-push: scripts/check-git-boundary.sh not found — cannot verify boundary." >&2
+  echo "pre-push: refusing the push to fail safe. Restore the guard script." >&2
+  exit 1
+fi
+
+bash "$GUARD" || {
+  echo "pre-push: boundary guard blocked this push (see above)." >&2
+  exit 1
+}
+exit 0

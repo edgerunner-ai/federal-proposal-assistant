@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Three-Tier Architecture on DGX Spark</title>
+<style>
+/* ── Reset ── */
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* ── Page ── */
+body{
+  background:#dde2ea;
+  font-family:'Segoe UI',system-ui,sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:24px;
+}
+
+/* ── Canvas ── 1200 × ~860 logical; embed at 6.5" → 0.39pt/px → 26px = 10pt ── */
+.canvas{
+  width:1200px;
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 4px 28px rgba(0,0,0,.22);
+  overflow:hidden;
+}
+
+/* ── Header ── */
+.hdr{
+  background:#1a2744;
+  padding:22px 32px 20px;
+  border-bottom:3px solid #c82020;
+}
+.hdr h1{
+  color:#fff;
+  font-size:40px;      /* 15.6pt at 6.5" embed ✓ */
+  font-weight:700;
+  letter-spacing:.3px;
+  line-height:1.2;
+}
+.hdr p{
+  color:#a8b8d8;
+  font-size:27px;      /* 10.5pt ✓ */
+  margin-top:7px;
+}
+
+/* ── Deployment boundary ── */
+.boundary{
+  margin:18px 20px 20px;
+  border:2.5px dashed #4a7bc8;
+  border-radius:8px;
+  overflow:hidden;
+}
+
+/* Boundary banner — both labels in ONE row, no overlap */
+.bdy-banner{
+  background:#edf2fb;
+  border-bottom:1px solid #c4d4ee;
+  padding:13px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+}
+.bdy-left{
+  color:#1a2744;
+  font-size:27px;      /* 10.5pt ✓ */
+  font-weight:600;
+}
+.bdy-right{
+  color:#c82020;
+  font-size:27px;      /* 10.5pt ✓ */
+  font-weight:700;
+  white-space:nowrap;
+}
+
+/* ── Tier stack ── */
+.tiers{
+  padding:16px 16px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+
+/* Arrow between tiers */
+.arrow{
+  display:flex;
+  justify-content:center;
+  padding:8px 0;
+}
+
+/* ── Single tier row ── */
+.tier{
+  display:flex;
+  border-radius:7px;
+  overflow:hidden;
+  box-shadow:0 1px 5px rgba(0,0,0,.12);
+}
+
+/* Sidebar — wider so "APPLICATION" and "INTELLIGENCE" fit without clipping */
+.sidebar{
+  width:250px;
+  flex-shrink:0;
+  padding:22px 22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.t-name{
+  font-size:27px;      /* 10.5pt ✓ */
+  font-weight:800;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+  color:#fff;
+  line-height:1.3;
+  margin-bottom:10px;
+}
+.t-sub{
+  font-size:23px;      /* 9pt — secondary label, acceptable */
+  color:rgba(255,255,255,.85);
+  line-height:1.45;
+}
+
+/* Tier color themes */
+.app .sidebar  { background:#b83025; }
+.intel .sidebar{ background:#1a3a6b; }
+.found .sidebar{ background:#1a6450; }
+.app  { background:#fdf5f5; }
+.intel{ background:#f5f7fc; }
+.found{ background:#f3faf7; }
+
+/* Component grid */
+.comps{
+  flex:1;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  padding:14px 16px 14px 10px;
+  align-items:stretch;
+}
+.comp{
+  background:#fff;
+  border-radius:6px;
+  padding:15px 13px;
+  border:1px solid #dde2ec;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+.c-name{
+  font-size:26px;      /* 10.1pt ✓ */
+  font-weight:700;
+  color:#12182e;
+  line-height:1.35;
+  margin-bottom:6px;
+}
+.c-desc{
+  font-size:23px;      /* 9pt — secondary descriptor ✓ */
+  color:#5a6580;
+  line-height:1.4;
+}
+
+/* ── Footer ── */
+.footer{
+  background:#edf0f5;
+  border-top:1px solid #d4dae6;
+  padding:12px 32px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.f-brand{
+  color:#c82020;
+  font-size:24px;
+  font-weight:700;
+  letter-spacing:.5px;
+}
+.f-note{
+  color:#666;
+  font-size:23px;
+}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <!-- ── Header ── -->
+  <div class="hdr">
+    <h1>Three-Tier Architecture on DGX Spark</h1>
+    <p>Existing foundation isolated from net-new application work</p>
+  </div>
+
+  <!-- ── Deployment boundary ── -->
+  <div class="boundary">
+
+    <!-- Banner: left label + right constraint — no overlap possible -->
+    <div class="bdy-banner">
+      <span class="bdy-left">Single air-gapped DGX Spark deployment boundary</span>
+      <span class="bdy-right">No external routes &nbsp;|&nbsp; Docker bridge network</span>
+    </div>
+
+    <div class="tiers">
+
+      <!-- ── APPLICATION TIER ── -->
+      <div class="tier app">
+        <div class="sidebar">
+          <div class="t-name">APPLICATION<br>TIER</div>
+          <div class="t-sub">Net-new MVP<br>application work</div>
+        </div>
+        <div class="comps">
+          <div class="comp">
+            <div class="c-name">Guardian Engine</div>
+            <div class="c-desc">Session state machine</div>
+          </div>
+          <div class="comp">
+            <div class="c-name">Orchestrator Control</div>
+            <div class="c-desc">White / Red injections</div>
+          </div>
+          <div class="comp">
+            <div class="c-name">Why Dashboard</div>
+            <div class="c-desc">Priority bars + deltas</div>
+          </div>
+          <div class="comp">
+            <div class="c-name">Session Audit Log</div>
+            <div class="c-desc">Append-only event record</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arrow -->
+      <div class="arrow">
+        <svg width="36" height="28" viewBox="0 0 36 28">
+          <line x1="18" y1="2" x2="18" y2="20" stroke="#c82020" stroke-width="3" stroke-linecap="round"/>
+          <polygon points="8,16 18,28 28,16" fill="#c82020"/>
+        </svg>
+      </div>
+
+      <!-- ── INTELLIGENCE TIER ── -->
+      <div class="tier intel">
+        <div class="sidebar">
+          <div class="t-name">INTELLIGENCE<br>TIER</div>
+          <div class="t-sub">Configured policy and<br>persona reasoning</div>
+        </div>
+        <div class="comps">
+          <div class="comp">
+            <div class="c-name">Policy Knowledge Base</div>
+            <div class="c-desc">WAS acquisition content</div>
+          </div>
+          <div class="comp">
+            <div class="c-name">Four Persona Profiles</div>
+            <div class="c-desc">WAS role conditioning</div>
+          </div>
+          <div class="comp">
+            <div class="c-name">Why State Manager</div>
+            <div class="c-desc">Priority read / write path</div>
+          </div>
+          <div class="comp">
+            <div class="c-name">Embedding Service</div>
+            <div class="c-desc">Local retrieval index</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arrow -->
+      <div class="arrow">
+        <svg width="36" height="28" viewBox="0 0 36 28">
+          <line x1="18" y1="2" x2="18" y2="20" stroke="#c82020" stroke-width="3" stroke-linecap="round"/>
+          <polygon points="8,16 18,28 28,16" fill="#c82020"/>
+        </svg>
+      </div>
+
+      <!-- ── FOUNDATION TIER ── -->
+      <div class="tier found">
+        <div class="sidebar">
+          <div class="t-name">FOUNDATION<br>TIER</div>
+          <div class="t-sub">Existing EdgeRunner<br>stack in production use</div>
+        </div>
+        <div class="comps">
+          <div class="comp">
+            <div class="c-name">EdgeRunner Runtime</div>
+            <div class="c-desc">Containerized inference</div>
+          </div>
+          <div class="comp">
+            <div class="c-name">Gemma 4 26B / vLLM</div>
+            <div class="c-desc">Local model serving</div>
+          </div>
+          <div class="comp">
+            <div class="c-name">MilDeflect</div>
+            <div class="c-desc">Military dialogue behavior</div>
+          </div>
+          <div class="comp">
+            <div class="c-name">Local Storage</div>
+            <div class="c-desc">Models, corpora, logs</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tiers -->
+  </div><!-- /boundary -->
+
+  <!-- ── Footer ── -->
+  <div class="footer">
+    <span class="f-brand">EDGERUNNER AI</span>
+    <span class="f-note">Digital Guardian Simulator MVP &nbsp;|&nbsp; EdgeRunner AI formal proposal refresh</span>
+  </div>
+
+</div><!-- /canvas -->
+</body>
+</html>

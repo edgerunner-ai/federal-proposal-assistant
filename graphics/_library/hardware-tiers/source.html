@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figure 3 — Hardware Deployment Tiers</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#191c20;font-family:'Segoe UI',system-ui,sans-serif;
+       display:flex;justify-content:center;align-items:center;
+       min-height:100vh;padding:20px}
+  .canvas{width:1200px;background:#191c20;border-radius:12px;
+          overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+  .caption{padding:14px 32px 20px;color:#9f9f9f;font-size:12px;
+           line-height:1.6;border-top:1px solid #393939}
+  .caption strong{color:#c8c8c8}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div style="padding:18px 32px 8px;text-align:center;border-bottom:2px solid #ee2929">
+    <h1 style="color:#ffffff;font-size:28px;font-weight:700;letter-spacing:.5px;text-transform:uppercase">Hardware Deployment Tiers</h1>
+    <p style="color:#9f9f9f;font-size:15px;margin-top:4px;padding-bottom:4px">EdgeRunner AI Across the Full Military Edge Compute Spectrum</p>
+  </div>
+
+  <!-- viewBox wider (1320) so right-side arrow + labels have room; canvas scales to fit -->
+  <svg viewBox="0 0 1320 560" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+
+    <!-- Background -->
+    <rect width="1320" height="560" fill="#191c20"/>
+
+    <!-- ══ TIER 1 — MOBILE DEVICES  x=200 w=880 ══ -->
+    <rect x="200" y="28" width="880" height="100" rx="10" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <!-- tier label left margin -->
+    <text x="192" y="70" text-anchor="end" font-family="Segoe UI" font-size="11" font-weight="700" fill="#4a4a4a" letter-spacing=".5">TIER 1</text>
+    <!-- name -->
+    <text x="370" y="68" text-anchor="middle" font-family="Segoe UI" font-size="22" font-weight="700" fill="#ffffff" letter-spacing=".5">MOBILE DEVICES</text>
+    <!-- hardware -->
+    <text x="370" y="90" text-anchor="middle" font-family="Segoe UI" font-size="13" fill="#9f9f9f" font-style="italic">Samsung Galaxy / TAK Android · Snapdragon NPU</text>
+    <!-- badge -->
+    <rect x="570" y="52" width="210" height="34" rx="16" fill="#ee2929"/>
+    <text x="675" y="74" text-anchor="middle" font-family="Segoe UI" font-size="15" font-weight="700" fill="#ffffff">1B – 7B PARAMETERS</text>
+    <!-- use cases -->
+    <text x="1065" y="68" text-anchor="end" font-family="Segoe UI" font-size="14" fill="#c8c8c8">ATAK integration · Offline Q&amp;A</text>
+    <text x="1065" y="88" text-anchor="end" font-family="Segoe UI" font-size="14" fill="#c8c8c8">Voice-to-report</text>
+
+    <!-- ══ TIER 2 — LAPTOPS  x=120 w=1040 ══ -->
+    <rect x="120" y="148" width="1040" height="100" rx="10" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <text x="112" y="190" text-anchor="end" font-family="Segoe UI" font-size="11" font-weight="700" fill="#4a4a4a" letter-spacing=".5">TIER 2</text>
+    <text x="310" y="188" text-anchor="middle" font-family="Segoe UI" font-size="22" font-weight="700" fill="#ffffff" letter-spacing=".5">LAPTOPS &amp; WORKSTATIONS</text>
+    <text x="310" y="210" text-anchor="middle" font-family="Segoe UI" font-size="12" fill="#9f9f9f" font-style="italic">Getac V110 · Panasonic Toughbook G2 · Dell Latitude Rugged + NVIDIA RTX</text>
+    <rect x="555" y="170" width="230" height="34" rx="16" fill="#ee2929"/>
+    <text x="670" y="192" text-anchor="middle" font-family="Segoe UI" font-size="15" font-weight="700" fill="#ffffff">7B – 34B PARAMETERS</text>
+    <text x="1140" y="188" text-anchor="end" font-family="Segoe UI" font-size="14" fill="#c8c8c8">Intelligence analysis · Mission planning</text>
+    <text x="1140" y="208" text-anchor="end" font-family="Segoe UI" font-size="14" fill="#c8c8c8">ISR processing</text>
+
+    <!-- ══ TIER 3 — FLY-AWAY KITS  x=60 w=1160 ══ -->
+    <rect x="60" y="268" width="1160" height="100" rx="10" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <text x="52" y="310" text-anchor="end" font-family="Segoe UI" font-size="11" font-weight="700" fill="#4a4a4a" letter-spacing=".5">TIER 3</text>
+    <text x="240" y="308" text-anchor="middle" font-family="Segoe UI" font-size="22" font-weight="700" fill="#ffffff" letter-spacing=".5">FLY-AWAY KITS</text>
+    <text x="240" y="330" text-anchor="middle" font-family="Segoe UI" font-size="12" fill="#9f9f9f" font-style="italic">NVIDIA Jetson AGX Orin · DGX Spark · Intel NUC w/ Arc GPU</text>
+    <rect x="535" y="288" width="280" height="34" rx="16" fill="#ee2929"/>
+    <text x="675" y="310" text-anchor="middle" font-family="Segoe UI" font-size="15" font-weight="700" fill="#ffffff">7B – 70B (QUANTIZED)</text>
+    <text x="1200" y="308" text-anchor="end" font-family="Segoe UI" font-size="14" fill="#c8c8c8">Forward CP server · Multi-user serving</text>
+    <text x="1200" y="328" text-anchor="end" font-family="Segoe UI" font-size="14" fill="#c8c8c8">Multi-agent pipelines</text>
+
+    <!-- ══ TIER 4 — THEATER / GCC (hero)  x=20 w=1220 ══ -->
+    <rect x="20" y="388" width="1220" height="105" rx="10" fill="rgba(238,41,41,.08)" stroke="#ee2929" stroke-width="2"/>
+    <text x="12" y="432" text-anchor="end" font-family="Segoe UI" font-size="11" font-weight="700" fill="#ee2929" letter-spacing=".5">TIER 4</text>
+    <text x="230" y="428" text-anchor="middle" font-family="Segoe UI" font-size="22" font-weight="700" fill="#ee2929" letter-spacing=".5">THEATER / GCC COMPUTE</text>
+    <text x="230" y="452" text-anchor="middle" font-family="Segoe UI" font-size="12" fill="#9f9f9f" font-style="italic">Armada Edge Systems · Dell PowerEdge XR · NVIDIA IGX Orin · Penguin Computing</text>
+    <rect x="530" y="408" width="280" height="34" rx="16" fill="#ee2929"/>
+    <text x="670" y="430" text-anchor="middle" font-family="Segoe UI" font-size="15" font-weight="700" fill="#ffffff">70B+ FULL PRECISION</text>
+    <text x="1220" y="428" text-anchor="end" font-family="Segoe UI" font-size="14" fill="#c8c8c8">Multi-tenant serving · GCC adaptation</text>
+    <text x="1220" y="448" text-anchor="end" font-family="Segoe UI" font-size="14" fill="#c8c8c8">LoRA training</text>
+
+    <!-- ══ Right-side arrow: OPERATOR PROXIMITY ↕ COMPUTE SCALE ══ -->
+    <!-- Arrow column at x=1270 — well inside viewBox -->
+    <line x1="1270" y1="65" x2="1270" y2="460" stroke="#4a4a4a" stroke-width="2"/>
+    <!-- top arrowhead up -->
+    <polygon points="1270,44 1263,65 1277,65" fill="#ee2929"/>
+    <!-- bottom arrowhead down -->
+    <polygon points="1270,480 1263,460 1277,460" fill="#ee2929"/>
+    <!-- labels rotated, placed beside shaft -->
+    <text x="1290" y="200" font-family="Segoe UI" font-size="12" font-weight="600" fill="#ffffff" transform="rotate(90,1290,200)">OPERATOR PROXIMITY</text>
+    <text x="1290" y="380" font-family="Segoe UI" font-size="12" font-weight="600" fill="#9f9f9f" transform="rotate(90,1290,380)">COMPUTE SCALE</text>
+
+    <!-- Pyramid guide lines (left side) -->
+    <line x1="200" y1="28"  x2="120" y2="148" stroke="#4a4a4a" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="120" y1="148" x2="60"  y2="268" stroke="#4a4a4a" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="60"  y1="268" x2="20"  y2="388" stroke="#4a4a4a" stroke-width="1" stroke-dasharray="4,4"/>
+
+    <!-- Pyramid guide lines (right side) -->
+    <line x1="1080" y1="28"  x2="1160" y2="148" stroke="#4a4a4a" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="1160" y1="148" x2="1220" y2="268" stroke="#4a4a4a" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="1220" y1="268" x2="1240" y2="388" stroke="#4a4a4a" stroke-width="1" stroke-dasharray="4,4"/>
+
+    <!-- DDIL badge -->
+    <rect x="510" y="510" width="300" height="30" rx="8" fill="#222528"/>
+    <text x="660" y="530" text-anchor="middle" font-family="Segoe UI" font-size="13" font-weight="600" fill="#c8c8c8" letter-spacing=".3">ALL TIERS: OPERATES FULLY IN DDIL</text>
+
+  </svg>
+
+  <div class="caption">
+    <strong>Figure 3.</strong> EdgeRunner AI deploys across the full military edge compute spectrum. Each tier operates independently in DDIL environments and integrates with higher tiers when connectivity permits.
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Customer Map Graphic — Data Schema",
+  "description": "A 5-column table of customers/partners with mission area, deployment type, environment, and status. Bottom row has 4 stats cards.",
+  "type": "object",
+  "required": ["title", "subtitle", "column_headers", "rows", "stats", "footer"],
+  "properties": {
+    "title": {"type": "string", "maxLength": 120},
+    "subtitle": {"type": "string", "maxLength": 200},
+    "column_headers": {
+      "type": "array", "minItems": 5, "maxItems": 5,
+      "items": {"type": "string", "maxLength": 30}
+    },
+    "rows": {
+      "type": "array", "minItems": 1, "maxItems": 12,
+      "items": {
+        "type": "object",
+        "required": ["customer", "cells"],
+        "properties": {
+          "customer": {"type": "string", "maxLength": 40},
+          "customer_sub": {"type": "string", "maxLength": 60},
+          "cells": {
+            "type": "array", "minItems": 3, "maxItems": 3,
+            "items": {"type": "string", "maxLength": 50}
+          },
+          "status": {"type": "string", "maxLength": 20},
+          "status_active": {"type": "boolean", "default": true, "description": "true = red pill, false = grey pill"}
+        }
+      }
+    },
+    "stats": {
+      "type": "array", "minItems": 4, "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["value", "label"],
+        "properties": {
+          "value": {"type": "string", "maxLength": 20},
+          "label": {"type": "string", "maxLength": 50}
+        }
+      }
+    },
+    "footer": {
+      "type": "object", "required": ["brand"],
+      "properties": {
+        "brand": {"type": "string", "maxLength": 80},
+        "tagline": {"type": "string", "maxLength": 160}
+      }
+    },
+    "theme": {
+      "type": "object",
+      "properties": {
+        "bg": {"type": "string", "default": "#191c20"},
+        "accent": {"type": "string", "default": "#ee2929"},
+        "panel": {"type": "string", "default": "#2a2d31"},
+        "panel_border": {"type": "string", "default": "#393939"},
+        "text": {"type": "string", "default": "#ffffff"},
+        "muted": {"type": "string", "default": "#9f9f9f"},
+        "body": {"type": "string", "default": "#c8c8c8"}
+      }
+    }
+  }
+}

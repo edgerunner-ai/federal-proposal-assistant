@@ -1,0 +1,35 @@
+{
+  "_comment": "Golden expectations for tests/fixtures/evidence-check/draft.md + ledger.json, asserted by scripts/evidence-check-golden.py. marker_audit rows are exact; warrant rows key each cited ID to its expected verdict status set (robust to warrant's claim-extraction heuristics changing sentence counts).",
+  "marker_audit": {
+    "ledger_counts": {"approved": 2, "retired": 1, "restricted": 1, "pending_review": 1, "other": 0, "total": 5},
+    "markers": {"total": 7, "supported": 2, "unsupported": 3, "coverage_pct": 28.6},
+    "unsupported_claims": [
+      {"file": "draft.md", "line": 24, "sentence": "Our inference runtime is the fastest available in its class."}
+    ],
+    "unknown_ids": [
+      {"file": "draft.md", "line": 12, "id": "EV-201", "suggestion": "EV-101"}
+    ],
+    "retired_ids": [
+      {"file": "draft.md", "line": 16, "id": "EV-102"}
+    ],
+    "restricted_ids": [
+      {"file": "draft.md", "line": 20, "id": "EV-103", "restrictions": "Cite only in Government-distribution proposals (Distribution B or more restrictive). Do NOT use in commercial or public-distribution material."}
+    ],
+    "pending_ids": [
+      {"file": "draft.md", "line": 32, "id": "EV-105"}
+    ],
+    "unused_approved": ["EV-104"],
+    "adapter_warnings_contain": ["EV-101: proof_strength 'highest' clamped to 'high'"]
+  },
+  "warrant": {
+    "cited_statuses": {
+      "EV-101": ["citation-weak", "valid"],
+      "EV-102": ["retired"],
+      "EV-103": ["restricted"],
+      "EV-105": ["unsupported"],
+      "EV-201": ["unknown"]
+    },
+    "gate_decision": "block",
+    "wbom_required_keys": ["wbom_version", "summary", "claims", "gate"]
+  }
+}

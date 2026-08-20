@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Digital Guardian Simulator — 8-Week Development Schedule</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#191c20;font-family:'Segoe UI',system-ui,sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}
+.canvas{width:1200px;background:#191c20;border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+
+/* HEADER */
+.title-bar{padding:16px 28px 12px;border-bottom:2px solid #ee2929;text-align:center}
+.title-bar h1{color:#fff;font-size:26px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.title-bar p{color:#9f9f9f;font-size:13px;margin-top:4px}
+
+/* SCHEDULE BODY */
+.schedule{padding:16px 24px 0}
+
+/* WEEK HEADERS */
+.week-row{display:grid;grid-template-columns:150px repeat(8,1fr);gap:4px;margin-bottom:6px;align-items:center}
+.lane-label-spacer{} /* empty left column */
+.week-cell{text-align:center;color:#9f9f9f;font-size:13px;font-weight:600;letter-spacing:.3px;padding:4px 0}
+.week-num{color:#fff;font-size:15px;font-weight:700;display:block}
+.week-sub{color:#9f9f9f;font-size:11px}
+
+/* GATE COLUMN HIGHLIGHT */
+.week-gate .week-num{color:#ee2929}
+
+/* STREAM ROWS */
+.stream-row{display:grid;grid-template-columns:150px repeat(8,1fr);gap:4px;margin-bottom:4px;align-items:stretch}
+.lane-label{display:flex;flex-direction:column;justify-content:center;padding:8px 10px;border-radius:6px;background:#1e2127}
+.lane-title{font-size:13px;font-weight:700;color:#fff;margin-bottom:2px}
+.lane-desc{font-size:10px;color:#9f9f9f;line-height:1.3}
+.lane-dot{width:8px;height:8px;border-radius:50%;margin-bottom:4px}
+.dot-a{background:#4a9ef5}
+.dot-b{background:#ee2929}
+.dot-c{background:#4db84d}
+
+.task-cell{border-radius:5px;padding:6px 7px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:12px;font-weight:600;line-height:1.3;min-height:52px;position:relative}
+
+/* Stream A — blue */
+.cell-a{background:#1e2535;border:1px solid #2a3a5a;color:#7db8f5}
+.cell-a-active{background:#1a2f50;border:1px solid #4a9ef5;color:#a8d1ff}
+
+/* Stream B — red */
+.cell-b{background:#251e1e;border:1px solid #4a2020;color:#cc7070}
+.cell-b-active{background:#301818;border:1px solid #ee2929;color:#ffaaaa}
+
+/* Stream C — green */
+.cell-c{background:#1a2620;border:1px solid #1e4028;color:#70b870}
+.cell-c-active{background:#152c1e;border:1px solid #4db84d;color:#9de09d}
+
+/* GO/NO-GO column overlay */
+.cell-gate-a{background:#1a2f50;border:1px solid #ee2929;border-left:3px solid #ee2929;color:#a8d1ff}
+.cell-gate-b{background:#301818;border:1px solid #ee2929;border-left:3px solid #ee2929;color:#ffaaaa}
+.cell-gate-c{background:#2a1515;border:1px solid #ee2929;border-left:3px solid #ee2929;color:#ffaaaa;font-weight:700}
+
+/* MILESTONE ROW */
+.milestone-row{display:grid;grid-template-columns:150px repeat(8,1fr);gap:4px;margin-top:6px;align-items:center}
+.milestone-spacer{}
+.milestone-cell{display:flex;flex-direction:column;align-items:center;padding:4px 2px}
+.diamond{width:20px;height:20px;background:#ee2929;transform:rotate(45deg);flex-shrink:0}
+.m-label{color:#ee2929;font-size:11px;font-weight:700;margin-top:4px;text-align:center}
+.m-desc{color:#9f9f9f;font-size:10px;text-align:center;line-height:1.3;margin-top:1px}
+
+/* GO/NO-GO GATE LINE */
+.gate-col-marker{position:relative}
+.gate-label-row{display:grid;grid-template-columns:150px repeat(8,1fr);gap:4px;margin-bottom:2px}
+.gate-marker{grid-column:6;display:flex;flex-direction:column;align-items:center;padding:2px 0}
+.gate-marker-label{color:#ee2929;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;text-align:center;border:1px solid #ee2929;padding:2px 6px;border-radius:3px;background:rgba(238,41,41,.08)}
+
+/* DESCOPE CALLOUT */
+.descope-row{display:grid;grid-template-columns:150px repeat(8,1fr);gap:4px;margin-top:2px;margin-bottom:4px}
+.descope-cell{grid-column:6;display:flex;align-items:center;justify-content:center}
+.descope-pill{background:rgba(238,41,41,.08);border:1px dashed #ee2929;border-radius:4px;padding:3px 8px;color:#ee2929;font-size:10px;font-weight:600;text-align:center}
+
+/* LEGEND */
+.legend-row{display:flex;justify-content:space-between;align-items:center;padding:10px 24px;border-top:1px solid #2e3238;background:#111316;margin-top:8px}
+.legend-streams{display:flex;gap:20px}
+.legend-item{display:flex;align-items:center;gap:6px}
+.legend-swatch{width:14px;height:10px;border-radius:2px}
+.swatch-a{background:#4a9ef5}
+.swatch-b{background:#ee2929}
+.swatch-c{background:#4db84d}
+.legend-text{color:#9f9f9f;font-size:12px}
+.legend-milestones{display:flex;align-items:center;gap:6px}
+.legend-diamond{width:12px;height:12px;background:#ee2929;transform:rotate(45deg)}
+.legend-brand{color:#ee2929;font-size:13px;font-weight:700;letter-spacing:.5px}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="title-bar">
+    <h1>Digital Guardian Simulator — 8-Week Development Schedule</h1>
+    <p>Three parallel streams · Week 5 Go/No-Go checkpoint · M1–M4 delivery milestones · DGX Spark access required Day 1</p>
+  </div>
+
+  <div class="schedule">
+
+    <!-- WEEK HEADERS -->
+    <div class="week-row">
+      <div class="lane-label-spacer"></div>
+      <div class="week-cell"><span class="week-num">Wk 1</span></div>
+      <div class="week-cell"><span class="week-num">Wk 2</span></div>
+      <div class="week-cell"><span class="week-num">Wk 3</span></div>
+      <div class="week-cell"><span class="week-num">Wk 4</span></div>
+      <div class="week-cell week-gate"><span class="week-num">Wk 5</span><span class="week-sub">Go/No-Go</span></div>
+      <div class="week-cell"><span class="week-num">Wk 6</span></div>
+      <div class="week-cell"><span class="week-num">Wk 7</span></div>
+      <div class="week-cell"><span class="week-num">Wk 8</span></div>
+    </div>
+
+    <!-- GO/NO-GO GATE LABEL -->
+    <div class="gate-label-row">
+      <div></div>
+      <div></div><div></div><div></div><div></div>
+      <div class="gate-marker"><div class="gate-marker-label">GO / NO-GO<br>WHY STATE</div></div>
+      <div></div><div></div><div></div>
+    </div>
+
+    <!-- STREAM A -->
+    <div class="stream-row">
+      <div class="lane-label">
+        <div class="lane-dot dot-a"></div>
+        <div class="lane-title">Stream A</div>
+        <div class="lane-desc">Inference + Personas</div>
+      </div>
+      <div class="task-cell cell-a-active">Env Setup<br>DGX Config</div>
+      <div class="task-cell cell-a-active">Persona<br>Profiles v1</div>
+      <div class="task-cell cell-a">Persona<br>Profiles v2</div>
+      <div class="task-cell cell-a">Why State<br>Integration</div>
+      <div class="task-cell cell-gate-a">Injection<br>Handling</div>
+      <div class="task-cell cell-a">COA<br>Conclusion</div>
+      <div class="task-cell cell-a">Scenario<br>Tuning</div>
+      <div class="task-cell cell-a-active">Final<br>Package</div>
+    </div>
+
+    <!-- STREAM B -->
+    <div class="stream-row">
+      <div class="lane-label">
+        <div class="lane-dot dot-b"></div>
+        <div class="lane-title">Stream B</div>
+        <div class="lane-desc">Orchestration + Why State</div>
+      </div>
+      <div class="task-cell cell-b-active">Guardian<br>Engine Dsn</div>
+      <div class="task-cell cell-b-active">Guardian<br>Engine v1</div>
+      <div class="task-cell cell-b">Why State<br>Mgr v1</div>
+      <div class="task-cell cell-b">Why State<br>Mgr v2</div>
+      <div class="task-cell cell-gate-b">Ctrl Panel<br>+ Inject API</div>
+      <div class="task-cell cell-b">Injection<br>Testing</div>
+      <div class="task-cell cell-b">Docs<br>Runbook</div>
+      <div class="task-cell cell-b-active">Final<br>Package</div>
+    </div>
+
+    <!-- STREAM C -->
+    <div class="stream-row">
+      <div class="lane-label">
+        <div class="lane-dot dot-c"></div>
+        <div class="lane-title">Stream C</div>
+        <div class="lane-desc">UI + Integration Testing</div>
+      </div>
+      <div class="task-cell cell-c-active">Policy KB<br>Load</div>
+      <div class="task-cell cell-c">RAG<br>Ingest</div>
+      <div class="task-cell cell-c">Viz Dash<br>v1</div>
+      <div class="task-cell cell-c">Viz Dash<br>v2</div>
+      <div class="task-cell cell-gate-c">TEST<br>SPRINT</div>
+      <div class="task-cell cell-c">ZT Audit<br>Log</div>
+      <div class="task-cell cell-c">Integration<br>Test</div>
+      <div class="task-cell cell-c-active">Demo<br>Support</div>
+    </div>
+
+    <!-- DESCOPE CALLOUT -->
+    <div class="descope-row">
+      <div></div>
+      <div></div><div></div><div></div><div></div>
+      <div class="descope-cell"><div class="descope-pill">→ DESCOPE PATH<br>if Why criteria not met</div></div>
+      <div></div><div></div><div></div>
+    </div>
+
+    <!-- MILESTONE ROW -->
+    <div class="milestone-row">
+      <div class="milestone-spacer" style="color:#9f9f9f;font-size:11px;font-weight:600;padding-left:4px">Milestones</div>
+      <div class="milestone-cell"></div>
+      <div class="milestone-cell">
+        <div class="diamond"></div>
+        <div class="m-label">M1</div>
+        <div class="m-desc">Env + Opening Statement Demo</div>
+      </div>
+      <div class="milestone-cell"></div>
+      <div class="milestone-cell"></div>
+      <div class="milestone-cell">
+        <div class="diamond"></div>
+        <div class="m-label">M2</div>
+        <div class="m-desc">Core Orchestration + Go/No-Go</div>
+      </div>
+      <div class="milestone-cell"></div>
+      <div class="milestone-cell">
+        <div class="diamond"></div>
+        <div class="m-label">M3</div>
+        <div class="m-desc">Full Injection + Real-Time Why</div>
+      </div>
+      <div class="milestone-cell">
+        <div class="diamond"></div>
+        <div class="m-label">M4</div>
+        <div class="m-desc">Delivery Package + Demo Support</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend-row">
+    <div class="legend-streams">
+      <div class="legend-item"><div class="legend-swatch swatch-a"></div><div class="legend-text">Stream A — Inference + Personas</div></div>
+      <div class="legend-item"><div class="legend-swatch swatch-b"></div><div class="legend-text">Stream B — Orchestration + Why State</div></div>
+      <div class="legend-item"><div class="legend-swatch swatch-c"></div><div class="legend-text">Stream C — UI + Integration Testing</div></div>
+    </div>
+    <div class="legend-milestones">
+      <div class="legend-diamond"></div>
+      <div class="legend-text" style="margin-left:8px">Milestone · All three streams converge at M4 (Week 8)</div>
+    </div>
+    <div class="legend-brand">EDGERUNNER AI</div>
+  </div>
+
+</div>
+</body>
+</html>

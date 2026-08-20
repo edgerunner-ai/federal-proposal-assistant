@@ -1,0 +1,36 @@
+{
+  "_comment": "Canonical-symbol manifest — DECISION-canonical-ownership rule 4 / action #7. Lists capabilities owned by another repo (or by a designated FPA module) whose re-implementation inside this repo must fail the pre-commit/smoke gate. Enforced by scripts/check-canonical-symbols.py. Changing ownership means editing THIS file — a visible diff, not a quiet fork.",
+  "schema_version": "canonical-symbols.v1",
+  "capabilities": [
+    {
+      "name": "verification-engine",
+      "canonical_home": "edgerunner-warrant (import warrant_ledger) — see docs/DECISION-canonical-ownership.md",
+      "description": "Claim extraction, citation admissibility + overlap floor, semantic candidates, gate, WBOM. Consume as a library; do not hand-roll siblings.",
+      "forbidden_definitions": [
+        "def to_wbom",
+        "def sign_wbom",
+        "def verify_wbom",
+        "def wbom_content_hash",
+        "def align_claim",
+        "def citation_overlap",
+        "def extract_claim_sentences",
+        "class EvidenceGate",
+        "def evidence_gate"
+      ]
+    },
+    {
+      "name": "evidence-marker-audit",
+      "canonical_home": "federal-proposal-assistant scripts/evidence_check_core.py",
+      "description": "FPA's deterministic <!-- evidence: --> marker audit. One implementation; skills and dashboards consume its JSON, they do not re-parse markers.",
+      "forbidden_definitions": [
+        "def audit_markers",
+        "def adapt_ledger_for_warrant"
+      ]
+    }
+  ],
+  "allowed_files": [
+    "scripts/evidence_check_core.py",
+    "scripts/check-canonical-symbols.py",
+    "docs/canonical-symbols.json"
+  ]
+}

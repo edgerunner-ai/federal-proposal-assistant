@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Platform Architecture Graphic — Data Schema",
+  "description": "A left-to-right pipeline diagram: Inputs → Layer 1 → Layer 2 (hero) → Layer 3 → Outputs. Each layer has a label, sublabel, two sections of bullet items, and a feedback arc at the bottom.",
+  "type": "object",
+  "required": ["title", "subtitle", "layers", "feedback", "footer"],
+  "properties": {
+    "title": {"type": "string", "maxLength": 120},
+    "subtitle": {"type": "string", "maxLength": 200},
+    "layers": {
+      "type": "array", "minItems": 5, "maxItems": 5,
+      "description": "Exactly 5 layers: [Inputs, Layer1, Layer2(hero), Layer3, Outputs]. Order is left→right.",
+      "items": {
+        "type": "object",
+        "required": ["name", "section1_label", "section1_items"],
+        "properties": {
+          "name": {"type": "string", "maxLength": 40},
+          "sub": {"type": "string", "maxLength": 40},
+          "hero": {"type": "boolean", "default": false},
+          "section1_label": {"type": "string", "maxLength": 30},
+          "section1_items": {"type": "array", "items": {"type": "string", "maxLength": 40}, "minItems": 1, "maxItems": 6},
+          "section2_label": {"type": "string", "maxLength": 30},
+          "section2_items": {"type": "array", "items": {"type": "string", "maxLength": 40}, "minItems": 1, "maxItems": 6}
+        }
+      }
+    },
+    "feedback": {
+      "type": "object",
+      "required": ["label"],
+      "properties": {
+        "label": {"type": "string", "maxLength": 160}
+      }
+    },
+    "footer": {
+      "type": "object",
+      "required": ["brand", "tagline"],
+      "properties": {
+        "brand": {"type": "string", "maxLength": 40},
+        "tagline": {"type": "string", "maxLength": 160},
+        "website": {"type": "string", "maxLength": 60}
+      }
+    },
+    "theme": {
+      "type": "object",
+      "properties": {
+        "bg": {"type": "string", "default": "#191c20"},
+        "accent": {"type": "string", "default": "#ee2929"},
+        "panel": {"type": "string", "default": "#2a2d31"},
+        "panel_border": {"type": "string", "default": "#393939"},
+        "text": {"type": "string", "default": "#ffffff"},
+        "muted": {"type": "string", "default": "#9f9f9f"},
+        "body": {"type": "string", "default": "#c8c8c8"}
+      }
+    }
+  }
+}

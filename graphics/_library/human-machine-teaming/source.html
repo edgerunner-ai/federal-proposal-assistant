@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Commander Decision Cycle — Human-Machine Teaming</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#191c20;font-family:'Segoe UI',Inter,system-ui,-apple-system,sans-serif;
+       display:flex;justify-content:center;align-items:center;
+       min-height:100vh;padding:20px}
+  .canvas{width:1200px;background:#191c20;border-radius:12px;
+          overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div style="padding:18px 32px 8px;text-align:center;border-bottom:2px solid #ee2929">
+    <h1 style="color:#ffffff;font-size:28px;font-weight:700;letter-spacing:.5px;text-transform:uppercase">Commander Decision Cycle — Human-Machine Teaming</h1>
+    <p style="color:#9f9f9f;font-size:15px;margin-top:4px">EdgeRunner accelerates the OODA loop — commander authority preserved at every stage</p>
+  </div>
+
+  <svg viewBox="0 0 1200 460" xmlns="http://www.w3.org/2000/svg" style="display:block">
+    <defs>
+      <marker id="af" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0,10 3.5,0 7" fill="#ffffff"/>
+      </marker>
+      <marker id="afr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0,10 3.5,0 7" fill="#ee2929"/>
+      </marker>
+    </defs>
+
+    <!-- Step 0: Commander (human, left) -->
+    <circle cx="130" cy="58" r="38" fill="#2a2d31" stroke="#393939" stroke-width="2"/>
+    <text x="130" y="52" fill="#ffffff" font-size="20" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">⬡</text>
+    <text x="130" y="72" fill="#9f9f9f" font-size="12" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">COMMANDER</text>
+
+    <rect x="40" y="100" width="180" height="200" rx="12" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <text x="130" y="130" fill="#ffffff" font-size="15" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">COMMANDER INTENT</text>
+    <text x="130" y="148" fill="#9f9f9f" font-size="12" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Mission tasking</text>
+    <text x="130" y="178" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Mission objective</text>
+    <text x="130" y="196" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Priority intel req.</text>
+    <text x="130" y="214" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Time constraints</text>
+    <text x="130" y="232" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Rules of engagement</text>
+    <text x="130" y="278" fill="#9f9f9f" font-size="12" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Authority never delegated</text>
+
+    <!-- Arrow 0→1 -->
+    <line x1="220" y1="200" x2="268" y2="200" stroke="#ffffff" stroke-width="2" marker-end="url(#af)"/>
+
+    <!-- Step 1: Intelligence Fusion -->
+    <rect x="270" y="100" width="180" height="200" rx="12" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <text x="360" y="130" fill="#ffffff" font-size="15" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">INTELLIGENCE FUSION</text>
+    <text x="360" y="148" fill="#9f9f9f" font-size="12" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Automated ingestion</text>
+    <text x="360" y="178" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">OSINT / SIGINT feeds</text>
+    <text x="360" y="196" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">MSS NATO COP state</text>
+    <text x="360" y="214" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Historical threat data</text>
+    <text x="360" y="232" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Structured PIR data</text>
+    <text x="360" y="278" fill="#9f9f9f" font-size="12" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Real-time or cached</text>
+
+    <!-- Arrow 1→2 -->
+    <line x1="450" y1="200" x2="498" y2="200" stroke="#ffffff" stroke-width="2" marker-end="url(#af)"/>
+
+    <!-- Step 2: EdgeRunner AI (hero) -->
+    <rect x="500" y="80" width="200" height="240" rx="12" fill="rgba(238,41,41,.08)" stroke="#ee2929" stroke-width="2"/>
+    <text x="600" y="116" fill="#ee2929" font-size="15" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">EDGERUNNER AI</text>
+    <text x="600" y="134" fill="#c8c8c8" font-size="12" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">On-device inference</text>
+    <text x="600" y="162" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">COA generation</text>
+    <text x="600" y="182" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Threat assessment</text>
+    <text x="600" y="202" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Targeting workflows</text>
+    <text x="600" y="222" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Scenario simulation</text>
+    <text x="600" y="242" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">NLI synthesis</text>
+    <text x="600" y="268" fill="#9f9f9f" font-size="12" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Operates DDIL / air-gapped</text>
+    <rect x="520" y="286" width="160" height="22" rx="11" fill="rgba(238,41,41,.15)" stroke="#ee2929" stroke-width="1"/>
+    <text x="600" y="301" fill="#ee2929" font-size="12" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">DDIL CAPABLE</text>
+
+    <!-- Arrow 2→3 -->
+    <line x1="700" y1="200" x2="748" y2="200" stroke="#ffffff" stroke-width="2" marker-end="url(#af)"/>
+
+    <!-- Step 3: COA Recommendation -->
+    <rect x="750" y="100" width="180" height="200" rx="12" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <text x="840" y="130" fill="#ffffff" font-size="15" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">COA RECOMMENDATION</text>
+    <text x="840" y="148" fill="#9f9f9f" font-size="12" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Structured output</text>
+    <text x="840" y="178" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Ranked COA options</text>
+    <text x="840" y="196" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Risk + resource profile</text>
+    <text x="840" y="214" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Time-phased execution</text>
+    <text x="840" y="232" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Audit trail preserved</text>
+    <text x="840" y="278" fill="#9f9f9f" font-size="12" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Machine-gen — human-reviewed</text>
+
+    <!-- Arrow 3→4 -->
+    <line x1="930" y1="200" x2="978" y2="200" stroke="#ffffff" stroke-width="2" marker-end="url(#af)"/>
+
+    <!-- Step 4: Command Decision (human, right — accented) -->
+    <circle cx="1070" cy="58" r="38" fill="#2a2d31" stroke="#ee2929" stroke-width="2"/>
+    <text x="1070" y="52" fill="#ee2929" font-size="20" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">★</text>
+    <text x="1070" y="72" fill="#ee2929" font-size="12" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">DECISION</text>
+
+    <rect x="980" y="100" width="180" height="200" rx="12" fill="#2a2d31" stroke="#393939" stroke-width="1.5"/>
+    <text x="1070" y="130" fill="#ffffff" font-size="15" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">COMMAND DECISION</text>
+    <text x="1070" y="148" fill="#9f9f9f" font-size="12" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Final authority</text>
+    <text x="1070" y="178" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Selects COA</text>
+    <text x="1070" y="196" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Issues OPORD / FRAGO</text>
+    <text x="1070" y="214" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Assigns resources</text>
+    <text x="1070" y="232" fill="#c8c8c8" font-size="13" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Initiates execution</text>
+    <text x="1070" y="278" fill="#ee2929" font-size="12" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Human decides — always</text>
+
+    <!-- Feedback loop -->
+    <path d="M 1070 330 Q 1070 370 600 370 Q 280 370 130 330" stroke="#ee2929" stroke-width="1.5" fill="none" stroke-dasharray="6,3" marker-end="url(#afr)" opacity=".7"/>
+    <text x="600" y="390" fill="#ee2929" font-size="12" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle" opacity=".8">Commander assessment + battle damage feeds next planning cycle</text>
+
+    <!-- Principle callouts -->
+    <rect x="40" y="408" width="340" height="42" rx="8" fill="rgba(238,41,41,.06)" stroke="rgba(238,41,41,.3)" stroke-width="1"/>
+    <text x="210" y="427" fill="#ee2929" font-size="12" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">HUMAN IN COMMAND</text>
+    <text x="210" y="443" fill="#c8c8c8" font-size="12" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">AI generates options — commander selects and executes</text>
+
+    <rect x="430" y="408" width="340" height="42" rx="8" fill="rgba(238,41,41,.06)" stroke="rgba(238,41,41,.3)" stroke-width="1"/>
+    <text x="600" y="427" fill="#ee2929" font-size="12" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">SPEED OF DECISION</text>
+    <text x="600" y="443" fill="#c8c8c8" font-size="12" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Minutes to COA recommendation — not hours</text>
+
+    <rect x="820" y="408" width="340" height="42" rx="8" fill="rgba(238,41,41,.06)" stroke="rgba(238,41,41,.3)" stroke-width="1"/>
+    <text x="990" y="427" fill="#ee2929" font-size="12" font-weight="700" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">DDIL-READY</text>
+    <text x="990" y="443" fill="#c8c8c8" font-size="12" font-family="'Segoe UI',Inter,system-ui,sans-serif" text-anchor="middle">Full capability with or without connectivity</text>
+  </svg>
+
+  <div style="background:#111315;padding:10px 32px;display:flex;justify-content:space-between;align-items:center">
+    <span style="color:#ee2929;font-size:13px;font-weight:700;opacity:.8;letter-spacing:.5px;font-family:'Segoe UI',Inter,system-ui,sans-serif">EDGERUNNER AI</span>
+    <span style="color:#9f9f9f;font-size:12px;font-family:'Segoe UI',Inter,system-ui,sans-serif">Decision support at machine speed — decision authority at human hands</span>
+    <span style="color:#9f9f9f;font-size:12px;font-family:'Segoe UI',Inter,system-ui,sans-serif">edgerunner.ai</span>
+  </div>
+
+</div>
+</body>
+</html>

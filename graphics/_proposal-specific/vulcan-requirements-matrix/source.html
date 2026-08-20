@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JATF Vulcan Requirements — Coverage &amp; Validation</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#191c20;font-family:'Segoe UI',system-ui,sans-serif;
+       display:flex;justify-content:center;align-items:flex-start;padding:20px}
+  .canvas{width:1200px;background:#191c20;border-radius:12px;
+          overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4);display:flex;flex-direction:column}
+  .header{padding:26px 36px 18px;text-align:center;border-bottom:3px solid #ee2929}
+  .header h1{color:#ffffff;font-size:46px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+  table{width:100%;border-collapse:collapse}
+  th{background:#ee2929;color:#191c20;font-size:28px;font-weight:700;letter-spacing:.5px;
+     text-transform:uppercase;padding:16px 22px;text-align:left;border-right:2px solid #191c20}
+  th:last-child{border-right:none}
+  td{padding:18px 22px;vertical-align:top;font-size:26px;line-height:1.4;color:#c8c8c8;
+     border-right:1px solid #393939;border-bottom:1px solid #393939}
+  td:last-child{border-right:none}
+  tr:nth-child(even) td{background:#23262a}
+  tr:nth-child(odd) td{background:#2a2d31}
+  td.req{color:#ffffff;font-weight:700;width:23%}
+  td.cov{width:44%}
+  td.val{width:33%}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="header">
+    <h1>JATF Vulcan Requirements — Coverage &amp; Validation</h1>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Requirement</th><th>EdgeRunner Coverage</th><th>Validation Method</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="req">Unified C2</td>
+        <td class="cov">WarClaw OpenClaw API + platform drivers; no core modification for new assets</td>
+        <td class="val">Driver-integration demonstration against the Vulcan platform inventory</td>
+      </tr>
+      <tr>
+        <td class="req">Autonomous Collaboration</td>
+        <td class="cov">Task decomposition, asset assignment, path de-confliction, Digital Adjutant re-tasking</td>
+        <td class="val">Multi-UxS orchestration test; controlled operator test</td>
+      </tr>
+      <tr>
+        <td class="req">Shared Situational Awareness</td>
+        <td class="cov">Digital Adjutant fusion + EVELYN detection; GeoJSON / CoT output; TAK/ATAK plugin</td>
+        <td class="val">COP-update latency measurement; TAK/ATAK integration test</td>
+      </tr>
+      <tr>
+        <td class="req">Resilient Network</td>
+        <td class="cov">100% on-device; Local-First RAG; model distribution via local mesh — no WAN</td>
+        <td class="val">Degraded-comms and graceful-degradation testing</td>
+      </tr>
+      <tr>
+        <td class="req">Open Architecture (MOSA)</td>
+        <td class="cov">OpenClaw open-source; standards-based API; collective model push; government can fork/extend</td>
+        <td class="val">Timed integration of a new platform without core modification</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Figure 1 — EXTiC 26-2 End-to-End Demonstration Workflow</title>
+<style>
+  :root {
+    --bg: #191c20;
+    --accent: #ee2929;
+    --accent-tint-08: rgba(238, 41, 41, 0.08);
+    --panel: #2a2d31;
+    --panel-alt: #23262a;
+    --panel-soft: #222528;
+    --panel-border: #393939;
+    --rule: #4a4a4a;
+    --text: #ffffff;
+    --muted: #9f9f9f;
+    --light: #c8c8c8;
+  }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body {
+    width: 1200px; height: 540px;
+    font-family: 'Segoe UI', system-ui, 'Inter', sans-serif;
+    color: var(--text);
+    display: flex; flex-direction: column;
+    padding: 22px 28px 16px;
+    overflow: hidden;
+  }
+
+  /* Title band */
+  .title-band {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+  }
+  .title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--text);
+    line-height: 1.05;
+  }
+  .subtitle {
+    font-size: 17px;
+    color: var(--light);
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+  .subtitle .em { color: var(--text); font-weight: 600; }
+
+  /* Flow row */
+  .flow {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 30px 1fr 30px 1fr 30px 1fr;
+    gap: 0;
+    align-items: stretch;
+    margin-bottom: 12px;
+    min-height: 0;
+  }
+
+  .stage {
+    background: var(--panel);
+    border: 1.5px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 18px 18px;
+    display: flex; flex-direction: column;
+  }
+  .stage.hero {
+    background: var(--accent-tint-08);
+    border: 2px solid var(--accent);
+  }
+  .stage-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .stage.hero .stage-label { color: var(--accent); }
+  .stage-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .stage.hero .stage-title { color: var(--text); }
+  .stage-actor {
+    font-size: 17px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 14px;
+  }
+  .stage-detail {
+    font-size: 18px;
+    color: var(--light);
+    line-height: 1.4;
+    margin-top: auto;
+  }
+
+  /* Arrows between stages */
+  .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .arrow svg { width: 100%; height: 32px; }
+
+  /* "Under contested conditions" bottom strip */
+  .conditions-strip {
+    background: var(--panel-soft);
+    border-top: 1.5px dashed var(--rule);
+    border-radius: 0 0 6px 6px;
+    padding: 12px 20px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .conditions-label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 9999px;
+    padding: 5px 14px;
+    flex-shrink: 0;
+  }
+  .conditions-text {
+    font-size: 18px;
+    color: var(--light);
+    line-height: 1.35;
+  }
+  .conditions-text .strong { color: var(--text); font-weight: 700; }
+</style>
+</head>
+<body>
+
+  <!-- Title band -->
+  <div class="title-band">
+    <div class="title">EXTiC 26-2 — End-to-End Demonstration Workflow</div>
+    <div class="subtitle">
+      EdgeRunner integrates with <span class="em">available V1/V2 sensors</span> and <span class="em">V4 effector partners</span> to demonstrate the full sensor → decision → engagement chain at the 27–29 July event.
+    </div>
+  </div>
+
+  <!-- 4-stage flow -->
+  <div class="flow">
+
+    <!-- Stage 1: Sensor -->
+    <div class="stage">
+      <div class="stage-label">Stage 1</div>
+      <div class="stage-title">Sensor</div>
+      <div class="stage-actor">V1 / V2 partner</div>
+      <div class="stage-detail">Radar tracks · EO/IR FMV · RF/SIGINT · CoT events</div>
+    </div>
+
+    <!-- Arrow 1 -->
+    <div class="arrow">
+      <svg viewBox="0 0 22 24" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="ar1" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,10 L9,5 z" fill="#ee2929"/>
+          </marker>
+        </defs>
+        <line x1="0" y1="12" x2="14" y2="12" stroke="#ee2929" stroke-width="3" marker-end="url(#ar1)"/>
+      </svg>
+    </div>
+
+    <!-- Stage 2: AI Decision (hero) -->
+    <div class="stage hero">
+      <div class="stage-label">Stage 2 — In Scope</div>
+      <div class="stage-title">AI Decision</div>
+      <div class="stage-actor">EdgeRunner</div>
+      <div class="stage-detail">EdgeRunner 20B + FA14 LoRA + Doctrine RAG · classify · COA · cue</div>
+    </div>
+
+    <!-- Arrow 2 -->
+    <div class="arrow">
+      <svg viewBox="0 0 22 24" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="ar2" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,10 L9,5 z" fill="#ee2929"/>
+          </marker>
+        </defs>
+        <line x1="0" y1="12" x2="14" y2="12" stroke="#ee2929" stroke-width="3" marker-end="url(#ar2)"/>
+      </svg>
+    </div>
+
+    <!-- Stage 3: Cueing -->
+    <div class="stage">
+      <div class="stage-label">Stage 3</div>
+      <div class="stage-title">Cueing</div>
+      <div class="stage-actor">Open-arch C2 message</div>
+      <div class="stage-detail">CoT · JSON natively · Link 16 / JREAP-C via partner gateway</div>
+    </div>
+
+    <!-- Arrow 3 -->
+    <div class="arrow">
+      <svg viewBox="0 0 22 24" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="ar3" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,10 L9,5 z" fill="#ee2929"/>
+          </marker>
+        </defs>
+        <line x1="0" y1="12" x2="14" y2="12" stroke="#ee2929" stroke-width="3" marker-end="url(#ar3)"/>
+      </svg>
+    </div>
+
+    <!-- Stage 4: Engagement -->
+    <div class="stage">
+      <div class="stage-label">Stage 4</div>
+      <div class="stage-title">Engagement</div>
+      <div class="stage-actor">V4 effector partner</div>
+      <div class="stage-detail">Kinetic SHORAD · directed energy · RF jammer · operator UI</div>
+    </div>
+
+  </div>
+
+  <!-- "Under contested conditions" strip -->
+  <div class="conditions-strip">
+    <span class="conditions-label">Under contested conditions</span>
+    <span class="conditions-text">
+      <span class="strong">DDIL</span> · <span class="strong">EW-contested</span> · <span class="strong">GPS-denied</span> · <span class="strong">austere</span>
+    </span>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,423 @@
+---
+name: red-team-review
+description: Score drafts against evaluator rubrics from a GS-14 perspective — narrative quality (red), mock S/W/D rating (gold), final QA (white-glove). Run after compliance-check + technical-review.
+phase: review
+composes: [compliance-check, evidence-check, technical-review]
+conflicts_with: [compliance-check, technical-review]  # don't re-run compliance coverage or engineering feasibility; consume their outputs
+---
+
+# Red Team Review Skill
+
+## Review Gate Mode
+
+This skill supports the **Shipley-canonical 6-team color review model** (see [`reference/methodology/color-teams.md`](../../../reference/methodology/color-teams.md) for the full methodology). Each mode corresponds to a specific phase in the proposal lifecycle.
+
+At the start of the skill, ask the user which review gate they want to run — or infer from context based on which review files already exist in `reviews/`.
+
+### Color-team modes (Shipley-canonical, full lifecycle)
+
+| Mode | Phase | Focus |
+|------|-------|-------|
+| `--mode=blue` | Capture (pre-bid) | Validates capture plan + win strategy. Independent senior reviewers (NOT proposal team). Output: strategy refinements, positioning actions |
+| `--mode=black-hat` | Capture (pre-bid) | Reviews competitors' likely strategies and solutions; updates own win strategy in response. Reviewers role-play top competitors |
+| `--mode=storyboard-pink` | Pre-draft | Reviews storyboards/outlines for compliance + strategy deployment BEFORE prose drafting begins. Catches structural issues before text is written |
+| `--mode=red` | Post-draft | Customer focus + completeness + clarity of strategy + mock evaluation against rubric |
+| `--mode=mock-eval` | Post-draft (alias) | Rubric-driven mock evaluation only (backward-compat alias for the framework's historical Gold mode) |
+| `--mode=gold` | Pre-submit | **Executive profit/risk sign-off** (Shipley-canonical Gold). NOT a proposal-quality review — that's Red's job |
+| `--mode=white-glove` | Pre-submit | Editorial QA, formatting, submission checklist, package readiness |
+| `--mode=lessons-learned` | Post-submit | Process and strategy improvement review. If a calibration corpus entry exists at `corpus/calibration/<slug>/` (created by `/capture-submission`), diffs auto-draft vs final-submitted, ingests `edit-notes.md`, and writes framework improvement proposals to `reviews/lessons-learned-<slug>.md`. Otherwise runs as a customer-debrief-driven retrospective |
+| `--mode=full` | Default | Runs the relevant teams in sequence based on workspace state |
+
+### Compliance coverage
+
+Compliance coverage is validated using `/compliance-check`, which writes `reviews/compliance-gaps.md`. This skill no longer runs a separate compliance pass on completed drafts — that work belongs to `/compliance-check`.
+
+### Backward compatibility
+
+The framework's historical mode names continue to work:
+- Old "Gold Team" (mock evaluation) = new `--mode=mock-eval` OR included in `--mode=red`
+- Old "White Glove" = new `--mode=white-glove`
+
+The Shipley-canonical names (`blue`, `black-hat`, `storyboard-pink`, `gold` as profit/risk) are the **preferred** names going forward. Historical aliases will continue to work indefinitely.
+
+### When to skip teams
+
+Not every proposal warrants every team:
+
+| Proposal type | Recommended modes |
+|---|---|
+| FAR full proposal (high-stakes, $50M+) | blue, black-hat, storyboard-pink, red, gold, white-glove, lessons-learned |
+| GSA MAS task-order BPA | blue, red, white-glove (black-hat optional; gold optional) |
+| SBIR Phase II | red, white-glove (blue/black-hat skipped — merit review) |
+| White paper | white-glove (light) |
+| RFI | white-glove only |
+| ROM | white-glove only |
+
+Compliance coverage on completed drafts is validated using `/compliance-check` — see the "Compliance coverage" note above.
+
+If no mode is specified, ask before proceeding.
+
+---
+
+## Red Team — Narrative Quality Review
+
+**Purpose:** Read like a GS-14 evaluator with 15 minutes and a scoring rubric. Find everything that will cost points.
+
+**Inputs:** All files in `drafts/`, `working/proposal-plan.md` (win themes, evaluation criteria), `working/narrative-spine.md` (if present), `working/storyboard.md` (if present), `reference/narrative-operating-modes.md`, `working/competitor-assessment.md`
+
+**Review categories:**
+1. **Technical credibility** — is the architecture real and defensible?
+2. **Differentiation** — why this team over competitors? Is it explicit?
+3. **Evaluator clarity** — can every answer be found in under 30 seconds?
+4. **Evidence** — every claim backed by proof (past performance, benchmarks, deployed systems)?
+5. **Risk reduction** — are risks acknowledged and mitigated explicitly?
+6. **Redundancy** — same content in multiple sections?
+7. **Win themes** — are the 3-5 win themes woven through every section?
+8. **Graphics alignment** — do visuals reinforce the narrative, or just decorate it?
+9. **Narrative spine preservation** — does the draft still carry the approved through-line, or did it collapse into a capability tour?
+10. **Narrative mode fit** — does the prose match the proposal type and page target, or does it over-explain / under-explain for the reader?
+11. **Transition quality** — do transitions show consequence, proof, selection, or decision, or merely announce structure?
+
+**Output table:**
+| Issue | Severity | Section | Why It Hurts Score | Recommended Fix |
+|-------|----------|---------|-------------------|-----------------|
+
+**Recommended rewrites:** For the top 3–5 issues, provide the specific rewritten text — copy-paste ready.
+
+**Write to:** `reviews/red-team-notes.md`
+
+---
+
+## Gold Team — Rubric-Based Mock Evaluation
+
+**Purpose:** Simulate the source selection board. Score the proposal against each evaluation factor using federal source-selection rubrics, citing specific Strengths/Weaknesses/Deficiencies with paragraph-level evidence. This is "write to the score sheet" in practice.
+
+**Type check:** If `working/proposal-type.md` declares `compliance_sources: []` (white-paper, rfi, rom, sources-sought), skip formal rubric scoring and run the [Lightweight Reader Response](#lightweight-reader-response) pass below instead.
+
+**Inputs:**
+- `working/proposal-type.md` — determines whether formal scoring or lightweight pass applies
+- `working/proposal-plan.md` — evaluation factors, subfactors, and weights extracted by `proposal-manager`
+- `working/evaluation-model.md` — if present, **this solicitation's typed rubric** (the same one injected into the draft prompt by `/proposal-writer`). Score against its specific factors, weighting, and pass/fail gates; they override the generic rubric files where they conflict. Treat `rejected` rows as out of scope.
+- `working/compliance-matrix.md` — current coverage status (informs Technical/Management ratings)
+- All files in `drafts/`
+- **Reference rubrics (mandatory):**
+  - `reference/evaluator-rubrics/adjectival-ratings.md` — Outstanding/Good/Acceptable/Marginal/Unacceptable definitions
+  - `reference/evaluator-rubrics/strengths-weaknesses-deficiencies.md` — S/SS/W/SW/D definitions and writing conventions
+  - `reference/evaluator-rubrics/past-performance-ratings.md` — if there's a PP factor
+  - `reference/evaluator-rubrics/price-evaluation.md` — for the Price/Cost factor
+
+### Process
+
+1. **Load the rubric.** Read the four rubric files above before scoring anything. Gold Team ratings must come from the rubric, not from impression.
+
+2. **For each evaluation factor/subfactor:**
+   - Read the factor definition from `working/proposal-plan.md`
+   - Determine factor type (Technical / Management / Past Performance / Price) and use the right rubric
+   - Read the corresponding draft section(s)
+   - Enumerate findings as Strengths, Significant Strengths, Weaknesses, Significant Weaknesses, or Deficiencies per `strengths-weaknesses-deficiencies.md`
+   - **Every finding must cite a specific paragraph, table, figure, or the absence thereof.** "Seems weak in X" is not a valid finding — it must be "Section §3.2.1, paragraph 2, states X but does not quantify Y, creating a Weakness."
+   - Assign the rating that emerges from the S/W/D pattern (do NOT pre-assign a rating and back-fill)
+   - Write the rationale in the voice of a source-selection decision document
+
+3. **Check win theme visibility.** From `working/proposal-plan.md`, pull the win themes defined by `proposal-manager`. For each theme, verify it is:
+   - Stated in the executive summary
+   - Reinforced in at least 2 major technical sections
+   - Supported by at least 1 concrete proof point per section where it appears
+   - Not just stated as a claim but connected to a differentiator
+   
+   Gold Team reports each theme's visibility as: **Strong** (all four) / **Present** (stated and reinforced) / **Weak** (stated but not reinforced) / **Absent**.
+
+4. **Check discriminator proof points.** For each discriminator in `working/proposal-plan.md`, verify there is a concrete proof point in the draft (past contract, demo, technical benchmark, named personnel, certification). Discriminators without proof points are Weaknesses.
+
+5. **Check ghosting.** From `working/competitor-assessment.md`, pull the top competitor's weaknesses. For each, verify the draft subtly frames the solution in a way that highlights that competitor weakness without naming the competitor. Missing ghosting opportunities are noted but not Weaknesses.
+
+5b. **Check evidence citations (Phase C).** If `my-company/evidence-ledger.json` exists, run `/evidence-check` first (or read its most recent output at `reviews/evidence-check.md`). For each finding:
+   - **Every `<!-- evidence: CLAIM-UNSUPPORTED -->` marker is an automatic Weakness.** Rationale: the writer explicitly flagged that a claim in the draft has no backing evidence. Severity depends on where the claim appears — in the executive summary or a Section M subfactor response, it's a Significant Weakness; in a minor capability paragraph, an ordinary Weakness.
+   - **Every retired or unknown evidence ID is a Weakness** — cited evidence that doesn't exist in the ledger is structurally unsupportable.
+   - **Every restricted-context violation is a Significant Weakness** — citing an item the ledger says is not cleared for this proposal type is a compliance / integrity issue.
+   - **Unused approved evidence relevant to the proposal** is an *opportunity note* (not a Weakness) — "consider adding EV-031 as a proof point for subfactor X."
+
+   Do NOT re-do the deterministic scan here — consume `/evidence-check`'s output. If `reviews/evidence-check.md` is older than any `drafts/*.md` file, warn the user and recommend re-running `/evidence-check` first.
+
+   If `my-company/evidence-ledger.json` does not exist, skip this step with a note: "Phase C evidence ledger not populated — evidence citation scoring not applied."
+
+5c. **Check acquisition-guidance compliance.** Read `reference/doctrine/acquisition-guidance-catalog.md` and apply its Applicability Matrix for this `type_id`:
+   - **Every ATO / IL / FedRAMP / CMMC / certification claim must carry an evidence-ledger cite** (per `reference/doctrine/prohibited-claims-doctrine.md`). An uncited one is a Significant Weakness — and if it generalizes a program-scoped posture (e.g., citing IL-6 outside the ICOP/PMW-120 context), flag it as a potential integrity Deficiency.
+   - **For Software Acquisition Pathway (DoDI 5000.87) efforts** — verify the technical approach answers the customer's own success criteria: an MVP→MVCR structure and a first-delivery commitment (applications path: ≤1 year from first funds, then at least annually). A SWP response that never names the cadence is a Weakness.
+   - **For Navy software efforts** — verify RAISE 2.0 mechanics are addressed where relevant (container/security-gate posture, residual risk ≤Moderate, and **edge ConMon via stage-sync** for DDIL/disconnected deployments). An edge-AI proposal silent on edge ConMon is a missed discriminator (opportunity note), not a Weakness.
+   - **For any costed response** — verify the pricing artifact is defensible against GAO-20-195G's four characteristics (and DoDI 5000.73 framing for DoD cost estimates). A point number with no stated basis/method is a Weakness.
+
+   If `reference/doctrine/acquisition-guidance-catalog.md` does not exist, skip this step with a note.
+
+6. **Compute overall rating pattern.** Tabulate factor ratings weighted per Section M's statement of importance. Do not invent percentages.
+
+7. **Estimate pWin (rough, not definitive).**
+   - All factors Outstanding or Good + competitive price → pWin High
+   - Mostly Acceptable with 1-2 Good → pWin Moderate
+   - Any Marginal or Unacceptable factor → pWin Low until fixed
+   - Any Deficiency → pWin Very Low (unawardable)
+
+### Output: `reviews/gold-team-scorecard.md`
+
+```markdown
+# Gold Team Mock Evaluation — [Proposal Name]
+
+**Type:** [type_id from proposal-type.md]
+**Date:** [timestamp]
+**Evaluator profile:** Mock GS-13/14 source-selection evaluator applying `reference/evaluator-rubrics/`
+
+## Scorecard Summary
+
+| Factor | Importance | Rating | Rationale (1-line) |
+|---|---|---|---|
+| [Factor 1 name] | [Most Important / etc.] | [Outstanding/Good/Acceptable/Marginal/Unacceptable] | [one line] |
+| [Factor 2] | | | |
+| [Factor N — Past Performance] | | [Substantial/Satisfactory/Neutral/Limited/No Confidence] | |
+| Price | | [assessment, not rating] | |
+
+## pWin Estimate: [High / Moderate / Low / Very Low]
+
+[1-2 paragraphs explaining the estimate based on factor pattern + competitor assessment + price posture]
+
+---
+
+## Factor 1 — [Name]
+
+**Rating:** [Adjectival]
+**Source (Section M):** [quote or paraphrase the eval standard]
+
+### Strengths
+
+#### Strength 1: [short label]
+- **Basis:** [cite: drafts/technical-approach.md §3.2, paragraph 2]
+- **Benefit to Government:** [what the government gets]
+
+#### Significant Strength: [short label]
+- **Basis:** [cite]
+- **Benefit to Government:** [why this is decisive, not just good]
+
+### Weaknesses
+
+#### Weakness 1: [short label]
+- **Basis:** [cite paragraph or its absence]
+- **Risk to Government:** [what could go wrong]
+- **Fix to resolve:** [specific rewrite or addition]
+
+#### Significant Weakness: [short label]
+- **Basis:** [cite]
+- **Risk to Government:** [material execution risk]
+- **Fix to resolve:** [specific]
+
+### Deficiencies
+(None / list with fix-to-resolve for each)
+
+### Rating Rationale
+[Paragraph written in the voice of a source-selection decision document. Pattern of S/W/D → rating. Cite the rubric threshold that was met.]
+
+### What Would Move This to [Next Higher Rating]
+[Specific, actionable. "Add a Significant Strength in subfactor X by citing the [prior customer] deployment as a proof point."]
+
+---
+
+[Repeat for each factor]
+
+---
+
+## Win Theme Visibility
+
+| Theme | Status | Notes |
+|---|---|---|
+| [Theme 1 from proposal-plan.md] | Strong/Present/Weak/Absent | [where it's strong, where it's missing] |
+| [Theme 2] | | |
+
+## Discriminator Proof-Point Check
+
+| Discriminator | Proof Point Present? | Cite |
+|---|---|---|
+| [Discriminator 1] | Yes/No | [draft location or "absent"] |
+
+## Ghosting Check (vs. top competitor)
+
+| Competitor Weakness | Ghosted? | Notes |
+|---|---|---|
+| [Weakness from competitor-assessment.md] | Yes/No/Partial | [where in draft] |
+
+## Prioritized Rewrite List
+
+1. **[Highest impact fix]** — resolves [factor rating → next level or compliance Gap]
+2. [Next]
+3. [Next]
+[List in order of scoring impact, not author convenience]
+
+## Overall Assessment
+
+[2-3 paragraphs. Honest view of whether this wins as drafted. If No, what must change. If Yes, what preserves the win.]
+```
+
+### Scored snapshot (mandatory — feeds the lift metric)
+
+Every run that produces `reviews/gold-team-scorecard.md` **must also append exactly one JSON
+line** to `reviews/gold-team-history.jsonl`, conforming to
+[`reference/schemas/gold-team-snapshot.schema.json`](../../../reference/schemas/gold-team-snapshot.schema.json):
+
+```json
+{"schema_version":"gold-team-snapshot.v1","timestamp":"<ISO-8601>","proposal_id":"<slug>","mode":"mock-eval","pwin":"Moderate","factor_ratings":[{"factor":"Technical Approach","rating":"Good"}],"counts":{"strengths":4,"significant_strengths":1,"weaknesses":2,"significant_weaknesses":0,"deficiencies":0},"draft_word_count":8214,"unsupported_claim_count":3,"notes":null}
+```
+
+- **Append-only.** Never rewrite, reorder, or delete prior lines — the accumulated series is
+  the data `scripts/compute-lift.py` turns into the baseline→current pWin trajectory and the
+  shrinking-edit-ratio proof. The scorecard `.md` may be overwritten each run; the history may not.
+- Counts come from the findings actually enumerated in the scorecard (do not estimate).
+- `draft_word_count` and `unsupported_claim_count` reflect `drafts/*.md` (top level) at review time.
+- The Lightweight Reader Response pass appends too, with `"mode":"lightweight"` and `"pwin":null`.
+- If `reviews/gold-team-history.jsonl` does not exist, create it with this first line.
+
+After appending, optionally run `python scripts/compute-lift.py --proposal <slug>` to refresh
+`reviews/lift.md` and show the trajectory.
+
+### Activity trail
+
+Append to `working/activity.md`:
+
+```
+## <timestamp> — red-team-review [gold] — <N factors scored>: <OutstandingCount>O/<GoodCount>G/<AcceptableCount>A/<MarginalCount>M/<UnacceptableCount>U, pWin: <level> → reviews/gold-team-scorecard.md + reviews/gold-team-history.jsonl
+```
+
+### Lightweight Reader Response
+
+For white papers, RFIs, ROMs, and sources-sought responses — no Section M exists, so formal adjectival scoring doesn't apply. Run this lightweight pass instead:
+
+1. Read the draft.
+2. Imagine the intended reader (program officer, market researcher, CO). What's their first reaction?
+3. Assess:
+   - **Clarity of the "so what"** — is it findable in the first page?
+   - **Credibility** — does it read as someone who understands the mission?
+   - **Call to action** — is it clear what the reader should do next?
+   - **Length discipline** — is it within `page_target` from `proposal-type.md`?
+4. Output: `reviews/gold-team-scorecard.md` with the four dimensions, 1-line assessments each, and a prioritized rewrite list. Skip the S/W/D structure — it's not applicable.
+
+### Gold Team discipline
+
+- **Preventable findings should already be closed by `bind`.** `proposal-writer` Pass 2 Step 2b runs the `reference/preventable-gold-team-findings.md` sweep (scored-field placeholders, unnamed personnel, undefined acronyms, vague comparators, unanswered evaluator questions). Still score any that survive — they are real Weaknesses — but when several recur, note in the Overall Assessment that the bind sweep was likely skipped, so the fix is upstream (re-run `/proposal-writer --mode=bind`) rather than one-off patches. Reserve Gold Team's own judgment for the residue the sweep cannot prevent: compliance/eligibility, "reads as a pitch" / captured-not-live, and the rating call itself.
+- **Never assign a rating without Strength/Weakness analysis first.** The rating must *emerge* from the findings.
+- **Every finding cites a specific location or absence.** No "feels weak" — show me where.
+- **Use the rubric language verbatim.** "Appreciably increases" is an FAR term of art; use it, don't paraphrase.
+- **Don't stack trivial strengths to imply a Significant Strength.** Evaluators see through this.
+- **Don't over-claim.** Gold Team is supposed to be honest, not motivational. If pWin is Low, say so and say why.
+
+---
+
+## White Glove — Final QA
+
+**Purpose:** Catch everything that could embarrass the team or trigger a non-compliance finding on submission day.
+
+**Checklist — run every item:**
+
+**Editorial:**
+- [ ] No double spaces after periods
+- [ ] Consistent section numbering throughout (e.g., "5." not "5.0")
+- [ ] No informal language (check: "Govt", "ours", "we've", contractions in formal sections)
+- [ ] All acronyms defined on first use in each major section
+- [ ] No run-on sentences; no sentence fragments
+- [ ] Consistent verb tense throughout each section
+
+**Formatting:**
+- [ ] Page count within limits (by volume if applicable)
+- [ ] Font, size, and margin compliance
+- [ ] Heading styles applied correctly (not manual bold on Normal paragraphs)
+- [ ] Figure captions present and numbered sequentially
+- [ ] No floating/anchored images that may shift across systems
+- [ ] Header and footer match requirements (document title, company, page numbers)
+- [ ] Classification and distribution marking present (if required)
+- [ ] Cover page complete with all required elements
+
+**Content completeness:**
+- [ ] All required attachments included (resumes, PPQs, certifications, representations and certifications)
+- [ ] All cross-references resolve correctly
+- [ ] No placeholder text remaining ([TBD], [TO BE PROVIDED], [INSERT])
+- [ ] Pricing volume matches technical volume commitments (no orphaned commitments)
+
+**Submission:**
+- [ ] File naming convention matches solicitation requirements
+- [ ] File format matches solicitation requirements (PDF, DOCX, etc.)
+- [ ] Submission portal/method confirmed
+- [ ] Submission deadline confirmed with timezone
+
+**Write to:** `reviews/white-glove-checklist.md`
+
+---
+
+## Full Review (Default)
+Runs all four passes in sequence. Write findings to all four output files. Present a consolidated summary at the end: total issues by severity, recommendation on whether the proposal is ready to submit.
+
+---
+
+## Lessons Learned — Post-Submit Review
+
+`--mode=lessons-learned`
+
+Run **after submission** to extract framework improvement signal from the gap between auto-generated draft and what you actually submitted.
+
+### Two operating modes
+
+**Mode A — Corpus-driven (preferred).** When `corpus/calibration/<slug>/` exists with status=complete (i.e., user has run `/capture-submission` through Phase 3):
+
+1. Read `corpus/calibration/<slug>/manifest.json` — get type, customer, dates
+2. Read `corpus/calibration/<slug>/edit-notes.md` — user's reflection on what they changed and why
+3. **Diff** every section in `corpus/calibration/<slug>/auto-draft/` against the corresponding file in `corpus/calibration/<slug>/final-submitted/`
+4. **Classify** each diff into edit categories:
+   - Tone / voice
+   - Customer-language adoption
+   - Tightening / compression
+   - Adding proof points / evidence
+   - Restructuring / reordering
+   - Cross-section redundancy
+   - Factual fixes / hallucinations
+   - Formatting / numbering
+5. **Detect patterns** — edits that appear in 2+ sections are systemic, not one-off. These are the highest-leverage to fix in the framework.
+6. **Generate framework improvement proposals** — concrete, actionable suggestions targeting specific files:
+   - SKILL prompt language (e.g., "proposal-writer should add a rule against 'leverage' as a verb")
+   - Section patterns (e.g., "section X should lead with the customer's stated problem, not capability boilerplate")
+   - Style guide (e.g., "add anti-pattern: 'cutting-edge' / 'innovative' / 'next-generation'")
+   - Reference patterns (e.g., "winning examples for type Y always include ___; add to convention file")
+7. Write findings to `reviews/lessons-learned-<slug>.md` with sections:
+   - Summary statistics (total edits, edit-hours, dominant categories)
+   - Systemic patterns (with section frequency)
+   - Cited framework improvement proposals (each with: file path, current state, proposed state, rationale, expected impact)
+   - One-off corrections (low-priority list for completeness)
+8. Append to `working/activity.md`:
+   ```
+   ## YYYY-MM-DD HH:MM — red-team-review [lessons-learned] — N edits classified, M systemic patterns, K framework proposals → reviews/lessons-learned-<slug>.md
+   ```
+
+**Mode B — Customer-debrief retrospective (fallback).** When no corpus entry exists, run a traditional Shipley-style post-submit retrospective using customer debrief notes (if any), proposal team retrospective inputs, and the win/loss outcome. Output: `reviews/lessons-learned-<slug>.md` focused on capture/strategy (not framework calibration).
+
+### Discipline rules for Mode A
+
+- **Don't propose framework changes for one-off edits.** Single-occurrence edits go in the "one-off corrections" section, not the proposals section. The signal-to-noise ratio matters — proposing 50 framework changes for one proposal devalues every proposal.
+- **Cite evidence in every proposal.** Each framework improvement proposal must reference the specific section(s) where the edit pattern appeared. No proposals from intuition.
+- **Respect the user's edit-notes.** Their reflection on *why* they made an edit is more authoritative than the AI's classification. Use the notes as ground truth.
+- **Do not auto-apply changes.** This skill *proposes* changes. The user reviews, accepts, and applies (or instructs you to apply) — the skill never edits SKILL files or patterns directly.
+
+### When to run Mode A
+
+After every submission once corpus entry is complete. Even one entry generates useful proposals — but the signal compounds across 5+ entries.
+
+### Cross-reference
+
+- Corpus structure: [`corpus/calibration/README.md`](../../../corpus/calibration/README.md)
+- Capture skill: [`/capture-submission`](../capture-submission/SKILL.md)
+- Future cross-proposal pattern analysis: `/recalibrate-framework` (not yet built) — operates on the entire corpus rather than one entry
+
+---
+
+## Output Files (by mode)
+- Red Team → `reviews/red-team-notes.md`
+- Gold Team → `reviews/gold-team-scorecard.md`
+- White Glove → `reviews/white-glove-checklist.md`
+- Lessons Learned → `reviews/lessons-learned-<slug>.md`
+- Full Review → red, gold, white-glove (lessons-learned not included in `--mode=full`)
+
+Compliance coverage is validated using `/compliance-check` (writes `reviews/compliance-gaps.md`).
+
+**Critical Rule: Always write to files — never just display in chat.**

@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# pre-commit hook — refuse commits that stage sensitive proposal data.
+#
+# Tracked at hooks/pre-commit; armed into a fresh clone by scripts/install-hooks.sh.
+# Delegates to scripts/check-git-boundary.sh, which inspects the staged index.
+set -u
+
+REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null)"
+[ -z "$REPO_ROOT" ] && exit 0
+
+GUARD="$REPO_ROOT/scripts/check-git-boundary.sh"
+if [ ! -f "$GUARD" ]; then
+  echo "pre-commit: scripts/check-git-boundary.sh not found — cannot verify boundary." >&2
+  echo "pre-commit: refusing the commit to fail safe. Restore the guard script." >&2
+  exit 1
+fi
+
+bash "$GUARD" || {
+  echo "pre-commit: boundary guard blocked this commit (see above)." >&2
+  exit 1
+}
+
+# Canonical-symbols governance gate (docs/DECISION-canonical-ownership.md rule 4):
+# refuse commits that re-implement a capability owned by another repo (e.g. a fresh
+# gate/wbom module that should delegate to warrant_ledger). Manifest:
+# docs/canonical-symbols.json. Enforcement is mechanical, not social.
+CANON="$REPO_ROOT/scripts/check-canonical-symbols.py"
+if [ ! -f "$CANON" ]; then
+  echo "pre-commit: scripts/check-canonical-symbols.py not found — cannot verify canonical ownership." >&2
+  echo "pre-commit: refusing the commit to fail safe. Restore the governance gate." >&2
+  exit 1
+fi
+PY=""
+command -v python3 >/dev/null 2>&1 && PY=python3
+[ -z "$PY" ] && command -v python >/dev/null 2>&1 && PY=python
+if [ -n "$PY" ]; then
+  "$PY" "$CANON" --staged || {
+    echo "pre-commit: canonical-symbols gate blocked this commit (see above)." >&2
+    exit 1
+  }
+else
+  echo "pre-commit: WARNING — python not found; skipping canonical-symbols gate (smoke-test still runs it)." >&2
+fi
+
+# Snapshot the gitignored company assets (evidence ledger, past performance, claim
+# envelope, capability docs). They exist ONLY in the working tree, so an ordinary git
+# operation can destroy them with no undo — a checkout+merge did exactly that on
+# 2026-08-04. This is content-hashed, so an unchanged asset costs nothing, and it NEVER
+# blocks a commit: a backup problem is not a reason to refuse work.
+BACKUP="$REPO_ROOT/scripts/backup-company-assets.py"
+if [ -n "$PY" ] && [ -f "$BACKUP" ]; then
+  "$PY" "$BACKUP" >/dev/null 2>&1 || \
+    echo "pre-commit: WARNING — company-asset backup failed; run 'python scripts/backup-company-assets.py' to see why." >&2
+fi
+exit 0

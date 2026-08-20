@@ -1,0 +1,24 @@
+# Confirmed-distinct customer families — names that LOOK like duplicates but are not.
+#
+# Sibling of reference/customer-aliases.tsv. That file says "these two strings are one
+# customer." This one says the opposite: "these strings share words, and we have decided they
+# are different customers." Without it, scripts/customer-aliases.py --suggest re-proposes the
+# same merges every week, and a proposal list that is mostly noise stops being read.
+#
+# Read ONLY by the suggester. It does not affect canonicalization or counting — an unmapped
+# name already counts as itself. Recording the decision here changes nothing about the
+# numbers; it stops the question being re-asked.
+#
+# Format: three TAB-separated columns. Lines starting with # are comments.
+#   family label<TAB>name | name | name<TAB>why they are distinct
+#
+# Every pair WITHIN a family is suppressed. Pairs across families are still proposed.
+#
+# The rule behind these decisions: a customer is a BUYING ACTIVITY — an organization that
+# holds its own money and writes its own requirements — not a service or a parent agency.
+# Merging separate program offices understates real demand breadth exactly as badly as
+# duplicate spellings overstate it.
+
+AFRL directorates	AFRL | AFRL 711th Human Performance Wing (RH) | AFRL Information Directorate (RI) | AFRL Space Vehicles Directorate (RV)	Separate AFRL directorates with their own budgets, PMs, and solicitations. Bare "AFRL" is a CRM row (opportunity 1294, PSA asset management) whose directorate is genuinely unstated — it is left standing rather than guessed into one of the three.
+
+Army commands	U.S. Army | U.S. Army Futures and Concepts Center (FCC/ICED) | Army Contracting Command - APG | Army Contracting Command - DTA | Army Materiel Command (ACC-CTRS)	Five distinct Army buying activities. Bare "U.S. Army" is the enterprise-wide ONIX Marketplace Challenge, not a vague spelling of a command — it is a real Army-wide requirement owner. ACC-APG and ACC-DTA are separate contracting offices under one command and issue separate solicitations.

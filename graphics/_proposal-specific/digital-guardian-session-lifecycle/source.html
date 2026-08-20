@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>War Game Session Lifecycle</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:800px; }
+  body {
+    background:#191c20;
+    font-family:"Segoe UI",Arial,sans-serif;
+    color:#ffffff;
+    padding:34px 48px;
+    overflow:hidden;
+  }
+  .title {
+    font-size:36px; font-weight:700; color:#ffffff;
+    border-bottom:3px solid #ee2929; padding-bottom:10px; margin-bottom:8px;
+  }
+  .subtitle { font-size:23px; color:#9f9f9f; margin-bottom:24px; }
+  .row { display:flex; align-items:stretch; gap:16px; }
+  .node {
+    flex:1; background:#2a2d31; border:2px solid #393939; border-radius:10px;
+    padding:14px 14px; display:flex; flex-direction:column; height:212px;
+  }
+  .node.hot { background:rgba(238,41,41,.10); border-color:#ee2929; }
+  .badge {
+    width:38px; height:38px; border-radius:50%; background:#ee2929;
+    color:#191c20; font-size:22px; font-weight:700;
+    display:flex; align-items:center; justify-content:center; margin-bottom:9px;
+  }
+  .name { font-size:25px; font-weight:700; color:#ffffff; margin-bottom:7px; line-height:1.12; }
+  .desc { font-size:22px; color:#c8c8c8; line-height:1.26; }
+  .arrow { display:flex; align-items:center; color:#ee2929; font-size:34px; font-weight:700; }
+  .downwrap { display:flex; justify-content:flex-end; padding-right:8.5%; height:34px; align-items:center; }
+  .down { color:#ee2929; font-size:34px; font-weight:700; }
+  .loop {
+    font-size:21px; color:#9f9f9f; font-style:italic; margin-top:14px;
+  }
+  .footer {
+    margin-top:14px; font-size:21px; color:#9f9f9f;
+    border-top:1px solid #393939; padding-top:12px;
+  }
+  .footer b { color:#ee2929; font-style:normal; }
+</style>
+</head>
+<body>
+  <div class="title">War Game Session Lifecycle</div>
+  <div class="subtitle">Seven stages under human Orchestrator control &mdash; Guardian Engine state machine</div>
+
+  <div class="row">
+    <div class="node">
+      <div class="badge">1</div>
+      <div class="name">Init</div>
+      <div class="desc">Session loaded; personas and baseline Why weights seeded.</div>
+    </div>
+    <div class="arrow">&#9654;</div>
+    <div class="node">
+      <div class="badge">2</div>
+      <div class="name">Opening Round</div>
+      <div class="desc">Each persona introduces its role, priorities, and read of the scenario.</div>
+    </div>
+    <div class="arrow">&#9654;</div>
+    <div class="node">
+      <div class="badge">3</div>
+      <div class="name">Status Rounds</div>
+      <div class="desc">Concise, Why-weighted position statements; rounds repeat.</div>
+    </div>
+    <div class="arrow">&#9654;</div>
+    <div class="node hot">
+      <div class="badge">4</div>
+      <div class="name">Injection Event</div>
+      <div class="desc">Orchestrator fires a White or Red event to all personas.</div>
+    </div>
+  </div>
+
+  <div class="downwrap"><span class="down">&#9660;</span></div>
+
+  <div class="row">
+    <div class="node hot">
+      <div class="badge">5</div>
+      <div class="name">Why Shift</div>
+      <div class="desc">Personas re-weight priorities; dashboard bars reorder within 500&nbsp;ms.</div>
+    </div>
+    <div class="arrow">&#9654;</div>
+    <div class="node">
+      <div class="badge">6</div>
+      <div class="name">COA Deliberation</div>
+      <div class="desc">Personas reason from updated priorities toward courses of action.</div>
+    </div>
+    <div class="arrow">&#9654;</div>
+    <div class="node">
+      <div class="badge">7</div>
+      <div class="name">Session Conclusion</div>
+      <div class="desc">Each persona ties its final Why ranking to a recommended COA.</div>
+    </div>
+  </div>
+
+  <div class="loop">Stages 3&ndash;5 repeat each round; the Orchestrator injects events and ends the session on command.</div>
+
+  <div class="footer">An <b>Injection Event</b> and the resulting <b>Why Shift</b> are the dynamic core of the demonstration &mdash; every stage advances under human Orchestrator control.</div>
+</body>
+</html>

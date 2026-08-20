@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EdgeRunner — Model Tier Reference</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:#191c20;
+    font-family:'Segoe UI',system-ui,sans-serif;
+    color:#c8c8c8;
+    display:flex;justify-content:center;align-items:flex-start;
+    min-height:100vh;padding:24px
+  }
+  .canvas{
+    width:1200px;
+    background:#191c20;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 8px 32px rgba(0,0,0,.4)
+  }
+
+  /* ===== HEADER ===== */
+  header{
+    padding:22px 36px 16px;
+    border-bottom:2px solid #ee2929
+  }
+  header h1{
+    color:#ffffff;
+    font-size:26px;
+    font-weight:700;
+    letter-spacing:.5px;
+    text-transform:uppercase
+  }
+  header .lede{
+    color:#c8c8c8;
+    font-size:14px;
+    margin-top:6px;
+    max-width:1000px;
+    line-height:1.5
+  }
+  header .lede strong{color:#ffffff;font-weight:600}
+  header .lede em{color:#ee2929;font-style:normal;font-weight:600}
+
+  /* ===== TABLE ===== */
+  table{
+    width:100%;
+    border-collapse:collapse;
+    background:#191c20
+  }
+  thead th{
+    background:#222528;
+    color:#9f9f9f;
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    text-align:left;
+    padding:12px 14px;
+    border-bottom:1px solid #393939
+  }
+  thead th:first-child{padding-left:36px}
+  thead th:last-child{padding-right:36px}
+
+  tbody td{
+    padding:18px 14px;
+    vertical-align:top;
+    border-bottom:1px solid #2a2d31;
+    font-size:13px;
+    line-height:1.5
+  }
+  tbody td:first-child{padding-left:36px}
+  tbody td:last-child{padding-right:36px}
+  tbody tr:last-child td{border-bottom:none}
+
+  /* Tier badge cell */
+  .tier-cell{width:170px}
+  .tier-badge{
+    display:inline-block;
+    padding:5px 12px;
+    border-radius:14px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    margin-bottom:6px
+  }
+  .tier-light  .tier-badge{background:rgba(238,41,41,.08); color:#ee2929; border:1.5px solid #ee2929}
+  .tier-medium .tier-badge{background:rgba(238,41,41,.12); color:#ee2929; border:1.5px solid #ee2929}
+  .tier-heavy  .tier-badge{background:rgba(238,41,41,.15); color:#ee2929; border:1.5px solid #ee2929}
+  .tier-alt{
+    display:block;
+    color:#9f9f9f;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    margin-top:4px
+  }
+
+  /* Cell content styling */
+  .cell-strong{color:#ffffff;font-weight:600;font-size:13px;display:block;margin-bottom:4px}
+  .cell-detail{color:#c8c8c8;font-size:12px;line-height:1.45}
+  .param-range{
+    display:inline-block;
+    background:#2a2d31;
+    color:#ffffff;
+    font-family:'Consolas','SF Mono',monospace;
+    font-size:13px;
+    font-weight:600;
+    padding:3px 10px;
+    border-radius:4px;
+    border:1px solid #393939
+  }
+  .advantage{
+    margin-top:8px;
+    padding:8px 10px;
+    background:rgba(238,41,41,.06);
+    border-left:2px solid #ee2929;
+    border-radius:0 4px 4px 0;
+    color:#c8c8c8;
+    font-size:11.5px;
+    line-height:1.45
+  }
+  .advantage-label{
+    display:block;
+    color:#ee2929;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+    margin-bottom:3px
+  }
+
+  /* ===== PRINCIPLE FOOTER ===== */
+  .principle{
+    background:#111315;
+    padding:18px 36px 20px;
+    border-top:1px solid #393939
+  }
+  .principle-label{
+    color:#ee2929;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+    margin-bottom:6px
+  }
+  .principle-body{
+    color:#c8c8c8;
+    font-size:13px;
+    line-height:1.6
+  }
+  .principle-body strong{color:#ffffff;font-weight:600}
+
+  /* ===== FOOTER STRIP ===== */
+  .footer-strip{
+    background:#0d1015;
+    padding:10px 36px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:12px
+  }
+  .footer-strip .brand{color:#ee2929;font-weight:700;letter-spacing:.5px;font-size:13px}
+  .footer-strip .url{color:#9f9f9f}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <header>
+    <h1>Model Tier Reference — Light / Medium / Heavy</h1>
+    <p class="lede">
+      EdgeRunner organizes its military-tuned models into three tiers by parameter count, hardware envelope, and operational role.
+      <strong>Smaller is not lesser.</strong> Each tier is optimized for the workload it serves — a Light-tier model running on a handheld is <em>more</em> useful to a forward operator than a frontier model that cannot run there at all.
+      Tier selection is a deployment choice, not a quality ladder.
+    </p>
+  </header>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tier</th>
+        <th>Operational Role</th>
+        <th>Model Range</th>
+        <th>Hardware Class</th>
+        <th>Optimized For</th>
+        <th>Typical Workloads</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- ===== LIGHT ===== -->
+      <tr class="tier-light">
+        <td class="tier-cell">
+          <span class="tier-badge">Light</span>
+          <span class="tier-alt">Tier 1</span>
+        </td>
+        <td>
+          <span class="cell-strong">Immediate Operator AI</span>
+          <span class="cell-detail">Forward-deployed individual user; offline by default.</span>
+        </td>
+        <td>
+          <span class="param-range">1B – 4B</span>
+          <div class="cell-detail" style="margin-top:6px">parameters</div>
+        </td>
+        <td>
+          <span class="cell-detail">Handheld, tablet, laptop, TAK device. 8 GB VRAM minimum.</span>
+        </td>
+        <td>
+          <span class="cell-detail">Speed, low power draw, disconnected ops survivability.</span>
+          <div class="advantage">
+            <span class="advantage-label">Inherent Advantage</span>
+            Sub-second time-to-first-token. Runs on government-furnished hardware already in the operator's hand. No thermal envelope problem. No network dependency.
+          </div>
+        </td>
+        <td>
+          <span class="cell-detail">Reporting, translation, entity extraction, voice assistant, chain-of-thought formatting, structured-data capture at the point of work.</span>
+        </td>
+      </tr>
+
+      <!-- ===== MEDIUM ===== -->
+      <tr class="tier-medium">
+        <td class="tier-cell">
+          <span class="tier-badge">Medium</span>
+          <span class="tier-alt">Tier 2</span>
+        </td>
+        <td>
+          <span class="cell-strong">Tactical Mission Assistant</span>
+          <span class="cell-detail">Small-team and platform-level operations; intermittent connectivity tolerated.</span>
+        </td>
+        <td>
+          <span class="param-range">7B – 26B</span>
+          <div class="cell-detail" style="margin-top:6px">parameters</div>
+        </td>
+        <td>
+          <span class="cell-detail">Rugged workstation, CANES afloat node, vehicle-mounted compute. 16 GB VRAM recommended.</span>
+        </td>
+        <td>
+          <span class="cell-detail">Multi-step reasoning and domain-specific workflows at the edge.</span>
+          <div class="advantage">
+            <span class="advantage-label">Inherent Advantage</span>
+            GPT-class task accuracy without ceding data to commercial cloud. Fits inside a tactical power and bandwidth budget. Demonstrated GPT-5 task parity at this tier (Paper 2 — EV-031).
+          </div>
+        </td>
+        <td>
+          <span class="cell-detail">ISR fusion, technical-manual Q&amp;A, planning support, mission coordination, MOS/AFSC-specialized assistants via LoRA adapters.</span>
+        </td>
+      </tr>
+
+      <!-- ===== HEAVY ===== -->
+      <tr class="tier-heavy">
+        <td class="tier-cell">
+          <span class="tier-badge">Heavy</span>
+          <span class="tier-alt">Tier 3</span>
+        </td>
+        <td>
+          <span class="cell-strong">Mission Cell / Edge AI Server</span>
+          <span class="cell-detail">Shared inference for multiple operators; theater or installation node.</span>
+        </td>
+        <td>
+          <span class="param-range">70B – 400B+</span>
+          <div class="cell-detail" style="margin-top:6px">parameters</div>
+        </td>
+        <td>
+          <span class="cell-detail">Edge AI server, shipboard compute node, fixed-site rack. Multi-GPU.</span>
+        </td>
+        <td>
+          <span class="cell-detail">Shared inference, deep analysis, model adaptation, on-prem fine-tuning.</span>
+          <div class="advantage">
+            <span class="advantage-label">Inherent Advantage</span>
+            Frontier-class capability inside the security boundary. Centralized fine-tuning and LoRA training closer to the data. EdgeRunner can retrain any open-weight model up to and beyond 400B parameters under contract; 120B currently in development.
+          </div>
+        </td>
+        <td>
+          <span class="cell-detail">Multi-user analysis, model adaptation per command, LoRA training pipelines, knowledge synthesis across large doctrinal corpora.</span>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div class="principle">
+    <div class="principle-label">Why Tiering Matters — A Specialization Argument, Not a Quality Ladder</div>
+    <div class="principle-body">
+      A 4B model on a handheld delivers an answer in the seconds an operator actually has. A 400B model in a CONUS data center cannot. <strong>The right model is the one that runs where the decision is made</strong>, sized to the hardware that survives in that environment. EdgeRunner sizes each tier for its operational role: <strong>Light</strong> for latency and offline survivability; <strong>Medium</strong> for reasoning under a tactical power budget; <strong>Heavy</strong> for shared inference and on-prem training inside the security boundary. Buying down the tier ladder is buying <em>toward</em> the warfighter — not away from frontier capability.
+    </div>
+  </div>
+
+  <div class="footer-strip">
+    <span class="brand">EDGERUNNER AI</span>
+    <span class="url" style="color:#9f9f9f">Model tier reference — internal &amp; partner enablement</span>
+    <span class="url">edgerunnerai.com</span>
+  </div>
+
+</div>
+</body>
+</html>

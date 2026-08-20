@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EdgeRunner — Customer & Mission Area Map</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#191c20;font-family:'Segoe UI',system-ui,sans-serif;
+       display:flex;justify-content:center;align-items:center;
+       min-height:100vh;padding:20px}
+  .canvas{width:1200px;background:#191c20;border-radius:12px;
+          overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div style="padding:18px 32px 8px;text-align:center;border-bottom:2px solid #ee2929">
+    <h1 style="color:#ffffff;font-size:28px;font-weight:700;letter-spacing:.5px;text-transform:uppercase">EdgeRunner — Operational Footprint</h1>
+    <p style="color:#9f9f9f;font-size:15px;margin-top:4px">Active pilots, agreements, and deployments across defense and intelligence community — founded 2024</p>
+  </div>
+
+  <!-- Customer grid table -->
+  <div style="padding:20px 32px">
+
+    <!-- Column headers -->
+    <div style="display:grid;grid-template-columns:220px 1fr 1fr 1fr 1fr;gap:2px;margin-bottom:2px">
+      <div style="background:rgba(238,41,41,.12);border:1px solid #ee2929;padding:10px 14px;border-radius:6px 0 0 0">
+        <div style="color:#ee2929;font-size:13px;font-weight:700;letter-spacing:.5px">CUSTOMER</div>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid #393939;padding:10px 14px;text-align:center">
+        <div style="color:#ffffff;font-size:13px;font-weight:700">MISSION AREA</div>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid #393939;padding:10px 14px;text-align:center">
+        <div style="color:#ffffff;font-size:13px;font-weight:700">DEPLOYMENT TYPE</div>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid #393939;padding:10px 14px;text-align:center">
+        <div style="color:#ffffff;font-size:13px;font-weight:700">ENVIRONMENT</div>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid #393939;padding:10px 14px;text-align:center;border-radius:0 6px 0 0">
+        <div style="color:#ffffff;font-size:13px;font-weight:700">STATUS</div>
+      </div>
+    </div>
+
+    <!-- Row 1: USASOC -->
+    <div style="display:grid;grid-template-columns:220px 1fr 1fr 1fr 1fr;gap:2px;margin-bottom:2px">
+      <div style="background:rgba(238,41,41,.08);border:1px solid rgba(238,41,41,.3);padding:12px 14px">
+        <div style="color:#ffffff;font-size:14px;font-weight:700">USASOC</div>
+        <div style="color:#9f9f9f;font-size:12px">U.S. Army Special Operations</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">SOF Operations · DDIL AI</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">Operational Pilot</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">DDIL / Air-Gapped</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <span style="background:#ee2929;color:#191c20;font-size:12px;font-weight:700;padding:3px 10px;border-radius:10px">ACTIVE</span>
+      </div>
+    </div>
+
+    <!-- Row 2: AFRL -->
+    <div style="display:grid;grid-template-columns:220px 1fr 1fr 1fr 1fr;gap:2px;margin-bottom:2px">
+      <div style="background:rgba(238,41,41,.08);border:1px solid rgba(238,41,41,.3);padding:12px 14px">
+        <div style="color:#ffffff;font-size:14px;font-weight:700">AFRL-RI</div>
+        <div style="color:#9f9f9f;font-size:12px">Air Force Research Lab, Info Directorate</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">On-Device AI · AFSC Models</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">CRADA (Research Agreement)</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">On-Device / On-Prem</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <span style="background:#ee2929;color:#191c20;font-size:12px;font-weight:700;padding:3px 10px;border-radius:10px">ACTIVE</span>
+      </div>
+    </div>
+
+    <!-- Row 3: SAF/SQ -->
+    <div style="display:grid;grid-template-columns:220px 1fr 1fr 1fr 1fr;gap:2px;margin-bottom:2px">
+      <div style="background:rgba(238,41,41,.08);border:1px solid rgba(238,41,41,.3);padding:12px 14px">
+        <div style="color:#ffffff;font-size:14px;font-weight:700">SAF/SQ</div>
+        <div style="color:#9f9f9f;font-size:12px">Asst. Secretary AF / Space Acquisition</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">Acquisitions Workflow AI</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">IL5 Cloud Deployment</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">Azure IL5</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <span style="background:#ee2929;color:#191c20;font-size:12px;font-weight:700;padding:3px 10px;border-radius:10px">ACTIVE</span>
+      </div>
+    </div>
+
+    <!-- Row 4: 4th ID / AI2C -->
+    <div style="display:grid;grid-template-columns:220px 1fr 1fr 1fr 1fr;gap:2px;margin-bottom:2px">
+      <div style="background:rgba(238,41,41,.08);border:1px solid rgba(238,41,41,.3);padding:12px 14px">
+        <div style="color:#ffffff;font-size:14px;font-weight:700">4th Infantry Div. / AI2C</div>
+        <div style="color:#9f9f9f;font-size:12px">U.S. Army AI Integration Center</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">Tactical AI · Mission Support</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">Operational Pilot</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">On-Device / Classified</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <span style="background:#ee2929;color:#191c20;font-size:12px;font-weight:700;padding:3px 10px;border-radius:10px">ACTIVE</span>
+      </div>
+    </div>
+
+    <!-- Row 5: ARL -->
+    <div style="display:grid;grid-template-columns:220px 1fr 1fr 1fr 1fr;gap:2px;margin-bottom:2px">
+      <div style="background:rgba(238,41,41,.08);border:1px solid rgba(238,41,41,.3);padding:12px 14px">
+        <div style="color:#ffffff;font-size:14px;font-weight:700">ARL</div>
+        <div style="color:#9f9f9f;font-size:12px">Army Research Laboratory</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">Edge AI Research</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">Joint Work Statement</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">On-Prem / Lab</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <span style="background:#ee2929;color:#191c20;font-size:12px;font-weight:700;padding:3px 10px;border-radius:10px">ACTIVE</span>
+      </div>
+    </div>
+
+    <!-- Row 6: HNI-ES -->
+    <div style="display:grid;grid-template-columns:220px 1fr 1fr 1fr 1fr;gap:2px;margin-bottom:2px">
+      <div style="background:rgba(238,41,41,.08);border:1px solid rgba(238,41,41,.3);padding:12px 14px">
+        <div style="color:#ffffff;font-size:14px;font-weight:700">HNI-ES</div>
+        <div style="color:#9f9f9f;font-size:12px">Enterprise &amp; IT End User Services</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">AFSC Models · Acquisitions &amp; Logistics</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">On-Device Pilot</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">Govt Laptop (Offline)</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <span style="background:#ee2929;color:#191c20;font-size:12px;font-weight:700;padding:3px 10px;border-radius:10px">ACTIVE</span>
+      </div>
+    </div>
+
+    <!-- Row 7: NIWC Atlantic -->
+    <div style="display:grid;grid-template-columns:220px 1fr 1fr 1fr 1fr;gap:2px;margin-bottom:2px">
+      <div style="background:rgba(238,41,41,.08);border:1px solid rgba(238,41,41,.3);padding:12px 14px">
+        <div style="color:#ffffff;font-size:14px;font-weight:700">NIWC Atlantic</div>
+        <div style="color:#9f9f9f;font-size:12px">Naval Info Warfare Center</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">Naval AI Capability</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">Operational Pilot</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">On-Prem / Classified</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <span style="background:#ee2929;color:#191c20;font-size:12px;font-weight:700;padding:3px 10px;border-radius:10px">ACTIVE</span>
+      </div>
+    </div>
+
+    <!-- Row 8: Space Force -->
+    <div style="display:grid;grid-template-columns:220px 1fr 1fr 1fr 1fr;gap:2px;margin-bottom:2px">
+      <div style="background:rgba(238,41,41,.08);border:1px solid rgba(238,41,41,.3);padding:12px 14px;border-radius:0 0 0 6px">
+        <div style="color:#ffffff;font-size:14px;font-weight:700">U.S. Space Force</div>
+        <div style="color:#9f9f9f;font-size:12px"></div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">Space Domain AI</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">Active Engagement</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center">
+        <div style="color:#c8c8c8;font-size:13px">TBD</div>
+      </div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:12px 14px;text-align:center;border-radius:0 0 6px 0">
+        <span style="background:#393939;color:#9f9f9f;font-size:12px;font-weight:700;padding:3px 10px;border-radius:10px">ENGAGED</span>
+      </div>
+    </div>
+
+    <!-- Stats row -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;margin-top:20px">
+      <div style="background:rgba(238,41,41,.08);border:1px solid rgba(238,41,41,.3);border-radius:8px;padding:14px;text-align:center">
+        <div style="color:#ee2929;font-size:28px;font-weight:700">8</div>
+        <div style="color:#c8c8c8;font-size:13px">Active Customers &amp; Partners</div>
+      </div>
+      <div style="background:rgba(238,41,41,.08);border:1px solid rgba(238,41,41,.3);border-radius:8px;padding:14px;text-align:center">
+        <div style="color:#ee2929;font-size:28px;font-weight:700">4</div>
+        <div style="color:#c8c8c8;font-size:13px">Service Branches</div>
+      </div>
+      <div style="background:rgba(238,41,41,.08);border:1px solid rgba(238,41,41,.3);border-radius:8px;padding:14px;text-align:center">
+        <div style="color:#ee2929;font-size:28px;font-weight:700">$17.5M</div>
+        <div style="color:#c8c8c8;font-size:13px">Raised · $5M 2026 Op Income Projected</div>
+      </div>
+      <div style="background:rgba(238,41,41,.08);border:1px solid rgba(238,41,41,.3);border-radius:8px;padding:14px;text-align:center">
+        <div style="color:#ee2929;font-size:28px;font-weight:700">TRL 7+</div>
+        <div style="color:#c8c8c8;font-size:13px">Operational — No R&amp;D Phase Required</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="background:#111315;padding:10px 32px;display:flex;justify-content:space-between;align-items:center">
+    <span style="color:#ee2929;font-size:13px;font-weight:700;opacity:.8;letter-spacing:.5px">EDGERUNNER AI · CAGE 9Z176 · UEI SLZTJUA8DBD3</span>
+    <span style="color:#9f9f9f;font-size:12px">Founded 2024 · Bellevue, WA · edgerunnerai.com</span>
+  </div>
+
+</div>
+</body>
+</html>

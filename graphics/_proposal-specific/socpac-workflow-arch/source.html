@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>On-Device Workflow Architecture — SOCPAC Tactical Edge AI Pilot</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  width:1200px;height:920px;overflow:hidden;
+  background:#F4F5F7;font-family:'Segoe UI',Arial,sans-serif;
+  position:relative;
+}
+
+/* Title bar */
+.title-bar{
+  height:68px;background:#1B2A4A;display:flex;align-items:center;
+  justify-content:space-between;padding:0 28px;
+}
+.title-bar h1{
+  color:#fff;font-size:26px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.6px;
+}
+.title-bar .sub{color:#8BA3BE;font-size:16px;}
+
+/* Diagram area */
+.diagram{
+  position:relative;height:800px;
+  display:flex;align-items:stretch;
+  padding:18px 0 18px 0;
+}
+
+/* Left column — edge device stack */
+.left-col{
+  width:760px;flex-shrink:0;
+  display:flex;flex-direction:column;
+  background:#E8ECF2;border:1.5px solid #C0C8D4;
+  border-radius:5px;overflow:hidden;
+  margin-left:18px;
+}
+
+/* DDIL boundary zone */
+.ddil-zone{
+  width:60px;flex-shrink:0;position:relative;z-index:5;
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;
+}
+.ddil-vert-line{
+  position:absolute;top:0;bottom:0;left:50%;
+  border-left:2.5px dashed #1B2A4A;
+}
+.ddil-vert-label{
+  position:relative;z-index:2;
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  font-size:14px;font-weight:700;color:#1B2A4A;
+  letter-spacing:1px;text-transform:uppercase;
+  background:#E8ECF2;padding:8px 4px;
+}
+
+/* Right column — GCC sidebar */
+.right-col{
+  flex:1;margin-right:18px;
+  display:flex;flex-direction:column;
+  justify-content:center;
+  gap:0;
+}
+
+/* Device header */
+.device-hdr{
+  background:#1B2A4A;padding:10px 20px;
+  flex-shrink:0;
+}
+.device-hdr .main{
+  color:#fff;font-size:20px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.6px;
+}
+.device-hdr .sub{
+  color:#8BA3BE;font-size:15px;margin-top:2px;
+}
+
+/* Layer rows */
+.layer{
+  display:flex;align-items:stretch;
+  border-top:1px solid #C5CDD6;
+  flex-shrink:0;
+}
+.layer-label{
+  width:156px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  padding:8px 10px;text-align:center;
+  font-size:14px;font-weight:700;color:#1B2A4A;
+  letter-spacing:0.5px;text-transform:uppercase;
+  line-height:1.3;
+}
+.layer-content{
+  flex:1;padding:10px 12px;
+  display:flex;gap:10px;align-items:center;
+}
+
+/* Layer backgrounds */
+.layer.input .layer-label{background:#DDEAF6;}
+.layer.input .layer-content{background:#EEF3FA;}
+.layer.inference .layer-label{background:#E8EAED;}
+.layer.inference .layer-content{background:#FAFAFA;}
+.layer.orchestration .layer-label{background:#E8EAED;}
+.layer.orchestration .layer-content{background:#F4F5F7;}
+.layer.resources .layer-label{background:#E8EAED;}
+.layer.resources .layer-content{background:#FAFAFA;}
+.layer.output .layer-label{background:#DDEAF6;}
+.layer.output .layer-content{background:#EEF3FA;}
+.layer.capture .layer-label{background:#F5E6D3;}
+.layer.capture .layer-content{background:#FBF0E6;}
+
+/* Component boxes */
+.comp{
+  background:#fff;border:1.5px solid #CDD2D9;border-radius:4px;
+  flex:1;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:8px;min-height:70px;
+  font-size:17px;font-weight:600;color:#1B2A4A;line-height:1.35;
+}
+.comp.wide{flex:1 1 100%;}
+.comp.orange{border-color:#D4936A;background:#FFF5EC;}
+
+/* LoRA tag */
+.lora-tag{
+  display:inline-block;margin-top:5px;
+  background:#4A6FA5;color:#fff;
+  font-size:13px;font-weight:700;padding:2px 8px;border-radius:2px;
+}
+
+/* Interface strip inside orchestration */
+.iface-strip{
+  flex-shrink:0;padding:4px 0 4px 166px;
+  font-size:14px;font-weight:700;color:#5A6A7A;
+  letter-spacing:0.8px;background:#EAECEF;
+  border-top:1px solid #D1D5DB;
+}
+
+/* Store-and-forward note in capture layer */
+.sfwd-note{
+  font-size:14px;color:#C4762A;font-weight:600;
+  white-space:nowrap;display:flex;align-items:center;gap:6px;
+}
+
+/* GCC sidebar */
+.gcc-hdr{
+  background:#2C3E5A;color:#fff;padding:10px 16px;
+  border-radius:5px 5px 0 0;
+  font-size:18px;font-weight:700;letter-spacing:0.4px;
+  text-align:center;
+}
+.gcc-box{
+  background:#fff;border:1.5px solid #C5CDD6;
+  padding:14px 16px;font-size:17px;font-weight:600;
+  color:#1B2A4A;text-align:center;line-height:1.35;
+}
+.gcc-box:last-of-type{border-radius:0 0 5px 5px;}
+.gcc-divider{height:8px;background:#E8ECF2;}
+
+/* Return arrow label */
+.return-arrow{
+  margin-top:14px;display:flex;align-items:center;
+  gap:8px;font-size:15px;font-weight:600;color:#4A6FA5;
+  justify-content:center;
+}
+
+/* Footer */
+.footer{
+  position:absolute;bottom:0;left:0;right:0;height:52px;
+  background:#1B2A4A;display:flex;align-items:center;
+  justify-content:space-between;padding:0 28px;
+}
+.footer span{font-size:15px;color:#8BA3BE;}
+.footer .brand{font-weight:700;color:#A4BFD6;}
+</style>
+</head>
+<body>
+
+<!-- Title bar -->
+<div class="title-bar">
+  <h1>On-Device Workflow Architecture</h1>
+  <span class="sub">Tactical Edge AI Pilot · EdgeRunner AI</span>
+</div>
+
+<!-- Diagram area: flex row -->
+<div class="diagram">
+
+  <!-- LEFT COLUMN: Edge Device Stack -->
+  <div class="left-col">
+
+    <!-- Device header -->
+    <div class="device-hdr">
+      <div class="main">Tactical Edge Device — DDIL Operation</div>
+      <div class="sub">Laptop / Workstation / ATAK / Edge Server</div>
+    </div>
+
+    <!-- Layer 1: OPERATOR INPUT -->
+    <div class="layer input">
+      <div class="layer-label">Operator<br>Input</div>
+      <div class="layer-content">
+        <div class="comp">Text /<br>Query</div>
+        <div class="comp">Voice<br>Transcript</div>
+        <div class="comp">Mission Data<br><span style="font-size:14px;font-weight:400;color:#5A6A7A;font-style:italic;">e.g., Palantir Sync</span></div>
+      </div>
+    </div>
+
+    <!-- Layer 2: LOCAL INFERENCE ENGINE -->
+    <div class="layer inference">
+      <div class="layer-label">Local<br>Inference<br>Engine</div>
+      <div class="layer-content">
+        <div class="comp wide" style="flex-direction:column;">
+          Open-Weight Base Model
+          <span class="lora-tag">+ LoRA Adapter (Mission-specific)</span>
+          <span style="font-size:14px;color:#6B7A8D;margin-top:5px;font-weight:400;font-style:italic;">Runs fully on-device — no network required</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 3: WORKFLOW ORCHESTRATION + interface strip -->
+    <div style="flex-shrink:0;">
+      <div class="layer orchestration">
+        <div class="layer-label">Workflow<br>Orchestration</div>
+        <div class="layer-content">
+          <div class="comp">Task<br>Routing</div>
+          <div class="comp">Multi-Step<br>Chaining</div>
+          <div class="comp">Tool<br>Integration</div>
+        </div>
+      </div>
+      <div class="iface-strip">REST &nbsp;|&nbsp; gRPC &nbsp;|&nbsp; SQL</div>
+    </div>
+
+    <!-- Layer 4: LOCAL RESOURCES -->
+    <div class="layer resources">
+      <div class="layer-label">Local<br>Resources</div>
+      <div class="layer-content">
+        <div class="comp">RAG Dataset<br>(on-device)</div>
+        <div class="comp">Mission Platform<br>(ATAK)</div>
+        <div class="comp">Reference<br>Documents</div>
+      </div>
+    </div>
+
+    <!-- Layer 5: STRUCTURED OUTPUT -->
+    <div class="layer output">
+      <div class="layer-label">Structured<br>Output</div>
+      <div class="layer-content">
+        <div class="comp wide">
+          Report &nbsp;/&nbsp; Analysis &nbsp;/&nbsp; COA &nbsp;/&nbsp; Translation &nbsp;/&nbsp; Script
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 6: INTERACTION CAPTURE -->
+    <div class="layer capture">
+      <div class="layer-label" style="color:#8B4513;">Interaction<br>Capture</div>
+      <div class="layer-content" style="flex-wrap:wrap;gap:10px;">
+        <div class="comp orange" style="flex:2 1 0;">
+          Structured Log<br>(inputs, outputs, operator feedback)
+        </div>
+        <div class="sfwd-note" style="flex:1 1 0;min-width:120px;flex-direction:column;align-items:flex-start;gap:4px;">
+          <span style="font-size:17px;">Store-and-Forward</span>
+          <span style="font-size:14px;color:#8B4513;">when connectivity available →</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.left-col -->
+
+  <!-- DDIL BOUNDARY ZONE -->
+  <div class="ddil-zone">
+    <div class="ddil-vert-line"></div>
+    <span class="ddil-vert-label">DDIL Boundary</span>
+    <!-- Store-and-forward arrow (horizontal) -->
+    <svg width="60" height="30" style="position:absolute;bottom:100px;"
+         viewBox="0 0 60 30">
+      <defs>
+        <marker id="sfr" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+          <polygon points="0,0 10,4 0,8" fill="#C4762A"/>
+        </marker>
+      </defs>
+      <line x1="4" y1="15" x2="52" y2="15"
+            stroke="#C4762A" stroke-width="2.5" marker-end="url(#sfr)"/>
+    </svg>
+    <!-- Return model arrow (horizontal, going left) -->
+    <svg width="60" height="30" style="position:absolute;top:210px;overflow:visible;"
+         viewBox="0 0 60 30">
+      <defs>
+        <marker id="ret" markerWidth="12" markerHeight="9" refX="10" refY="4.5" orient="auto">
+          <polygon points="0,0 10,4.5 0,9" fill="#4A6FA5"/>
+        </marker>
+      </defs>
+      <line x1="58" y1="15" x2="-2" y2="15"
+            stroke="#4A6FA5" stroke-width="2.5" marker-end="url(#ret)"/>
+    </svg>
+  </div>
+
+  <!-- RIGHT COLUMN: GCC Sidebar -->
+  <div class="right-col">
+    <div style="border-radius:5px;overflow:hidden;border:1.5px solid #C0C8D4;">
+      <div class="gcc-hdr">GCC — When Connected</div>
+      <div class="gcc-box" style="border-radius:0;">Data Ingest<br>&amp; Curation</div>
+      <div class="gcc-divider"></div>
+      <div class="gcc-box">Model Refinement<br>→ Updated LoRA</div>
+    </div>
+    <div class="return-arrow">
+      <span style="color:#4A6FA5;">←</span>
+      <span>Updated model / adapter bundle</span>
+    </div>
+    <div style="margin-top:20px;background:#E8ECF2;border-radius:4px;padding:12px 14px;border:1px solid #C5CDD6;">
+      <div style="font-size:14px;color:#5A6A7A;font-style:italic;line-height:1.5;text-align:center;">
+        All left-column operations execute<br>without crossing this boundary.
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.diagram -->
+
+<!-- Footer -->
+<div class="footer">
+  <span class="brand">EdgeRunner AI</span>
+  <span>SOCPAC Tactical Edge AI Pilot — Technical Execution Annex, Annex C</span>
+  <span>UNCLASSIFIED</span>
+</div>
+
+</body>
+</html>

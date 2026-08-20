@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>U.S. DoD AI Vendor Provenance</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#111; font-family:'Segoe UI',system-ui,sans-serif;
+         display:flex; justify-content:center; align-items:center; min-height:100vh; padding:20px; }
+  .card { width:1200px; background:#1c1e22; border-radius:8px; overflow:hidden;
+          box-shadow:0 8px 32px rgba(0,0,0,.5); }
+  .title-bar { padding:32px 44px 26px; border-bottom:3px solid #ee2929; }
+  .title-bar h1 { color:#fff; font-size:38px; font-weight:800; letter-spacing:1.8px;
+                  text-transform:uppercase; text-align:center; }
+  .title-bar p { color:#b0b0b0; font-size:22px; text-align:center; margin-top:10px; font-weight:500; line-height:1.4; }
+  .grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; }
+  .col { padding:32px 28px 36px; min-height:680px; position:relative; }
+  .col.us    { background:#1f3a5f; }
+  .col.prc   { background:#5f1f1f; }
+  .col.cloud { background:#3a3a3a; }
+  .col-header { padding-bottom:18px; margin-bottom:18px; border-bottom:2px solid rgba(255,255,255,.18); }
+  .badge { display:inline-block; padding:6px 14px; font-size:16px; font-weight:800; letter-spacing:1.8px;
+           text-transform:uppercase; border-radius:4px; margin-bottom:12px; }
+  .badge.us    { background:#4a90e2; color:#fff; }
+  .badge.prc   { background:#ee2929; color:#fff; }
+  .badge.cloud { background:#888; color:#fff; }
+  .col-title { color:#fff; font-size:26px; font-weight:800; line-height:1.25; }
+  .col-sub { color:rgba(255,255,255,.75); font-size:18px; margin-top:6px; line-height:1.4; }
+  ul.vendors { list-style:none; }
+  ul.vendors li { padding:14px 0 14px; border-bottom:1px solid rgba(255,255,255,.12);
+                  color:#fff; line-height:1.4; }
+  ul.vendors li:last-child { border-bottom:none; }
+  .vendor { font-weight:700; color:#fff; font-size:22px; }
+  .base { color:rgba(255,255,255,.78); font-size:18px; margin-top:4px; }
+  .highlight { background:rgba(238,41,41,.18); border-radius:5px; padding:12px 14px; margin:0 -14px 6px; }
+  .highlight .vendor { color:#ffce47; }
+  .footer { background:#161719; padding:20px 44px; border-top:1px solid #2a2d31;
+            color:#aaa; font-size:18px; text-align:center; line-height:1.5; }
+  .footer strong { color:#fff; font-style:normal; }
+  .footer .legend { color:#888; font-size:15px; margin-top:6px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="title-bar">
+    <h1>U.S. AI Vendor Provenance</h1>
+    <p>Of the most-named vendors pitching "American AI" to U.S. government — what's actually under the hood?</p>
+  </div>
+  <div class="grid">
+    <!-- US/NATO base -->
+    <div class="col us">
+      <div class="col-header">
+        <span class="badge us">US / NATO Base</span>
+        <div class="col-title">Built on U.S. or Allied Foundations</div>
+        <div class="col-sub">Genuine sovereign substrate — operator-controlled</div>
+      </div>
+      <ul class="vendors">
+        <li class="highlight">
+          <div class="vendor">★ EdgeRunner AI</div>
+          <div class="base">Tuned US/NATO open weights + custom · Air-gapped, edge</div>
+        </li>
+        <li>
+          <div class="vendor">Liquid AI ‡</div>
+          <div class="base">LFM2 (own architecture)</div>
+        </li>
+        <li>
+          <div class="vendor">Arcee AI</div>
+          <div class="base">Trinity Large 400B (own)</div>
+        </li>
+        <li>
+          <div class="vendor">IBM</div>
+          <div class="base">Granite 4.1 (own)</div>
+        </li>
+        <li>
+          <div class="vendor">Cohere / Cohere North</div>
+          <div class="base">Command R / R+ — NATO (CA), cloud-only</div>
+        </li>
+        <li>
+          <div class="vendor">Mistral AI</div>
+          <div class="base">Mistral / Mixtral — NATO (FR), cloud-only</div>
+        </li>
+        <li>
+          <div class="vendor">Primer AI †</div>
+          <div class="base">Llama-derived (verify current base)</div>
+        </li>
+      </ul>
+    </div>
+    <!-- PRC base -->
+    <div class="col prc">
+      <div class="col-header">
+        <span class="badge prc">PRC Base</span>
+        <div class="col-title">Built on Chinese Open Weights</div>
+        <div class="col-sub">U.S.-incorporated · base model is Chinese</div>
+      </div>
+      <ul class="vendors">
+        <li>
+          <div class="vendor">WebAI †</div>
+          <div class="base">Qwen 3.5</div>
+        </li>
+        <li>
+          <div class="vendor">PrismML †</div>
+          <div class="base">Qwen 3</div>
+        </li>
+        <li>
+          <div class="vendor">Nvidia Nemotron Nano / Super †</div>
+          <div class="base">Qwen 3 — Nvidia's flagship "open" offering</div>
+        </li>
+        <li>
+          <div class="vendor">OpenClaw †</div>
+          <div class="base">Minimax (default)</div>
+        </li>
+        <li>
+          <div class="vendor">Jan †</div>
+          <div class="base">Qwen 3</div>
+        </li>
+        <li>
+          <div class="vendor">Cursor Composer 2</div>
+          <div class="base">Moonshot Kimi K2.5 (commercial, not gov)</div>
+        </li>
+      </ul>
+    </div>
+    <!-- Cloud frontier -->
+    <div class="col cloud">
+      <div class="col-header">
+        <span class="badge cloud">Cloud Frontier</span>
+        <div class="col-title">Wraps Closed-API Frontier Models</div>
+        <div class="col-sub">Not edge · not sovereign at the model layer</div>
+      </div>
+      <ul class="vendors">
+        <li>
+          <div class="vendor">Scale AI Donovan</div>
+          <div class="base">OpenAI / Anthropic API wrapper</div>
+        </li>
+        <li>
+          <div class="vendor">Palantir AIP</div>
+          <div class="base">Anthropic / OpenAI / others</div>
+        </li>
+        <li>
+          <div class="vendor">Anduril Lattice (AI layers) †</div>
+          <div class="base">Third-party model stacks</div>
+        </li>
+        <li>
+          <div class="vendor">SAIC / BAH / Leidos</div>
+          <div class="base">Frontier APIs via integrator wrappers</div>
+        </li>
+      </ul>
+      <div style="position:absolute; bottom:24px; left:22px; right:22px;
+                  background:rgba(0,0,0,.35); border-radius:6px; padding:14px;
+                  color:#fff; font-size:12px; line-height:1.45;">
+        <strong style="color:#ffce47;">Operational gap:</strong>
+        Cannot operate disconnected, contested, or air-gapped — exactly where DoD AI is most needed.
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <strong>The genuine US/NATO + edge + air-gap set fits on one hand. EdgeRunner is in that set.</strong>
+    <div class="legend">
+      ★ EdgeRunner positioning · † Per public reporting; verify at procurement · ‡ Per EdgeRunner internal benchmarking, April 2026
+    </div>
+  </div>
+</div>
+</body>
+</html>

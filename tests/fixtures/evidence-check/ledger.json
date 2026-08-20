@@ -1,0 +1,70 @@
+{
+  "_comment": "SYNTHETIC evidence ledger fixture for the evidence-check golden-file test. Every entry is invented for test purposes — no real company, customer, or proposal data. FPA schema (source_file/source_anchor/relevance_tags/detail/customer; proof_strength includes the out-of-range 'highest' to exercise the clamp).",
+  "schema_version": "evidence-ledger.v1",
+  "generated_at": "2026-07-06T00:00:00Z",
+  "owner": "Fixture Test Co. (synthetic)",
+  "items": [
+    {
+      "id": "EV-101",
+      "type": "capability_claim",
+      "summary": "On-device inference validated in fully disconnected field trials at operational scale",
+      "detail": "Synthetic capability claim used to exercise the OK / supported path and the proof_strength clamp (highest -> high).",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "§Synthetic Capabilities",
+      "relevance_tags": ["on-device", "disconnected", "field-trials"],
+      "approval_status": "approved",
+      "proof_strength": "highest",
+      "created_at": "2026-07-06T00:00:00Z"
+    },
+    {
+      "id": "EV-102",
+      "type": "customer_deployment",
+      "summary": "Legacy pilot deployment at the regional training center (superseded 2025)",
+      "detail": "Synthetic retired entry — citing it must produce a RETIRED finding.",
+      "source_file": "my-company/past-performance.md",
+      "source_anchor": "§Synthetic Deployments",
+      "customer": "Synthetic Training Center",
+      "relevance_tags": ["legacy", "pilot"],
+      "approval_status": "retired",
+      "proof_strength": "medium",
+      "created_at": "2026-07-06T00:00:00Z"
+    },
+    {
+      "id": "EV-103",
+      "type": "customer_fact",
+      "summary": "Classified-adjacent pilot program experience with a synthetic government sponsor",
+      "detail": "Synthetic restricted entry — citing it must surface the restrictions text for adjudication.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "§Synthetic Proof Points",
+      "relevance_tags": ["pilot", "government-only"],
+      "approval_status": "restricted",
+      "restrictions": "Cite only in Government-distribution proposals (Distribution B or more restrictive). Do NOT use in commercial or public-distribution material.",
+      "proof_strength": "high",
+      "created_at": "2026-07-06T00:00:00Z"
+    },
+    {
+      "id": "EV-104",
+      "type": "capability_claim",
+      "summary": "Open-standards integration API validated with three synthetic partner systems",
+      "detail": "Synthetic approved-but-uncited entry — must appear as unused approved evidence.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "§Synthetic Capabilities",
+      "relevance_tags": ["integration", "api", "open-standards"],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-07-06T00:00:00Z"
+    },
+    {
+      "id": "EV-105",
+      "type": "capability_claim",
+      "summary": "Prototype throughput benchmark results on synthetic reference hardware",
+      "detail": "Synthetic pending_review entry — citing it must produce a PENDING_REVIEW warning, not a failure.",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "§Synthetic Benchmarks",
+      "relevance_tags": ["benchmark", "throughput"],
+      "approval_status": "pending_review",
+      "proof_strength": "medium",
+      "created_at": "2026-07-06T00:00:00Z"
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Containment-by-Design</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#1c1e22; font-family:'Segoe UI',system-ui,sans-serif; padding:0; }
+  .card { width:1200px; background:#1c1e22; overflow:hidden; }
+
+  /* Title bar */
+  .title-bar { padding:24px 44px 18px; border-bottom:3px solid #ee2929; }
+  .title-bar h1 { color:#fff; font-size:32px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; }
+  .title-bar p  { color:#9f9f9f; font-size:18px; font-style:italic; margin-top:6px; line-height:1.4; }
+
+  /* Tier labels */
+  .tier-header { padding:10px 22px; font-size:15px; font-weight:800; letter-spacing:2.5px;
+                 text-transform:uppercase; }
+  .tier-header.threat   { background:rgba(238,41,41,.10); color:#ee2929; border-bottom:1px solid rgba(238,41,41,.2); }
+  .tier-header.controls { background:rgba(238,41,41,.05); color:#ee2929; border-bottom:1px solid rgba(238,41,41,.2); }
+
+  /* Phase/control rows */
+  .phase-row { display:flex; gap:12px; padding:14px 22px 16px; }
+  .threat-row { background:rgba(238,41,41,.04); border-bottom:1px solid #2a2d31; }
+  .ctrl-row   { background:#1e2024; }
+
+  /* Threat phase cards (match fig1 styling) */
+  .phase { flex:1; border-radius:6px; padding:14px 14px 14px; border-top:4px solid; }
+  .phase.t { background:#2a2d31; border-top-color:#ee2929; }
+  .p-num   { font-size:13px; font-weight:800; letter-spacing:2px; text-transform:uppercase;
+             color:#ee2929; margin-bottom:5px; }
+  .p-title { font-size:21px; font-weight:800; color:#fff; margin-bottom:6px; line-height:1.15; }
+  .p-desc  { font-size:15px; color:#b8b8b8; line-height:1.45; }
+
+  /* Control cards */
+  .ctrl { flex:1; border-radius:6px; padding:14px 14px 14px;
+          border:1px solid rgba(238,41,41,.3);
+          background:rgba(238,41,41,.06); display:flex; flex-direction:column; gap:5px; }
+  .ctrl.diff { background:rgba(238,41,41,.18); border:2px solid #ee2929; padding:13px 13px 13px; }
+  .diff-tag { align-self:flex-start; background:#ee2929; color:#fff;
+              font-size:12px; font-weight:800; letter-spacing:1.5px;
+              text-transform:uppercase; padding:3px 9px; border-radius:3px;
+              margin-bottom:2px; }
+  .c-label { font-size:13px; font-weight:800; letter-spacing:2px; text-transform:uppercase;
+             color:#ee2929; }
+  .c-title { font-size:19px; font-weight:800; color:#fff; line-height:1.2; }
+  .c-desc  { font-size:15px; color:#d0d0d0; line-height:1.45; }
+
+  /* Connector row — vertical arrows */
+  .connectors { display:flex; gap:12px; padding:4px 22px; background:#191c20; }
+  .conn { flex:1; text-align:center; color:#ee2929; font-size:20px; font-weight:900; }
+
+  /* Perimeter band */
+  .perimeter { display:flex; align-items:center; gap:16px; padding:10px 22px;
+               background:#111315; border-top:2px dashed rgba(238,41,41,.5);
+               border-bottom:2px dashed rgba(238,41,41,.5); }
+  .perimeter-label { font-size:15px; font-weight:800; letter-spacing:2px;
+                     text-transform:uppercase; color:#ee2929; flex-shrink:0; }
+  .perimeter-line { flex:1; height:1px; background:rgba(238,41,41,.2); }
+  .perimeter-note { font-size:14px; color:#8a8a8a; font-style:italic; flex-shrink:0; }
+
+  /* Partner row */
+  .partner-row { display:flex; padding:12px 22px; gap:12px; background:#1a2220;
+                 border-top:1px solid #2a2d31; align-items:center; }
+  .partner-tag { font-size:14px; font-weight:800; letter-spacing:2px; text-transform:uppercase;
+                 color:#2E7D5B; width:120px; flex-shrink:0; }
+  .partner-item { flex:1; background:#1e2e28; border:1px solid #2E7D5B; border-radius:4px;
+                  padding:10px 14px; }
+  .partner-item .p-name { font-size:16px; font-weight:700; color:#fff; }
+  .partner-item .p-role { font-size:14px; color:#a8a8a8; margin-top:3px; }
+
+  /* Gov context strip */
+  .gov-row { display:flex; padding:10px 22px; gap:10px; background:#1a1c20;
+             border-top:1px solid #2a2d31; align-items:center; }
+  .gov-tag { font-size:14px; font-weight:800; letter-spacing:2px; text-transform:uppercase;
+             color:#9f9f9f; width:120px; flex-shrink:0; }
+  .gov-item { flex:1; font-size:15px; color:#8a8a8a; padding:6px 12px;
+              background:#212428; border-radius:4px; text-align:center; }
+
+  /* Footer */
+  .footer { background:#111315; padding:12px 44px; border-top:1px solid #2a2d31;
+            display:flex; justify-content:space-between; align-items:center;
+            font-size:14px; color:#8a8a8a; }
+  .footer strong { color:#ee2929; }
+
+  /* Legend */
+  .legend { display:flex; flex-wrap:wrap; gap:14px 22px; padding:12px 22px; background:#161719;
+            border-top:1px solid #2a2d31; align-items:center; }
+  .legend-title { font-size:14px; font-weight:800; letter-spacing:2px;
+                  text-transform:uppercase; color:#9f9f9f; margin-right:4px; }
+  .leg-item { display:flex; align-items:center; gap:9px; }
+  .leg-swatch { width:24px; height:18px; border-radius:3px; flex-shrink:0; }
+  .leg-label  { font-size:14px; color:#c8c8c8; font-weight:500; }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <div class="title-bar">
+    <h1>Containment-by-Design: EdgeRunner Controls Against Manchurian-Class Threats</h1>
+    <p>Each threat phase mapped to a runtime control that works without detection of the backdoor</p>
+  </div>
+
+  <!-- THREAT TIER -->
+  <div class="tier-header threat">Threat Surface — Manchurian Lifecycle Phases</div>
+  <div class="phase-row threat-row">
+    <div class="phase t">
+      <div class="p-num">Phase 1</div>
+      <div class="p-title">Implant</div>
+      <div class="p-desc">Training-data poisoning; multi-signal trigger.</div>
+    </div>
+    <div class="phase t">
+      <div class="p-num">Phase 2</div>
+      <div class="p-title">Release</div>
+      <div class="p-desc">Open-weight publication; passes standard evals.</div>
+    </div>
+    <div class="phase t">
+      <div class="p-num">Phase 3</div>
+      <div class="p-title">Adoption</div>
+      <div class="p-desc">Broad-credential deployment; trust accrues over months.</div>
+    </div>
+    <div class="phase t">
+      <div class="p-num">Phase 4</div>
+      <div class="p-title">Trigger</div>
+      <div class="p-desc">Conjunction fires during contingency.</div>
+    </div>
+    <div class="phase t">
+      <div class="p-num">Phase 5</div>
+      <div class="p-title">Detonation</div>
+      <div class="p-desc">Single call; irreversible harm in seconds.</div>
+    </div>
+  </div>
+
+  <!-- VERTICAL CONNECTORS -->
+  <div class="connectors">
+    <div class="conn">↓</div>
+    <div class="conn">↓</div>
+    <div class="conn">↓</div>
+    <div class="conn">↓</div>
+    <div class="conn">↓</div>
+  </div>
+
+  <!-- PERIMETER -->
+  <div class="perimeter">
+    <div class="perimeter-label">EdgeRunner Runtime Perimeter</div>
+    <div class="perimeter-line"></div>
+    <div class="perimeter-note">Controls operate below model reasoning, above credential scope</div>
+  </div>
+
+  <!-- CONTROL TIER -->
+  <div class="tier-header controls">EdgeRunner Runtime Controls</div>
+  <div class="phase-row ctrl-row">
+    <div class="ctrl">
+      <div class="c-label">Phase 1</div>
+      <div class="c-title">MBOM Verifier</div>
+      <div class="c-desc">Refuses any model without attested training-data lineage, fine-tuning history, and eval results.</div>
+    </div>
+    <div class="ctrl">
+      <div class="c-label">Phase 2</div>
+      <div class="c-title">Country-of-Origin Filter</div>
+      <div class="c-desc">Country-of-concern weight restrictions for NSS — Section 889 analog for AI.</div>
+    </div>
+    <div class="ctrl diff">
+      <div class="diff-tag">Differentiator</div>
+      <div class="c-label">Phase 3</div>
+      <div class="c-title">Air-Gapped On-Device Runtime</div>
+      <div class="c-desc">Local inference, no outbound network. No exfiltration path. Credential scope limited to mission task.</div>
+    </div>
+    <div class="ctrl">
+      <div class="c-label">Phase 4</div>
+      <div class="c-title">Environment-Signal Redaction</div>
+      <div class="c-desc">Strips sensitive metadata (CAGE, network, program ID) before the model's context window.</div>
+    </div>
+    <div class="ctrl diff">
+      <div class="diff-tag">Differentiator</div>
+      <div class="c-label">Phase 5</div>
+      <div class="c-title">Out-of-Band Auth + Signed Log</div>
+      <div class="c-desc">Destructive actions need separate-channel human approval. Append-only signed audit log.</div>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <span class="legend-title">Legend</span>
+    <div class="leg-item"><div class="leg-swatch" style="background:#2a2d31;border-top:3px solid #ee2929;"></div><span class="leg-label">Threat Surface</span></div>
+    <div class="leg-item"><div class="leg-swatch" style="background:rgba(238,41,41,.06);border:1px solid rgba(238,41,41,.4);"></div><span class="leg-label">EdgeRunner Core</span></div>
+    <div class="leg-item"><div class="leg-swatch" style="background:rgba(238,41,41,.18);border:2px solid #ee2929;"></div><span class="leg-label">EdgeRunner Differentiator</span></div>
+    <div class="leg-item"><div class="leg-swatch" style="background:#1e2e28;border:1px solid #2E7D5B;"></div><span class="leg-label">Partner</span></div>
+    <div class="leg-item"><div class="leg-swatch" style="background:#212428;border:1px solid #393939;"></div><span class="leg-label">Gov Context</span></div>
+  </div>
+
+  <!-- PARTNER ROW -->
+  <div class="partner-row">
+    <div class="partner-tag">Partners</div>
+    <div class="partner-item">
+      <div class="p-name">NIST / CAISI Evaluation Frameworks</div>
+      <div class="p-role">AI RMF and trojan-detection benchmarks — independent validation of MBOM attestation</div>
+    </div>
+    <div class="partner-item">
+      <div class="p-name">Accredited Third-Party Red-Teaming</div>
+      <div class="p-role">Mandatory pre-deployment adversarial testing for agentic systems with destructive credential scope</div>
+    </div>
+  </div>
+
+  <!-- GOV CONTEXT STRIP -->
+  <div class="gov-row">
+    <div class="gov-tag">Gov Context</div>
+    <div class="gov-item">DoD / IC Endpoints</div>
+    <div class="gov-item">ATO Boundary</div>
+    <div class="gov-item">Section 889 Analog</div>
+    <div class="gov-item">CMMC / FedRAMP</div>
+    <div class="gov-item">IARPA TrojAI</div>
+  </div>
+
+  <div class="footer">
+    <span>EdgeRunner AI · Senate White Paper Addendum · <strong>UNCLASSIFIED</strong></span>
+    <span>Detection is not reliable at production scale. Provenance, scope, and containment must be the primary controls.</span>
+  </div>
+
+</div>
+</body>
+</html>

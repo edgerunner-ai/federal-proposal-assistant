@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EdgeRunner AI — Company Overview</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0f1114;font-family:'Segoe UI',system-ui,sans-serif;
+       display:flex;justify-content:center;align-items:center;
+       min-height:100vh;padding:20px}
+  .slide{width:1280px;height:720px;background:#14171b;border-radius:10px;
+         overflow:hidden;box-shadow:0 12px 48px rgba(0,0,0,.6);
+         display:flex;flex-direction:column;position:relative}
+
+  /* ── HEADER ── */
+  .header{background:#C8102E;padding:14px 28px;display:grid;
+          grid-template-columns:320px 1fr;align-items:center;gap:24px;flex-shrink:0}
+  .header-left{display:flex;flex-direction:column;gap:4px}
+  .logo-row{display:flex;align-items:center;gap:10px}
+  .logo-tile{background:#191d22;border-radius:6px;padding:6px 10px;display:inline-flex;
+             box-shadow:0 1px 0 rgba(0,0,0,.25);align-items:center}
+  .logo-img{height:34px;width:auto;display:block}
+  .logo{font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.5px;line-height:1}
+  .logo span{color:rgba(255,255,255,.85);font-weight:400}
+  .tagline{color:rgba(255,255,255,.95);font-size:12px;font-weight:600;line-height:1.35}
+  .identity{color:rgba(255,255,255,.7);font-size:10px;font-weight:500;
+            text-transform:uppercase;letter-spacing:.6px;margin-top:2px}
+  .header-right{border-left:2px solid rgba(255,255,255,.35);padding-left:20px}
+  .header-value{color:#fff;font-size:13px;font-weight:500;line-height:1.45}
+  .header-value strong{font-weight:800;color:#fff}
+  .header-pillars{display:flex;gap:14px;margin-top:6px}
+  .pillar{font-size:10px;font-weight:700;color:rgba(255,255,255,.95);
+          text-transform:uppercase;letter-spacing:.6px;
+          padding:3px 9px;background:rgba(0,0,0,.18);
+          border:1px solid rgba(255,255,255,.25);border-radius:3px}
+
+  /* ── BODY ── */
+  .body{flex:1;display:grid;grid-template-columns:260px 1fr 270px;gap:0;overflow:hidden}
+
+  /* ── LEFT PANEL: What We Do ── */
+  .panel-left{background:#191d22;border-right:1px solid #2a2d32;
+              padding:18px 18px;display:flex;flex-direction:column;gap:12px}
+  .panel-title{font-size:14px;font-weight:800;color:#C8102E;
+               text-transform:uppercase;letter-spacing:1.2px;
+               padding-bottom:8px;border-bottom:1px solid #2a2d32}
+  .cap-item{display:flex;align-items:flex-start;gap:10px}
+  .cap-dot{width:6px;height:6px;background:#C8102E;border-radius:50%;margin-top:5px;flex-shrink:0}
+  .cap-text{}
+  .cap-name{color:#fff;font-size:12px;font-weight:700;line-height:1.2}
+  .cap-sub{color:#8a8f96;font-size:11px;line-height:1.4;margin-top:2px}
+
+  .divider{height:1px;background:#2a2d32;margin:4px 0}
+
+  .adapters-label{font-size:10px;font-weight:700;color:#c8a200;
+                  text-transform:uppercase;letter-spacing:.8px}
+  .adapter-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+  .tag{background:rgba(200,162,0,.12);border:1px solid rgba(200,162,0,.3);
+       color:#c8a200;font-size:10px;font-weight:600;padding:2px 7px;border-radius:3px}
+
+  .research-block{background:rgba(200,16,46,.06);border:1px solid rgba(200,16,46,.25);
+                  border-radius:5px;padding:10px 12px;margin-top:4px}
+  .research-label{font-size:10px;font-weight:700;color:#C8102E;
+                  text-transform:uppercase;letter-spacing:.8px}
+  .research-item{color:#d0d3d8;font-size:11px;line-height:1.5;margin-top:4px}
+  .research-item span{color:#fff;font-weight:600}
+
+  /* ── CENTER: Architecture ── */
+  .panel-center{padding:18px 24px;display:flex;flex-direction:column;gap:10px}
+  .arch-title{font-size:14px;font-weight:800;color:#5b9bd5;
+              text-transform:uppercase;letter-spacing:1.2px;
+              padding-bottom:8px;border-bottom:1px solid #2a2d32}
+
+  .arch-flow{flex:1;display:flex;flex-direction:column;justify-content:flex-start;gap:12px}
+
+  /* Full-stack diagram */
+  .stack-diagram{display:flex;flex-direction:column;gap:4px}
+  .stack-row{display:grid;grid-template-columns:148px 1fr;align-items:center;
+             gap:8px;border-radius:5px;padding:6px 10px}
+  .stack-row-app{background:rgba(200,16,46,.1);border:1px solid rgba(200,16,46,.3)}
+  .stack-row-lora{background:rgba(200,162,0,.08);border:1px solid rgba(200,162,0,.25)}
+  .stack-row-llm{background:rgba(91,155,213,.1);border:1px solid rgba(91,155,213,.3)}
+  .stack-row-infer{background:rgba(255,255,255,.03);border:1px solid #2a2d32}
+  .stack-row-silicon{background:rgba(255,255,255,.02);border:1px solid #25282d}
+  .stack-row-label{font-size:9px;font-weight:700;text-transform:uppercase;
+                   letter-spacing:.7px;line-height:1.2}
+  .label-app{color:#C8102E}
+  .label-lora{color:#c8a200}
+  .label-llm{color:#5b9bd5}
+  .label-infer{color:#6b7280}
+  .label-silicon{color:#4a5060}
+  .stack-content{color:#c8cdd4;font-size:11px}
+  .stack-tiers{display:flex;gap:6px;align-items:center}
+  .tier-pill{padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700}
+  .tier-light{background:rgba(91,155,213,.15);border:1px solid rgba(91,155,213,.35);color:#5b9bd5}
+  .tier-med{background:rgba(91,155,213,.22);border:1px solid rgba(91,155,213,.5);color:#7ab3e0}
+  .tier-heavy{background:rgba(91,155,213,.32);border:1px solid rgba(91,155,213,.65);color:#a8ccf0}
+
+  /* Deployment spectrum */
+  .deploy-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .deploy-card{background:#1a1e24;border:1px solid #2a2d32;border-radius:5px;
+               padding:6px 10px;text-align:center}
+  .deploy-icon{font-size:14px;margin-bottom:2px}
+  .deploy-name{color:#fff;font-size:11px;font-weight:700}
+  .deploy-spec{color:#8a8f96;font-size:10px;margin-top:2px}
+
+  /* Partner rows */
+  .partner-section{}
+  .ps-label{font-size:12px;font-weight:800;color:#9ca3af;
+            text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+  .partner-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .partner-card{background:#1e2228;border:1px solid #2a2d32;border-radius:6px;
+                padding:10px 10px;text-align:center}
+  .partner-name{color:#fff;font-size:12px;font-weight:700}
+  .partner-role{color:#8a8f96;font-size:10px;margin-top:3px;line-height:1.4}
+  .partner-badge{display:inline-block;font-size:9px;font-weight:700;
+                 text-transform:uppercase;padding:2px 6px;border-radius:3px;
+                 margin-top:5px;letter-spacing:.5px}
+  .badge-lm{background:rgba(91,155,213,.15);color:#5b9bd5;border:1px solid rgba(91,155,213,.3)}
+  .badge-bb{background:rgba(200,162,0,.12);color:#c8a200;border:1px solid rgba(200,162,0,.3)}
+  .badge-dy{background:rgba(100,200,120,.12);color:#64c878;border:1px solid rgba(100,200,120,.3)}
+
+  /* R&D row */
+  .rd-row{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:0}
+  .rd-card{background:#1a1e24;border:1px solid #2a2d32;border-radius:5px;
+           padding:8px 8px;text-align:center}
+  .rd-label-top{font-size:9px;font-weight:700;color:#5b9bd5;
+                text-transform:uppercase;letter-spacing:.5px}
+  .rd-name{color:#d0d3d8;font-size:11px;font-weight:600;margin-top:2px}
+  .rd-type{color:#6b7280;font-size:10px;margin-top:1px}
+
+  /* ── RIGHT PANEL: Users & Credentials ── */
+  .panel-right{background:#191d22;border-left:1px solid #2a2d32;
+               padding:18px 18px 14px;display:flex;flex-direction:column;gap:8px}
+  .users-grid{display:flex;flex-direction:column;gap:7px}
+  .user-card{background:#1e2228;border:1px solid #2a2d32;border-radius:5px;
+             padding:9px 12px;display:flex;align-items:center;gap:10px}
+  .user-icon{width:28px;height:28px;border-radius:4px;display:flex;align-items:center;
+             justify-content:center;font-size:14px;flex-shrink:0}
+  .icon-socom{background:rgba(200,16,46,.15);border:1px solid rgba(200,16,46,.3)}
+  .icon-army{background:rgba(200,162,0,.12);border:1px solid rgba(200,162,0,.3)}
+  .icon-jsoc{background:rgba(100,200,120,.12);border:1px solid rgba(100,200,120,.3)}
+  .icon-idx{background:rgba(91,155,213,.12);border:1px solid rgba(91,155,213,.3)}
+  .user-info{}
+  .user-name{color:#fff;font-size:12px;font-weight:700}
+  .user-detail{color:#8a8f96;font-size:10px;margin-top:1px}
+  .trl-pill{display:inline-block;font-size:9px;font-weight:700;
+            background:rgba(100,200,120,.15);border:1px solid rgba(100,200,120,.4);
+            color:#64c878;padding:1px 6px;border-radius:3px;margin-top:2px}
+  .por-pill{display:inline-block;font-size:9px;font-weight:800;
+            background:rgba(200,16,46,.15);border:1px solid rgba(200,16,46,.5);
+            color:#C8102E;padding:1px 6px;border-radius:3px;margin-top:2px;
+            text-transform:uppercase;letter-spacing:.5px}
+
+  .creds-block{background:#1a1e24;border:1px solid #2a2d32;border-radius:6px;
+               padding:8px 12px}
+  .creds-label{font-size:10px;font-weight:700;color:#6b7280;
+               text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px}
+  .cred-row{display:flex;justify-content:space-between;align-items:center;
+            padding:3px 0;border-bottom:1px solid #22262c}
+  .cred-row:last-child{border-bottom:none;padding-bottom:0}
+  .cred-key{color:#8a8f96;font-size:10px}
+  .cred-val{color:#d0d3d8;font-size:10px;font-weight:600}
+  .cred-val.green{color:#64c878}
+
+  .invest-block{background:rgba(200,16,46,.07);border:1px solid rgba(200,16,46,.3);
+                border-radius:6px;padding:7px 12px}
+  .invest-label{font-size:10px;font-weight:700;color:#C8102E;
+                text-transform:uppercase;letter-spacing:.8px}
+  .invest-val{color:#fff;font-size:17px;font-weight:800;margin-top:2px;line-height:1}
+  .invest-detail{color:#c8c8c8;font-size:10px;margin-top:3px}
+
+  /* ── FOOTER ── */
+  .footer{background:#0f1114;border-top:1px solid #2a2d32;
+          padding:7px 28px;display:flex;justify-content:space-between;
+          align-items:center;flex-shrink:0}
+  .footer-left{color:#4a5060;font-size:10px}
+  .footer-right{color:#4a5060;font-size:10px}
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="logo-row">
+        <span class="logo-tile"><img class="logo-img" src="data:image/png;base64,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" alt="EdgeRunner AI"></span>
+      </div>
+      <div class="tagline">Sovereign, On-Device AI for the Warfighter</div>
+      <div class="identity">Bellevue, WA · Founded 2024 · www.edgerunnerai.com</div>
+    </div>
+    <div class="header-right">
+      <div class="header-value">
+        A distributed tactical AI layer that runs <strong>mission-tuned, open-weight models on-device</strong> in disconnected, denied, intermittent &amp; limited (DDIL) environments — and converts every operator interaction into <strong>structured training data</strong> for continuous enterprise refinement.
+      </div>
+      <div class="header-pillars">
+        <span class="pillar">On-Device Execution</span>
+        <span class="pillar">Agentic Workflows</span>
+        <span class="pillar">Edge → Enterprise Data Loop</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- LEFT: Capabilities -->
+    <div class="panel-left">
+      <div class="panel-title">Core Capabilities</div>
+
+      <div class="cap-item">
+        <div class="cap-dot"></div>
+        <div class="cap-text">
+          <div class="cap-name">On-Device Model Execution</div>
+          <div class="cap-sub">Zero cloud dependency · runs in DDIL · 16GB VRAM commodity hardware</div>
+        </div>
+      </div>
+
+      <div class="cap-item">
+        <div class="cap-dot"></div>
+        <div class="cap-text">
+          <div class="cap-name">On-Device Fine-Tuning</div>
+          <div class="cap-sub">LoRA adapter specialization per MOS/AFSC without data leaving the edge</div>
+        </div>
+      </div>
+
+      <div class="cap-item">
+        <div class="cap-dot"></div>
+        <div class="cap-text">
+          <div class="cap-name">Agentic Workflow Automation</div>
+          <div class="cap-sub">Multi-step task execution at point of mission · integrates into operator tools</div>
+        </div>
+      </div>
+
+      <div class="cap-item">
+        <div class="cap-dot"></div>
+        <div class="cap-text">
+          <div class="cap-name">Operational Data Capture</div>
+          <div class="cap-sub">Structured mission data → GCC for refinement · continuous feedback loop</div>
+        </div>
+      </div>
+
+      <div class="cap-item">
+        <div class="cap-dot"></div>
+        <div class="cap-text">
+          <div class="cap-name">OpenAI-Compatible API</div>
+          <div class="cap-sub">Drop-in integration · servers, workstations, laptops, TAK, fly-away kits</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <div class="adapters-label">Mission Adapters (LoRA)</div>
+        <div class="adapter-tags">
+          <span class="tag">Logistics</span>
+          <span class="tag">Combat Medic</span>
+          <span class="tag">Combat Arms</span>
+          <span class="tag">Maintenance</span>
+          <span class="tag">Acquisitions</span>
+          <span class="tag">Cyber</span>
+          <span class="tag">SIGINT</span>
+        </div>
+      </div>
+
+      <div class="research-block">
+        <div class="research-label">Published Research</div>
+        <div class="research-item"><span>MilDeflect:</span> Commercial LLMs refuse up to 98.2% of legitimate military tasks</div>
+        <div class="research-item"><span>EdgeRunner 20B:</span> Matches / exceeds GPT-5 on military tasks on tactical hardware</div>
+      </div>
+    </div>
+
+    <!-- CENTER: Architecture + Partners + R&D -->
+    <div class="panel-center">
+      <div class="arch-title">Solution Architecture — Where EdgeRunner Fits</div>
+
+      <div class="arch-flow">
+        <!-- Full-Stack Architecture -->
+        <div class="stack-diagram">
+          <div class="stack-row stack-row-app">
+            <div class="stack-row-label label-app">Secure Application<br>Runtime</div>
+            <div class="stack-content">EdgeRunner UI/UX &nbsp;·&nbsp; <strong style="color:#fff">WarClaw</strong> Agentic Layer &nbsp;·&nbsp; Standards-Based Inference API &nbsp;·&nbsp; DoD System Integrations</div>
+          </div>
+          <div class="stack-row stack-row-lora">
+            <div class="stack-row-label label-lora">Mission LoRAs</div>
+            <div class="stack-content">Logistics &nbsp;·&nbsp; Combat Medicine &nbsp;·&nbsp; Combat Arms &nbsp;·&nbsp; Maintenance &nbsp;·&nbsp; Acquisitions &nbsp;·&nbsp; Cyber &nbsp;·&nbsp; SIGINT</div>
+          </div>
+          <div class="stack-row stack-row-llm">
+            <div class="stack-row-label label-llm">EdgeRunner MilSpec<br>+ Other Models</div>
+            <div class="stack-tiers">
+              <span class="tier-pill tier-light">Light · ~4B</span>
+              <span class="tier-pill tier-med">Medium · ~20–26B</span>
+              <span class="tier-pill tier-heavy">Heavy · ~70–120B</span>
+              <span style="color:#6b7280;font-size:10px;margin-left:4px">— no full retraining required · LoRA updates deployable in field</span>
+            </div>
+          </div>
+          <div class="stack-row stack-row-infer">
+            <div class="stack-row-label label-infer">Inference Runtime</div>
+            <div class="stack-content">ONNX &nbsp;·&nbsp; CUDA &nbsp;·&nbsp; Metal &nbsp;·&nbsp; Vulkan &nbsp;·&nbsp; OpenVINO</div>
+          </div>
+          <div class="stack-row stack-row-silicon">
+            <div class="stack-row-label label-silicon">Silicon</div>
+            <div class="stack-content">AMD &nbsp;·&nbsp; Intel &nbsp;·&nbsp; NVIDIA &nbsp;·&nbsp; Apple &nbsp;·&nbsp; Qualcomm</div>
+          </div>
+        </div>
+
+        <!-- Deployment Spectrum -->
+        <div class="deploy-row">
+          <div class="deploy-card">
+            <div class="deploy-icon">📱</div>
+            <div class="deploy-name">ATAK / Smartphone</div>
+            <div class="deploy-spec">6GB+ VRAM &nbsp;·&nbsp; ~4B param &nbsp;·&nbsp; Light</div>
+          </div>
+          <div class="deploy-card">
+            <div class="deploy-icon">💻</div>
+            <div class="deploy-name">Laptop / Tablet</div>
+            <div class="deploy-spec">16GB+ VRAM &nbsp;·&nbsp; ~20–26B param &nbsp;·&nbsp; Medium</div>
+          </div>
+          <div class="deploy-card">
+            <div class="deploy-icon">🖥️</div>
+            <div class="deploy-name">On-Prem / VPC</div>
+            <div class="deploy-spec">80GB+ VRAM &nbsp;·&nbsp; ~70–120B param &nbsp;·&nbsp; Heavy</div>
+          </div>
+        </div>
+
+        <!-- Partner layer -->
+        <div class="partner-section">
+          <div class="ps-label">Teaming Partners — Cohesive Solution</div>
+          <div class="partner-grid">
+            <div class="partner-card">
+              <div class="partner-name">System Integrators</div>
+              <div class="partner-role">Platform integration · classified deployment pathways · program execution</div>
+              <div class="partner-badge badge-lm">SI Layer</div>
+            </div>
+            <div class="partner-card">
+              <div class="partner-name">Analytics Providers</div>
+              <div class="partner-role">Enterprise AI analytics · decision support · GCC-tier data exploitation</div>
+              <div class="partner-badge badge-bb">Analytics Layer</div>
+            </div>
+            <div class="partner-card">
+              <div class="partner-name">AI Frontier Models</div>
+              <div class="partner-role">Foundation model providers · cloud AI complement · model evaluation pipelines</div>
+              <div class="partner-badge badge-dy">Model Layer</div>
+            </div>
+            <div class="partner-card">
+              <div class="partner-name">Commercial OEMs</div>
+              <div class="partner-role">HP · Panasonic (ruggedized hardware) &nbsp;|&nbsp; AMD · Intel (silicon)</div>
+              <div class="partner-badge badge-lm">Hardware Layer</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- R&D row -->
+        <div class="partner-section">
+          <div class="ps-label">Active R&amp;D Partnerships</div>
+          <div class="rd-row">
+            <div class="rd-card">
+              <div class="rd-label-top">AFRL</div>
+              <div class="rd-name">Air Force Research Lab</div>
+              <div class="rd-type">CRADA</div>
+            </div>
+            <div class="rd-card">
+              <div class="rd-label-top">ARL</div>
+              <div class="rd-name">Army Research Lab</div>
+              <div class="rd-type">CRADA + Joint Work Statement</div>
+            </div>
+            <div class="rd-card">
+              <div class="rd-label-top">AI2C</div>
+              <div class="rd-name">Army AI Integration Center</div>
+              <div class="rd-type">Research Partnership</div>
+            </div>
+            <div class="rd-card">
+              <div class="rd-label-top">NIWC</div>
+              <div class="rd-name">NIWC Atlantic</div>
+              <div class="rd-type">Research Partnership</div>
+            </div>
+            <div class="rd-card">
+              <div class="rd-label-top">USSF</div>
+              <div class="rd-name">U.S. Space Force</div>
+              <div class="rd-type">On Contract</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Users + Credentials -->
+    <div class="panel-right">
+      <div class="panel-title">Operational Users</div>
+
+      <div class="users-grid">
+        <div class="user-card">
+          <div class="user-icon icon-socom">🎯</div>
+          <div class="user-info">
+            <div class="user-name">USASOC</div>
+            <div class="user-detail">U.S. Army Special Operations Command</div>
+            <div class="trl-pill">Deployed · TRL 8</div>
+          </div>
+        </div>
+        <div class="user-card">
+          <div class="user-icon icon-army">⚔️</div>
+          <div class="user-info">
+            <div class="user-name">4th Infantry Division</div>
+            <div class="user-detail">U.S. Army · Conventional Forces</div>
+            <div class="trl-pill">Deployed · TRL 8</div>
+          </div>
+        </div>
+        <div class="user-card">
+          <div class="user-icon icon-jsoc">🛡️</div>
+          <div class="user-info">
+            <div class="user-name">101st Infantry Brigade</div>
+            <div class="user-detail">U.S. Army · Conventional Forces</div>
+            <div class="trl-pill">Deployed · TRL 8</div>
+          </div>
+        </div>
+        <div class="user-card">
+          <div class="user-icon icon-idx">⚓</div>
+          <div class="user-info">
+            <div class="user-name">Navy ICOP</div>
+            <div class="user-detail">Installations &amp; Command Ops · PMW 120 / PEO C4I (NAVWAR)</div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:2px">
+              <span class="por-pill">Program of Record</span>
+              <span class="trl-pill">TRL 8</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="invest-block">
+        <div class="invest-label">Investment Raised</div>
+        <div class="invest-val">$17.5M</div>
+        <div class="invest-detail">Seed + Series A · Led by <strong style="color:#fff">Madrona Ventures</strong></div>
+      </div>
+
+      <div class="creds-block">
+        <div class="creds-label">Procurement &amp; Credentials</div>
+        <div class="cred-row">
+          <span class="cred-key">CDAO Tradewinds</span>
+          <span class="cred-val green">Awardable ✓</span>
+        </div>
+        <div class="cred-row">
+          <span class="cred-key">CAGE</span>
+          <span class="cred-val">9Z176</span>
+        </div>
+        <div class="cred-row">
+          <span class="cred-key">UEI</span>
+          <span class="cred-val">SLZTJUA8DBD3</span>
+        </div>
+        <div class="cred-row">
+          <span class="cred-key">NAICS</span>
+          <span class="cred-val">541511</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+
+</div>
+</body>
+</html>

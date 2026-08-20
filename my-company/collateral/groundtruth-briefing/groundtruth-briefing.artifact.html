@@ -1,0 +1,649 @@
+<style>
+  /* ---- EdgeRunner Ground Truth — capability briefing. Brand-committed dark theme. ---- */
+  :root{
+    color-scheme: dark;
+    --bg:#191c20; --bg2:#15181c;
+    --panel:#23272d; --panel2:#2a2d31; --panel3:#1d2127;
+    --stroke:#393939; --stroke-soft:#2f3236;
+    --text:#ffffff; --muted:#c8c8c8; --dim:#9aa0a8; --faint:#7a828c;
+    --red:#ee2929; --red-line:#c8102e;
+    --red-08:rgba(238,41,41,.08); --red-12:rgba(238,41,41,.12); --red-40:rgba(238,41,41,.4);
+    --green:#52a06b; --green-bg:#16241a; --green-line:rgba(82,160,107,.5);
+    --gold:#caa53a; --gold-bg:#211d12; --gold-line:rgba(202,165,58,.5);
+    --blue:#7fb1d0;
+    --mono:"Consolas",ui-monospace,"SF Mono",Menlo,monospace;
+    --sans:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --maxw:1060px;
+  }
+  /* Deliberate single-theme brand artifact: hold the dark canvas even under a light toggle. */
+  :root[data-theme="light"]{ color-scheme: dark; }
+
+  *{box-sizing:border-box;}
+  .gt-root{
+    background:
+      radial-gradient(ellipse at 92% -4%, rgba(238,41,41,.12), transparent 46%),
+      radial-gradient(ellipse at 0% 102%, rgba(82,160,107,.06), transparent 40%),
+      var(--bg);
+    color:var(--text); font-family:var(--sans);
+    font-size:16px; line-height:1.6; letter-spacing:-.002em;
+    padding:clamp(20px,4vw,56px) clamp(16px,4vw,44px) 40px;
+    min-height:100vh;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto;}
+  .gt-root p{margin:0;}
+
+  /* ---------- masthead ---------- */
+  .mast{display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;
+        border-bottom:2px solid var(--red); padding-bottom:14px;}
+  .wm{font-size:22px; font-weight:800; letter-spacing:2px; color:#fff;}
+  .wm b{color:var(--red);}
+  .wm .div{color:var(--faint); font-weight:400; margin:0 8px;}
+  .wm .gt{color:var(--muted); font-weight:600; font-size:16px; letter-spacing:1px;}
+  .mast .meta{font-size:10.5px; text-transform:uppercase; letter-spacing:2px; color:var(--dim);
+              text-align:right; line-height:1.7;}
+
+  /* ---------- hero ---------- */
+  .hero{padding:clamp(26px,5vw,52px) 0 clamp(20px,3vw,34px);}
+  .eyebrow{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:3px;
+           color:var(--red); margin-bottom:16px;}
+  h1{font-size:clamp(38px,7vw,68px); line-height:1.02; font-weight:800; letter-spacing:-.02em;
+     margin:0 0 22px; text-wrap:balance; color:#fff;}
+  h1 .r{color:var(--red);}
+  .lede{font-size:clamp(17px,2.3vw,21px); line-height:1.5; color:var(--muted); max-width:44ch;
+        font-weight:500;}
+  .lede b{color:#fff; font-weight:600;}
+  .kicker{margin-top:20px; font-size:14px; color:var(--dim); display:flex; align-items:center; gap:10px;
+          flex-wrap:wrap;}
+  .kicker .bar{width:26px; height:2px; background:var(--red); flex:0 0 auto;}
+  .kicker b{color:var(--muted); font-weight:600;}
+
+  .legend{display:flex; gap:10px; flex-wrap:wrap; margin-top:26px;}
+  .chip{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:600;
+        padding:7px 13px; border-radius:999px; border:1px solid var(--stroke); background:var(--panel3);
+        color:var(--muted); white-space:nowrap;}
+  .chip .dot{width:9px; height:9px; border-radius:50%; flex:0 0 auto;}
+  .chip.g .dot{background:var(--green);} .chip.g{border-color:var(--green-line);}
+  .chip.a .dot{background:var(--gold);}  .chip.a{border-color:var(--gold-line);}
+  .chip.r .dot{background:var(--red);}   .chip.r{border-color:var(--red-40);}
+
+  /* ---------- section scaffolding ---------- */
+  section{padding:clamp(30px,4.5vw,50px) 0; border-top:1px solid var(--stroke-soft);}
+  .sec-label{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:2.5px;
+             color:var(--dim); margin-bottom:12px;}
+  h2{font-size:clamp(25px,3.6vw,36px); line-height:1.1; font-weight:800; letter-spacing:-.015em;
+     margin:0 0 16px; color:#fff; text-wrap:balance;}
+  h2 .r{color:var(--red);}
+  .body-lead{font-size:clamp(15px,1.9vw,17.5px); line-height:1.62; color:var(--muted); max-width:66ch;}
+  .body-lead b{color:#fff; font-weight:600;}
+  .body-lead + .body-lead{margin-top:14px;}
+
+  /* ---------- problem: pull-quote ---------- */
+  .quote{margin-top:26px; border-left:3px solid var(--red); padding:6px 0 6px 22px;}
+  .quote .q{font-size:clamp(19px,2.6vw,25px); line-height:1.4; font-weight:600; color:#fff;
+            letter-spacing:-.01em;}
+  .quote .a{margin-top:10px; font-size:13px; color:var(--dim); text-transform:uppercase; letter-spacing:1.5px;}
+
+  /* ---------- what it is / isn't ---------- */
+  .isnot{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px;}
+  .isnot .col{background:var(--panel3); border:1px solid var(--stroke); border-radius:12px; padding:20px 22px;}
+  .isnot .col.is{border-top:3px solid var(--green);}
+  .isnot .col.no{border-top:3px solid var(--faint);}
+  .isnot h3{font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:1.5px; margin:0 0 14px;}
+  .isnot .is h3{color:var(--green);} .isnot .no h3{color:var(--dim);}
+  .isnot ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px;}
+  .isnot li{font-size:14px; line-height:1.5; color:var(--muted); padding-left:20px; position:relative;}
+  .isnot li b{color:#fff; font-weight:600;}
+  .isnot .is li:before{content:"›"; position:absolute; left:2px; color:var(--green); font-weight:800;}
+  .isnot .no li:before{content:"×"; position:absolute; left:2px; color:var(--faint); font-weight:700;}
+  .oneliner{margin-top:22px; background:linear-gradient(90deg,var(--red-08),var(--red-12),var(--red-08));
+            border:1px solid var(--red-40); border-radius:12px; padding:18px 24px; text-align:center;
+            font-size:clamp(16px,2.2vw,20px); font-weight:700; color:#fff; letter-spacing:-.01em;}
+  .oneliner .r{color:var(--red);}
+
+  /* ---------- how it works: flow steps + diagram ---------- */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:24px;}
+  .step{background:var(--panel); border:1px solid var(--stroke); border-radius:12px; padding:18px 18px 20px;
+        position:relative; overflow:hidden;}
+  .step .n{font-family:var(--mono); font-size:13px; font-weight:700; color:var(--red);
+           border:1.5px solid var(--red); width:30px; height:30px; border-radius:50%;
+           display:flex; align-items:center; justify-content:center; margin-bottom:14px;}
+  .step h4{font-size:15.5px; font-weight:800; color:#fff; margin:0 0 7px; line-height:1.2;}
+  .step p{font-size:13px; line-height:1.5; color:var(--dim);}
+  .step p em{font-style:normal; color:var(--muted);}
+  .step .tag{display:inline-block; margin-top:11px; font-size:10.5px; font-weight:700; text-transform:uppercase;
+             letter-spacing:1px; padding:3px 8px; border-radius:5px;}
+  .step.s3 .tag{background:var(--red-12); color:var(--red);}
+  .step.s2 .tag{background:var(--gold-bg); color:var(--gold);}
+
+  .figure{margin-top:26px; background:var(--panel3); border:1px solid var(--stroke); border-radius:14px;
+          padding:20px clamp(14px,2.5vw,26px) 16px;}
+  .figure svg{display:block; width:100%; height:auto;}
+  .figcap{margin-top:12px; font-size:12.5px; color:var(--dim); line-height:1.55; text-align:center;}
+  .figcap b{color:var(--muted); font-weight:600;}
+
+  .rag{margin-top:24px; background:var(--panel3); border:1px solid var(--stroke); border-top:3px solid var(--blue);
+       border-radius:12px; padding:18px 22px;}
+  .rag h4{font-size:15px; font-weight:800; color:var(--blue); margin:0 0 8px;}
+  .rag p{font-size:14px; line-height:1.6; color:var(--muted);}
+  .rag p b{color:#fff; font-weight:700;}
+
+  /* ---------- guarantees grid ---------- */
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px;}
+  .g-card{background:var(--panel); border:1px solid var(--stroke); border-radius:12px; padding:20px;}
+  .g-card .gt-i{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1.2px;
+                color:var(--red); margin-bottom:8px;}
+  .g-card h4{font-size:16.5px; font-weight:800; color:#fff; margin:0 0 8px; line-height:1.2;}
+  .g-card p{font-size:13.5px; line-height:1.55; color:var(--dim);}
+  .g-card p b{color:var(--muted); font-weight:600;}
+
+  /* ---------- operating modes ---------- */
+  .modes{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px;}
+  .mode{background:var(--panel); border:1px solid var(--stroke); border-radius:12px; padding:20px; position:relative;}
+  .mode.m1{border-top:3px solid var(--blue);}
+  .mode.m2{border-top:3px solid var(--gold);}
+  .mode.m3{border-top:3px solid var(--red);}
+  .mode .lvl{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--dim);}
+  .mode h4{font-size:19px; font-weight:800; margin:6px 0 10px; line-height:1.1;}
+  .mode.m1 h4{color:var(--blue);} .mode.m2 h4{color:var(--gold);} .mode.m3 h4{color:var(--red);}
+  .mode p{font-size:13.5px; line-height:1.55; color:var(--muted);}
+  .mode p b{color:#fff; font-weight:600;}
+  .modenote{margin-top:16px; font-size:13px; color:var(--dim); font-style:italic;}
+  .mode .ex{margin-top:12px; padding-top:10px; border-top:1px solid var(--stroke-soft);
+            font-size:12px; line-height:1.5; color:var(--faint);}
+  .mode .ex b{color:var(--dim); font-weight:700; text-transform:uppercase; font-size:10px; letter-spacing:1px;}
+
+  /* ---------- deployment strip ---------- */
+  .deploy{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:24px;}
+  .dep{background:var(--panel3); border:1px solid var(--stroke); border-radius:10px; padding:16px 16px;}
+  .dep .dh{font-size:14.5px; font-weight:800; color:#fff; margin:0 0 6px;}
+  .dep p{font-size:12.5px; line-height:1.5; color:var(--dim);}
+  .envline{margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+  .envline .lab{font-size:12px; text-transform:uppercase; letter-spacing:1.5px; color:var(--dim); font-weight:700;}
+  .env{font-size:12.5px; font-weight:600; color:var(--muted); padding:6px 12px; border:1px solid var(--stroke);
+       border-radius:999px; background:var(--panel3);}
+
+  /* ---------- where it applies (table) ---------- */
+  .tbl-wrap{margin-top:22px; overflow-x:auto; border:1px solid var(--stroke); border-radius:12px;}
+  table.apply{width:100%; border-collapse:collapse; min-width:560px;}
+  table.apply th{font-size:11px; text-transform:uppercase; letter-spacing:1.2px; color:var(--red);
+                 text-align:left; padding:14px 18px; background:var(--panel3); font-weight:700;}
+  table.apply td{font-size:13.5px; line-height:1.5; padding:13px 18px; border-top:1px solid var(--stroke-soft);
+                 vertical-align:top;}
+  table.apply td.k{color:#fff; font-weight:700; width:30%;}
+  table.apply td.v{color:var(--muted);}
+  table.apply tr:nth-child(even) td{background:rgba(255,255,255,.012);}
+  table.apply td.m{font-family:var(--mono); font-size:11px; color:var(--dim); white-space:nowrap;}
+  table.apply td.n{color:#fff; font-weight:700; font-variant-numeric:tabular-nums; width:26%;}
+  .applynote{margin-top:16px; font-size:13.5px; line-height:1.6; color:var(--dim); max-width:70ch;}
+  .applynote b{color:var(--muted); font-weight:600;}
+
+  /* ---------- the receipt (WBOM) closer ---------- */
+  .receipt-sec{border-top:1px solid var(--stroke-soft);}
+  .receipt-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:26px; margin-top:24px; align-items:start;}
+  .receipt-copy h2{margin-bottom:14px;}
+  .receipt-copy p{font-size:15px; line-height:1.62; color:var(--muted);}
+  .receipt-copy p b{color:#fff; font-weight:600;}
+  .receipt-copy p + p{margin-top:14px;}
+
+  .receipt{font-family:var(--mono); background:#14171b; border:1px solid var(--stroke);
+           border-radius:12px 12px 4px 4px; padding:22px 22px 0; position:relative; overflow:hidden;
+           box-shadow:0 18px 40px -22px rgba(0,0,0,.9);}
+  .receipt .r-head{display:flex; justify-content:space-between; align-items:baseline;
+                   border-bottom:1px dashed var(--stroke); padding-bottom:12px; margin-bottom:14px;}
+  .receipt .r-title{font-size:12.5px; font-weight:700; color:#fff; letter-spacing:1px;}
+  .receipt .r-sub{font-size:10px; color:var(--faint); letter-spacing:.5px;}
+  .r-row{display:flex; align-items:flex-start; gap:10px; font-size:11.5px; line-height:1.45; padding:7px 0;
+         border-bottom:1px solid rgba(255,255,255,.04);}
+  .r-row .st{font-size:9px; font-weight:700; letter-spacing:.5px; padding:2px 6px; border-radius:4px;
+             flex:0 0 auto; margin-top:1px;}
+  .r-row .st.pass{background:var(--green-bg); color:var(--green); border:1px solid var(--green-line);}
+  .r-row .st.flag{background:var(--red-08); color:var(--red); border:1px solid var(--red-40);}
+  .r-row .st.block{background:#2a1116; color:#ff6b6b; border:1px solid var(--red-40);}
+  .r-row .cl{color:var(--muted); flex:1;}
+  .r-row .cl b{color:#fff;}
+  .r-row .src{color:var(--faint); font-size:10px; display:block; margin-top:2px;}
+  .receipt .r-foot{margin:14px -22px 0; padding:12px 22px; background:#0f1114;
+                   border-top:1px dashed var(--stroke); font-size:10px; color:var(--dim); line-height:1.6;}
+  .receipt .r-foot .hash{color:var(--green); word-break:break-all;}
+  .receipt .perf{height:14px; background:
+      radial-gradient(circle at 7px 14px, transparent 6px, #14171b 6px) repeat-x;
+      background-size:14px 14px; margin:0 -22px; }
+
+  .closer{margin-top:34px; text-align:center;}
+  .closer .big{font-size:clamp(20px,3vw,28px); font-weight:800; color:#fff; letter-spacing:-.015em;
+               line-height:1.25; text-wrap:balance;}
+  .closer .big .r{color:var(--red);}
+  .closer .sub{margin-top:12px; font-size:14px; color:var(--dim);}
+
+  /* ---------- footer ---------- */
+  .gt-foot{margin-top:8px; border-top:1px solid var(--stroke); padding-top:18px;
+           display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+           font-size:11.5px; color:var(--faint);}
+  .gt-foot .mono{font-family:var(--mono);}
+  .gt-foot a{color:var(--dim); text-decoration:none; border-bottom:1px solid var(--stroke);}
+  .gt-foot a:hover{color:var(--muted);}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:860px){
+    .isnot,.steps,.grid3,.modes,.deploy,.receipt-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr 1fr;}
+    .deploy{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:560px){
+    .steps,.deploy{grid-template-columns:1fr;}
+    .mast .meta{text-align:left;}
+  }
+  @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto;}}
+</style>
+
+<div class="gt-root">
+<div class="wrap">
+
+  <!-- masthead -->
+  <div class="mast">
+    <div class="wm">EDGE<b>RUNNER</b><span class="div">|</span><span class="gt">Ground&nbsp;Truth</span></div>
+    <div class="meta">Capability Briefing · Output Verification Layer<br>Unclassified · EdgeRunner AI Proprietary</div>
+  </div>
+
+  <!-- hero -->
+  <div class="hero">
+    <div class="eyebrow">Model-agnostic verification layer for AI output</div>
+    <h1>Trace every AI claim to an <span class="r">approved source.</span></h1>
+    <p class="lede">Ground Truth checks each claim in a model's output against your approved sources. Every
+      statement <b>either traces to a specific source line or is flagged as unsupported</b> — before anyone
+      acts on it.</p>
+    <div class="kicker"><span class="bar"></span><b>It checks attribution, not truth:</b>&nbsp;a grounded answer is defensible against its sources, not guaranteed correct about the world.</div>
+    <div class="legend">
+      <span class="chip g"><span class="dot"></span>Supported — traces to an approved source line</span>
+      <span class="chip a"><span class="dot"></span>Needs review — a match a human must confirm</span>
+      <span class="chip r"><span class="dot"></span>Unsupported — no matching entry in your sources</span>
+    </div>
+  </div>
+
+  <!-- the problem -->
+  <section>
+    <div class="sec-label">The problem</div>
+    <h2>The bottleneck moved from drafting to <span class="r">verification.</span></h2>
+    <p class="body-lead">AI made drafting fast, but checking the answer became more time-consuming than writing it.
+      A fluent response still has to be verified line by line, and by hand that is often slower than not using AI
+      at all — so teams either skip the check and carry the risk, or skip the AI and lose the speed.</p>
+    <p class="body-lead">The failure mode that erodes trust is not the obvious error; it is the <b>confident,
+      well-formed answer that is quietly wrong</b> and gets used because no one caught it. Ground Truth performs
+      the per-claim check automatically, so verification runs at generation speed rather than manual-review speed.</p>
+    <div class="quote">
+      <div class="q">“A model that reports an error is more valuable than one that silently fails or provides
+        incorrect information.”</div>
+      <div class="a">— First Army, evaluating a fielded AI assistant</div>
+    </div>
+  </section>
+
+  <!-- what it is -->
+  <section>
+    <div class="sec-label">What it is</div>
+    <h2>A verification layer that runs <span class="r">after any model</span></h2>
+    <p class="body-lead">Ground Truth is a <b>model-agnostic verification layer</b>. Every claim an AI emits is
+      checked against a human-approved ledger of your organization's own authoritative sources. Supported claims
+      pass and carry their citation; claims that conflict with an approved line are flagged and corrected from
+      that source; anything ungrounded is flagged or refused. It is model-independent — no retraining — and
+      attaches a portable verification record to every output.</p>
+
+    <div class="isnot">
+      <div class="col is">
+        <h3>What it is</h3>
+        <ul>
+          <li>A check on <b>what the model said</b>, after it says it</li>
+          <li>Traceability to <b>your approved authority</b> — doctrine, policy, orders, today's report</li>
+          <li>A <b>deterministic gate</b> — no model grading the model</li>
+          <li>Model-independent — the <b>same check in front of any model</b></li>
+        </ul>
+      </div>
+      <div class="col no">
+        <h3>What it is not</h3>
+        <ul>
+          <li>Not a better model, and not a way to make a weak model accurate</li>
+          <li>Not RAG — RAG <em>feeds</em> a model context; this <em>audits</em> what it said</li>
+          <li>Not a content-safety filter scoring toxicity or policy categories</li>
+          <li>Not a fact-checker of the world — it checks traceability, not truth</li>
+        </ul>
+      </div>
+    </div>
+    <div class="oneliner">RAG retrieves <span class="r">context.</span>&nbsp; Ground Truth resolves <span class="r">authority.</span></div>
+  </section>
+
+  <!-- how it works -->
+  <section>
+    <div class="sec-label">How it works</div>
+    <h2>From approved source to <span class="r">verified output</span></h2>
+    <p class="body-lead">Four steps, one engine. Authority comes from the source and the human who approved it;
+      the machine only determines — deterministically — whether each claim is faithful to that approved source.</p>
+
+    <div class="rag">
+      <h4>A worked example — carried through the rest of this briefing</h4>
+      <p>During planning, an operator asks the unit's AI assistant to summarize the movement plan and engagement
+        authorities for tonight's mission. The answer contains four statements. Two trace cleanly to the mission's
+        approved sources. One is outside those sources entirely. And one — <b>“ROE permits engagement without
+        PID”</b> — is fluent, plausible, and contradicts the approved ROE annex. The sections below follow that
+        answer through the system; the verification record it produces closes this briefing.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step s1">
+        <div class="n">1</div>
+        <h4>Authoritative sources</h4>
+        <p>Doctrine, orders, policy, specs, today's report — <em>authority is inherited from whoever issued the
+          document, never adjudicated by AI.</em></p>
+      </div>
+      <div class="step s2">
+        <div class="n">2</div>
+        <h4>Approved evidence ledger</h4>
+        <p>Each source is broken into small, source-linked entries. <em>A human confirms each entry is faithful
+          to the document</em> — nothing is citable until then.</p>
+        <span class="tag">Human is the gate</span>
+      </div>
+      <div class="step s3">
+        <div class="n">3</div>
+        <h4>Deterministic check</h4>
+        <p>Every claim in the answer is checked against the ledger and marked <em>pass · flag · block</em> —
+          with no model in the verification loop.</p>
+        <span class="tag">Code, not prompts</span>
+      </div>
+      <div class="step s4">
+        <div class="n">4</div>
+        <h4>Verification record</h4>
+        <p>The verified output returns with a record: <em>what was claimed, what grounds it, what was flagged,
+          and who approved each source.</em></p>
+      </div>
+    </div>
+
+    <div class="figure">
+      <!-- architecture flow -->
+      <svg viewBox="0 0 1320 384" xmlns="http://www.w3.org/2000/svg" role="img"
+           aria-label="Any AI application sends an answer to Ground Truth, which checks each claim against your approved sources and returns a verified answer with a receipt.">
+        <defs>
+          <marker id="ar" markerWidth="11" markerHeight="11" refX="6" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#c8c8c8"/></marker>
+          <marker id="ag" markerWidth="11" markerHeight="11" refX="6" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#52a06b"/></marker>
+          <marker id="ad" markerWidth="11" markerHeight="11" refX="6" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#caa53a"/></marker>
+        </defs>
+        <!-- Box A -->
+        <rect x="54" y="66" width="372" height="128" rx="12" fill="#16202a" stroke="#7fb1d0" stroke-width="2.5"/>
+        <text x="240" y="112" fill="#ffffff" font-size="26" font-weight="700" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif">Any AI application</text>
+        <text x="240" y="143" fill="#9fc3da" font-size="16" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif">model · chat · copilot · agent</text>
+        <text x="240" y="168" fill="#9fc3da" font-size="16" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif">you ask — it answers</text>
+        <!-- Box B -->
+        <rect x="620" y="66" width="380" height="128" rx="12" fill="#241a1a" stroke="#ee2929" stroke-width="2.5"/>
+        <text x="810" y="110" fill="#ee2929" font-size="27" font-weight="800" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif">GROUND TRUTH</text>
+        <text x="810" y="141" fill="#ffffff" font-size="16" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif">sidecar verification service</text>
+        <text x="810" y="165" fill="#ffffff" font-size="16" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif">checks each claim in the answer</text>
+        <!-- A -> B -->
+        <text x="523" y="100" fill="#c8c8c8" font-size="14" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif">answer</text>
+        <line x1="434" y1="114" x2="612" y2="114" stroke="#c8c8c8" stroke-width="3" marker-end="url(#ar)"/>
+        <circle cx="452" cy="114" r="12" fill="#2b3138" stroke="#c8c8c8" stroke-width="1.5"/>
+        <text x="452" y="119" fill="#e6e8ec" font-size="14" font-weight="800" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif">1</text>
+        <!-- B -> A -->
+        <line x1="612" y1="152" x2="434" y2="152" stroke="#52a06b" stroke-width="3" marker-end="url(#ag)"/>
+        <circle cx="594" cy="152" r="12" fill="#16241a" stroke="#52a06b" stroke-width="1.5"/>
+        <text x="594" y="157" fill="#8fe0a0" font-size="14" font-weight="800" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif">3</text>
+        <text x="523" y="174" fill="#52a06b" font-size="14" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif">verified answer + receipt</text>
+        <!-- B <-> ledger -->
+        <line x1="782" y1="200" x2="782" y2="264" stroke="#caa53a" stroke-width="3" marker-end="url(#ad)"/>
+        <line x1="842" y1="264" x2="842" y2="200" stroke="#caa53a" stroke-width="3" marker-end="url(#ad)"/>
+        <circle cx="724" cy="232" r="12" fill="#241f12" stroke="#caa53a" stroke-width="1.5"/>
+        <text x="724" y="237" fill="#e8d18f" font-size="14" font-weight="800" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif">2</text>
+        <text x="884" y="237" fill="#caa53a" font-size="15" text-anchor="start" font-family="Segoe UI, Arial, sans-serif">check each claim</text>
+        <!-- Box C -->
+        <rect x="576" y="268" width="468" height="96" rx="12" fill="#241f12" stroke="#caa53a" stroke-width="2.5"/>
+        <text x="810" y="304" fill="#caa53a" font-size="21" font-weight="800" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif">YOUR APPROVED SOURCES</text>
+        <text x="810" y="330" fill="#ffffff" font-size="15" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif">evidence ledger — doctrine, policy, orders, today's report</text>
+        <text x="810" y="352" fill="#d9c48a" font-size="14" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif">citable only after a designated reviewer approves them</text>
+      </svg>
+      <p class="figcap"><b>1</b> A question is asked — any AI application answers. &nbsp; <b>2</b> Ground Truth checks
+        each claim against your approved sources. &nbsp; <b>3</b> The verified output and its record return to the
+        app. &nbsp;Model-independent; built for cloud, enclave, on-prem, or edge. No retraining.</p>
+    </div>
+
+    <p class="applynote" style="margin-top:18px;"><b>Applied to the example:</b> the answer is segmented into four
+      claims. The LD time and the CASEVAC plan each match an approved entry and pass, carrying their citations. The
+      statement about the eastern MSR matches nothing in the mission's sources — flagged for human review, not
+      certified and not suppressed. The ROE claim contradicts an approved entry in the ROE annex — blocked, with the
+      approved line and its citation returned in its place.</p>
+
+    <div class="rag">
+      <h4>Relationship to adjacent approaches</h4>
+      <p>Ground Truth occupies a specific position among the techniques it is most often compared to. Each addresses
+        a different question; the first two are complementary and commonly run alongside it.</p>
+      <div class="tbl-wrap" style="margin-top:14px;">
+        <table class="apply">
+          <thead><tr><th>Approach</th><th>What it does</th><th>What it does not provide</th></tr></thead>
+          <tbody>
+            <tr><td class="k">RAG</td>
+                <td class="v">Retrieves relevant text so the model can <b style="color:#fff">produce</b> a better answer. Optimizes for recall.</td>
+                <td class="v">No check on what the model actually said. Retrieval is not approval — a chunk in an index carries no authority.</td></tr>
+            <tr><td class="k">Probabilistic hallucination detectors <span style="color:var(--faint);font-weight:400">(groundedness scorers, LLM-as-judge)</span></td>
+                <td class="v">Score how consistent an output is with retrieved context. Useful as monitoring signal.</td>
+                <td class="v">A model grading a model — probabilistic, no approval chain, no provenance, no portable record.</td></tr>
+            <tr><td class="k">Policy-as-logic guardrails <span style="color:var(--faint);font-weight:400">(e.g., AWS Bedrock Automated Reasoning)</span></td>
+                <td class="v">Deterministically check output against policies hand-translated into formal logic rules.</td>
+                <td class="v">Rules are encoded by hand, not extracted from source documents; cloud- and platform-bound; no source provenance chain.</td></tr>
+            <tr><td class="k" style="color:var(--red)">Ground Truth</td>
+                <td class="v">Deterministically checks each claim for <b style="color:#fff">attribution to your own approved sources</b>, with a human approval gate and a signed per-output verification record.</td>
+                <td class="v">Does not judge truth about the world, and does not improve the model — it bounds and documents what the model's output rests on.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- why you can trust it -->
+  <section>
+    <div class="sec-label">Design properties</div>
+    <h2>Conservative <span class="r">by construction</span></h2>
+    <p class="body-lead">The governing constraint is an asymmetry: the system may fail to flag a claim, but it must
+      never vouch for one it cannot trace. Nothing is certified without a deterministic match or a human decision;
+      probabilistic components only <b>propose</b> candidates for review — they never certify.</p>
+    <div class="oneliner">The system can fail to flag. It must never <span class="r">falsely certify.</span></div>
+    <div class="grid3">
+      <div class="g-card">
+        <div class="gt-i">Deterministic</div>
+        <h4>Not AI grading AI</h4>
+        <p>The citation check and the pass/flag/block gate are <b>code, not a model</b>. AI saves human labor;
+          it never sets ground truth. The model can't talk its way past a rule.</p>
+      </div>
+      <div class="g-card">
+        <div class="gt-i">Honest boundary</div>
+        <h4>Attribution, not truth</h4>
+        <p>It proves a claim is — or isn't — traceable to approved authority. It never claims to know the world.
+          <b>That boundary is the source of its credibility.</b></p>
+      </div>
+      <div class="g-card">
+        <div class="gt-i">The human gate</div>
+        <h4>People approve; models propose</h4>
+        <p>An entry is citable only after a designated reviewer confirms it is faithful to the source. <b>Unverified
+          stays visibly unverified.</b></p>
+      </div>
+      <div class="g-card">
+        <div class="gt-i">Model-independent</div>
+        <h4>Any model, no retraining</h4>
+        <p>The same ledger and verifier sit in front of ChatGPT, an EdgeRunner SLM, or anything OpenAI- or
+          Ollama-compatible. Swap the model; keep the guarantee.</p>
+      </div>
+      <div class="g-card">
+        <div class="gt-i">Standards-aligned</div>
+        <h4>Built to ICD 203</h4>
+        <p>Every output links back to verifiable evidence — or is flagged when it can't — consistent with IC
+          analytic-tradecraft standards for <b>sourcing and analytic rigor</b>.</p>
+      </div>
+      <div class="g-card">
+        <div class="gt-i">Compounding asset</div>
+        <h4>Compounds with use</h4>
+        <p>Every check is data: gaps become proposed entries, repeated conflicts trigger doctrine review. The
+          approved ledger becomes a <b>versioned institutional asset that outlives any single model.</b></p>
+      </div>
+    </div>
+
+    <div class="rag">
+      <h4>Policy alignment</h4>
+      <p>The DoD AI Ethical Principles require AI to be <b>traceable</b> and <b>governable</b>; CDAO's generative-AI
+        guidance requires <b>human accountability</b> and <b>no silent failure</b>. Ground Truth is a concrete
+        implementation of those requirements — per-claim traceability to approved sources, a human approval gate,
+        and visible refusal rather than silent error. The compliance argument is not "trust the vendor"; it is
+        <b>an implementation of the policy the Department has already written.</b></p>
+    </div>
+  </section>
+
+  <!-- measured results -->
+  <section>
+    <div class="sec-label">Measured</div>
+    <h2>Selected results from the <span class="r">evaluation harness</span></h2>
+    <p class="body-lead">The verification layer ships with the evaluation harness used to test it. Selected results,
+      reduced to what each one means:</p>
+    <div class="tbl-wrap">
+      <table class="apply">
+        <thead><tr><th>Result</th><th>What it means</th></tr></thead>
+        <tbody>
+          <tr><td class="n">6/6 spoofed citations caught</td>
+              <td class="v">A fabricated claim carrying a real citation is flagged, never certified — the model
+                cannot cite its way past the check.</td></tr>
+          <tr><td class="n">3,913 rules from 1,946 pages</td>
+              <td class="v">A ledger built at doctrine-library scale, from eight capstone manuals.</td></tr>
+          <tr><td class="n">Verification time near-flat at scale</td>
+              <td class="v">~2 s at 100 entries, ~3 s at 3,913 — checking an answer does not slow down as the
+                source library grows.</td></tr>
+          <tr><td class="n">70/70 approved rules anchored verbatim</td>
+              <td class="v">Every human-approved entry is an exact span from its source manual, shown beside the
+                page for one-glance review.</td></tr>
+          <tr><td class="n">Three documented field failures → three reported errors</td>
+              <td class="v">The failures First Army documented in a fielded assistant — including a silent 116→6
+                undercount and fabricated doctrine — each becomes a reported error instead of a silent one.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="applynote">Results are from internal evaluation on labeled sets. They characterize the current build,
+      not a certified benchmark, and are reproducible on request.</p>
+  </section>
+
+  <!-- operating modes -->
+  <section>
+    <div class="sec-label">Enforcement modes</div>
+    <h2>How strictly the sources <span class="r">govern the output</span></h2>
+    <p class="body-lead">Three enforcement levels. The first changes nothing about how users work and only adds
+      visibility; each subsequent level gives the approved sources more control over the output, as the stakes require.</p>
+    <div class="modes">
+      <div class="mode m1">
+        <div class="lvl">Level 1 · Visibility</div>
+        <h4>Annotate</h4>
+        <p>The model answers freely; every statement is marked supported, needs-review, or unsupported. Full
+          visibility, no interference. <b>The default — no change to existing workflows.</b></p>
+        <p class="ex"><b>In the example</b> — the ROE claim is visibly marked as conflicting with the approved
+          annex. Nothing is altered; the operator sees the conflict before acting.</p>
+      </div>
+      <div class="mode m2">
+        <div class="lvl">Level 2 · Correction</div>
+        <h4>Correct from source</h4>
+        <p>Statements that conflict with an approved source are flagged and corrected — <b>with the source shown</b>,
+          so the change is visible and attributable. For drafting against doctrine, orders, or specifications.</p>
+        <p class="ex"><b>In the example</b> — the ROE claim is replaced with the approved ROE line, citation
+          attached, and the substitution is shown rather than silent.</p>
+      </div>
+      <div class="mode m3">
+        <div class="lvl">Level 3 · Assurance</div>
+        <h4>Constrain to sources</h4>
+        <p>The model may state only what an approved entry supports, and must cite it. <b>Anything else is refused
+          rather than approximated.</b> For the highest-stakes work.</p>
+        <p class="ex"><b>In the example</b> — the answer is limited to the claims the sources support: the LD time
+          and CASEVAC plan pass with citations; the ROE and MSR statements are refused outright.</p>
+      </div>
+    </div>
+    <p class="modenote">Findings surface however the workflow requires — annotated inline, logged silently, or blocking release.</p>
+  </section>
+
+  <!-- where it runs -->
+  <section>
+    <div class="sec-label">Where it runs</div>
+    <h2>One engine, <span class="r">four deployment patterns</span></h2>
+    <div class="deploy">
+      <div class="dep"><div class="dh">Inline sidecar</div><p>Rides between model and user inside the tool they already use — corrects and flags in flight. No new app.</p></div>
+      <div class="dep"><div class="dh">API</div><p>Sits behind a host app or agent. Answer in, checked answer plus receipt out.</p></div>
+      <div class="dep"><div class="dh">Batch / CI gate</div><p>Scores any model against the same approved sources — a repeatable, source-anchored evaluation.</p></div>
+      <div class="dep"><div class="dh">Authoring studio</div><p>The control plane: build, source-anchor, and approve the ledgers your reviewers sign off on.</p></div>
+    </div>
+    <div class="envline">
+      <span class="lab">Deployment targets</span>
+      <span class="env">Cloud</span><span class="env">Accredited enclave</span><span class="env">On-prem</span>
+      <span class="env">Edge / disconnected</span><span class="env">Deterministic core needs no network</span>
+    </div>
+  </section>
+
+  <!-- where it applies -->
+  <section>
+    <div class="sec-label">Where it applies</div>
+    <h2>Workflows where output must be <span class="r">checked before use</span></h2>
+    <div class="tbl-wrap">
+      <table class="apply">
+        <thead><tr><th>Mission area</th><th>What Ground Truth adds</th></tr></thead>
+        <tbody>
+          <tr><td class="k">AI apps &amp; assistants</td><td class="v">Turns a fluent, unattributable answer into one with a per-statement source trace.</td></tr>
+          <tr><td class="k">Operational planning</td><td class="v">Catches doctrine drift and missing order elements before the order is released.</td></tr>
+          <tr><td class="k">Intelligence analysis</td><td class="v">Checks outputs against ICD-203 tradecraft and ICD-206 sourcing expectations — a rubric compiled from the published standards by career practitioners.</td></tr>
+          <tr><td class="k">Classification / CUI / OPSEC</td><td class="v">Surfaces handling, marking, and release risk before release, with the governing reference cited.</td></tr>
+          <tr><td class="k">Acquisition support</td><td class="v">Checks output against the governing SOW, PWS, and CDRLs — the approved requirements.</td></tr>
+          <tr><td class="k">Model evaluation</td><td class="v">Scores any model against the same approved sources — a repeatable, source-anchored comparison.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="applynote"><b>The mechanism is domain-neutral.</b> Anywhere an organization has authoritative sources
+      and a duty to stand behind AI output — clinical guidelines, financial controls, legal citation, safety cases —
+      the same layer binds the answer to approved authority. Defense is where it is proven and deployed today.</p>
+  </section>
+
+  <!-- the receipt -->
+  <section class="receipt-sec">
+    <div class="sec-label">The verification record</div>
+    <div class="receipt-grid">
+      <div class="receipt-copy">
+        <h2>Every output carries a <span class="r">verification record</span></h2>
+        <p>The record shown here is the one the worked example produces — the four claims, their verdicts, and the
+          approved sources behind them. Every session produces one. It is called a <b>WBOM</b> — a Warrant Bill of Materials,
+          deliberately modeled on the SBOM accreditors already use — and it records each statement, the approved
+          source it traces to, what was flagged or refused, and who approved each source.</p>
+        <p>It is <b>hash-bound to the exact source set checked</b>, and signable, so later alteration is detectable.
+          It is the artifact provided to any reviewer, approving authority, or accreditor who needs to confirm
+          <b>where a given claim originated</b> — without repeating the verification by hand.</p>
+        <p><b>The format is open by design.</b> The WBOM is a machine-readable record, not a proprietary report:
+          it can be stored, compared, and checked by your own tooling, and reading one requires no EdgeRunner
+          software. It is designed to align with the bill-of-materials formats federal accreditation pipelines
+          already consume (the SBOM family of standards), so it enters existing review processes rather than
+          demanding a new one.</p>
+      </div>
+      <div class="receipt" aria-label="Example verification receipt">
+        <div class="r-head">
+          <div>
+            <div class="r-title">WBOM · VERIFICATION RECEIPT</div>
+            <div class="r-sub">answer #4471 · ledger: 3-BCT-OPORD v12 · nomic-embed</div>
+          </div>
+        </div>
+        <div class="r-row"><span class="st pass">PASS</span><span class="cl"><b>LD is 0530L</b> on Route TAMPA.<span class="src">↳ EV-018 · OPORD 24-118 ¶3.C.2 · appr. MAJ Ruiz</span></span></div>
+        <div class="r-row"><span class="st pass">PASS</span><span class="cl"><b>CASEVAC</b> to Role II, Bagram.<span class="src">↳ EV-041 · Annex Q ¶2 · appr. MAJ Ruiz</span></span></div>
+        <div class="r-row"><span class="st flag">FLAG</span><span class="cl">“3rd platoon holds the eastern <b>MSR</b>.” — no supporting entry.<span class="src">↳ needs review · not in this ledger</span></span></div>
+        <div class="r-row"><span class="st block">BLOCK</span><span class="cl">“<b>ROE permits</b> engagement without PID.”<span class="src">↳ conflicts EV-007 · Annex E ROE ¶4</span></span></div>
+        <div class="perf"></div>
+        <div class="r-foot">
+          3 claims grounded · 1 review · 1 blocked<br>
+          sha256 <span class="hash">a91f…6b02</span> · signed 14 JUL · verifier v2.1
+        </div>
+      </div>
+    </div>
+
+    <div class="closer">
+      <div class="big">Output bounded by your own approved authority — <span class="r">independent of the model that produced it.</span></div>
+      <div class="sub">Cloud, accredited enclave, on-prem, or disconnected edge. The deterministic core requires no network and no model retraining.</div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <div class="gt-foot">
+    <div>EdgeRunner AI · Bellevue, WA · <span class="mono">CAGE 9Z176 · UEI SLZTJUA8DBD3 · NAICS 541511</span></div>
+    <div>Partnerships: <a href="mailto:dave@edgerunnerai.com">dave@edgerunnerai.com</a></div>
+  </div>
+
+</div>
+</div>

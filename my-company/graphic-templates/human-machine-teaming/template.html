@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{title}}</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:{{theme.bg}};font-family:'Segoe UI',system-ui,sans-serif;
+       display:flex;justify-content:center;align-items:center;
+       min-height:100vh;padding:20px}
+  .canvas{width:1200px;background:{{theme.bg}};border-radius:12px;
+          overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div style="padding:18px 32px 8px;text-align:center;border-bottom:2px solid {{theme.accent}}">
+    <h1 style="color:{{theme.text}};font-size:28px;font-weight:700;letter-spacing:.5px;text-transform:uppercase">{{title}}</h1>
+    <p style="color:{{theme.muted}};font-size:15px;margin-top:4px">{{subtitle}}</p>
+  </div>
+
+  <svg viewBox="0 0 1200 460" xmlns="http://www.w3.org/2000/svg" style="display:block">
+    <defs>
+      <marker id="af" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0,10 3.5,0 7" fill="{{theme.text}}"/>
+      </marker>
+      <marker id="afr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0,10 3.5,0 7" fill="{{theme.accent}}"/>
+      </marker>
+    </defs>
+
+    <!-- Step 0: top icon if present -->
+    <circle cx="130" cy="58" r="38" fill="{{theme.panel}}" stroke="{{theme.panel_border}}" stroke-width="2"/>
+    <text x="130" y="52" fill="{{theme.text}}" font-size="20" font-family="Segoe UI" text-anchor="middle">{{steps.0.top_icon}}</text>
+    <text x="130" y="72" fill="{{theme.muted}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{steps.0.top_label}}</text>
+
+    <!-- Step 0 box -->
+    <rect x="40" y="100" width="180" height="200" rx="12" fill="{{theme.panel}}" stroke="{{theme.panel_border}}" stroke-width="1.5"/>
+    <text x="130" y="130" fill="{{theme.text}}" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{steps.0.name}}</text>
+    <text x="130" y="148" fill="{{theme.muted}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{steps.0.sub}}</text>
+    <text x="130" y="178" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.0.lines.0}}</text>
+    <text x="130" y="196" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.0.lines.1}}</text>
+    <text x="130" y="214" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.0.lines.2}}</text>
+    <text x="130" y="232" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.0.lines.3}}</text>
+    <text x="130" y="278" fill="{{theme.muted}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{steps.0.bottom_note}}</text>
+
+    <!-- Arrow 0→1 -->
+    <line x1="220" y1="200" x2="268" y2="200" stroke="{{theme.text}}" stroke-width="2" marker-end="url(#af)"/>
+
+    <!-- Step 1 box -->
+    <rect x="270" y="100" width="180" height="200" rx="12" fill="{{theme.panel}}" stroke="{{theme.panel_border}}" stroke-width="1.5"/>
+    <text x="360" y="130" fill="{{theme.text}}" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{steps.1.name}}</text>
+    <text x="360" y="148" fill="{{theme.muted}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{steps.1.sub}}</text>
+    <text x="360" y="178" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.1.lines.0}}</text>
+    <text x="360" y="196" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.1.lines.1}}</text>
+    <text x="360" y="214" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.1.lines.2}}</text>
+    <text x="360" y="232" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.1.lines.3}}</text>
+    <text x="360" y="278" fill="{{theme.muted}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{steps.1.bottom_note}}</text>
+
+    <!-- Arrow 1→2 -->
+    <line x1="450" y1="200" x2="498" y2="200" stroke="{{theme.text}}" stroke-width="2" marker-end="url(#af)"/>
+
+    <!-- Step 2 box (hero) -->
+    <rect x="500" y="80" width="200" height="240" rx="12" fill="rgba(238,41,41,.08)" stroke="{{theme.accent}}" stroke-width="2"/>
+    <text x="600" y="116" fill="{{theme.accent}}" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{steps.2.name}}</text>
+    <text x="600" y="134" fill="{{theme.body}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{steps.2.sub}}</text>
+    <text x="600" y="162" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.2.lines.0}}</text>
+    <text x="600" y="182" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.2.lines.1}}</text>
+    <text x="600" y="208" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.2.lines.2}}</text>
+    <text x="600" y="228" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.2.lines.3}}</text>
+    <text x="600" y="248" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.2.lines.4}}</text>
+    <text x="600" y="274" fill="{{theme.muted}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{steps.2.bottom_note}}</text>
+    <rect x="520" y="286" width="160" height="22" rx="11" fill="rgba(238,41,41,.15)" stroke="{{theme.accent}}" stroke-width="1"/>
+    <text x="600" y="301" fill="{{theme.accent}}" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">DDIL CAPABLE</text>
+
+    <!-- Arrow 2→3 -->
+    <line x1="700" y1="200" x2="748" y2="200" stroke="{{theme.text}}" stroke-width="2" marker-end="url(#af)"/>
+
+    <!-- Step 3 box -->
+    <rect x="750" y="100" width="180" height="200" rx="12" fill="{{theme.panel}}" stroke="{{theme.panel_border}}" stroke-width="1.5"/>
+    <text x="840" y="130" fill="{{theme.text}}" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{steps.3.name}}</text>
+    <text x="840" y="148" fill="{{theme.muted}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{steps.3.sub}}</text>
+    <text x="840" y="178" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.3.lines.0}}</text>
+    <text x="840" y="196" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.3.lines.1}}</text>
+    <text x="840" y="214" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.3.lines.2}}</text>
+    <text x="840" y="232" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.3.lines.3}}</text>
+    <text x="840" y="278" fill="{{theme.muted}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{steps.3.bottom_note}}</text>
+
+    <!-- Arrow 3→4 -->
+    <line x1="930" y1="200" x2="978" y2="200" stroke="{{theme.text}}" stroke-width="2" marker-end="url(#af)"/>
+
+    <!-- Step 4: top icon -->
+    <circle cx="1070" cy="58" r="38" fill="{{theme.panel}}" stroke="{{theme.accent}}" stroke-width="2"/>
+    <text x="1070" y="52" fill="{{theme.accent}}" font-size="20" font-family="Segoe UI" text-anchor="middle">{{steps.4.top_icon}}</text>
+    <text x="1070" y="72" fill="{{theme.accent}}" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{steps.4.top_label}}</text>
+
+    <!-- Step 4 box -->
+    <rect x="980" y="100" width="180" height="200" rx="12" fill="{{theme.panel}}" stroke="{{theme.panel_border}}" stroke-width="1.5"/>
+    <text x="1070" y="130" fill="{{theme.text}}" font-size="15" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{steps.4.name}}</text>
+    <text x="1070" y="148" fill="{{theme.muted}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{steps.4.sub}}</text>
+    <text x="1070" y="178" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.4.lines.0}}</text>
+    <text x="1070" y="196" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.4.lines.1}}</text>
+    <text x="1070" y="214" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.4.lines.2}}</text>
+    <text x="1070" y="232" fill="{{theme.body}}" font-size="13" font-family="Segoe UI" text-anchor="middle">{{steps.4.lines.3}}</text>
+    <text x="1070" y="278" fill="{{theme.accent}}" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{steps.4.bottom_note}}</text>
+
+    <!-- Feedback loop -->
+    <path d="M 1070 330 Q 1070 370 600 370 Q 280 370 130 330" stroke="{{theme.accent}}" stroke-width="1.5" fill="none" stroke-dasharray="6,3" marker-end="url(#afr)" opacity=".7"/>
+    <text x="600" y="388" fill="{{theme.accent}}" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle" opacity=".8">{{feedback.label}}</text>
+
+    <!-- Principle callouts -->
+    <rect x="40" y="400" width="340" height="42" rx="8" fill="rgba(238,41,41,.06)" stroke="rgba(238,41,41,.3)" stroke-width="1"/>
+    <text x="210" y="419" fill="{{theme.accent}}" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{principles.0.title}}</text>
+    <text x="210" y="435" fill="{{theme.body}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{principles.0.sub}}</text>
+
+    <rect x="430" y="400" width="340" height="42" rx="8" fill="rgba(238,41,41,.06)" stroke="rgba(238,41,41,.3)" stroke-width="1"/>
+    <text x="600" y="419" fill="{{theme.accent}}" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{principles.1.title}}</text>
+    <text x="600" y="435" fill="{{theme.body}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{principles.1.sub}}</text>
+
+    <rect x="820" y="400" width="340" height="42" rx="8" fill="rgba(238,41,41,.06)" stroke="rgba(238,41,41,.3)" stroke-width="1"/>
+    <text x="990" y="419" fill="{{theme.accent}}" font-size="12" font-weight="700" font-family="Segoe UI" text-anchor="middle">{{principles.2.title}}</text>
+    <text x="990" y="435" fill="{{theme.body}}" font-size="12" font-family="Segoe UI" text-anchor="middle">{{principles.2.sub}}</text>
+  </svg>
+
+  <div style="background:#111315;padding:10px 32px;display:flex;justify-content:space-between;align-items:center">
+    <span style="color:{{theme.accent}};font-size:13px;font-weight:700;opacity:.8;letter-spacing:.5px">{{footer.brand}}</span>
+    <span style="color:{{theme.muted}};font-size:12px">{{footer.tagline}}</span>
+    <span style="color:{{theme.muted}};font-size:12px">{{footer.website}}</span>
+  </div>
+
+</div>
+</body>
+</html>

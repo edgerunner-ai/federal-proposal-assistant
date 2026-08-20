@@ -1,0 +1,98 @@
+{
+  "title": "Decision Intelligence — EdgeRunner vs. Alternative Approaches",
+  "subtitle": "Purpose-built DDIL inference versus generic AI adapted to defense environments",
+  "columns": [
+    {
+      "name": "Cloud-Dependent AI",
+      "sub": "Requires persistent connectivity"
+    },
+    {
+      "name": "Generic Edge AI",
+      "sub": "Commercial edge AI, adapted"
+    },
+    {
+      "name": "EdgeRunner AI",
+      "sub": "Purpose-built for the warfighter"
+    }
+  ],
+  "rows": [
+    {
+      "dimension": "DDIL Operation",
+      "dimension_sub": "Inference without connectivity",
+      "cells": [
+        { "label": "Not possible", "sub": "No connectivity = no AI" },
+        { "label": "Degraded", "sub": "Accuracy drops offline" },
+        { "label": "Full capability", "sub": "Identical at zero connectivity" }
+      ]
+    },
+    {
+      "dimension": "On-Device Inference",
+      "dimension_sub": "SWaP-constrained hardware",
+      "cells": [
+        { "label": "Cloud-only", "sub": "No edge deployment path" },
+        { "label": "Possible — high power", "sub": "Not optimized for SWaP" },
+        { "label": "SWaP-optimized", "sub": "Rugged hardware certified" }
+      ]
+    },
+    {
+      "dimension": "Mission-Specific LoRA",
+      "dimension_sub": "Doctrine-trained fine-tuning",
+      "cells": [
+        { "label": "Generic LLM only", "sub": "No doctrine alignment" },
+        { "label": "Generic fine-tuning", "sub": "Not NATO-doctrine trained" },
+        { "label": "NATO AJP-aligned", "sub": "COA, targeting, OPORD pre-trained" }
+      ]
+    },
+    {
+      "dimension": "MSS NATO Integration",
+      "dimension_sub": "Native COP + simulation layer",
+      "cells": [
+        { "label": "No integration", "sub": "Custom development required" },
+        { "label": "API-possible", "sub": "Requires custom integration" },
+        { "label": "Native MSS NATO API", "sub": "COP-aware inference, zero dev" }
+      ]
+    },
+    {
+      "dimension": "Data Sovereignty",
+      "dimension_sub": "Zero data egress",
+      "cells": [
+        { "label": "Data leaves device", "sub": "Cloud logging required" },
+        { "label": "Partial", "sub": "Telemetry may egress" },
+        { "label": "Zero data egress", "sub": "No external transmission" }
+      ]
+    },
+    {
+      "dimension": "Classified Environments",
+      "dimension_sub": "IL5 / classified edge operation",
+      "cells": [
+        { "label": "Not compatible", "sub": "Cloud dependency blocks classified use" },
+        { "label": "Not validated", "sub": "Commercial, not classified-tested" },
+        { "label": "Classified-edge ready", "sub": "Space Force + Navy operational" }
+      ]
+    },
+    {
+      "dimension": "Operator NLI",
+      "dimension_sub": "Natural language command interface",
+      "cells": [
+        { "label": "Generic chatbot", "sub": "Not domain-specialized" },
+        { "label": "Basic NLI", "sub": "Not mission-specialized" },
+        { "label": "Forward commander NLI", "sub": "Operational with USASOC SOF Pilot" }
+      ]
+    }
+  ],
+  "footer": {
+    "brand": "EDGERUNNER AI",
+    "tagline": "The only AI purpose-built for disconnected, denied, intermittent, and limited environments",
+    "website": "edgerunner.ai"
+  },
+  "theme": {
+    "bg": "#191c20",
+    "accent": "#ee2929",
+    "panel": "#2a2d31",
+    "panel_border": "#393939",
+    "text": "#ffffff",
+    "muted": "#9f9f9f",
+    "body": "#c8c8c8",
+    "amber": "#c8a200"
+  }
+}

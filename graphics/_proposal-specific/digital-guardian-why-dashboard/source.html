@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why Visualization Dashboard — Live Priority State After Red Injection</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#191c20;font-family:'Segoe UI',system-ui,sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}
+.canvas{width:1200px;background:#191c20;border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+
+/* HEADER BAR */
+.header{background:#111316;padding:14px 24px;border-bottom:2px solid #ee2929;display:flex;justify-content:space-between;align-items:center}
+.header-left{display:flex;flex-direction:column;gap:2px}
+.header-title{color:#fff;font-size:22px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.header-sub{color:#9f9f9f;font-size:13px}
+.header-right{display:flex;align-items:center;gap:16px}
+.round-badge{background:#2a2d31;border:1px solid #393939;border-radius:6px;padding:6px 12px;color:#c8c8c8;font-size:13px;font-weight:600}
+.live-badge{background:#ee2929;border-radius:4px;padding:5px 10px;color:#fff;font-size:12px;font-weight:700;letter-spacing:1px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+
+/* INJECTION BANNER */
+.injection-banner{background:linear-gradient(135deg,#1a0a0a,#2a0f0f);border-top:2px solid #ee2929;border-bottom:2px solid #ee2929;padding:10px 24px;display:flex;align-items:center;gap:16px}
+.injection-icon{width:36px;height:36px;background:#ee2929;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;flex-shrink:0}
+.injection-text{flex:1}
+.injection-label{color:#ee2929;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
+.injection-event{color:#fff;font-size:15px;font-weight:600}
+.injection-meta{color:#9f9f9f;font-size:12px;margin-top:2px}
+.ws-badge{color:#4db84d;font-size:12px;font-weight:700;background:rgba(77,184,77,.12);padding:3px 8px;border-radius:4px;border:1px solid rgba(77,184,77,.3)}
+
+/* PERSONA GRID */
+.persona-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:none}
+
+/* PERSONA PANEL */
+.persona-panel{border-right:1px solid #393939;padding:0}
+.persona-panel:last-child{border-right:none}
+
+.persona-head{padding:12px 14px 10px;border-bottom:1px solid #393939;background:#1e2127}
+.persona-role-pill{display:inline-block;background:#ee2929;color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px}
+.persona-name{color:#fff;font-size:16px;font-weight:700;margin-bottom:2px}
+.persona-desc{color:#9f9f9f;font-size:11px}
+
+/* BARS SECTION */
+.bars-section{padding:10px 14px}
+.bar-row{margin-bottom:9px}
+.bar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px}
+.bar-label{color:#c8c8c8;font-size:12px;font-weight:600}
+.bar-meta{display:flex;align-items:center;gap:6px}
+.bar-value{color:#fff;font-size:13px;font-weight:700}
+.delta{font-size:12px;font-weight:700;padding:1px 5px;border-radius:3px}
+.delta-up{color:#4db84d;background:rgba(77,184,77,.12)}
+.delta-down{color:#ee2929;background:rgba(238,41,41,.12)}
+.delta-stable{color:#9f9f9f;background:rgba(159,159,159,.1)}
+.bar-bg{background:#2e3238;border-radius:3px;height:10px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;transition:width .3s}
+.lethality{background:#ee2929}
+.speed{background:#4a9ef5}
+.afford{background:#4db84d}
+.resil{background:#f5a623}
+
+/* RATIONALE */
+.rationale-block{padding:6px 14px 10px;border-top:1px solid #2e3238}
+.rationale-label{color:#9f9f9f;font-size:10px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:3px}
+.rationale-text{color:#c8c8c8;font-size:11px;line-height:1.5;font-style:italic}
+
+/* DELTA HIGHLIGHT (panels with significant change) */
+.panel-ccmd{border-top:2px solid #ee2929}
+.panel-usw{border-top:2px solid #f5a623}
+.panel-sae{border-top:2px solid #4a9ef5}
+.panel-pae{border-top:2px solid #4db84d}
+
+/* STATUS BAR */
+.status-bar{background:#0d0f12;border-top:1px solid #2e3238;padding:10px 24px;display:flex;justify-content:space-between;align-items:center}
+.status-left{display:flex;align-items:center;gap:12px}
+.status-item{color:#9f9f9f;font-size:12px}
+.status-item strong{color:#c8c8c8}
+.ws-latency{color:#4db84d;font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px}
+.ws-dot{width:8px;height:8px;background:#4db84d;border-radius:50%;display:inline-block;animation:pulse 1.5s infinite}
+.footer-brand{color:#ee2929;font-size:13px;font-weight:700;letter-spacing:.5px}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="header-title">Why Visualization Dashboard</div>
+      <div class="header-sub">Digital Guardian Simulator · WAS Acquisition War Game · Audience Display</div>
+    </div>
+    <div class="header-right">
+      <div class="round-badge">Round 3 of 5</div>
+      <div class="live-badge">● LIVE</div>
+    </div>
+  </div>
+
+  <!-- INJECTION BANNER -->
+  <div class="injection-banner">
+    <div class="injection-icon">!</div>
+    <div class="injection-text">
+      <div class="injection-label">Red Injection Event — Round 3</div>
+      <div class="injection-event">China Demonstrates ASAT Capability Against GPS Block III Constellation</div>
+      <div class="injection-meta">All four persona priority states updated · Why State Manager recalculated · Audience display refreshed</div>
+    </div>
+    <div class="ws-badge">WebSocket push &lt;500ms</div>
+  </div>
+
+  <!-- PERSONA GRID -->
+  <div class="persona-grid">
+
+    <!-- 4-STAR CCMD -->
+    <div class="persona-panel panel-ccmd">
+      <div class="persona-head">
+        <div class="persona-role-pill">4-Star CCMD</div>
+        <div class="persona-name">Combatant Commander</div>
+        <div class="persona-desc">Warfighter — operational requirements authority</div>
+      </div>
+      <div class="bars-section">
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Lethality</span>
+            <span class="bar-meta"><span class="bar-value">0.45</span><span class="delta delta-up">↑ +0.15</span></span>
+          </div>
+          <div class="bar-bg"><div class="bar-fill lethality" style="width:90%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Speed to Field</span>
+            <span class="bar-meta"><span class="bar-value">0.30</span><span class="delta delta-stable">— </span></span>
+          </div>
+          <div class="bar-bg"><div class="bar-fill speed" style="width:60%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Resilience</span>
+            <span class="bar-meta"><span class="bar-value">0.15</span><span class="delta delta-stable">— </span></span>
+          </div>
+          <div class="bar-bg"><div class="bar-fill resil" style="width:30%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Affordability</span>
+            <span class="bar-meta"><span class="bar-value">0.10</span><span class="delta delta-down">↓ −0.15</span></span>
+          </div>
+          <div class="bar-bg"><div class="bar-fill afford" style="width:20%"></div></div>
+        </div>
+      </div>
+      <div class="rationale-block">
+        <div class="rationale-label">Why</div>
+        <div class="rationale-text">ASAT threat elevates kinetic risk to GPS-dependent systems. Lethality of counter-capability is paramount — budget constraints are subordinate to mission survivability.</div>
+      </div>
+    </div>
+
+    <!-- USW A&S -->
+    <div class="persona-panel panel-usw">
+      <div class="persona-head">
+        <div class="persona-role-pill">USW A&S</div>
+        <div class="persona-name">Under Sec. War (A&S)</div>
+        <div class="persona-desc">Pentagon policy — acquisition authority and budget</div>
+      </div>
+      <div class="bars-section">
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Affordability</span>
+            <span class="bar-meta"><span class="bar-value">0.25</span><span class="delta delta-down">↓ −0.15</span></span>
+          </div>
+          <div class="bar-bg"><div class="bar-fill afford" style="width:50%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Speed to Field</span>
+            <span class="bar-meta"><span class="bar-value">0.35</span><span class="delta delta-up">↑ +0.05</span></span>
+          </div>
+          <div class="bar-bg"><div class="bar-fill speed" style="width:70%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Lethality</span>
+            <span class="bar-meta"><span class="bar-value">0.25</span><span class="delta delta-up">↑ +0.05</span></span>
+          </div>
+          <div class="bar-bg"><div class="bar-fill lethality" style="width:50%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Resilience</span>
+            <span class="bar-meta"><span class="bar-value">0.15</span><span class="delta delta-up">↑ +0.05</span></span>
+          </div>
+          <div class="bar-bg"><div class="bar-fill resil" style="width:30%"></div></div>
+        </div>
+      </div>
+      <div class="rationale-block">
+        <div class="rationale-label">Why</div>
+        <div class="rationale-text">Strategic urgency compresses the budget tradeoff calculus. Budget offset required to accelerate counter-ASAT capability — affordability constraint relaxed under congressional pressure.</div>
+      </div>
+    </div>
+
+    <!-- SAE (Space) -->
+    <div class="persona-panel panel-sae">
+      <div class="persona-head">
+        <div class="persona-role-pill">SAE (Space)</div>
+        <div class="persona-name">Service Acq. Executive</div>
+        <div class="persona-desc">USSF service-level acquisition — WAS implementation</div>
+      </div>
+      <div class="bars-section">
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Speed to Field</span>
+            <span class="bar-meta"><span class="bar-value">0.45</span><span class="delta delta-up">↑ +0.05</span></span>
+          </div>
+          <div class="bar-bg"><div class="bar-fill speed" style="width:90%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Lethality</span>
+            <span class="bar-meta"><span class="bar-value">0.30</span><span class="delta delta-up">↑ +0.05</span></span>
+          </div>
+          <div class="bar-bg"><div class="bar-fill lethality" style="width:60%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Resilience</span>
+            <span class="bar-meta"><span class="bar-value">0.15</span><span class="delta delta-stable">— </span></span>
+          </div>
+          <div class="bar-bg"><div class="bar-fill resil" style="width:30%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Affordability</span>
+            <span class="bar-meta"><span class="bar-value">0.10</span><span class="delta delta-down">↓ −0.10</span></span>
+          </div>
+          <div class="bar-bg"><div class="bar-fill afford" style="width:20%"></div></div>
+        </div>
+      </div>
+      <div class="rationale-block">
+        <div class="rationale-label">Why</div>
+        <div class="rationale-text">GPS Block III threat creates schedule pressure across Space Force portfolio. Speed drives all PAE tasking; capability gap must close before FY27 POM submission window.</div>
+      </div>
+    </div>
+
+    <!-- PAE -->
+    <div class="persona-panel panel-pae">
+      <div class="persona-head">
+        <div class="persona-role-pill">PAE</div>
+        <div class="persona-name">Portfolio Acq. Executive</div>
+        <div class="persona-desc">Intra-portfolio resource trade — execution authority</div>
+      </div>
+      <div class="bars-section">
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Speed to Field</span>
+            <span class="bar-meta"><span class="bar-value">0.35</span><span class="delta delta-stable">— </span></span>
+          </div>
+          <div class="bar-bg"><div class="bar-fill speed" style="width:70%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Resilience</span>
+            <span class="bar-meta"><span class="bar-value">0.40</span><span class="delta delta-up">↑ +0.10</span></span>
+          </div>
+          <div class="bar-bg"><div class="bar-fill resil" style="width:80%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Affordability</span>
+            <span class="bar-meta"><span class="bar-value">0.15</span><span class="delta delta-down">↓ −0.05</span></span>
+          </div>
+          <div class="bar-bg"><div class="bar-fill afford" style="width:30%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-header">
+            <span class="bar-label">Lethality</span>
+            <span class="bar-meta"><span class="bar-value">0.10</span><span class="delta delta-down">↓ −0.05</span></span>
+          </div>
+          <div class="bar-bg"><div class="bar-fill lethality" style="width:20%"></div></div>
+        </div>
+      </div>
+      <div class="rationale-block">
+        <div class="rationale-label">Why</div>
+        <div class="rationale-text">ASAT vulnerability signals system fragility across the portfolio. Resilience of GPS-dependent systems elevated; intra-portfolio reallocation required to harden against follow-on attacks.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- STATUS BAR -->
+  <div class="status-bar">
+    <div class="status-left">
+      <div class="ws-latency"><span class="ws-dot"></span> Why State Manager · WebSocket push &lt;500ms</div>
+      <div class="status-item">· <strong>4 of 4</strong> personas updated</div>
+      <div class="status-item">· <strong>8 of 10</strong> injection tokens remaining</div>
+    </div>
+    <div class="footer-brand">EDGERUNNER AI</div>
+  </div>
+
+</div>
+</body>
+</html>

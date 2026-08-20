@@ -1,0 +1,90 @@
+# ─────────────────────────────────────────────────────────────────
+# Proprietary / per-company content — NEVER push to GitHub
+# ─────────────────────────────────────────────────────────────────
+
+# NOTE: my-company/ is TRACKED in this repository. This repo is owned by the
+# EdgeRunner AI organization and is org-private (explicit collaborators only),
+# so the company knowledge base lives in git rather than travelling as
+# hand-made snapshot zips. It is still company IP — do not make this repo
+# internal or public without moving my-company/ back out first.
+
+# Active and past proposal workspaces: solicitations, customer context,
+# drafts, reviews, pricing, teaming strategy — all sensitive.
+proposals/
+
+# Customer-targeted demo packets: which customer, what we show them, the talk
+# track, and the claim posture. The scenario data inside is synthetic; the
+# targeting and the pitch are not. Mirrors check-git-boundary.sh.
+demos/
+
+# In-flight proposal workspaces (e.g., working/ussf-sda-rfi/) — same
+# rationale as proposals/: drafts, customer-specific content, audit notes.
+# (Use working/* + negation so the scaffold .gitkeep can be tracked.)
+working/*
+!working/.gitkeep
+
+# Calibration corpus per-proposal content — auto-drafts, final submissions,
+# edit notes contain real proposal text, customer info, and IP. Keep the
+# structure (README + _template) committed but never the per-slug content.
+corpus/calibration/*/
+!corpus/calibration/_template/
+
+# Personal Claude Code settings (may contain paths, tokens, allow-lists)
+.claude/settings.local.json
+
+# Claude Code agent worktrees — created on demand by the bridge, contain
+# throwaway branches and per-instance scratch. Never push.
+.claude/worktrees/
+
+# Personal editor launch config — contains hardcoded local paths
+.claude/launch.json
+
+# HubSpot pipeline scrubs + raw CRM exports — internal deal data, not proposal
+# content, but sensitive the same way. Mirrors scripts/check-git-boundary.sh's
+# is_sensitive_path() list; keep the two in sync.
+scrubs/
+
+# Demand signal register, candidate extracts, and generated briefs. Verbatim
+# customer requirements and our own gap admissions, aggregated across every
+# pursuit — a worse leak than any single proposal directory. Keep the scaffold
+# sentinel so the directory structure survives a fresh clone.
+signals/*
+!signals/.gitkeep
+campaign_rollup.md
+watchlist_table.md
+
+# ─────────────────────────────────────────────────────────────────
+# Local build artifacts — not source
+# ─────────────────────────────────────────────────────────────────
+
+# Node deps installed inside a proposal (e.g., puppeteer for HTML→PNG)
+**/node_modules/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# .docx renders of review/reference/index markdown — derived artifacts,
+# regenerated on demand by scripts/render-md-to-docx.py. Source of truth
+# is the .md sibling; don't track the rendered Word doc.
+/reference/*.docx
+/docs/*.docx
+/SKILLS.docx
+/SKILL-MERGE-PROPOSAL.docx
+/SKILLS-IMPLEMENTATION-*.docx
+
+# ─────────────────────────────────────────────────────────────────
+# OS / editor noise
+# ─────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
+
+# Microsoft Office owner/lock files. Created while a document is open and
+# normally removed on close, but they survive a crash or a force-quit and
+# then block re-renders and show up in git status.
+~$*
+.~lock.*#

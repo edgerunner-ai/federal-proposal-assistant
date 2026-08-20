@@ -1,0 +1,71 @@
+{
+  "title": "Commander Decision Cycle — Human-Machine Teaming",
+  "subtitle": "EdgeRunner accelerates the OODA loop — commander authority preserved at every stage",
+  "steps": [
+    {
+      "top_icon": "⬡",
+      "top_label": "COMMANDER",
+      "name": "COMMANDER INTENT",
+      "sub": "Mission tasking",
+      "lines": ["Mission objective", "Priority intel req.", "Time constraints", "Rules of engagement"],
+      "bottom_note": "Authority never delegated"
+    },
+    {
+      "name": "INTELLIGENCE FUSION",
+      "sub": "Automated ingestion",
+      "lines": ["OSINT / SIGINT feeds", "MSS NATO COP state", "Historical threat data", "Structured PIR data"],
+      "bottom_note": "Real-time or cached"
+    },
+    {
+      "name": "EDGERUNNER AI",
+      "sub": "On-device inference",
+      "lines": ["COA generation", "Threat assessment", "Targeting workflows", "Scenario simulation", "NLI synthesis"],
+      "bottom_note": "Operates DDIL / air-gapped"
+    },
+    {
+      "name": "COA RECOMMENDATION",
+      "sub": "Structured output",
+      "lines": ["Ranked COA options", "Risk + resource profile", "Time-phased execution", "Audit trail preserved"],
+      "bottom_note": "Machine-generated — human-reviewed"
+    },
+    {
+      "top_icon": "★",
+      "top_label": "DECISION",
+      "name": "COMMAND DECISION",
+      "sub": "Final authority",
+      "lines": ["Selects COA", "Issues OPORD / FRAGO", "Assigns resources", "Initiates execution"],
+      "bottom_note": "Human decides — always"
+    }
+  ],
+  "feedback": {
+    "label": "Commander assessment + battle damage feeds next planning cycle"
+  },
+  "principles": [
+    {
+      "title": "HUMAN IN COMMAND",
+      "sub": "AI generates options — commander selects and executes"
+    },
+    {
+      "title": "SPEED OF DECISION",
+      "sub": "Minutes to COA recommendation — not hours"
+    },
+    {
+      "title": "DDIL-READY",
+      "sub": "Full capability with or without connectivity"
+    }
+  ],
+  "footer": {
+    "brand": "EDGERUNNER AI",
+    "tagline": "Decision support at machine speed — decision authority at human hands",
+    "website": "edgerunner.ai"
+  },
+  "theme": {
+    "bg": "#191c20",
+    "accent": "#ee2929",
+    "panel": "#2a2d31",
+    "panel_border": "#393939",
+    "text": "#ffffff",
+    "muted": "#9f9f9f",
+    "body": "#c8c8c8"
+  }
+}

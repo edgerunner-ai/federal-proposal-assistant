@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Intelligence — EdgeRunner vs. Alternative Approaches</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#191c20;font-family:'Segoe UI',Inter,system-ui,-apple-system,sans-serif;
+       display:flex;justify-content:center;align-items:center;
+       min-height:100vh;padding:20px}
+  .canvas{width:1200px;background:#191c20;border-radius:12px;
+          overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+  .grid{display:grid;grid-template-columns:210px 1fr 1fr 1fr;gap:3px;margin-bottom:3px}
+  .dim{background:rgba(255,255,255,.02);border:1px solid #2a2d31;padding:11px 14px;display:flex;align-items:center}
+  .dim-title{color:#ffffff;font-size:13px;font-weight:700}
+  .dim-sub{color:#9f9f9f;font-size:11px;margin-top:2px}
+  .cell{padding:11px 14px;text-align:center}
+  .cell-prop{background:rgba(255,255,255,.02);border:1px solid #2a2d31}
+  .cell-open{background:rgba(200,162,0,.06);border:1px solid rgba(200,162,0,.3)}
+  .cell-hero{background:rgba(238,41,41,.06);border:1px solid rgba(238,41,41,.3)}
+  .icon{font-size:20px;margin-bottom:3px}
+  .icon-no{color:#555}
+  .icon-partial{color:#c8a200}
+  .icon-yes-hero{color:#ee2929}
+  .label-no{color:#666;font-size:12px}
+  .label-partial{color:#c8a200;font-size:12px}
+  .label-yes{color:#ffffff;font-size:12px;font-weight:600}
+  .sub-no{color:#555;font-size:11px;margin-top:2px}
+  .sub-partial{color:#8a7000;font-size:11px;margin-top:2px}
+  .sub-yes{color:#c8c8c8;font-size:11px;margin-top:2px}
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div style="padding:18px 32px 8px;text-align:center;border-bottom:2px solid #ee2929">
+    <h1 style="color:#ffffff;font-size:26px;font-weight:700;letter-spacing:.5px;text-transform:uppercase">Decision Intelligence — EdgeRunner vs. Alternative Approaches</h1>
+    <p style="color:#9f9f9f;font-size:14px;margin-top:4px">Purpose-built DDIL inference versus generic AI adapted to defense environments</p>
+  </div>
+
+  <div style="padding:18px 28px 16px">
+
+    <!-- Column headers -->
+    <div class="grid" style="margin-bottom:3px">
+      <div style="padding:10px 14px">
+        <div style="color:#9f9f9f;font-size:12px;font-weight:700;letter-spacing:.5px">DIMENSION</div>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid #393939;padding:10px 14px;text-align:center;border-radius:6px 0 0 0">
+        <div style="color:#777;font-size:14px;font-weight:700">Cloud-Dependent AI</div>
+        <div style="color:#555;font-size:11px;margin-top:2px">Requires persistent connectivity</div>
+      </div>
+      <div style="background:rgba(200,162,0,.08);border:1px solid rgba(200,162,0,.4);padding:10px 14px;text-align:center">
+        <div style="color:#c8a200;font-size:14px;font-weight:700">Generic Edge AI</div>
+        <div style="color:#8a7000;font-size:11px;margin-top:2px">Commercial edge AI, adapted</div>
+      </div>
+      <div style="background:rgba(238,41,41,.12);border:1px solid #ee2929;padding:10px 14px;text-align:center;border-radius:0 6px 0 0">
+        <div style="color:#ee2929;font-size:14px;font-weight:700">EdgeRunner AI</div>
+        <div style="color:#c8c8c8;font-size:11px;margin-top:2px">Purpose-built for the warfighter</div>
+      </div>
+    </div>
+
+    <!-- Row 1: DDIL Operation -->
+    <div class="grid">
+      <div class="dim"><div>
+        <div class="dim-title">DDIL Operation</div>
+        <div class="dim-sub">Inference without connectivity</div>
+      </div></div>
+      <div class="cell cell-prop">
+        <div class="icon icon-no">✗</div>
+        <div class="label-no">Not possible</div>
+        <div class="sub-no">No connectivity = no AI</div>
+      </div>
+      <div class="cell cell-open">
+        <div class="icon icon-partial">~</div>
+        <div class="label-partial">Degraded</div>
+        <div class="sub-partial">Accuracy drops offline</div>
+      </div>
+      <div class="cell cell-hero">
+        <div class="icon icon-yes-hero">✓</div>
+        <div class="label-yes">Full capability</div>
+        <div class="sub-yes">Identical at zero connectivity</div>
+      </div>
+    </div>
+
+    <!-- Row 2: On-Device Inference -->
+    <div class="grid">
+      <div class="dim"><div>
+        <div class="dim-title">On-Device Inference</div>
+        <div class="dim-sub">SWaP-constrained hardware</div>
+      </div></div>
+      <div class="cell cell-prop">
+        <div class="icon icon-no">✗</div>
+        <div class="label-no">Cloud-only</div>
+        <div class="sub-no">No edge deployment path</div>
+      </div>
+      <div class="cell cell-open">
+        <div class="icon icon-partial">~</div>
+        <div class="label-partial">Possible — high power</div>
+        <div class="sub-partial">Not optimized for SWaP</div>
+      </div>
+      <div class="cell cell-hero">
+        <div class="icon icon-yes-hero">✓</div>
+        <div class="label-yes">SWaP-optimized</div>
+        <div class="sub-yes">Rugged hardware certified</div>
+      </div>
+    </div>
+
+    <!-- Row 3: Mission-Specific LoRA -->
+    <div class="grid">
+      <div class="dim"><div>
+        <div class="dim-title">Mission-Specific LoRA</div>
+        <div class="dim-sub">Doctrine-trained fine-tuning</div>
+      </div></div>
+      <div class="cell cell-prop">
+        <div class="icon icon-no">✗</div>
+        <div class="label-no">Generic LLM only</div>
+        <div class="sub-no">No doctrine alignment</div>
+      </div>
+      <div class="cell cell-open">
+        <div class="icon icon-partial">~</div>
+        <div class="label-partial">Generic fine-tuning</div>
+        <div class="sub-partial">Not NATO-doctrine trained</div>
+      </div>
+      <div class="cell cell-hero">
+        <div class="icon icon-yes-hero">✓</div>
+        <div class="label-yes">NATO AJP-aligned</div>
+        <div class="sub-yes">COA, targeting, OPORD pre-trained</div>
+      </div>
+    </div>
+
+    <!-- Row 4: MSS NATO Integration -->
+    <div class="grid">
+      <div class="dim"><div>
+        <div class="dim-title">MSS NATO Integration</div>
+        <div class="dim-sub">Native COP + simulation layer</div>
+      </div></div>
+      <div class="cell cell-prop">
+        <div class="icon icon-no">✗</div>
+        <div class="label-no">No integration</div>
+        <div class="sub-no">Custom development required</div>
+      </div>
+      <div class="cell cell-open">
+        <div class="icon icon-partial">~</div>
+        <div class="label-partial">API-possible</div>
+        <div class="sub-partial">Requires custom integration</div>
+      </div>
+      <div class="cell cell-hero">
+        <div class="icon icon-yes-hero">✓</div>
+        <div class="label-yes">Native MSS NATO API</div>
+        <div class="sub-yes">COP-aware inference, zero dev</div>
+      </div>
+    </div>
+
+    <!-- Row 5: Data Sovereignty -->
+    <div class="grid">
+      <div class="dim"><div>
+        <div class="dim-title">Data Sovereignty</div>
+        <div class="dim-sub">Zero data egress</div>
+      </div></div>
+      <div class="cell cell-prop">
+        <div class="icon icon-no">✗</div>
+        <div class="label-no">Data leaves device</div>
+        <div class="sub-no">Cloud logging required</div>
+      </div>
+      <div class="cell cell-open">
+        <div class="icon icon-partial">~</div>
+        <div class="label-partial">Partial</div>
+        <div class="sub-partial">Telemetry may egress</div>
+      </div>
+      <div class="cell cell-hero">
+        <div class="icon icon-yes-hero">✓</div>
+        <div class="label-yes">Zero data egress</div>
+        <div class="sub-yes">No external transmission</div>
+      </div>
+    </div>
+
+    <!-- Row 6: Classified Environments -->
+    <div class="grid">
+      <div class="dim"><div>
+        <div class="dim-title">Classified Environments</div>
+        <div class="dim-sub">IL5 / classified edge operation</div>
+      </div></div>
+      <div class="cell cell-prop">
+        <div class="icon icon-no">✗</div>
+        <div class="label-no">Not compatible</div>
+        <div class="sub-no">Cloud dependency blocks classified use</div>
+      </div>
+      <div class="cell cell-open">
+        <div class="icon icon-partial">~</div>
+        <div class="label-partial">Not validated</div>
+        <div class="sub-partial">Commercial, not classified-tested</div>
+      </div>
+      <div class="cell cell-hero">
+        <div class="icon icon-yes-hero">✓</div>
+        <div class="label-yes">Classified-edge ready</div>
+        <div class="sub-yes">Space Force + Navy operational</div>
+      </div>
+    </div>
+
+    <!-- Row 7: Operator NLI -->
+    <div class="grid">
+      <div class="dim"><div>
+        <div class="dim-title">Operator NLI</div>
+        <div class="dim-sub">Natural language command interface</div>
+      </div></div>
+      <div class="cell cell-prop">
+        <div class="icon icon-no">✗</div>
+        <div class="label-no">Generic chatbot</div>
+        <div class="sub-no">Not domain-specialized</div>
+      </div>
+      <div class="cell cell-open">
+        <div class="icon icon-partial">~</div>
+        <div class="label-partial">Basic NLI</div>
+        <div class="sub-partial">Not mission-specialized</div>
+      </div>
+      <div class="cell cell-hero">
+        <div class="icon icon-yes-hero">✓</div>
+        <div class="label-yes">Forward commander NLI</div>
+        <div class="sub-yes">Operational with USASOC SOF Pilot</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="background:#111315;padding:10px 32px;display:flex;justify-content:space-between;align-items:center">
+    <span style="color:#ee2929;font-size:13px;font-weight:700;opacity:.8;letter-spacing:.5px;font-family:'Segoe UI',Inter,system-ui,sans-serif">EDGERUNNER AI</span>
+    <span style="color:#9f9f9f;font-size:12px;font-family:'Segoe UI',Inter,system-ui,sans-serif">The only AI purpose-built for disconnected, denied, intermittent, and limited environments</span>
+    <span style="color:#9f9f9f;font-size:12px;font-family:'Segoe UI',Inter,system-ui,sans-serif">edgerunner.ai</span>
+  </div>
+
+</div>
+</body>
+</html>
