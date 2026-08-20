@@ -381,7 +381,7 @@ where the ledger is tracked — a tracked file is still destroyable by an uncomm
 
 | Path | Contains | Why it is tracked |
 |---|---|---|
-| `my-company/**` | Company profile, evidence ledger, past performance, claim envelope, collateral | This repo is org-private to explicit collaborators, so the knowledge base lives in git instead of travelling as snapshot zips. It is still company IP — move it back out before making this repo internal or public. |
+| `my-company/**` | Company profile, evidence ledger, past performance, claim envelope, collateral | Tracked so collaborators stop working from stale snapshot zips. **Readable by every `edgerunner-ai` org member**, not just the direct collaborators: the org base repository permission is `write` and flows to all members, and GitHub does not permit a repo permission below the org base. Write for that audience, and move `my-company/` back out before making the repo internal or public. |
 | `docs/framework-audit-2026-05.md` | Internal framework audit, names pursuits | Low sensitivity, no downstream consumer. Moved out of `reviews/` on 2026-08-20 so its path stops tripping the boundary guard. |
 
 Confirm current state any time:

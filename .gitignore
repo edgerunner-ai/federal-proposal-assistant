@@ -2,11 +2,26 @@
 # Proprietary / per-company content — NEVER push to GitHub
 # ─────────────────────────────────────────────────────────────────
 
-# NOTE: my-company/ is TRACKED in this repository. This repo is owned by the
-# EdgeRunner AI organization and is org-private (explicit collaborators only),
-# so the company knowledge base lives in git rather than travelling as
-# hand-made snapshot zips. It is still company IP — do not make this repo
-# internal or public without moving my-company/ back out first.
+# NOTE: my-company/ is TRACKED in this repository, which is owned by the
+# EdgeRunner AI organization. The company knowledge base lives in git rather
+# than travelling as hand-made snapshot zips, so collaborators stop working
+# from stale copies.
+#
+# KNOW WHO CAN READ IT. The repo's visibility is private, but private in an
+# org means "not visible outside the org" — it does NOT mean invite-only.
+# The edgerunner-ai base repository permission is `write`, which flows to
+# every org member automatically, so as of 2026-08-20 all ~19 members can
+# read and push here, not just the two direct collaborators. GitHub does not
+# allow a repository permission below the org base permission, so this cannot
+# be tightened at the repo level — it takes an org owner lowering the base
+# permission, or moving the repo to a personal account.
+#
+# What that means in practice: treat everything under my-company/ as readable
+# by any EdgeRunner employee. That is an acceptable audience for the profile,
+# capabilities, and evidence ledger. Judge anything more sensitive than that
+# — loss postmortems, pricing history, partner-specific terms — against this
+# audience before committing it, and never make the repo internal or public
+# without moving my-company/ back out first.
 
 # Active and past proposal workspaces: solicitations, customer context,
 # drafts, reviews, pricing, teaming strategy — all sensitive.
