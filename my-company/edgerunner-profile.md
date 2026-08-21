@@ -31,7 +31,7 @@ EdgeRunner AI is a distributed tactical layer enabling secure, on-device executi
 ### One-Sentence (for bios and footnotes)
 EdgeRunner AI provides on-device AI execution, agentic workflows, and operational data capture for disconnected tactical environments.
 
-**Source-of-truth pointer:** `my-company/company-description.md` (overview text); `my-company/past-proposals/mystic-depot-cso-2026/loe1-evaluation-harness.md` §3.1 (operating-income projection).
+**Source-of-truth pointer:** `my-company/company-description.md` (overview text); `my-company/past-proposals/mystic-depot-cso-2026/loe1-evaluation-harness.md` Section 3.1 (operating-income projection).
 
 ---
 
@@ -54,7 +54,7 @@ CAGE: 9Z176 · UEI: SLZTJUA8DBD3 · NAICS: 541511 · NASA SEWP · CDAO Tradewind
 ### Set-Aside Eligibility
 - Small business under NAICS 541511 — Yes (formal SBA size)
 - 8(a) / SDB / WOSB / SDVOSB / HUBZone — None held
-- Nontraditional Defense Contractor — Yes (claimed and material to OTA submissions, per Mystic Depot CSO §3.1)
+- Nontraditional Defense Contractor — Yes (claimed and material to OTA submissions, per Mystic Depot CSO Section 3.1)
 
 **Source-of-truth pointer:** `my-company/contract-vehicles.md`.
 
@@ -65,7 +65,7 @@ CAGE: 9Z176 · UEI: SLZTJUA8DBD3 · NAICS: 541511 · NASA SEWP · CDAO Tradewind
 | Vehicle | Status | Notes |
 |---|---|---|
 | **NASA SEWP** | Awardable | Solutions for Enterprise-Wide Procurement — government-wide IT IDIQ |
-| **CDAO Tradewinds CSO** | Direct-Award holder | USSF contract awarded under this pathway (see §6) |
+| **CDAO Tradewinds CSO** | Direct-Award holder | USSF contract awarded under this pathway (see Section 6) |
 | CDAO Tradewinds Marketplace | "Awardable" | Enables procurement through CDAO Marketplace without re-competing (distinct vehicle from Tradewinds CSO) |
 | GSA Schedule (MAS) | Not held |
 | Other IDIQs / consortium memberships | None held beyond the above (no SOSSEC / NSTXL / TReX) |
@@ -77,14 +77,14 @@ CAGE: 9Z176 · UEI: SLZTJUA8DBD3 · NAICS: 541511 · NASA SEWP · CDAO Tradewind
 ## 4. Security Posture & Accreditations
 
 ### Authorization posture (corrected 2026-07-23 to match the 2026-07-02 accreditation adjudication and the current "honesty line" — cite an IATT as an IATT, not an ATO)
-- **IL-6 Interim Authority to Test (IATT) — Active.** Covers the EdgeRunner AI Runtime + models. **State IL-6 IATT as a standalone claim.** Full IL-6 ATO expected October 2026 at ICOP deployment. *Do not describe this as an "ATO," "accredited," or "granted an ATO."* Per Bill's 2026-07-02 direction, **do not attribute the IATT to PMW 120 / Navy ICOP** in collateral; list Navy ICOP / PMW 120 separately as a program-of-record engagement (see §6). *(The July 2026 one-page slicks pair "Navy ICOP · IL-6 IATT" in one evidence cell — flagged for confirmation in `capabilities.md` Maintainer notes; keep them separate here.)*
+- **IL-6 Interim Authority to Test (IATT) — Active.** Covers the EdgeRunner AI Runtime + models. **State IL-6 IATT as a standalone claim.** Full IL-6 ATO expected October 2026 at ICOP deployment. *Do not describe this as an "ATO," "accredited," or "granted an ATO."* Per Bill's 2026-07-02 direction, **do not attribute the IATT to PMW 120 / Navy ICOP** in collateral; list Navy ICOP / PMW 120 separately as a program-of-record engagement (see Section 6). *(The July 2026 one-page slicks pair "Navy ICOP · IL-6 IATT" in one evidence cell — flagged for confirmation in `capabilities.md` Maintainer notes; keep them separate here.)*
 - **IL-5 ATO — in progress** (U.S. Space Force SSC), expected August 2026. *Previously recorded here as "Active," which was inaccurate. Do not state as "in hand."*
 - Accreditation covers the AI Runtime + models only — WarClaw, Ground Truth, EVELYN, and DORIS are **not** separately accredited.
 - *Framing for proposal use:* an authorization from one program does not automatically translate to another command — each Authorizing Official issues their own. The credibility weight is that EdgeRunner is operating under a federal Authorizing Official's IL-6 IATT for the runtime + models, evidencing security architecture and compliance posture rather than blanket cross-command authority.
 
 ### Authorization Footprint
 - Navy approved-applications list — EdgeRunner is listed (via ICOP)
-- IL-2 through IL-6 multi-domain operation supported (per akamai-gcds white paper §3.1)
+- IL-2 through IL-6 multi-domain operation supported (per akamai-gcds white paper Section 3.1)
 - SECRET / TS spaces supported (per Application Arsenal capabilities brief)
 - CAC-enabled access to secure DoD networks
 - Cross-domain deployment patterns supported
@@ -99,7 +99,7 @@ CAGE: 9Z176 · UEI: SLZTJUA8DBD3 · NAICS: 541511 · NASA SEWP · CDAO Tradewind
 - NIST SP 800-171 / SPRS score: `[TODO: source needed]` (AFRL JADPACT security questionnaire answered using NIST 800-171 framework throughout, but no published score in repo)
 - ISO 27001 / SOC 2 / FedRAMP: Not held — do not claim
 
-**Source-of-truth pointer:** `my-company/capabilities.md` §Secure Deployment & IL Architecture; `my-company/evidence-ledger.json` EV-022 (IL-6 IATT), EV-014 (Navy ICOP); `my-company/past-proposals/jadpact-mash-baa-2026/security-questionnaire.md`.
+**Source-of-truth pointer:** `my-company/capabilities.md` Section Secure Deployment & IL Architecture; `my-company/evidence-ledger.json` EV-022 (IL-6 IATT), EV-014 (Navy ICOP); `my-company/past-proposals/jadpact-mash-baa-2026/security-questionnaire.md`.
 
 ---
 
@@ -173,18 +173,24 @@ CAGE: 9Z176 · UEI: SLZTJUA8DBD3 · NAICS: 541511 · NASA SEWP · CDAO Tradewind
 
 | Customer | Program | Role | Status | Source / Notes |
 |---|---|---|---|---|
-| USASOC — 1st SFG | SOF AI Pilot | Vendor (deployment) | Operational | `past-performance.md`; EV-001 |
-| USASOC — 7th SFG | SOF AI Pilot | Vendor (deployment) | Operational | `past-performance.md`; EV-002 |
-| USASOC — 10th SFG | SOF AI Pilot | Vendor (deployment) | Operational | `past-performance.md`; EV-003 |
-| JFK Special Warfare Center & School | SOF Training Integration | Vendor (deployment) | Deployed | `past-performance.md`; EV-004 |
-| 4th Infantry Division | NGC2 (Next-Gen C2) | Vendor (deployment) | Deployed | First conventional-force deployment; EV-005 |
+| USASOC — 1st SFG | SOF AI Pilot | Vendor (deployment) | Operational | `past-performance.md` Section 1; EV-099, EV-108, EV-059 |
+| USASOC — 7th SFG | SOF AI Pilot | Vendor (deployment) | Operational | `past-performance.md` Section 1; EV-099, EV-108, EV-059 |
+| USASOC — 10th SFG | SOF AI Pilot | Vendor (deployment) | Operational | `past-performance.md` Section 1; EV-099, EV-108, EV-059 |
+| JFK Special Warfare Center & School | SOF Training Integration | Vendor (deployment) | **UNVERIFIED** | **No ledger entry exists.** The former EV-004 cite pointed at a Space Force item after the 2026-07-24 rebuild. Do not cite until a ledger entry is created |
+| 4th Infantry Division | NGC2 (Next-Gen C2) | Vendor (deployment) | Deployed | First conventional-force deployment; EV-099. Separate 1st SBCT sustainment work: EV-109 |
 | **U.S. Navy — ICOP (NIWC Atlantic / PMW 120)** | **Integrated Common Operating Picture** | **Vendor (program-of-record deployment)** | **Active** | Furthest-along engagement; program of record; TRL 8. On Navy approved-applications list. Full IL-6 ATO expected Oct 2026 at ICOP deployment. *(State the runtime's IL-6 IATT separately — do not attribute the IATT to ICOP in collateral.)* EV-014 + EV-022. |
 | **U.S. Space Force** | **TradeWinds CSO Direct Award (transitioned from prior research collab)** | **Prime, production contract** | **Active** | EV-023. Distinct from the Tradewinds Marketplace Awardable status (EV-020). |
-| **U.S. Space Systems Command (SSC)** | **EVELYN — edge dataset rapid-generation** | **Vendor** | **Operational** | Per WarClaw/JATF brief §5; ledger entry needed. |
-| **SDA TAP Lab (Space Development Agency)** | **EVELYN — edge dataset rapid-generation** | **Vendor** | **Operational** | Per WarClaw/JATF brief §5; ledger entry needed. |
-| DAF / HNI-ES | AFSC-specific AI on government laptops (Acquisitions, Logistics) | Vendor | `[TODO: status]` | `capabilities.md` §Proof Points |
+| **U.S. Space Systems Command (SSC)** | **EVELYN — edge dataset rapid-generation** | **Vendor** | **Operational** | Per WarClaw/JATF brief Section 5; ledger entry needed. |
+| **SDA TAP Lab (Space Development Agency)** | **EVELYN — edge dataset rapid-generation** | **Vendor** | **Operational** | Per WarClaw/JATF brief Section 5; ledger entry needed. |
+| DAF / HNI-ES | AFSC-specific AI on government laptops (Acquisitions, Logistics) | Vendor | `[TODO: status]` | `capabilities.md` Section Proof Points |
 | SAF/SQ (Maj Gen Purdy) | IL-5 Azure portal — acquisitions AI pilot | Vendor | `[TODO: status]` | `capabilities.md`; JADPACT technical volume |
 | JSOC | Pilot — `[TODO: details restricted]` | `[TODO: role]` | Pilot | EV-061 — restricted; cite only in Government-distribution proposals (Distribution B+). |
+
+
+> **EV-column corrected 2026-08-20.** This table previously cited EV-001 through EV-005 for the
+> rows above. Those IDs became U.S. Space Force order items in the 2026-07-24 ledger rebuild and the
+> mapping was never re-pointed, so drafts citing them passed `/evidence-check` while pointing at the
+> wrong evidence. `my-company/past-performance.md` Section 1 is the maintained narrative for these rows.
 
 ### Research Agreements & Collaborations
 
@@ -214,13 +220,13 @@ CAGE: 9Z176 · UEI: SLZTJUA8DBD3 · NAICS: 541511 · NASA SEWP · CDAO Tradewind
 
 > **Sync gaps to fix in the ledger and human-readable files:**
 > - `past-performance.md` does not yet reflect Navy ICOP (EV-014), IL-6 ATO for CMI (EV-022), USSF Tradewinds CSO Direct Award (EV-023), JADPACT/MASH submission, Mystic Depot CSO submission, or the WarClaw release.
-> - `evidence-ledger.json` does not yet contain entries for: EVELYN at SDA TAP Lab; EVELYN at U.S. Space Systems Command; WarClaw product (capability + April 2 release); OpenClaw framework; SOCOM JATF customer engagement; NASA SEWP awardable status; the restructured partnership categories in §9.
+> - `evidence-ledger.json` does not yet contain entries for: EVELYN at SDA TAP Lab; EVELYN at U.S. Space Systems Command; WarClaw product (capability + April 2 release); OpenClaw framework; SOCOM JATF customer engagement; NASA SEWP awardable status; the restructured partnership categories in Section 9.
 
 ---
 
 ## 7. Active Programs (currently in flight)
 
-> WarClaw is a **released product**, not an in-flight program — see §5 (Products) and §6 (Product Releases). The active programs below are pursuit/submission efforts, not the product roadmap.
+> WarClaw is a **released product**, not an in-flight program — see Section 5 (Products) and Section 6 (Product Releases). The active programs below are pursuit/submission efforts, not the product roadmap.
 
 | Slug | Opportunity | Status | Notes |
 |---|---|---|---|
@@ -237,7 +243,7 @@ CAGE: 9Z176 · UEI: SLZTJUA8DBD3 · NAICS: 541511 · NASA SEWP · CDAO Tradewind
 | `dod-openweight-whitepaper` | `[TODO: full title]` | In progress | |
 | `extic-26-2`, `jadpact-mash-baa-2026`, `ngb-enterprise-data-ai`, `senate-manchurian-models`, `senate-prc-open-source-models` | `[TODO: status — directories present in proposals/ but not in CLAUDE.md active list]` | | |
 
-**Source-of-truth pointer:** `CLAUDE.md` §Active Proposals; `proposals/` directory; `my-company/past-proposals/` for closed/submitted artifacts.
+**Source-of-truth pointer:** `CLAUDE.md` Section Active Proposals; `proposals/` directory; `my-company/past-proposals/` for closed/submitted artifacts.
 
 ---
 
@@ -291,7 +297,7 @@ Companies whose infrastructure EdgeRunner runs on or integrates with.
 | Armada | Edge infrastructure |
 | Akamai | Distributed edge infrastructure for defense workloads |
 | AWS | Cloud infrastructure |
-| Microsoft (Azure) | Cloud infrastructure (also includes IL-5 Azure portal pilot under SAF/SQ — see §6) |
+| Microsoft (Azure) | Cloud infrastructure (also includes IL-5 Azure portal pilot under SAF/SQ — see Section 6) |
 
 ### 9.3 AI Frontier-Model Providers
 Frontier model providers whose models EdgeRunner integrates with or hosts on-device.
@@ -318,7 +324,7 @@ Companies EdgeRunner has teamed with on a federal solicitation, in any prime/sub
 *(Append rows here as new teaming relationships are formed — one row per company on first use, regardless of how many subsequent pursuits.)*
 
 ### Strategic Technology Partnerships (named in product collateral)
-Per the SOCOM WarClaw/JATF brief §5: "EdgeRunner is currently funded through Series A ($17.5M) and maintains strategic partnerships with **NVIDIA, Intel, and Defense Unicorns**." NVIDIA and Defense Unicorns do not yet have a clean home in the four categories above:
+Per the SOCOM WarClaw/JATF brief Section 5: "EdgeRunner is currently funded through Series A ($17.5M) and maintains strategic partnerships with **NVIDIA, Intel, and Defense Unicorns**." NVIDIA and Defense Unicorns do not yet have a clean home in the four categories above:
 - **NVIDIA** — silicon partnership (could fit Resellers or a new "Silicon" category alongside AMD); `[TODO: confirm category]`
 - **Defense Unicorns** — defense software partner; `[TODO: confirm category — likely Teaming or Infrastructure]`
 - **Intel** — already strategic per the JATF brief; `[TODO: confirm whether Reseller or Infrastructure]`
@@ -382,12 +388,12 @@ EdgeRunner default markings (full text in `my-company/distribution-statements.md
 
 | Date | Change | Source-of-truth |
 |---|---|---|
-| 2026-07-23 | **Accreditation correction + converged-stack alignment.** Corrected §4, the footer bar, the differentiator list, and the Navy ICOP past-performance row from "IL-6 ATO Active" / "IL-5 ATO Active" to the adjudicated posture — **active IL-6 IATT** (runtime + models; full IL-6 ATO expected Oct 2026), **IL-5 ATO in progress** (expected Aug 2026) — and stopped attributing the IL-6 IATT to Navy ICOP per Bill's 2026-07-02 direction. Companion to the same-day rewrite of `capabilities.md` around the converged five-layer stack (models→adapters→runtime→WarClaw→Ground Truth) and the addition of WarClaw, DORIS, refreshed Ground Truth/EVELYN, and evidence entries EV-077/078/079/094/095/096. **§5 product prose reconciled to the rewrite** — Products table reframed to the five-layer stack with maturity labels, Ground Truth and DORIS added, EVELYN throughput metric corrected (~7,800 labels/hr laptop, replacing the stale "100+ images/sec"), technical-capabilities summary and differentiators aligned. | `capabilities.md`; `evidence-ledger.json` EV-022 |
-| 2026-05-08 (v2) | **Bill clarifications + WarClaw integration.** Added WarClaw (product, released 2026-04-02), OpenClaw (framework), EVELYN deployments at SDA TAP Lab and U.S. Space Systems Command, SOCOM JATF customer engagement. Confirmed IL-6 ATO covers CMI workloads. Resolved business size (Small under NAICS 541511, no socioeconomic certs). Added NASA SEWP as awardable IDIQ. Confirmed no GSA MAS, ISO 27001, SOC 2, or FedRAMP. **Restructured §9 partnerships into four categories** (Resellers / Infrastructure Vendors / AI Frontier-Model Providers / Teaming Partners log) per Bill's direction; flagged ledger-restructure follow-ups. Confirmed Tyler Xuan Saltsman as Co-Founder & CEO. Source files: `D:\One Drive Excluded Docs\SOCOM Warclaw JATF.docx`; `D:\One Drive Excluded Docs\Press Release_ EdgeRunner Releases "WarClaw"...docx`. | This file |
+| 2026-07-23 | **Accreditation correction + converged-stack alignment.** Corrected Section 4, the footer bar, the differentiator list, and the Navy ICOP past-performance row from "IL-6 ATO Active" / "IL-5 ATO Active" to the adjudicated posture — **active IL-6 IATT** (runtime + models; full IL-6 ATO expected Oct 2026), **IL-5 ATO in progress** (expected Aug 2026) — and stopped attributing the IL-6 IATT to Navy ICOP per Bill's 2026-07-02 direction. Companion to the same-day rewrite of `capabilities.md` around the converged five-layer stack (models→adapters→runtime→WarClaw→Ground Truth) and the addition of WarClaw, DORIS, refreshed Ground Truth/EVELYN, and evidence entries EV-077/078/079/094/095/096. **Section 5 product prose reconciled to the rewrite** — Products table reframed to the five-layer stack with maturity labels, Ground Truth and DORIS added, EVELYN throughput metric corrected (~7,800 labels/hr laptop, replacing the stale "100+ images/sec"), technical-capabilities summary and differentiators aligned. | `capabilities.md`; `evidence-ledger.json` EV-022 |
+| 2026-05-08 (v2) | **Bill clarifications + WarClaw integration.** Added WarClaw (product, released 2026-04-02), OpenClaw (framework), EVELYN deployments at SDA TAP Lab and U.S. Space Systems Command, SOCOM JATF customer engagement. Confirmed IL-6 ATO covers CMI workloads. Resolved business size (Small under NAICS 541511, no socioeconomic certs). Added NASA SEWP as awardable IDIQ. Confirmed no GSA MAS, ISO 27001, SOC 2, or FedRAMP. **Restructured Section 9 partnerships into four categories** (Resellers / Infrastructure Vendors / AI Frontier-Model Providers / Teaming Partners log) per Bill's direction; flagged ledger-restructure follow-ups. Confirmed Tyler Xuan Saltsman as Co-Founder & CEO. Source files: `D:\One Drive Excluded Docs\SOCOM Warclaw JATF.docx`; `D:\One Drive Excluded Docs\Press Release_ EdgeRunner Releases "WarClaw"...docx`. | This file |
 | 2026-05-08 (v1) | **Initial consolidated profile.** Captures every EdgeRunner-related fact in the repository, including Navy ICOP / IL-6 ATO / USSF Tradewinds CSO Direct Award additions made to the evidence ledger on 2026-05-05, and recent past-proposal artifacts (JADPACT/MASH, Mystic Depot CSO) submitted in March 2026. | This file (assembled from all `my-company/` sources) |
 | 2026-05-05 | Evidence ledger updated with EV-014 (Navy ICOP), EV-022 (IL-6 ATO), EV-023 (USSF TradeWinds CSO Direct Award), EV-050–EV-056 (HP, Panasonic, AMD, Intel, Akamai, Lockheed, BigBear partnerships) | `my-company/evidence-ledger.json` |
 | 2026-04-22 | Evidence ledger seeded from existing profile files | `my-company/evidence-ledger.json` |
-| 2026-04-22 | `my-company/` directory populated from legacy `Claude Code Projects/proposals/reference/` and `proposals/inputs/02_edgeRunner/` | `my-company/README.md` §Migration note |
+| 2026-04-22 | `my-company/` directory populated from legacy `Claude Code Projects/proposals/reference/` and `proposals/inputs/02_edgeRunner/` | `my-company/README.md` Section Migration note |
 
 ---
 
@@ -395,15 +401,15 @@ EdgeRunner default markings (full text in `my-company/distribution-statements.md
 
 ### Source-file sync work (high-priority — propagate this profile back to the rest of `my-company/`)
 - **Propagate** Navy ICOP, IL-6 ATO for CMI, USSF Tradewinds CSO Direct Award, JADPACT/MASH submission, Mystic Depot CSO submission, WarClaw release, EVELYN at SDA TAP Lab, EVELYN at U.S. Space Systems Command, NASA SEWP awardable status, and SOCOM JATF engagement into `past-performance.md`, `capabilities.md`, `contract-vehicles.md`, and `components-table.md`.
-- **Create** `my-company/partnerships.md` using the four-category structure in §9 (Resellers / Infrastructure Vendors / AI Frontier-Model Providers / Teaming Partners log). The evidence ledger references this file as the source for EV-050–EV-056 but it does not exist on disk.
+- **Create** `my-company/partnerships.md` using the four-category structure in Section 9 (Resellers / Infrastructure Vendors / AI Frontier-Model Providers / Teaming Partners log). The evidence ledger references this file as the source for EV-050–EV-056 but it does not exist on disk.
 - **Re-categorize** evidence-ledger entries EV-050 (HP), EV-051 (Panasonic), EV-052 (AMD) from `commercial OEM` to `reseller`. EV-054 (Akamai) re-type from `defense integrator` to `infrastructure vendor`.
 - **Add ledger entries** for: Carahsoft (reseller), Armada (infrastructure + teaming log), AWS (infrastructure), Microsoft (infrastructure), OpenAI / Meta / Google / xAI (AI frontier-model providers), NVIDIA (technology partner — category TBD), Defense Unicorns (technology partner — category TBD), Dynamo AI (teaming log — Application Arsenal), Metronome (teaming log), WarClaw (capability), OpenClaw (framework), EVELYN at SDA TAP Lab, EVELYN at U.S. Space Systems Command, SOCOM JATF engagement, NASA SEWP vehicle.
 - **Move** the SOCOM JATF brief into `my-company/past-proposals/socom-warclaw-jatf-2026/` with an `_index.md` matching the JADPACT/Mystic-Depot pattern.
 - **Move / reference** the WarClaw press release as a `my-company/capability-papers/` entry alongside `mil-deflect/mil_deflect.pdf` and `edgerunner-20b/EdgeRunner_20B.pdf`.
 
 ### Categorization questions for Bill
-- Where do **NVIDIA**, **Intel**, and **Defense Unicorns** belong in the four-category partnership structure? (Currently flagged as `[TODO: confirm category]` in §9.)
-- Should the running teaming log in §9.4 also include **AFRL**, **ARL**, and other research collaborators, or are those distinct enough to keep in §6?
+- Where do **NVIDIA**, **Intel**, and **Defense Unicorns** belong in the four-category partnership structure? (Currently flagged as `[TODO: confirm category]` in Section 9.)
+- Should the running teaming log in Section 9.4 also include **AFRL**, **ARL**, and other research collaborators, or are those distinct enough to keep in Section 6?
 
 ### Federal-profile fields still unfilled (no source in repo)
 - Headcount and other office locations
