@@ -1,7 +1,7 @@
 {
-  "_comment": "EdgeRunner AI evidence ledger. Seeded 2026-06-03 from U.S. Space Force Order FA701426P0009 (source: contract DD Form 1155 + public press release 2026-04-02). Conforms to reference/schemas/evidence-ledger.schema.json. Append-only; retire rather than delete. | 2026-07-24: file was overwritten by an undetermined process, losing ~49 entries (EV-007..EV-106 range) that were never committed to git. 2026-07-26: the 9 IDs cited by dia-dma-frontier-llm drafts (EV-022/032/040/048/072/073/074/099/102) plus EV-030/031/104 were reconstructed from citation contexts, the 2026-07-22 evidence-check report, and project memory. Remaining lost IDs (heavily cited: EV-014 Navy ICOP, EV-020/023, EV-041-061, EV-070-096, EV-100-106) still need reconstruction before their proposals are reactivated. PREVENTION: commit this file after every append (it IS git-tracked); an uncommitted ledger has no recovery path. | 2026-07-26 full reconstruction: +43 entries (EV-010..EV-106 range) rebuilt from citation contexts + evidence-check reports + memory; EV-030/EV-031 content swapped to match historical numbering (030=Mil-Deflect, 031=frontier-parity); EV-072 enriched with NGC2 TRL-7 anchor. 2026-07-26 (final): EV-007/008/009 (EVELYN throughput, drone dataset, adversarial robustness), EV-077 (EVELYN maturity/xTech), EV-092 (quantization ghost), EV-095 (action-authorization frontier) created from capabilities.md attributions; EV-073 corrected (no TRL claimed for Ground Truth, per capabilities.md 2026-07-23) and EV-094 enriched. Ledger is now complete against every ID referenced anywhere in the workspace. Likely overwrite cause: a ledger \"refresh\"/re-seed during tradewinds-cdao-adl-p2 work (that proposal's evidence-check notes a prior refresh that renumbered IDs).",
+  "_comment": "EdgeRunner AI evidence ledger. Seeded 2026-06-03 from U.S. Space Force Order FA701426P0009 (source: contract DD Form 1155 + public press release 2026-04-02). Conforms to reference/schemas/evidence-ledger.schema.json. Append-only; retire rather than delete. | 2026-07-24: file was overwritten by an undetermined process, losing ~49 entries (EV-007..EV-106 range) that were never committed to git. 2026-07-26: the 9 IDs cited by dia-dma-frontier-llm drafts (EV-022/032/040/048/072/073/074/099/102) plus EV-030/031/104 were reconstructed from citation contexts, the 2026-07-22 evidence-check report, and project memory. Remaining lost IDs (heavily cited: EV-014 Navy ICOP, EV-020/023, EV-041-061, EV-070-096, EV-100-106) still need reconstruction before their proposals are reactivated. PREVENTION: commit this file after every append (it IS git-tracked); an uncommitted ledger has no recovery path. | 2026-07-26 full reconstruction: +43 entries (EV-010..EV-106 range) rebuilt from citation contexts + evidence-check reports + memory; EV-030/EV-031 content swapped to match historical numbering (030=Mil-Deflect, 031=frontier-parity); EV-072 enriched with NGC2 TRL-7 anchor. 2026-07-26 (final): EV-007/008/009 (EVELYN throughput, drone dataset, adversarial robustness), EV-077 (EVELYN maturity/xTech), EV-092 (quantization ghost), EV-095 (action-authorization frontier) created from capabilities.md attributions; EV-073 corrected (no TRL claimed for Ground Truth, per capabilities.md 2026-07-23) and EV-094 enriched. Ledger is now complete against every ID referenced anywhere in the workspace. Likely overwrite cause: a ledger \"refresh\"/re-seed during tradewinds-cdao-adl-p2 work (that proposal's evidence-check notes a prior refresh that renumbered IDs). | 2026-08-27: added EV-124..EV-128 covering the ARL CRADA robotics field result (Warthog/Phoenix, Ghost Robotics V60, runtime portability, Osteen public quote) and the JWS fundamental-research characterization. Gap analysis found the CRADA technical result had no ledger coverage; EV-011 and EV-123 cover the relationship only. IDs allocated above max (123); historical gaps left unused. | 2026-08-27 structure change (see docs/CAPABILITY-LEDGER-STRUCTURE-2026-08-27.md): added a record_class discriminator to every item (existing items stamped 'evidence'), and seeded the nine core capabilities as CAP-01..CAP-09 per Bill. Record classes are capability (CAP-##), evidence (EV-###), application (APP-###) and expertise (EXP-##); evidence and application records carry an evidentiary_tier (contracted/measured/demonstrated/designed/adjacent) which gates proposal citation while leaving the whole register readable for opportunity identification. IDs allocate above max PER PREFIX and never into a historical gap. Fed by /ledger-harvest.",
   "schema_version": "evidence-ledger.v1",
-  "generated_at": "2026-07-28",
+  "generated_at": "2026-08-27",
   "owner": "EdgeRunner AI, Inc.",
   "items": [
     {
@@ -34,7 +34,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "highest",
-      "created_at": "2026-06-03T00:00:00Z"
+      "created_at": "2026-06-03T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-002",
@@ -59,7 +60,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "highest",
-      "created_at": "2026-06-03T00:00:00Z"
+      "created_at": "2026-06-03T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-003",
@@ -81,7 +83,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-06-03T00:00:00Z"
+      "created_at": "2026-06-03T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-004",
@@ -103,7 +106,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-06-03T00:00:00Z"
+      "created_at": "2026-06-03T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-005",
@@ -124,7 +128,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-06-03T00:00:00Z"
+      "created_at": "2026-06-03T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-006",
@@ -144,7 +149,8 @@
       "approval_status": "restricted",
       "restrictions": "Past-performance reference contacts. Cite only in PPQs / past-performance volumes submitted to Government evaluators. Do not publish in commercial, marketing, or broadly-distributable materials.",
       "proof_strength": "high",
-      "created_at": "2026-06-03T00:00:00Z"
+      "created_at": "2026-06-03T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-030",
@@ -163,7 +169,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "highest",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-031",
@@ -185,7 +192,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "highest",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-104",
@@ -208,7 +216,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-022",
@@ -231,7 +240,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "highest",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-032",
@@ -250,7 +260,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-040",
@@ -270,7 +281,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "highest",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-048",
@@ -289,7 +301,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-072",
@@ -310,7 +323,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-073",
@@ -332,7 +346,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-074",
@@ -353,7 +368,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-099",
@@ -375,7 +391,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-102",
@@ -397,7 +414,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "highest",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-014",
@@ -418,7 +436,8 @@
       "approval_status": "restricted",
       "restrictions": "CUI-sensitive program detail: do not cite on public-platform/no-CUI submissions; standalone-IATT attribution rule applies (see EV-022); confirm with capture lead before naming PMW-120 in any customer-facing document.",
       "proof_strength": "highest",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-010",
@@ -441,7 +460,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-011",
@@ -459,7 +479,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-012",
@@ -475,7 +496,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-013",
@@ -492,7 +514,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-020",
@@ -509,7 +532,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "highest",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-021",
@@ -527,7 +551,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "highest",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-023",
@@ -544,7 +569,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "highest",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-041",
@@ -562,7 +588,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-042",
@@ -581,7 +608,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-043",
@@ -600,7 +628,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-044",
@@ -618,7 +647,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-045",
@@ -636,7 +666,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-046",
@@ -653,7 +684,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-047",
@@ -671,7 +703,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-050",
@@ -688,7 +721,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-051",
@@ -705,7 +739,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-052",
@@ -722,7 +757,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-053",
@@ -739,7 +775,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-054",
@@ -756,7 +793,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-055",
@@ -773,7 +811,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-056",
@@ -791,7 +830,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-057",
@@ -808,7 +848,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-058",
@@ -826,7 +867,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-059",
@@ -844,7 +886,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-060",
@@ -862,7 +905,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "highest",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-061",
@@ -880,7 +924,8 @@
       "approval_status": "restricted",
       "proof_strength": "high",
       "created_at": "2026-07-26T00:00:00Z",
-      "restrictions": "Government distribution only (Distribution B or more restrictive). Do not cite in public or broad-distribution documents without vetting."
+      "restrictions": "Government distribution only (Distribution B or more restrictive). Do not cite in public or broad-distribution documents without vetting.",
+      "record_class": "evidence"
     },
     {
       "id": "EV-070",
@@ -899,7 +944,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-071",
@@ -916,7 +962,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-075",
@@ -934,7 +981,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-076",
@@ -950,7 +998,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-078",
@@ -966,7 +1015,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "medium",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-079",
@@ -984,7 +1034,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-080",
@@ -1002,7 +1053,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "medium",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-090",
@@ -1019,7 +1071,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "medium",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-091",
@@ -1036,7 +1089,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "medium",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-093",
@@ -1054,7 +1108,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "medium",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-094",
@@ -1071,7 +1126,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-096",
@@ -1090,7 +1146,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-100",
@@ -1107,7 +1164,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "highest",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-101",
@@ -1123,7 +1181,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-103",
@@ -1139,7 +1198,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-105",
@@ -1157,7 +1217,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-106",
@@ -1174,7 +1235,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-007",
@@ -1195,7 +1257,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-008",
@@ -1215,7 +1278,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "highest",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-009",
@@ -1236,7 +1300,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "medium",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-077",
@@ -1257,7 +1322,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-092",
@@ -1275,7 +1341,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "medium",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-095",
@@ -1295,7 +1362,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-067",
@@ -1314,7 +1382,8 @@
       "approval_status": "retired",
       "restrictions": "DO NOT CITE. FedRAMP is not held. Any FedRAMP reference must be attributed to a third-party platform, never to EdgeRunner.",
       "proof_strength": "low",
-      "created_at": "2026-07-26T00:00:00Z"
+      "created_at": "2026-07-26T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-107",
@@ -1335,7 +1404,8 @@
       "approval_status": "approved",
       "created_at": "2026-07-27T00:00:00Z",
       "verified_at": "2026-07-27T00:00:00Z",
-      "notes": "Added at Bill Bal's direction 2026-07-27; he confirms the engagement and the unit. TEAM VALIDATION PENDING - capture the exercise dates, supporting government POC, and any measured timings before a formal past-performance/PPQ submission. Cite at capability level; do not add quantified timings beyond 'a day or less' without the validated data."
+      "notes": "Added at Bill Bal's direction 2026-07-27; he confirms the engagement and the unit. TEAM VALIDATION PENDING - capture the exercise dates, supporting government POC, and any measured timings before a formal past-performance/PPQ submission. Cite at capability level; do not add quantified timings beyond 'a day or less' without the validated data.",
+      "record_class": "evidence"
     },
     {
       "id": "EV-108",
@@ -1354,7 +1424,8 @@
       "approval_status": "approved",
       "created_at": "2026-07-27T00:00:00Z",
       "verified_at": "2026-07-27T00:00:00Z",
-      "notes": "Added at Bill Bal's direction 2026-07-27 (high confidence, team validation pending). CAUTION: '100% answer rate' is an unqualified absolute. An SME evaluator will ask for the query set, its size, and the scoring method. Before any formal submission, name the benchmark/test set behind the figure or restate as the measured value."
+      "notes": "Added at Bill Bal's direction 2026-07-27 (high confidence, team validation pending). CAUTION: '100% answer rate' is an unqualified absolute. An SME evaluator will ask for the query set, its size, and the scoring method. Before any formal submission, name the benchmark/test set behind the figure or restate as the measured value.",
+      "record_class": "evidence"
     },
     {
       "id": "EV-109",
@@ -1374,7 +1445,8 @@
       "approval_status": "approved",
       "created_at": "2026-07-27T00:00:00Z",
       "verified_at": "2026-07-27T00:00:00Z",
-      "notes": "Added at Bill Bal's direction 2026-07-27 (high confidence, team validation pending). Capture dates, the supporting government POC, and any quantified time savings before a formal past-performance/PPQ submission."
+      "notes": "Added at Bill Bal's direction 2026-07-27 (high confidence, team validation pending). Capture dates, the supporting government POC, and any quantified time savings before a formal past-performance/PPQ submission.",
+      "record_class": "evidence"
     },
     {
       "id": "EV-110",
@@ -1396,7 +1468,8 @@
       ],
       "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
       "source_anchor": "MEMO-work-ready-ai.md sections 1-4",
-      "created_at": "2026-07-28"
+      "created_at": "2026-07-28",
+      "record_class": "evidence"
     },
     {
       "id": "EV-111",
@@ -1426,7 +1499,8 @@
       ],
       "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
       "source_anchor": "SPEC-releasability-gate.md; WarClaw pipelines library / WICKET",
-      "created_at": "2026-07-28"
+      "created_at": "2026-07-28",
+      "record_class": "evidence"
     },
     {
       "id": "EV-112",
@@ -1447,7 +1521,8 @@
       ],
       "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
       "source_anchor": "WICKET/CERTIFICATION-PACKAGE.md (generated by certify.py)",
-      "created_at": "2026-07-28"
+      "created_at": "2026-07-28",
+      "record_class": "evidence"
     },
     {
       "id": "EV-113",
@@ -1467,7 +1542,8 @@
       ],
       "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
       "source_anchor": "WICKET/demo_phase2.py results",
-      "created_at": "2026-07-28"
+      "created_at": "2026-07-28",
+      "record_class": "evidence"
     },
     {
       "id": "EV-114",
@@ -1486,7 +1562,8 @@
       ],
       "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
       "source_anchor": "WICKET/CERTIFICATION-PACKAGE.md check 6",
-      "created_at": "2026-07-28"
+      "created_at": "2026-07-28",
+      "record_class": "evidence"
     },
     {
       "id": "EV-115",
@@ -1509,7 +1586,8 @@
       ],
       "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
       "source_anchor": "WICKET/demo_phase3.py; SPEC-releasability-gate.md section 6",
-      "created_at": "2026-07-28"
+      "created_at": "2026-07-28",
+      "record_class": "evidence"
     },
     {
       "id": "EV-116",
@@ -1531,7 +1609,8 @@
       ],
       "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
       "source_anchor": "WarClaw pipelines library / Untrusted-Oracle",
-      "created_at": "2026-07-28"
+      "created_at": "2026-07-28",
+      "record_class": "evidence"
     },
     {
       "id": "EV-117",
@@ -1553,7 +1632,8 @@
       ],
       "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
       "source_anchor": "WICKET/judge_bench.py results",
-      "created_at": "2026-07-28"
+      "created_at": "2026-07-28",
+      "record_class": "evidence"
     },
     {
       "id": "EV-118",
@@ -1575,7 +1655,8 @@
       ],
       "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
       "source_anchor": "WarClaw pipelines library - per-folder manifest.json, verify_manifests.py, store/registry",
-      "created_at": "2026-07-28"
+      "created_at": "2026-07-28",
+      "record_class": "evidence"
     },
     {
       "id": "EV-119",
@@ -1595,7 +1676,8 @@
       ],
       "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
       "source_anchor": "make_pipeline_apps.py; WarClaw pipelines library - screen.app.json per package",
-      "created_at": "2026-07-28"
+      "created_at": "2026-07-28",
+      "record_class": "evidence"
     },
     {
       "id": "EV-120",
@@ -1615,7 +1697,8 @@
       ],
       "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
       "source_anchor": "WICKET/marking.py, conformance-markings.json",
-      "created_at": "2026-07-28"
+      "created_at": "2026-07-28",
+      "record_class": "evidence"
     },
     {
       "id": "EV-121",
@@ -1643,7 +1726,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "high",
-      "created_at": "2026-07-30T00:00:00Z"
+      "created_at": "2026-07-30T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-122",
@@ -1665,7 +1749,8 @@
       ],
       "approval_status": "approved",
       "proof_strength": "low",
-      "created_at": "2026-07-30T00:00:00Z"
+      "created_at": "2026-07-30T00:00:00Z",
+      "record_class": "evidence"
     },
     {
       "id": "EV-123",
@@ -1688,7 +1773,355 @@
       ],
       "approval_status": "approved",
       "proof_strength": "medium",
-      "created_at": "2026-07-30T00:00:00Z"
+      "created_at": "2026-07-30T00:00:00Z",
+      "record_class": "evidence"
+    },
+    {
+      "id": "EV-124",
+      "type": "capability_claim",
+      "summary": "On-device VLM orchestrated fully autonomous waypoint exploration on a Clearpath Robotics Warthog UGV, on ARL's ROS2-based Phoenix stack, from a single operator prompt",
+      "detail": "Under ARL CRADA 25-0047 and Joint Work Statement 25-0047-J001, an EdgeRunner Medium-tier vision-language model running on-device orchestrated fully autonomous waypoint exploration on a Clearpath Robotics Warthog UGV on ARL's ROS2-based Phoenix stack, driven from a single operator prompt. Field work performed at ARL's Robotics Research Collaboration Campus near Aberdeen Proving Ground. Submitted to the Government in the STTR OSW26TZ04-NV001 technical volume, Section 4, 19 Aug 2026. Agentic autonomy on a real ground platform, not simulation.",
+      "source_file": "proposals/arl-collaborative-aitr-sbir/drafts/technical-volume.md",
+      "source_anchor": "Section 4, Related Work - EdgeRunner AI",
+      "contract_number": "ARL CRADA 25-0047 / JWS 25-0047-J001",
+      "customer": "U.S. Army DEVCOM Army Research Laboratory",
+      "contract_value_usd": null,
+      "period_of_performance": null,
+      "relevance_tags": [
+        "arl",
+        "crada",
+        "robotics",
+        "ugv",
+        "warthog",
+        "phoenix",
+        "ros2",
+        "on-device",
+        "vlm",
+        "autonomy",
+        "cyber-physical-systems",
+        "edge"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z",
+      "notes": "Cites no TRL. The March 2026 ARL-BAA-0037 draft claimed TRL 2 for the orchestrator; that predates this work and should not be reused without revalidation.",
+      "record_class": "evidence"
+    },
+    {
+      "id": "EV-125",
+      "type": "capability_claim",
+      "summary": "Same stack fielded across two dissimilar robotic platforms with model tier matched to onboard compute: Medium-tier on a Warthog UGV, Light-tier on a Ghost Robotics Vision 60 quadruped",
+      "detail": "At ARL's Robotics Research Collaboration Campus near Aberdeen Proving Ground, EdgeRunner deployed the Medium-tier model on the Clearpath Warthog UGV and the Light-tier model on a Ghost Robotics Vision 60 quadruped, matching model tier to the compute each platform carries. Two platform types of different locomotion, different compute and different model tiers running the same stack. Submitted to the Government in the STTR OSW26TZ04-NV001 technical volume, Section 4, 19 Aug 2026.",
+      "source_file": "proposals/arl-collaborative-aitr-sbir/drafts/technical-volume.md",
+      "source_anchor": "Section 4, Related Work - two dissimilar platforms",
+      "contract_number": "ARL CRADA 25-0047 / JWS 25-0047-J001",
+      "customer": "U.S. Army DEVCOM Army Research Laboratory",
+      "contract_value_usd": null,
+      "period_of_performance": null,
+      "relevance_tags": [
+        "arl",
+        "crada",
+        "robotics",
+        "heterogeneity",
+        "ghost-robotics",
+        "vision-60",
+        "warthog",
+        "model-tiering",
+        "swap",
+        "edge"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z",
+      "record_class": "evidence"
+    },
+    {
+      "id": "EV-126",
+      "type": "capability_claim",
+      "summary": "Moving from cloud-hosted inference to on-device inference on a robotic platform required changing one configuration value, the model's address, because the runtime presents the same interface either way",
+      "detail": "Observed during the ARL CRADA robotics field work. The runtime exposes the same interface for cloud-hosted and on-device inference, so the transition required changing only the model address. Submitted to the Government in the STTR OSW26TZ04-NV001 technical volume, Section 4, 19 Aug 2026. Supports portability and DDIL-transition claims; note it is an engineering property of the runtime, not a measured performance result.",
+      "source_file": "proposals/arl-collaborative-aitr-sbir/drafts/technical-volume.md",
+      "source_anchor": "Section 4, Related Work - one configuration value",
+      "contract_number": "ARL CRADA 25-0047 / JWS 25-0047-J001",
+      "customer": "U.S. Army DEVCOM Army Research Laboratory",
+      "contract_value_usd": null,
+      "period_of_performance": null,
+      "relevance_tags": [
+        "arl",
+        "crada",
+        "odin",
+        "runtime",
+        "portability",
+        "on-device",
+        "cloud-to-edge",
+        "ddil"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "medium",
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z",
+      "record_class": "evidence"
+    },
+    {
+      "id": "EV-127",
+      "type": "customer_fact",
+      "summary": "ARL robotics researcher Phil Osteen, publicly: EdgeRunner was able to deploy new algorithms and models on ARL autonomous robotic platforms on Day 1 of the first on-site visit, which is rare",
+      "detail": "Philip R. Osteen, robotics researcher in ARL's Autonomous Systems Branch, Science of Intelligent Systems Division, quoted in EdgeRunner's public release on the ARL partnership: the team \"was able to deploy new algorithms and models on our autonomous robotic platforms on Day 1 of their first on-site visit, which is rare.\" Customer-voice attestation to speed of integration on Government robotic platforms. Cleared for public use - the quote originates in a public release. Osteen is also the named ARL Technical POC on JWS 25-0047-J001.",
+      "source_file": "EdgeRunner public release (ARL on-device autonomous robotics); quoted in proposals/arl-collaborative-aitr-sbir/drafts/technical-volume.md",
+      "source_anchor": "Section 4, Related Work - Osteen quote",
+      "contract_number": "ARL CRADA 25-0047 / JWS 25-0047-J001",
+      "customer": "U.S. Army DEVCOM Army Research Laboratory",
+      "contract_value_usd": null,
+      "period_of_performance": null,
+      "relevance_tags": [
+        "arl",
+        "crada",
+        "customer-quote",
+        "osteen",
+        "robotics",
+        "public-release",
+        "integration-speed"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z",
+      "record_class": "evidence"
+    },
+    {
+      "id": "EV-128",
+      "type": "partnership",
+      "summary": "ARL JWS 25-0047-J001 Article 8.1.1 confines the CRADA work to fundamental research, agreed by both parties and signed by ARL's Director",
+      "detail": "Joint Work Statement 25-0047-J001, \"Domain Specific AI for Robotic Deployments in Support of the Warfighter\", under master CRADA 25-0047. Article 8.1.1: \"For the purposes of this JWS the parties agree that the work will be confined to 'fundamental research' ... and that data will not be exchanged with any restrictions per Articles 10 and 11, except for the purposes of protecting intellectual property\". Signed Tyler Saltsman 18 Aug 2025; Dr. Patrick J. Baker, Director DEVCOM ARL, 18 Sep 2025. Article 3.2 states the research problem in ARL's own words: deploying GenAI-powered agents on embodied autonomous systems in complex unstructured environments \"remains an open research problem\". No Cost Option elected; no funds exchanged. Establishes that EdgeRunner's ARL work is contractually characterized as fundamental research, the relevant characterization for 6.1/6.2 research solicitations.",
+      "source_file": "JWS 25-0047-J001 (executed; Saltsman 18 Aug 2025, Baker 18 Sep 2025)",
+      "source_anchor": "Article 8.1.1; Article 3.2; Article 9 signatures",
+      "contract_number": "ARL CRADA 25-0047 / JWS 25-0047-J001",
+      "customer": "U.S. Army DEVCOM Army Research Laboratory",
+      "contract_value_usd": null,
+      "period_of_performance": "Effective on last signature, 18 Sep 2025; bounded by the master CRADA term",
+      "relevance_tags": [
+        "arl",
+        "crada",
+        "joint-work-statement",
+        "fundamental-research",
+        "6-1",
+        "6-2",
+        "baa",
+        "data-rights",
+        "no-cost"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "highest",
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z",
+      "notes": "CUI research/access is NOT authorized under this CRADA (Article 8.2.1). Master CRADA 25-0047 has not been located in executed form; JWS references to its Articles 5.2.1, 5.3.1, 10, 11, 13.1 and 13.3 are unverified against the master.",
+      "record_class": "evidence"
+    },
+    {
+      "id": "CAP-01",
+      "record_class": "capability",
+      "type": "capability_claim",
+      "summary": "Model training for military",
+      "detail": "Multi-stage training of open-weight foundation models into military-specific models: the model understands and speaks military language, refusals of mission-relevant questions are eliminated, and training data is constructed from doctrine, field manuals and other military sources. Canonical statement in capabilities.md Layer 1 (Custom Models).",
+      "maturity": "Fielded",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": null,
+      "relevance_tags": [
+        "model-training",
+        "fine-tuning",
+        "military-domain",
+        "doctrine",
+        "layer-1"
+      ],
+      "approval_status": "approved",
+      "proof_strength": null,
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z",
+      "notes": "Cite specific model results through EV records (EdgeRunner 20B, Mil-Deflect), not through this capability record."
+    },
+    {
+      "id": "CAP-02",
+      "record_class": "capability",
+      "type": "capability_claim",
+      "summary": "Secure runtime for AI in military environments",
+      "detail": "On-device inference runtime, hardware and operating-system agnostic, running LLMs and VLMs on laptops and edge compute, exposing standard APIs and a local vector store. Declared as background IP in ARL JWS 25-0047-J001 Appendix D. Canonical statement in capabilities.md Layer 3 (Secure Runtime).",
+      "maturity": "Fielded",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": null,
+      "relevance_tags": [
+        "runtime",
+        "odin",
+        "on-device",
+        "edge",
+        "ddil",
+        "secure-deployment",
+        "layer-3"
+      ],
+      "approval_status": "approved",
+      "proof_strength": null,
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z",
+      "notes": "Accreditation posture is an active IL-6 IATT, not an ATO, and is not attributed to any named unit. IL-5 ATO is U.S. Space Force. No FedRAMP, SOC 2 or ISO 27001. See capabilities.md."
+    },
+    {
+      "id": "CAP-03",
+      "record_class": "capability",
+      "type": "capability_claim",
+      "summary": "Agentic orchestration and workflows for military",
+      "detail": "Encoding a defined analytic process or CONOP as an auditable, versioned pipeline in which roles become orchestrated steps, rather than as prompts. Canonical statement in capabilities.md Layer 4 (WarClaw).",
+      "maturity": "Built",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": null,
+      "relevance_tags": [
+        "orchestration",
+        "agentic",
+        "warclaw",
+        "workflow",
+        "auditable",
+        "layer-4"
+      ],
+      "approval_status": "approved",
+      "proof_strength": null,
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "id": "CAP-04",
+      "record_class": "capability",
+      "type": "capability_claim",
+      "summary": "Ground Truth",
+      "detail": "Model-agnostic verification layer that deterministically checks each claim in an answer against a human-approved evidence ledger extracted byte-for-byte from authoritative sources; pass/flag/block gate with no model in the verification loop; every answer carries a portable receipt (WBOM). Aligned to ICD 203. Canonical statement in capabilities.md Layer 5.",
+      "maturity": "Proven / Built",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": null,
+      "relevance_tags": [
+        "ground-truth",
+        "verification",
+        "wbom",
+        "governance",
+        "icd-203",
+        "layer-5"
+      ],
+      "approval_status": "approved",
+      "proof_strength": null,
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z",
+      "notes": "Do not assert a TRL for Ground Truth (capabilities.md, 2026-07-23)."
+    },
+    {
+      "id": "CAP-05",
+      "record_class": "capability",
+      "type": "capability_claim",
+      "summary": "EVELYN",
+      "detail": "Machine vision and data labeling: automated AI-powered annotation for rapidly curating labelled image datasets to train vision models for identifying and tracking specific objects; can run on-device against a vector store of pre-loaded images to find similar objects in the field. Declared as background IP in ARL JWS 25-0047-J001 Appendix D.",
+      "maturity": "Fielded",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": null,
+      "relevance_tags": [
+        "evelyn",
+        "machine-vision",
+        "computer-vision",
+        "annotation",
+        "labeling",
+        "object-detection"
+      ],
+      "approval_status": "approved",
+      "proof_strength": null,
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "id": "CAP-06",
+      "record_class": "capability",
+      "type": "capability_claim",
+      "summary": "DORIS",
+      "detail": "Air-gapped on-device model adaptation: unit documents to dataset to LoRA to exported adapted model, entirely on-device. Proof-of-concept maturity, not fielded.",
+      "maturity": "Proof-of-concept",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": null,
+      "relevance_tags": [
+        "doris",
+        "on-device-training",
+        "adaptation",
+        "lora",
+        "air-gapped",
+        "proof-of-concept"
+      ],
+      "approval_status": "approved",
+      "proof_strength": null,
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z",
+      "notes": "Immature. Never describe as fielded or deployed. Bill, 2026-08-27: 'very immature'."
+    },
+    {
+      "id": "CAP-07",
+      "record_class": "capability",
+      "type": "capability_claim",
+      "summary": "Novel model compression and published performance benchmarking",
+      "detail": "Model optimization and compression techniques, and the published benchmark work that measures them. Includes the peer-reviewable results underpinning frontier-parity and refusal-rate claims. Canonical statement in capabilities.md Layer 2 (Model Optimization & Compression).",
+      "maturity": "Proven",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": null,
+      "relevance_tags": [
+        "compression",
+        "quantization",
+        "optimization",
+        "benchmarks",
+        "published-research",
+        "layer-2"
+      ],
+      "approval_status": "approved",
+      "proof_strength": null,
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "id": "CAP-08",
+      "record_class": "capability",
+      "type": "capability_claim",
+      "summary": "Autonomy experience with ARL",
+      "detail": "Domain-specific AI for embodied autonomous and robotic systems, performed under ARL CRADA 25-0047 and Joint Work Statement 25-0047-J001. On-device vision-language models orchestrating autonomous behaviour on Government robotic platforms at ARL's Robotics Research Collaboration Campus. The JWS confines this work to fundamental research (Article 8.1.1).",
+      "maturity": "Demonstrated",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": null,
+      "relevance_tags": [
+        "arl",
+        "crada",
+        "autonomy",
+        "robotics",
+        "ugv",
+        "embodied-ai",
+        "cyber-physical-systems",
+        "fundamental-research"
+      ],
+      "approval_status": "approved",
+      "proof_strength": null,
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z",
+      "notes": "Evidence: EV-124 (Warthog/Phoenix), EV-125 (two-platform heterogeneity), EV-126 (runtime portability), EV-127 (Osteen public quote), EV-128 (JWS fundamental-research characterization)."
+    },
+    {
+      "id": "CAP-09",
+      "record_class": "capability",
+      "type": "capability_claim",
+      "summary": "LoRA adapter development",
+      "detail": "Development of low-rank adaptation layers and specialty-code adapters over base models, enabling task- and domain-specific behaviour without full retraining. Canonical statement in capabilities.md Layer 2 (Custom Adapters).",
+      "maturity": "Proven",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": null,
+      "relevance_tags": [
+        "lora",
+        "adapters",
+        "fine-tuning",
+        "specialty-code",
+        "layer-2"
+      ],
+      "approval_status": "approved",
+      "proof_strength": null,
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z"
     }
   ]
 }
