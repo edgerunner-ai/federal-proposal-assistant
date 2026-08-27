@@ -1,6 +1,6 @@
 # Capability Themes — controlled vocabulary
 
-**Version:** 3 · **Adopted:** 2026-08-06 · **Consumers:** `signals/demand-signals.jsonl`
+**Version:** 4 · **Adopted:** 2026-08-27 · **Consumers:** `signals/demand-signals.jsonl`
 (`capability_theme` field), `scripts/build-demand-signal-brief.py`, `/capture-demand-signals`
 
 This is the join key of the BD ↔ CTO demand signal loop (see
@@ -36,6 +36,13 @@ stated above: could the CTO shop own it, and is it distinguishable in the "Not t
 single-customer theme is a claim about a category, not evidence of a trend, and the brief already
 says so by ranking on customer breadth.
 
+Version 4 (2026-08-27) added `rf-signal-classification`. The ask recurred in the same month from
+two directions — OSD published it as SBIR topic OSW26BZ05-DV022 (formal, pass/fail, D2P2), and an
+IC customer stated it in the Spectrum Sentinel sponsorship conversations — and the adjacent NAVWAR
+APNT topic names jamming characterization as a mission application. It enters with `our_status: gap`
+on every row: EdgeRunner's strategy for the RF core is teaming (DeNOVO CODA), and the register
+should show that disagreement-shaped fact to the CTO shop rather than hide it inside a broader theme.
+
 ## Themes
 
 | Theme ID | Scope — the customer is asking for | Not this |
@@ -68,6 +75,7 @@ says so by ranking on customer breadth.
 | `adversarial-ai-security` | Defending the AI system itself as an attack surface: model and weight protection, resistance to poisoning, evasion and prompt injection, AI supply-chain integrity, securing the hardware the model runs on | Documenting controls to get authorized (`ato-accreditation-artifacts`) · Building the corpus, even when poisoning resistance is one of its properties (`data-labeling-curation`) |
 | `anomaly-detection-analytics` | Finding the signal in the customer's own operational records: anomaly, risk and fraud detection over transactions, logs and case data; predictive scoring; pattern-of-life over structured data | Detection in imagery or video (`multimodal-imagery-fmv`) · Answering questions from a document corpus (`retrieval-over-doctrine`) · Producing the doctrinal staff product that follows (`staff-product-generation`) |
 | `human-oversight-control` | Keeping a human in command of an autonomous or AI-driven action: human-on-the-loop review and approval interfaces, bounded autonomy under a named authority, override and abort, compliance with DoD direction on human control of AI-enabled systems | Verifying that an individual answer is grounded (`output-verification-attribution`) · Controlling the platform itself (`robotic-autonomy-control`) |
+| `rf-signal-classification` | ML over the electromagnetic spectrum: detection, classification, and characterization of known and unknown RF emissions; emitter identification; jammer and interference characterization; spectrum anomaly detection over I/Q or spectral data | Anomalies in structured business or operational records (`anomaly-detection-analytics`) · Imagery and video perception (`multimodal-imagery-fmv`) · Speech and audio content (`multimodal-audio`) |
 
 ## Themes deliberately excluded
 
