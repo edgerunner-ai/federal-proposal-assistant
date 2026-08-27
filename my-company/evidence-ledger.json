@@ -1,7 +1,7 @@
 {
-  "_comment": "EdgeRunner AI evidence ledger. Seeded 2026-06-03 from U.S. Space Force Order FA701426P0009 (source: contract DD Form 1155 + public press release 2026-04-02). Conforms to reference/schemas/evidence-ledger.schema.json. Append-only; retire rather than delete. | 2026-07-24: file was overwritten by an undetermined process, losing ~49 entries (EV-007..EV-106 range) that were never committed to git. 2026-07-26: the 9 IDs cited by dia-dma-frontier-llm drafts (EV-022/032/040/048/072/073/074/099/102) plus EV-030/031/104 were reconstructed from citation contexts, the 2026-07-22 evidence-check report, and project memory. Remaining lost IDs (heavily cited: EV-014 Navy ICOP, EV-020/023, EV-041-061, EV-070-096, EV-100-106) still need reconstruction before their proposals are reactivated. PREVENTION: commit this file after every append (it IS git-tracked); an uncommitted ledger has no recovery path. | 2026-07-26 full reconstruction: +43 entries (EV-010..EV-106 range) rebuilt from citation contexts + evidence-check reports + memory; EV-030/EV-031 content swapped to match historical numbering (030=Mil-Deflect, 031=frontier-parity); EV-072 enriched with NGC2 TRL-7 anchor. 2026-07-26 (final): EV-007/008/009 (EVELYN throughput, drone dataset, adversarial robustness), EV-077 (EVELYN maturity/xTech), EV-092 (quantization ghost), EV-095 (action-authorization frontier) created from capabilities.md attributions; EV-073 corrected (no TRL claimed for Ground Truth, per capabilities.md 2026-07-23) and EV-094 enriched. Ledger is now complete against every ID referenced anywhere in the workspace. Likely overwrite cause: a ledger \"refresh\"/re-seed during tradewinds-cdao-adl-p2 work (that proposal's evidence-check notes a prior refresh that renumbered IDs). | 2026-08-27: added EV-124..EV-128 covering the ARL CRADA robotics field result (Warthog/Phoenix, Ghost Robotics V60, runtime portability, Osteen public quote) and the JWS fundamental-research characterization. Gap analysis found the CRADA technical result had no ledger coverage; EV-011 and EV-123 cover the relationship only. IDs allocated above max (123); historical gaps left unused. | 2026-08-27 structure change (see docs/CAPABILITY-LEDGER-STRUCTURE-2026-08-27.md): added a record_class discriminator to every item (existing items stamped 'evidence'), and seeded the nine core capabilities as CAP-01..CAP-09 per Bill. Record classes are capability (CAP-##), evidence (EV-###), application (APP-###) and expertise (EXP-##); evidence and application records carry an evidentiary_tier (contracted/measured/demonstrated/designed/adjacent) which gates proposal citation while leaving the whole register readable for opportunity identification. IDs allocate above max PER PREFIX and never into a historical gap. Fed by /ledger-harvest. | 2026-08-27 ledger-harvest: +APP-001/APP-002 (first application records, both designed-tier: Spectrum Sentinel, DV022 team concept), +EXP-01/EXP-02 (first expertise records: FitzGerald, Bal), +EV-129 (DeNOVO teaming, demonstrated, DENOVO-PROVIDED capability basis) - from the five register gaps in reviews/2026-08-27-dv022-team-quick-look.md, approved by Bill 2026-08-27.",
+  "_comment": "EdgeRunner AI evidence ledger. Seeded 2026-06-03 from U.S. Space Force Order FA701426P0009 (source: contract DD Form 1155 + public press release 2026-04-02). Conforms to reference/schemas/evidence-ledger.schema.json. Append-only; retire rather than delete. | 2026-07-24: file was overwritten by an undetermined process, losing ~49 entries (EV-007..EV-106 range) that were never committed to git. 2026-07-26: the 9 IDs cited by dia-dma-frontier-llm drafts (EV-022/032/040/048/072/073/074/099/102) plus EV-030/031/104 were reconstructed from citation contexts, the 2026-07-22 evidence-check report, and project memory. Remaining lost IDs (heavily cited: EV-014 Navy ICOP, EV-020/023, EV-041-061, EV-070-096, EV-100-106) still need reconstruction before their proposals are reactivated. PREVENTION: commit this file after every append (it IS git-tracked); an uncommitted ledger has no recovery path. | 2026-07-26 full reconstruction: +43 entries (EV-010..EV-106 range) rebuilt from citation contexts + evidence-check reports + memory; EV-030/EV-031 content swapped to match historical numbering (030=Mil-Deflect, 031=frontier-parity); EV-072 enriched with NGC2 TRL-7 anchor. 2026-07-26 (final): EV-007/008/009 (EVELYN throughput, drone dataset, adversarial robustness), EV-077 (EVELYN maturity/xTech), EV-092 (quantization ghost), EV-095 (action-authorization frontier) created from capabilities.md attributions; EV-073 corrected (no TRL claimed for Ground Truth, per capabilities.md 2026-07-23) and EV-094 enriched. Ledger is now complete against every ID referenced anywhere in the workspace. Likely overwrite cause: a ledger \"refresh\"/re-seed during tradewinds-cdao-adl-p2 work (that proposal's evidence-check notes a prior refresh that renumbered IDs). | 2026-08-27: added EV-124..EV-128 covering the ARL CRADA robotics field result (Warthog/Phoenix, Ghost Robotics V60, runtime portability, Osteen public quote) and the JWS fundamental-research characterization. Gap analysis found the CRADA technical result had no ledger coverage; EV-011 and EV-123 cover the relationship only. IDs allocated above max (123); historical gaps left unused. | 2026-08-27 structure change (see docs/CAPABILITY-LEDGER-STRUCTURE-2026-08-27.md): added a record_class discriminator to every item (existing items stamped 'evidence'), and seeded the nine core capabilities as CAP-01..CAP-09 per Bill. Record classes are capability (CAP-##), evidence (EV-###), application (APP-###) and expertise (EXP-##); evidence and application records carry an evidentiary_tier (contracted/measured/demonstrated/designed/adjacent) which gates proposal citation while leaving the whole register readable for opportunity identification. IDs allocate above max PER PREFIX and never into a historical gap. Fed by /ledger-harvest. | 2026-08-27 ledger-harvest: +APP-001/APP-002 (first application records, both designed-tier: Spectrum Sentinel, DV022 team concept), +EXP-01/EXP-02 (first expertise records: FitzGerald, Bal), +EV-129 (DeNOVO teaming, demonstrated, DENOVO-PROVIDED capability basis) - from the five register gaps in reviews/2026-08-27-dv022-team-quick-look.md, approved by Bill 2026-08-27. | 2026-08-27 ledger-harvest: +EV-130 (First Army operational demonstration of the verification layer, demonstrated tier, the TRL 7 basis), +APP-003 (Proposal Co-Pilot commercial ledger use, demonstrated tier, with the personal-repo ownership caveat recorded), and EV-073 ENRICHED: the 'no TRL number is claimed; do not assign one' instruction is superseded by TRL 7 on the operational-environment test. Approved by Bill 2026-08-27.",
   "schema_version": "evidence-ledger.v1",
-  "generated_at": "2026-08-27",
+  "generated_at": "2026-08-27T00:00:00Z",
   "owner": "EdgeRunner AI, Inc.",
   "items": [
     {
@@ -329,8 +329,8 @@
     {
       "id": "EV-073",
       "type": "capability_claim",
-      "summary": "Ground Truth core: model-agnostic, claim-level output verification against a human-approved evidence ledger, deterministic with no model in the verification loop; portable signed WBOM receipt per answer; built and proven with real First Army data (NO TRL claimed)",
-      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Ground Truth (product name; internal repo \"warrant/warrant-ledger\") runs AFTER any model/RAG and checks each material claim in an output against a curated, human-approved ledger of ground-truth facts/doctrine. Per-claim verdict green (supported/cited) / amber (candidate, review, never auto-approved) / red (unsupported), plus retired/restricted source handling; attribution not truth (deliberately under-claims, no contradiction detection); human is the gate. Deterministic citation path is stdlib-only, zero model cost, air-gap-ready up to Secret; optional semantic match uses a LOCAL embedding model (no egress). Sidecar gateway gates pass/flag/block in flight. Emits WBOM, a portable SBOM-for-AI-output receipt (Ed25519-signed). Built + Proven. **No TRL number is claimed for Ground Truth — do not assign one** (capabilities.md, 2026-07-23; this supersedes the earlier \"TRL 7\" phrasing carried in project memory). Validation context is First Army (doctrine-as-a-ledger): three documented field failures, including a silent 116-to-6 undercount and fabricated doctrine, each turned into a REPORTED error. Components: ledger-builder (propose facts), warrant-ledger (verify, emit WBOM), tradecraft-review (standards/rubric completeness), /api/check_action (action gate, see EV-095). NOT operationally fielded; no ATO of its own. Keep IP-strategy specifics internal.",
+      "summary": "Ground Truth core: model-agnostic, claim-level output verification against a human-approved evidence ledger, deterministic with no model in the verification loop; portable signed WBOM receipt per answer; built and proven with real First Army data on their own mission threads; TRL 7",
+      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Ground Truth (product name; internal repo \"warrant/warrant-ledger\") runs AFTER any model/RAG and checks each material claim in an output against a curated, human-approved ledger of ground-truth facts/doctrine. Per-claim verdict green (supported/cited) / amber (candidate, review, never auto-approved) / red (unsupported), plus retired/restricted source handling; attribution not truth (deliberately under-claims, no contradiction detection); human is the gate. Deterministic citation path is stdlib-only, zero model cost, air-gap-ready up to Secret; optional semantic match uses a LOCAL embedding model (no egress). Sidecar gateway gates pass/flag/block in flight. Emits WBOM, a portable SBOM-for-AI-output receipt (Ed25519-signed). Built + Proven. **TRL 7** — system prototype demonstration in an operational environment, per the DoD Technology Readiness Assessment Guidance. Confirmed by Bill Bal 2026-08-27 on the basis that First Army ran it on THEIR OWN mission threads, in their environment, rather than on a representative surrogate (which would be TRL 6). This supersedes the 2026-07-23 capabilities.md instruction \"no TRL number is claimed; do not assign one\", and supersedes the TRL-5 figure that appeared in the Suggested ER response column of the 2026-08-26 CTO adjudication sheet, which did not originate with the CTO. TRL 7 is a maturity statement only: Ground Truth is still NOT operationally fielded and holds no ATO of its own. Validation context is First Army (doctrine-as-a-ledger): three documented field failures, including a silent 116-to-6 undercount and fabricated doctrine, each turned into a REPORTED error. Components: ledger-builder (propose facts), warrant-ledger (verify, emit WBOM), tradecraft-review (standards/rubric completeness), /api/check_action (action gate, see EV-095). NOT operationally fielded; no ATO of its own. Keep IP-strategy specifics internal.",
       "source_file": "my-company/capabilities.md",
       "source_anchor": "Third Product: Ground Truth",
       "relevance_tags": [
@@ -347,7 +347,10 @@
       "approval_status": "approved",
       "proof_strength": "high",
       "created_at": "2026-07-26T00:00:00Z",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "verified_at": "2026-08-27T00:00:00Z",
+      "evidentiary_tier": "demonstrated",
+      "tier_reason": "Demonstrated at First Army on their own mission threads with measured results; no contract instrument identified, so not citable as past performance."
     },
     {
       "id": "EV-074",
@@ -2254,6 +2257,64 @@
       "verified_at": "2026-08-27T00:00:00Z",
       "evidentiary_tier": "demonstrated",
       "tier_reason": "Joint proposal work done and documented; nothing performed under contract. Partner product claims are attributed, never asserted as EdgeRunner evidence."
+    },
+    {
+      "id": "EV-130",
+      "record_class": "evidence",
+      "type": "capability_claim",
+      "summary": "First Army operational demonstration of the Ground Truth verification layer on their own mission threads — the basis for the TRL 7 claim",
+      "detail": "First Army ran the verification layer against their own capstone doctrine and their own mission threads, in their environment rather than on a representative surrogate. This is what distinguishes TRL 7 (system prototype demonstration in an OPERATIONAL environment) from TRL 6 (demonstration in a RELEVANT environment) under the DoD Technology Readiness Assessment Guidance. Scope: 1,946 pages across 8 capstone doctrine manuals governed into 3,913 approved rule entries. Result: three documented field failures caught, including a silent 116-to-6 undercount and fabricated doctrine, each turned into a REPORTED error rather than a silent one; 6 of 6 citation-spoof attempts caught with zero false positives; 70 of 70 approved rules anchored verbatim to source; ~2.9s warm at ~3,900 entries. LIMITS: no contract or agreement instrument has been identified for this work, so this is relevant experience and must NEVER be cited as past performance. Ground Truth remains not operationally fielded and holds no ATO of its own. The measured figures are internal-evaluation results, reproducible on request, not certified third-party benchmarks. Confirmed by Bill Bal 2026-08-27; supersedes the TRL-5 figure in the 2026-08-26 adjudication sheet, which did not originate with the CTO. See EV-073 (the capability), EV-094 (measured results and signed WBOM).",
+      "source_file": "my-company/capabilities.md",
+      "source_anchor": "LAYER 5: Ground Truth · Governance — Maturity / proof; confirmed by Bill Bal 2026-08-27",
+      "relevance_tags": [
+        "ground-truth",
+        "first-army",
+        "trl-7",
+        "operational-environment",
+        "doctrine",
+        "verification",
+        "demonstrated",
+        "army"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z",
+      "evidentiary_tier": "demonstrated",
+      "tier_reason": "Done and witnessed by the customer in their own environment, with measured results, but under no contract instrument. Tiered down from contracted for that reason.",
+      "capabilities": [
+        "CAP-07"
+      ],
+      "customer_context": "First Army — doctrine-as-a-ledger against capstone manuals and live mission threads"
+    },
+    {
+      "id": "APP-003",
+      "record_class": "application",
+      "type": "application",
+      "summary": "Proposal Co-Pilot: the Ground Truth ledger process applied to federal proposal development, used by EdgeRunner and four other companies across 30+ federal proposals",
+      "detail": "The same core ledger process that underpins Ground Truth, propose facts into a human-approved evidence ledger then verify each claim in generated output against it deterministically, is in commercial use outside defense, applied to federal proposal writing and validation. Adoption: EdgeRunner plus four other commercial companies, more than 30 federal proposals written and validated to date. The code is distributed as an open-source project, Proposal Co-Pilot, on Bill Bal's PERSONAL PUBLIC repository (github.com/chakmarebel), not an EdgeRunner-owned repository. TWO CONSEQUENCES FOR PROPOSAL USE, BOTH UNRESOLVED AS OF 2026-08-27: (1) OWNERSHIP: do not describe this as an EdgeRunner commercial product or product line; the accurate claim is that the process is in commercial use and has been used to write and validate 30+ federal proposals. (2) DIFFERENTIATION: the mechanism is publicly available, so it does not by itself constitute a proprietary discriminator; what remains EdgeRunner's is the integrated product and the First Army demonstration (EV-130). The four adopter companies are unnamed here and must not be named in customer-facing material without their permission. Cited in the NAVWAR GenAI EPSS solution brief (P10 Technical Maturity, Executive Summary, Company Viability).",
+      "source_file": "proposals/navwar-genai-epss/drafts/solution-brief.md",
+      "source_anchor": "P10 Technical Maturity; Company Viability, Commercialization. Confirmed by Bill Bal 2026-08-27",
+      "relevance_tags": [
+        "ground-truth",
+        "ledger",
+        "commercial-use",
+        "proposal-development",
+        "open-source",
+        "traction",
+        "dual-use",
+        "ip-open-question"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "medium",
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z",
+      "evidentiary_tier": "demonstrated",
+      "tier_reason": "Real recurring use at volume across five companies, but no contract, no stated measurement method, and no EdgeRunner ownership of the distributed code. Not contracted, not measured.",
+      "capabilities": [
+        "CAP-07"
+      ],
+      "customer_context": "Commercial: EdgeRunner and four other companies developing federal proposals"
     }
   ]
 }
