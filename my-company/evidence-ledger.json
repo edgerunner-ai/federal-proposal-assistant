@@ -1,5 +1,5 @@
 {
-  "_comment": "EdgeRunner AI evidence ledger. Seeded 2026-06-03 from U.S. Space Force Order FA701426P0009 (source: contract DD Form 1155 + public press release 2026-04-02). Conforms to reference/schemas/evidence-ledger.schema.json. Append-only; retire rather than delete. | 2026-07-24: file was overwritten by an undetermined process, losing ~49 entries (EV-007..EV-106 range) that were never committed to git. 2026-07-26: the 9 IDs cited by dia-dma-frontier-llm drafts (EV-022/032/040/048/072/073/074/099/102) plus EV-030/031/104 were reconstructed from citation contexts, the 2026-07-22 evidence-check report, and project memory. Remaining lost IDs (heavily cited: EV-014 Navy ICOP, EV-020/023, EV-041-061, EV-070-096, EV-100-106) still need reconstruction before their proposals are reactivated. PREVENTION: commit this file after every append (it IS git-tracked); an uncommitted ledger has no recovery path. | 2026-07-26 full reconstruction: +43 entries (EV-010..EV-106 range) rebuilt from citation contexts + evidence-check reports + memory; EV-030/EV-031 content swapped to match historical numbering (030=Mil-Deflect, 031=frontier-parity); EV-072 enriched with NGC2 TRL-7 anchor. 2026-07-26 (final): EV-007/008/009 (EVELYN throughput, drone dataset, adversarial robustness), EV-077 (EVELYN maturity/xTech), EV-092 (quantization ghost), EV-095 (action-authorization frontier) created from capabilities.md attributions; EV-073 corrected (no TRL claimed for Ground Truth, per capabilities.md 2026-07-23) and EV-094 enriched. Ledger is now complete against every ID referenced anywhere in the workspace. Likely overwrite cause: a ledger \"refresh\"/re-seed during tradewinds-cdao-adl-p2 work (that proposal's evidence-check notes a prior refresh that renumbered IDs). | 2026-08-27: added EV-124..EV-128 covering the ARL CRADA robotics field result (Warthog/Phoenix, Ghost Robotics V60, runtime portability, Osteen public quote) and the JWS fundamental-research characterization. Gap analysis found the CRADA technical result had no ledger coverage; EV-011 and EV-123 cover the relationship only. IDs allocated above max (123); historical gaps left unused. | 2026-08-27 structure change (see docs/CAPABILITY-LEDGER-STRUCTURE-2026-08-27.md): added a record_class discriminator to every item (existing items stamped 'evidence'), and seeded the nine core capabilities as CAP-01..CAP-09 per Bill. Record classes are capability (CAP-##), evidence (EV-###), application (APP-###) and expertise (EXP-##); evidence and application records carry an evidentiary_tier (contracted/measured/demonstrated/designed/adjacent) which gates proposal citation while leaving the whole register readable for opportunity identification. IDs allocate above max PER PREFIX and never into a historical gap. Fed by /ledger-harvest.",
+  "_comment": "EdgeRunner AI evidence ledger. Seeded 2026-06-03 from U.S. Space Force Order FA701426P0009 (source: contract DD Form 1155 + public press release 2026-04-02). Conforms to reference/schemas/evidence-ledger.schema.json. Append-only; retire rather than delete. | 2026-07-24: file was overwritten by an undetermined process, losing ~49 entries (EV-007..EV-106 range) that were never committed to git. 2026-07-26: the 9 IDs cited by dia-dma-frontier-llm drafts (EV-022/032/040/048/072/073/074/099/102) plus EV-030/031/104 were reconstructed from citation contexts, the 2026-07-22 evidence-check report, and project memory. Remaining lost IDs (heavily cited: EV-014 Navy ICOP, EV-020/023, EV-041-061, EV-070-096, EV-100-106) still need reconstruction before their proposals are reactivated. PREVENTION: commit this file after every append (it IS git-tracked); an uncommitted ledger has no recovery path. | 2026-07-26 full reconstruction: +43 entries (EV-010..EV-106 range) rebuilt from citation contexts + evidence-check reports + memory; EV-030/EV-031 content swapped to match historical numbering (030=Mil-Deflect, 031=frontier-parity); EV-072 enriched with NGC2 TRL-7 anchor. 2026-07-26 (final): EV-007/008/009 (EVELYN throughput, drone dataset, adversarial robustness), EV-077 (EVELYN maturity/xTech), EV-092 (quantization ghost), EV-095 (action-authorization frontier) created from capabilities.md attributions; EV-073 corrected (no TRL claimed for Ground Truth, per capabilities.md 2026-07-23) and EV-094 enriched. Ledger is now complete against every ID referenced anywhere in the workspace. Likely overwrite cause: a ledger \"refresh\"/re-seed during tradewinds-cdao-adl-p2 work (that proposal's evidence-check notes a prior refresh that renumbered IDs). | 2026-08-27: added EV-124..EV-128 covering the ARL CRADA robotics field result (Warthog/Phoenix, Ghost Robotics V60, runtime portability, Osteen public quote) and the JWS fundamental-research characterization. Gap analysis found the CRADA technical result had no ledger coverage; EV-011 and EV-123 cover the relationship only. IDs allocated above max (123); historical gaps left unused. | 2026-08-27 structure change (see docs/CAPABILITY-LEDGER-STRUCTURE-2026-08-27.md): added a record_class discriminator to every item (existing items stamped 'evidence'), and seeded the nine core capabilities as CAP-01..CAP-09 per Bill. Record classes are capability (CAP-##), evidence (EV-###), application (APP-###) and expertise (EXP-##); evidence and application records carry an evidentiary_tier (contracted/measured/demonstrated/designed/adjacent) which gates proposal citation while leaving the whole register readable for opportunity identification. IDs allocate above max PER PREFIX and never into a historical gap. Fed by /ledger-harvest. | 2026-08-27 ledger-harvest: +APP-001/APP-002 (first application records, both designed-tier: Spectrum Sentinel, DV022 team concept), +EXP-01/EXP-02 (first expertise records: FitzGerald, Bal), +EV-129 (DeNOVO teaming, demonstrated, DENOVO-PROVIDED capability basis) - from the five register gaps in reviews/2026-08-27-dv022-team-quick-look.md, approved by Bill 2026-08-27.",
   "schema_version": "evidence-ledger.v1",
   "generated_at": "2026-08-27",
   "owner": "EdgeRunner AI, Inc.",
@@ -2122,6 +2122,138 @@
       "proof_strength": null,
       "created_at": "2026-08-27T00:00:00Z",
       "verified_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "id": "APP-001",
+      "record_class": "application",
+      "type": "application",
+      "summary": "Spectrum Sentinel: government-controlled edge spectrum intelligence for contested UAS operations",
+      "detail": "Full FAR 15.6 unsolicited-proposal package (IC S&T customer): existing RF sensors become locally intelligent spectrum nodes running a sense/characterize/decide-under-policy/act/learn loop; feasible-C2 recommendations and EA nominations under collection-equity gating; two-tier reflex/deliberative architecture. EdgeRunner supplies runtime, orchestration, verification and compression (CAP-02, CAP-03, CAP-04, CAP-07); the RF signal-processing core is TEAMED (DeNOVO CODA heritage) - EdgeRunner holds no RF-ML capability of its own, and that gap is a deliberate teaming decision, not an oversight (see EV-129 and the rf-signal-classification demand theme, capability-themes v4).",
+      "source_file": "proposals/spectrum-sentinel/drafts/unsolicited-proposal.md",
+      "source_anchor": "Sections 1-10; package exported 2026-08-27",
+      "relevance_tags": [
+        "spectrum",
+        "rf",
+        "uas",
+        "ew",
+        "sigint",
+        "edge",
+        "teaming",
+        "denovo",
+        "designed"
+      ],
+      "approval_status": "approved",
+      "proof_strength": null,
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z",
+      "evidentiary_tier": "designed",
+      "tier_reason": "Complete architecture and proposal exist; nothing built or measured on the mission. Never citable as experience.",
+      "capabilities": [
+        "CAP-02",
+        "CAP-03",
+        "CAP-04",
+        "CAP-07"
+      ],
+      "customer_context": "IC S&T office with broad acquisition authority (sponsorship conversation active 2026)"
+    },
+    {
+      "id": "APP-002",
+      "record_class": "application",
+      "type": "application",
+      "summary": "Explainable RF signal classification for C5ISR SIGINT analyst augmentation (OSD SBIR topic OSW26BZ05-DV022)",
+      "detail": "DeNOVO-prime / EdgeRunner-sub concept against DoD SBIR 26.5 topic OSW26BZ05-DV022 (closes 2026-09-23): DeNOVO CODA classifier wrapped in Ground Truth deterministic verification receipts, WarClaw analyst-workflow orchestration, containerized on-prem delivery, LoRA-based continuous specialization. EdgeRunner capabilities exercised: CAP-02, CAP-03, CAP-04, CAP-07, CAP-09. Structure forced by the topic's D2P2 existing-prototype clause and the SBIR prime work-share rule.",
+      "source_file": "reviews/2026-08-27-dv022-vs-spectrum-sentinel.md",
+      "source_anchor": "Requirement-by-requirement map; team brief at drafts/2026-08-27-dv022-denovo-team-brief.md",
+      "relevance_tags": [
+        "rf",
+        "sigint",
+        "c5isr",
+        "sbir",
+        "d2p2",
+        "denovo",
+        "ground-truth",
+        "explainability",
+        "designed"
+      ],
+      "approval_status": "approved",
+      "proof_strength": null,
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z",
+      "evidentiary_tier": "designed",
+      "tier_reason": "Written team architecture, requirement mapping, and partner brief exist; no joint build.",
+      "capabilities": [
+        "CAP-02",
+        "CAP-03",
+        "CAP-04",
+        "CAP-07",
+        "CAP-09"
+      ],
+      "customer_context": "OSD (DoW SBIR 26.5); Phase III dual-use names C5ISR systems of record, tactical C2, SDRs, GPS/PNT jam detection"
+    },
+    {
+      "id": "EXP-01",
+      "record_class": "expertise",
+      "type": "expertise",
+      "summary": "Jack FitzGerald (Chief Science Officer): military-domain LLM training and benchmark evaluation",
+      "detail": "Lead author of both published EdgeRunner papers (EdgeRunner 20B; Mil-Deflect, 2025): military-specific model training, refusal-rate measurement, and statistically-disciplined benchmark construction with military SME validation. Gives the company citable scientific authorship depth for any pursuit whose evaluation turns on quantified model evidence.",
+      "source_file": "my-company/published-research.md",
+      "source_anchor": "FitzGerald et al., 2025 (both papers)",
+      "relevance_tags": [
+        "expertise",
+        "benchmarking",
+        "military-llm",
+        "publications",
+        "cso"
+      ],
+      "approval_status": "approved",
+      "proof_strength": null,
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "id": "EXP-02",
+      "record_class": "expertise",
+      "type": "expertise",
+      "summary": "Bill Bal: federal capture and acquisition across Navy, OSD, and IC engagement",
+      "detail": "Leads federal growth/capture: Navy and OSD pursuit development, IC engagement (ODNI/PDDNI contact 2026-08), acquisition-pathway selection (SBIR/OTA/CSO/BAA/unsolicited), and proposal authorship across the active pipeline. Scope wording approved as presented, 2026-08-27; refine as needed.",
+      "source_file": "docs/CAPABILITY-LEDGER-STRUCTURE-2026-08-27.md",
+      "source_anchor": "expertise class worked example",
+      "relevance_tags": [
+        "expertise",
+        "capture",
+        "acquisition",
+        "navy",
+        "osd",
+        "ic"
+      ],
+      "approval_status": "approved",
+      "proof_strength": null,
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z"
+    },
+    {
+      "id": "EV-129",
+      "record_class": "evidence",
+      "type": "partnership",
+      "summary": "DeNOVO Solutions teaming: NDA executed 2026-06-18; joint Spectrum Sentinel proposal development; partner-attested RF capability basis (DENOVO-PROVIDED)",
+      "detail": "RF-ML teammate relationship: NDA executed 2026-06-18; joint development of the Spectrum Sentinel unsolicited-proposal package (2026-07/08) and the DV022 team concept (2026-08). Partner capability basis per DeNOVO's ASP-B whitepaper - CODA (TRL-8 emitter identification/classification/anomaly, per DeNOVO), TEMPO/Synthweaver synthetic VITA-49 I/Q, calibration-first/abstain methodology, RKE2/OCI MLOps with IL4-to-classified promotion, SDVOSB, NRO prime - all DENOVO-PROVIDED: DeNOVO's released wording is required before any customer-facing use, mirroring the EV-056 BigBear pattern. Confirmed by EdgeRunner 2026-07-16: five cleared staff available for the Sentinel effort; accredited SCIF can host target-customer data. Teaming-agreement and IP/data-rights terms not yet memorialized.",
+      "source_file": "proposals/spectrum-sentinel/working/teammate-denovo-fit.md",
+      "source_anchor": "Section 1 bottom line + 'Confirmed by EdgeRunner (2026-07-16)'",
+      "relevance_tags": [
+        "denovo",
+        "teaming",
+        "rf",
+        "sigint",
+        "partner-attested",
+        "nda",
+        "sdvosb"
+      ],
+      "approval_status": "approved",
+      "proof_strength": null,
+      "created_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-08-27T00:00:00Z",
+      "evidentiary_tier": "demonstrated",
+      "tier_reason": "Joint proposal work done and documented; nothing performed under contract. Partner product claims are attributed, never asserted as EdgeRunner evidence."
     }
   ]
 }
