@@ -11,7 +11,8 @@ Two severities:
              customer-facing prose. Exit code 1.
   ADVISORY — worth a look: banned marketing words, self-narration /
              performative-honesty commentary, prohibited-claim diction without a
-             ledger cite, forbidden absolutes, "we will" stacking, repeated
+             ledger cite, forbidden absolutes, self-limiting capability
+             statements and claim withdrawals, "we will" stacking, repeated
              paragraph openings. Exit code 0 (informational).
 
 Usage:
@@ -93,6 +94,16 @@ NEGATION_DISMISSAL = re.compile(_PATTERNS.get("negation_dismissal", _NEVER), re.
 # negation_dismissal: the sentence spends its subject on something that does not happen.
 # Requires BOTH halves, so a bare scope limit ("no VLA is proposed in Phase I") is not flagged.
 RAISE_THEN_PERMIT = re.compile(_PATTERNS.get("raise_then_permit", _NEVER), re.IGNORECASE)
+# ADVISORY: self-limiting capability statement — telling the customer what we do not have or
+# have not measured ("masking is not a current capability", "the 30 W target has not been
+# measured", "asserts no module of its own"). A proposal states how it meets a requirement, or
+# how it will meet it. Convert, do not delete. Deliberately does NOT match negatives that carry
+# a positive claim ("No model participates in the verification check", "no telemetry egress").
+CAPABILITY_DENIAL = re.compile(_PATTERNS.get("capability_denial", _NEVER), re.IGNORECASE)
+# ADVISORY: claim withdrawal — prose that pulls a claim back after making it ("not claimed at
+# TRL 7", "a demonstration rather than a contract delivery", "does not guarantee"). State the
+# maturation path or the delivery path instead.
+CLAIM_WITHDRAWAL = re.compile(_PATTERNS.get("claim_withdrawal", _NEVER), re.IGNORECASE)
 
 WE_WILL_THRESHOLD = _THRESHOLDS.get("we_will", 8)  # occurrences before it reads as a wall
 REPEATED_OPENING_THRESHOLD = _THRESHOLDS.get("repeated_opening", 3)
@@ -195,6 +206,22 @@ def lint_file(path: Path) -> list[tuple[str, int, str]]:
             "ADVISORY", _line_of(m.start()),
             "negation-stacked dismissal ('...so no X is required') — the sentence's payload is a "
             "non-event; state the affirmative fact and let the negative be the consequence",
+        ))
+
+    for m in CAPABILITY_DENIAL.finditer(flat):
+        findings.append((
+            "ADVISORY", _line_of(m.start()),
+            f"self-limiting capability statement: '{m.group(0).strip()}' — state how the solution "
+            "meets the requirement, or how it will meet it under the effort; do not enumerate what "
+            "is missing",
+        ))
+
+    for m in CLAIM_WITHDRAWAL.finditer(flat):
+        findings.append((
+            "ADVISORY", _line_of(m.start()),
+            f"claim withdrawal: '{m.group(0).strip()}' — give the maturation or delivery path "
+            "instead of retracting the claim (accreditation scope: restate as what the effort "
+            "delivers, not as a denial)",
         ))
 
     openers: dict[str, int] = {}

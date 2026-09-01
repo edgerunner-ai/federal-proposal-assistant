@@ -104,7 +104,9 @@
     "leverage": "\\bleverag(?:e|es|ed|ing)\\b",
     "explainer_tail": ",\\s*which\\s+(?:is|are|means|allows|makes|enables)\\b",
     "negation_dismissal": "\\b(?:so|therefore|which means|meaning)\\b[^.;]{0,120}?\\b(?:no|not|none)\\b[^.;]{0,80}?\\b(?:required|needed|necessary|applies|apply|applicable|claimed)\\b",
-    "raise_then_permit": "\\b(?:is|are|was|were)\\s+not\\s+(?:required|claimed|proposed)\\b[^.;]{0,140}?\\b(?:acceptable|permitted|permissible|is not claimed|are not claimed)\\b"
+    "raise_then_permit": "\\b(?:is|are|was|were)\\s+not\\s+(?:required|claimed|proposed)\\b[^.;]{0,140}?\\b(?:acceptable|permitted|permissible|is not claimed|are not claimed)\\b",
+    "capability_denial": "\\b(?:has|have|had)\\s+not\\s+been\\s+(?:measured|tested|validated|benchmarked|demonstrated|characteri[sz]ed)\\b|\\bnot\\s+a\\s+current\\s+capability\\b|\\b(?:has|have)\\s+no\\s+(?:fielded|measured|validated|current)\\b|\\bno\\s+(?:fielded\\s+\\w+|measured\\s+architecture)\\b|\\bassert(?:s|ed)?\\s+no\\b|\\bis\\s+not\\s+(?:yet\\s+)?(?:fielded|measured|available)\\b|\\bno\\s+[\\w\\s,'-]{0,50}?\\b(?:has|have)\\s+been\\s+(?:measured|tested|validated|benchmarked|demonstrated|characteri[sz]ed)\\b",
+    "claim_withdrawal": "\\b(?:is|are|was|were)\\s+not\\s+claimed\\b|\\bnot\\s+claimed\\s+(?:as|at|to)\\b|\\bdo(?:es)?\\s+not\\s+claim\\b|\\bdo(?:es)?\\s+not\\s+(?:transfer|guarantee)\\b|\\bdo(?:es)?\\s+not\\s+extend\\s+to\\b|\\bneither\\s+transfers?\\b|\\brather\\s+than\\s+(?:a\\s+)?(?:contract\\s+delivery|program\\s+of\\s+record|current\\s+practice)\\b"
   },
   "thresholds": {
     "we_will": 8,
@@ -112,6 +114,8 @@
   },
   "_pattern_notes": {
     "negation_dismissal": "Catches '...so no X is required' — a sentence whose payload is a non-event. Known false positive: a negative conclusion that has no affirmative form ('IRB review therefore does not apply'). ADVISORY, so it informs rather than blocks. Added 2026-08-18 from the arl-collaborative-aitr-sbir volume, where five instances survived two editorial passes because no mechanical rule existed.",
-    "raise_then_permit": "Catches 'X is not required ... Y is acceptable'. Requires BOTH halves so a bare scope limit ('no VLA is proposed in Phase I') is not flagged."
+    "raise_then_permit": "Catches 'X is not required ... Y is acceptable'. Requires BOTH halves so a bare scope limit ('no VLA is proposed in Phase I') is not flagged.",
+    "capability_denial": "ADVISORY. Self-limiting capability statements: telling the customer what we do not have or have not measured. Adopted 2026-08-31 (EdgeRunner). A proposal states how it meets a requirement, or how it will meet it; it does not enumerate the requirements it misses. Convert, do not delete: 'masking is not a current capability' becomes 'on-device masking is designed, built, and tested under the prototype'. Deliberately does NOT match negatives that carry a POSITIVE claim ('No model participates in the verification check', 'no telemetry egress', 'closed-book generation is disabled') — those say the offeror is better, not worse. Also deliberately does not match the status value 'partially met', which is legitimate in a compliance matrix.",
+    "claim_withdrawal": "ADVISORY. Same family as capability_denial: prose that pulls a claim back after making it ('not claimed at TRL 7', 'a demonstration rather than a contract delivery', 'does not guarantee', 'neither transfers'). State the maturation path or the delivery path instead. Accreditation scope is the one place a boundary limit is load-bearing — restate it as what the prototype delivers rather than as a denial, and keep prohibited-claim rules (FedRAMP, SOC 2, ISO 27001) intact."
   }
 }
