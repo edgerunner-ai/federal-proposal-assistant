@@ -105,6 +105,21 @@ CAPABILITY_DENIAL = re.compile(_PATTERNS.get("capability_denial", _NEVER), re.IG
 # maturation path or the delivery path instead.
 CLAIM_WITHDRAWAL = re.compile(_PATTERNS.get("claim_withdrawal", _NEVER), re.IGNORECASE)
 
+# ADVISORY: contrast-construction DENSITY — "not X but Y", ", not Y.", "rather than", "instead
+# of". One is fine and often load-bearing; a density of them reads as a debate brief. Counted per
+# 1,000 words. Adopted 2026-09-02: the NAVWAR brief carried 18 in 3,600 words, and a blind
+# reviewer flagged the pattern before anyone in-house did.
+CONTRAST = re.compile(_PATTERNS.get("contrast_construction", _NEVER), re.IGNORECASE)
+CONTRAST_PER_1000 = _THRESHOLDS.get("contrast_per_1000_words", 3.0)
+# ADVISORY: bullet-to-prose word ratio. Below the low mark is a wall of prose nobody can skim;
+# above the high mark is a paper rewritten as bullets. The same brief went 0% -> 53% -> 20%
+# with nothing measuring it.
+BULLET_RATIO_LOW = _THRESHOLDS.get("bullet_ratio_low", 0.10)
+BULLET_RATIO_HIGH = _THRESHOLDS.get("bullet_ratio_high", 0.35)
+# ADVISORY: phrases a reviewer has explicitly called an AI tell. Seeded from NAVWAR EPSS.
+AI_TELL_TERMS = _TERMS.get("ai_tell_terms", [])
+LIST_ITEM = re.compile(r"^\s*(?:[-*+]|\d+[.)])\s+")
+
 WE_WILL_THRESHOLD = _THRESHOLDS.get("we_will", 8)  # occurrences before it reads as a wall
 REPEATED_OPENING_THRESHOLD = _THRESHOLDS.get("repeated_opening", 3)
 
@@ -151,6 +166,9 @@ def lint_file(path: Path) -> list[tuple[str, int, str]]:
                 findings.append(("ADVISORY", ln, f"marketing word: '{w}'"))
         if LEVERAGE.search(line):
             findings.append(("ADVISORY", ln, "'leverage' — use 'use', 'apply', or 'extend'"))
+        for term in AI_TELL_TERMS:
+            if term.lower() in low:
+                findings.append(("ADVISORY", ln, f"AI tell: '{term}' — a reviewer has flagged this phrase as machine-written; say the plain thing"))
 
         meta_hit = next((phrase for phrase in META_COMMENTARY if phrase in low), None)
         if meta_hit:
@@ -223,6 +241,43 @@ def lint_file(path: Path) -> list[tuple[str, int, str]]:
             "instead of retracting the claim (accreditation scope: restate as what the effort "
             "delivers, not as a denial)",
         ))
+
+    # Contrast-construction density, whole document.
+    total_words = len(re.findall(r"[A-Za-z][\w'-]*", flat))
+    contrasts = list(CONTRAST.finditer(flat))
+    if total_words >= 200 and contrasts:
+        per_1000 = len(contrasts) * 1000.0 / total_words
+        if per_1000 > CONTRAST_PER_1000:
+            sample = "; ".join(m.group(0).strip()[:40] for m in contrasts[:3])
+            findings.append(("ADVISORY", 0,
+                             f"contrast constructions: {len(contrasts)} in {total_words} words "
+                             f"({per_1000:.1f} per 1,000; threshold {CONTRAST_PER_1000:g}) — reads as a "
+                             f"debate brief; keep the load-bearing ones, e.g. '{sample}'"))
+
+    # Bullet-to-prose word ratio, whole document. Headings, tables, and comments excluded.
+    bullet_w = prose_w = 0
+    for para in re.split(r"\n\s*\n", blob):
+        p = para.strip()
+        if not p or p.startswith(("#", "|", ">", "!")):
+            continue
+        n = len(re.findall(r"[A-Za-z][\w'-]*", p))
+        if LIST_ITEM.match(p):
+            bullet_w += n
+        else:
+            prose_w += n
+    body_w = bullet_w + prose_w
+    if body_w >= 300:
+        ratio = bullet_w / body_w
+        if ratio > BULLET_RATIO_HIGH:
+            findings.append(("ADVISORY", 0,
+                             f"bullet ratio {ratio:.0%} of body words (high mark {BULLET_RATIO_HIGH:.0%}) — "
+                             "the document is a paper rewritten as bullets; keep bullets for enumerable "
+                             "items and return arguments to prose"))
+        elif ratio < BULLET_RATIO_LOW:
+            findings.append(("ADVISORY", 0,
+                             f"bullet ratio {ratio:.0%} of body words (low mark {BULLET_RATIO_LOW:.0%}) — "
+                             "a wall of prose; a reviewer triaging a dozen of these will skim, so give the "
+                             "enumerable content (capabilities, deliverables, criteria) a list"))
 
     openers: dict[str, int] = {}
     for para in re.split(r"\n\s*\n", blob):
