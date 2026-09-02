@@ -38,10 +38,18 @@ Recommended workflow:
 ```
 /proposal-writer
 /proposal-editor
+/adversarial-review --tier=quick     # blind Staff-Writing Editor + Cold Reader, BEFORE colour teams
 /compliance-check
 /red-team-review --mode=red
 /red-team-review --mode=gold
 ```
+
+**This editor is a gate, not a stage.** It must re-run whenever `drafts/*.md` materially changes —
+after a restructure, a patch round, a comment round, a Q&A alignment. `scripts/check-editor-staleness.py`
+enforces that at export by comparing draft mtimes to the last `— proposal-editor —` line in
+`working/activity.md`, so **log every run, with the time.** On NAVWAR EPSS this skill ran once and the
+draft was then rewritten seven times with `prose-lint` clean before every post; a clean regex gate is
+not an edit.
 
 ## Inputs
 

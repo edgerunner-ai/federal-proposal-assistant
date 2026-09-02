@@ -38,6 +38,16 @@ with new agents against the patched drafts until it converges.
 **Main pipeline:** after `/red-team-review` (all gates passed), before `/export-proposal`.
 **Track B (white paper):** after `/proposal-patcher`, before `/export-proposal`.
 
+**Early register seating (added 2026-09-02).** Run `--tier=quick` **a second time, earlier**:
+immediately after `/proposal-editor` and before any colour-team review, with the
+**Staff-Writing Editor** seated alongside the Cold Reader. This is the one pass that reads
+without the author's context, and on the NAVWAR EPSS pursuit it found a fifteen-instance
+contrast mannerism, five aphoristic closers, and two self-graded honesty claims that
+`/proposal-editor`, `prose-lint`, Red Team, and Gold Team all passed. Roughly 80k tokens — a
+fraction of one rewrite — and it makes the colour teams' first read a read of prose that has
+already survived a stranger. The late run before export still happens; it is a different
+draft by then.
+
 **Required** for the short-form types where a cold read is cheapest and most decisive:
 `ota-white-paper`, `white-paper`, and `cso-brief`. Optional for every other type; run it there
 when the stakes justify extra rounds, or when you would otherwise reach for an external reviewer.
