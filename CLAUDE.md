@@ -78,6 +78,13 @@ python scripts/check-editor-staleness.py --proposal <slug>
 python scripts/lint-submission-file.py final/docx/<name>.docx final/pdf/<name>.pdf
 ```
 
+```bash
+# Rendered-artifact lint — layout and typography on the .docx that will be reviewed or submitted
+python scripts/lint-rendered-artifact.py drafts/<name>.docx --pages <N> --font-pt <N> [--exclude-title]
+```
+
+`lint-rendered-artifact.py` (added 2026-09-02) is the late formatting gate, as a script because every check is deterministic. HIGH on: page count over `--pages` (title page excluded with `--exclude-title`), Normal or any body run under `--font-pt`, any non-black run, bold inside a sentence, space-before-punctuation, a shipped bracket placeholder, a figure whose smallest label (2% of canvas width, the 24px-on-1200px convention) renders under 7pt. ADVISORY between 7 and 9pt, and on any table whose widest-content column has far less width than its content share. Every one of those was found late and by accident on NAVWAR EPSS: the 20-page render, 7.5pt figure labels, blue headings, 11pt body against a 12pt instruction, four orphan periods. Page count uses Word COM when pywin32 is present and a labelled word-count estimate otherwise. Run it on review copies, not only the final upload; that is where the defects were found. `--selftest` available.
+
 `lint-submission-file.py` (added 2026-07-26 from the DIA DMA submission-diff lessons) extracts text from the file that will actually be uploaded and applies the prose-lint HIGH rules plus a `[NEEDS]`/`[TBD]` bracket scan. It exists because team review forks to Google Docs and the markdown lint never sees the submitted file — it caught a shipped em-dash in the DIA DMA submission that the drafts-only lint could not. Run it as the last gate before upload, on every submission artifact. `--selftest` available.
 
 **Paste-ready-language sync rule (mandatory).** When providing paste-ready proposal language in chat for the user to paste into a Google Doc or Word file, **apply the same change to the corresponding `drafts/*.md` in the same turn** (or, if the drafts are known-stale, say so explicitly). Chat-provided language that only lands in the external doc silently forks the pipeline: the drafts and every lint/gate go stale while the submission evolves elsewhere. Corollary: once team review begins in Google Docs, treat the Doc as the source of truth and reconcile before any export (see `/export-proposal` preflight).
