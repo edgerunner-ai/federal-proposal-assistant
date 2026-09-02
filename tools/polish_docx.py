@@ -112,14 +112,86 @@ def set_margins(doc, inches=1.0):
         section.bottom_margin = Inches(inches)
 
 
+def _all_paragraphs(doc):
+    """Every paragraph in the document, including those inside table cells."""
+    for p in doc.paragraphs:
+        yield p
+    for t in doc.tables:
+        for row in t.rows:
+            for cell in row.cells:
+                for p in cell.paragraphs:
+                    yield p
+
+
+def blacken_text(doc):
+    """Force every run to automatic (black) text.
+
+    Coloured headings — the blue Word applies to Heading 1/2/3 by default — read as a
+    machine-generated document to a government reviewer. Adopted 2026-09-02 on Bill's
+    direction. Applied to runs AND to the underlying styles, because a run that inherits
+    its colour from a style has no run-level colour to clear.
+    """
+    n = 0
+    for p in _all_paragraphs(doc):
+        for r in p.runs:
+            if r.font.color is not None and r.font.color.rgb is not None:
+                r.font.color.rgb = RGBColor(0, 0, 0)
+                n += 1
+    for st in doc.styles:
+        try:
+            if st.font is not None and st.font.color is not None and st.font.color.rgb is not None:
+                st.font.color.rgb = RGBColor(0, 0, 0)
+                n += 1
+        except (AttributeError, NotImplementedError, ValueError):
+            continue
+    return n
+
+
+def unbold_midsentence(doc):
+    """Strip bold from runs that are not leading a paragraph or a list item.
+
+    Bold is for a topic label, a heading, or the lead-in of a bullet. Bold applied to a
+    word or clause inside a sentence for emphasis is a well-known tell of machine-written
+    prose, and a government reviewer reads it that way. Adopted 2026-09-02 on Bill's
+    direction.
+
+    A run is treated as a LEAD-IN, and keeps its bold, while every run from the start of
+    the paragraph so far has been bold or whitespace. The first non-bold run with real
+    text ends the lead-in; every bold run after that point is cleared.
+    Headings are left alone entirely.
+    """
+    cleared = 0
+    for p in _all_paragraphs(doc):
+        style = (p.style.name or '') if p.style else ''
+        if style.startswith('Heading') or style in ('Title', 'Subtitle'):
+            continue
+        in_leadin = True
+        for r in p.runs:
+            has_text = bool(r.text.strip())
+            if in_leadin:
+                if not has_text:
+                    continue          # whitespace does not end the lead-in
+                if r.bold:
+                    continue          # still inside the lead-in label
+                in_leadin = False     # first unbolded words: the sentence has begun
+                continue
+            if r.bold:
+                r.bold = False
+                cleared += 1
+    return cleared
+
+
 def whiteglove(doc):
     """The standard white-glove pass applied to every rendered .docx:
     content-proportional column widths, repeating headers, unsplit rows,
-    tight cell spacing, 1-inch margins. No header/footer (export adds that)."""
+    tight cell spacing, 1-inch margins, all-black text, no mid-sentence bold.
+    No header/footer (export adds that)."""
     set_margins(doc)
     for table in doc.tables:
         optimize_table(table)
         whiteglove_table(table)
+    blacken_text(doc)
+    unbold_midsentence(doc)
     return len(doc.tables)
 
 
