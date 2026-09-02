@@ -62,7 +62,12 @@ python scripts/lint-document-structure.py --proposal <slug>
 
 # Gold Team Significant Strength preservation — flags MOS-slate-style stripping
 python scripts/check-strengths.py --proposal <slug> --target docx
+
+# Editor staleness — the draft changed after /proposal-editor last ran (exit 1), or the editor was never logged (exit 2)
+python scripts/check-editor-staleness.py --proposal <slug>
 ```
+
+`check-editor-staleness.py` (added 2026-09-02) makes the editor a **gate that re-fires**, not a stage that runs once. It compares every top-level `drafts/*.md` mtime against the latest `## YYYY-MM-DD HH:MM — proposal-editor —` line in `working/activity.md`; `drafts/loose/` is exempt as the pre-edit preimage. It exists because on the NAVWAR EPSS pursuit the editor ran once on 27 Aug and the draft was then rewritten seven times through 2 Sep — restructure, positive-claim pass, prose rebalance, two comment rounds, Q&A alignment — with `prose-lint` reporting 0 HIGH before every post. Two AI tells sat through five posted versions because a clean regex gate looked like a clean edit. **Log every editor run as a `proposal-editor` activity line, with the time**; an untimed entry is read as 00:00 and warned about. `--warn-only` for non-blocking use; `--selftest` available.
 
 `prose-lint.py` scans `drafts/*.md` (top-level only; `drafts/loose/` is exempt). HIGH findings — the section-sign glyph, em-/en-dashes or `--` as sentence punctuation, and internal process vocabulary leaking into customer-facing prose — block export (exit 1). Advisories (marketing words, self-narration / performative-honesty commentary, prohibited-claim diction without a ledger cite, forbidden absolutes, "we will" stacking, repeated openings) are informational. The rule lists live in `reference/prose-lint-rules.json` (shared, syncable; the script fails closed if absent) and mirror `reference/PROSE-QUALITY-DOCTRINE.md`, `reference/editorial-voice-guide.md`, and `reference/doctrine/prohibited-claims-doctrine.md`.
 
