@@ -45,7 +45,7 @@ Writer should mark these explicitly when it can't find evidence. Gold Team treat
 
 1. `working/proposal-type.md` — determine proposal-type for restriction checks
 2. `my-company/evidence-ledger.json` — the approved evidence library
-3. `drafts/*.md` — scanned for `<!-- evidence: ... -->` markers by `scripts/evidence_check_core.py` (the deterministic checker this skill runs first)
+3. `drafts/*.md` — scanned for `<!-- evidence: ... -->` markers by `scripts/evidence_check_core.py` (the deterministic checker this skill runs first). Since 2026-09-04 the same scan also audits the `evidence: EV-###` key line of every `:::callout` sidebar block (`proposal-writer` Step 2e); such a marker reports its context as `callout: <title>`. A callout with no `evidence:` line is not a marker at all, so it never shows in the count: treat a box without one as a missing citation and report it under unsupported claims.
 4. `working/compliance-matrix.json` (if exists) — read rows to understand which claims should be evidence-backed
 5. `working/proposal-plan.json` (if exists) — read discriminators (each should have evidence_refs)
 

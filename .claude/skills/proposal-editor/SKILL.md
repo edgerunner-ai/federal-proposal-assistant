@@ -110,6 +110,8 @@ Our platform operated in disconnected mode for 14 months. <!-- evidence: EV-022 
 
 Do not delete or alter evidence IDs.
 
+**Callout sidebars are evidence too.** A `:::callout TITLE` ... `:::` block (assertive register; see `proposal-writer` Step 2e) is one ledger item rendered as a proof-point box. Preserve the block, its position before the paragraph it proves, its `evidence:` and `align:` key lines, and its header noun phrase. Edit the body for tightness only; never merge the box into the paragraph, never move it to the end of the section, never turn it into a bullet. Do not add callouts in the strict register (white papers, briefs, RFIs, SBIR); if one is present there, flag it in the change log rather than deleting it.
+
 If prose surrounding an unsupported claim is softened, preserve the unsupported marker:
 
 ```markdown

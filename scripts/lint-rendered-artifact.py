@@ -13,8 +13,14 @@ owns layout and typography on every rendered copy, review or final.
 Checks (HIGH blocks; ADVISORY reports):
   page-count      HIGH      pages exceed --pages (title page excluded with --exclude-title)
   font-size       HIGH      Normal style or any body run below --font-pt
+                  ADVISORY  a callout sidebar run below --font-pt (confirm the instruction
+                            covers sidebars and tables)
   text-colour     HIGH      any run with a non-black explicit colour
-  mid-bold        HIGH      bold inside a sentence (not a heading / label / bullet lead-in)
+                  ADVISORY  (assertive register) colour in a heading or a table header row;
+                            Word's default heading blue is named when it is the colour
+  mid-bold        HIGH      bold inside a sentence (not a heading / label / bullet lead-in);
+                            the assertive register allows ONE bold key phrase of up to six
+                            words per paragraph and fires on the second or a longer one
   orphan-punct    HIGH      space before . , ; (renderer stripped a comment and left the gap)
   placeholder     HIGH      bracketed placeholder shipped (delegates to lint-submission-file)
   figure-legib    HIGH<7pt  smallest label (24px convention) renders below the floor
@@ -25,8 +31,15 @@ Checks (HIGH blocks; ADVISORY reports):
 Page count uses Word COM when pywin32 is present; otherwise an ESTIMATE from word count
 (clearly labelled) so the gate still runs on machines without Word.
 
+Register (2026-09-04, tools/register.py): pass --proposal <slug> to resolve the
+register from working/proposal-type.md, or --register strict|assertive directly.
+Default is strict, which is the 2026-09-02 rule set unchanged. Callout sidebar tables
+emitted by tools/md_to_docx.py (white title on a dark header bar) are recognised by
+their tag and never fire text-colour in either register.
+
 Usage:
   python scripts/lint-rendered-artifact.py drafts/brief.docx --pages 5 --font-pt 12 --exclude-title
+  python scripts/lint-rendered-artifact.py final/docx/vol1.docx --proposal <slug> --pages 30 --font-pt 12
   python scripts/lint-rendered-artifact.py --selftest
 
 Exit codes: 0 clean, 1 HIGH findings, 2 harness error.
@@ -46,6 +59,12 @@ try:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 except Exception:
     pass
+
+sys.path.insert(0, str(REPO_ROOT / "tools"))
+from register import is_callout_table, resolve_register, STRICT, ASSERTIVE  # noqa: E402
+
+KEY_PHRASE_MAX_WORDS = 6          # assertive register: one bold phrase this short per paragraph
+WORD_DEFAULT_BLUES = {"2F5496", "1F3763", "4472C4", "2E74B5", "5B9BD5"}
 
 try:
     import docx  # python-docx
@@ -87,6 +106,27 @@ def _all_paragraphs(d):
                     yield p
 
 
+def _paragraph_classes(d) -> tuple[set, set]:
+    """(paragraph elements inside callout sidebars, paragraph elements in table header rows).
+
+    The sets hold the lxml elements themselves, not id()s: lxml re-creates proxy
+    objects on demand, so id(p._p) is only stable while a reference is held. Keeping
+    the element in the set keeps its proxy alive, and `p._p in set` then matches."""
+    callout, header = set(), set()
+    for t in d.tables:
+        if is_callout_table(t):
+            for row in t.rows:
+                for cell in row.cells:
+                    for p in cell.paragraphs:
+                        callout.add(p._p)
+            continue
+        if t.rows:
+            for cell in t.rows[0].cells:
+                for p in cell.paragraphs:
+                    header.add(p._p)
+    return callout, header
+
+
 def _is_heading(p) -> bool:
     st = (p.style.name or "") if p.style else ""
     return st.startswith("Heading") or st in ("Title", "Subtitle")
@@ -112,10 +152,12 @@ def _page_count(path: Path) -> tuple[int | None, str]:
 
 # ---------------------------------------------------------------- checks
 def lint(path: Path, pages: int | None, font_pt: float | None,
-         exclude_title: bool) -> list[Finding]:
+         exclude_title: bool, register: str = STRICT) -> list[Finding]:
     d = docx.Document(str(path))
     F: list[Finding] = []
     find_ph = _placeholder_finder()
+    assertive = register == ASSERTIVE
+    in_callout, in_header_row = _paragraph_classes(d)
 
     body_paras = [p for p in _all_paragraphs(d) if p.text.strip()]
 
@@ -125,28 +167,47 @@ def lint(path: Path, pages: int | None, font_pt: float | None,
         if normal is not None and normal.pt < font_pt:
             F.append(("HIGH", "font-size",
                       f"Normal style is {normal.pt:g}pt; instruction is {font_pt:g}pt"))
-        small = 0
+        small = small_callout = 0
         for p in body_paras:
             if _is_heading(p):
                 continue
             for r in p.runs:
                 if r.font.size is not None and r.font.size.pt < font_pt and r.text.strip():
-                    small += 1
+                    if p._p in in_callout:
+                        small_callout += 1
+                    else:
+                        small += 1
         if small:
             F.append(("HIGH", "font-size",
                       f"{small} body run(s) carry an explicit size below {font_pt:g}pt"))
+        if small_callout:
+            F.append(("ADVISORY", "font-size",
+                      f"{small_callout} callout sidebar run(s) below {font_pt:g}pt; confirm the "
+                      f"solicitation's font instruction covers sidebars and tables"))
 
     # --- colour, mid-sentence bold, orphan punctuation, placeholders ---
     coloured = midbold = 0
+    coloured_struct = 0            # assertive only: colour in a heading / table header row
+    default_blue = False
     orphan: list[str] = []
     for p in body_paras:
         txt = p.text
+        pid = p._p
+        structural = _is_heading(p) or pid in in_header_row
         for r in p.runs:
             c = r.font.color
             if c is not None and c.rgb is not None and str(c.rgb) != "000000":
+                if pid in in_callout:
+                    continue                       # the sidebar's white-on-dark title
+                if assertive and structural:
+                    coloured_struct += 1
+                    if str(c.rgb).upper() in WORD_DEFAULT_BLUES:
+                        default_blue = True
+                    continue
                 coloured += 1
         if not _is_heading(p):
             lead = True
+            kept = 0
             for r in p.runs:
                 if not r.text.strip():
                     continue
@@ -156,6 +217,9 @@ def lint(path: Path, pages: int | None, font_pt: float | None,
                     lead = False
                     continue
                 if r.bold:
+                    if assertive and kept < 1 and len(r.text.split()) <= KEY_PHRASE_MAX_WORDS:
+                        kept += 1
+                        continue
                     midbold += 1
         for m in re.finditer(r"\S \s*[.,;]", txt):
             orphan.append(txt[max(0, m.start() - 25):m.end() + 5].strip())
@@ -163,8 +227,15 @@ def lint(path: Path, pages: int | None, font_pt: float | None,
             F.append(("HIGH", "placeholder", txt[max(0, s - 20):e + 20].strip()))
     if coloured:
         F.append(("HIGH", "text-colour", f"{coloured} run(s) with a non-black colour (blue headings read as machine-written)"))
+    if coloured_struct:
+        note = "; Word's default heading blue is among them, which reads as machine-written: use the brand accent" if default_blue else ""
+        F.append(("ADVISORY", "text-colour",
+                  f"{coloured_struct} coloured run(s) in headings or table header rows (allowed in the assertive register{note})"))
     if midbold:
-        F.append(("HIGH", "mid-bold", f"{midbold} bold run(s) inside a sentence; bold is for labels and lead-ins only"))
+        if assertive:
+            F.append(("HIGH", "mid-bold", f"{midbold} bold run(s) inside a sentence beyond the one short key phrase the assertive register allows"))
+        else:
+            F.append(("HIGH", "mid-bold", f"{midbold} bold run(s) inside a sentence; bold is for labels and lead-ins only"))
     for o in orphan[:6]:
         F.append(("HIGH", "orphan-punct", f"...{o}"))
     if len(orphan) > 6:
@@ -297,6 +368,43 @@ def selftest() -> int:
         for f in highs:
             print("      unexpected:", f)
 
+    # --- register-aware cases ---
+    sys.path.insert(0, str(REPO_ROOT / "tools"))
+    from md_to_docx import add_callout, setup_document
+    reg = tmp / "reg.docx"
+    d = docx.Document(); setup_document(d)
+    d.styles["Normal"].font.size = Pt(12)
+    h = d.add_heading("Blue Heading", 1)
+    for r in h.runs:
+        r.font.color.rgb = RGBColor(0x2F, 0x54, 0x96)
+    add_callout(d, "Architecture at Kessel Run", ["A sidebar proof point with a number."])
+    p = d.add_paragraph("Lead-in: ")
+    p.runs[0].bold = True
+    p.add_run("prose with ")
+    r = p.add_run("one key phrase"); r.bold = True
+    p.add_run(" only.")
+    d.save(reg)
+    Fs = lint(reg, pages=None, font_pt=12, exclude_title=False, register=STRICT)
+    Fa = lint(reg, pages=None, font_pt=12, exclude_title=False, register=ASSERTIVE)
+    hs = {f[1] for f in Fs if f[0] == "HIGH"}
+    ha = {f[1] for f in Fa if f[0] == "HIGH"}
+    aa = {f[1]: f[2] for f in Fa if f[0] == "ADVISORY"}
+    expect("strict: blue heading still fires text-colour HIGH", "text-colour" in hs)
+    expect("strict: one key phrase still fires mid-bold HIGH", "mid-bold" in hs)
+    expect("strict: callout white title does not add a body colour HIGH",
+           any("1 run(s)" in f[2] for f in Fs if f[1] == "text-colour"))
+    expect("assertive: blue heading is ADVISORY not HIGH", "text-colour" not in ha and "text-colour" in aa)
+    expect("assertive: default Word blue is named", "default heading blue" in aa.get("text-colour", ""))
+    expect("assertive: one short key phrase is allowed", "mid-bold" not in ha)
+    expect("both: callout 10pt body is ADVISORY font-size, not HIGH",
+           "font-size" not in ha and "font-size" not in hs and "font-size" in aa)
+    p.add_run(" And ")
+    r2 = p.add_run("a second phrase"); r2.bold = True
+    d.save(reg)
+    Fa2 = lint(reg, pages=None, font_pt=12, exclude_title=False, register=ASSERTIVE)
+    expect("assertive: a second bold phrase fires mid-bold HIGH",
+           "mid-bold" in {f[1] for f in Fa2 if f[0] == "HIGH"})
+
     print("selftest:", "PASS" if failures == 0 else f"FAIL ({failures})")
     return 0 if failures == 0 else 1
 
@@ -309,12 +417,16 @@ def main() -> int:
     ap.add_argument("--font-pt", type=float, help="minimum body font size from the solicitation")
     ap.add_argument("--exclude-title", action="store_true",
                     help="the solicitation excludes the title page from the page limit")
+    ap.add_argument("--proposal", help="proposal slug; resolves the register from working/proposal-type.md")
+    ap.add_argument("--register", choices=[STRICT, ASSERTIVE],
+                    help="formatting register (overrides --proposal); default strict")
     ap.add_argument("--selftest", action="store_true")
     args = ap.parse_args()
     if args.selftest:
         return selftest()
     if not args.files:
         ap.error("give at least one .docx (or --selftest)")
+    register = resolve_register(register=args.register, proposal=args.proposal)
 
     worst = 0
     for f in args.files:
@@ -322,12 +434,12 @@ def main() -> int:
         if not path.is_file():
             print(f"lint-rendered-artifact: not found: {path}", file=sys.stderr)
             return 2
-        F = lint(path, args.pages, args.font_pt, args.exclude_title)
+        F = lint(path, args.pages, args.font_pt, args.exclude_title, register)
         highs = [x for x in F if x[0] == "HIGH"]
         advs = [x for x in F if x[0] == "ADVISORY"]
         infos = [x for x in F if x[0] == "INFO"]
         tag = "FAIL" if highs else ("warn" if advs else "ok  ")
-        print(f"{tag}  {path}  ({len(highs)} high, {len(advs)} advisory)")
+        print(f"{tag}  {path}  ({len(highs)} high, {len(advs)} advisory; {register} register)")
         for sev, rule, detail in highs + advs + infos:
             print(f"        [{sev:<8}] {rule:<13} {detail}")
         worst = max(worst, 1 if highs else 0)

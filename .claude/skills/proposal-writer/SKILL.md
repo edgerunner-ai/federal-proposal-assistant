@@ -226,6 +226,29 @@ The claim form that survives every review names its own boundary. For each produ
 
 An unconstrained capability claim is a latent Gold-Team weakness even when true — the evaluator reads the strongest possible interpretation and scores the risk of it. Write the boundary before a reviewer asks for it.
 
+### 2e. Place the proof-point callouts (assertive register only)
+
+Applies when `working/proposal-type.md` `type_id` is one of `far-rfp`, `ota-proposal`, `cso-full`, `idiq-to`, `gsa-mas-task-order`, `baa` (the `assertive` register in `tools/register.py`). Skip it entirely for white papers, briefs, RFIs, and SBIR. Calibrated on the Octo VAULT technical volume (`reference/winning-examples/usaf-vault-octo-2020-lessons.md`, section 3): the body prose commits to the approach; the proof lives beside it in a sidebar an evaluator can score without reading the paragraph.
+
+**A callout is one evidence-ledger item rendered as a sidebar.** Its header is a noun phrase naming the customer or program ("Deployment at USASOC", "Architecture at Kessel Run"), never a slogan. Its body is 50 to 90 words with a number and a result. Nothing else goes in a box: no definitions, no solicitation quotes, no win-theme statements, no commentary.
+
+Syntax (rendered by `tools/md_to_docx.py` as a floating box at 40 percent of the column, text wrapping; `evidence:` is audited by `/evidence-check` like an inline marker):
+
+```markdown
+:::callout Deployment at USASOC
+evidence: EV-012
+EdgeRunner AI fielded its on-device language model to USASOC at TRL 8, operating for
+fourteen months in fully disconnected mode with no cloud dependency.
+:::
+```
+
+Rules:
+- Place the block immediately **before** the paragraph it proves; the box floats beside that paragraph. `align: left` as a second key line puts it on the left; default is right.
+- **One box per scoring section that carries a discriminator with a numbered ledger item**, and at most one per page. Roughly one per three pages is the calibrated density; more dilutes.
+- The `evidence:` line is mandatory. A box whose proof has no ledger item does not exist: write the claim inline with `CLAIM-UNSUPPORTED` instead, so the gap is visible.
+- Do not repeat the box's number in the adjacent paragraph. The paragraph states the approach; the box states where it was done.
+- Never put a callout inside a table, a list, or a blockquote caption.
+
 ### 3. Update the compliance matrix
 
 If `working/compliance-matrix.md` exists, every section bound **must** update it — this is how the writer hands off to compliance-check and red-team.

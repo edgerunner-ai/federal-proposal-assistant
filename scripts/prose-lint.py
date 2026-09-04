@@ -131,11 +131,20 @@ def strip_noise(text: str) -> list[tuple[int, str]]:
     blocks dropped. Line numbers are 1-based and refer to the original file."""
     out: list[tuple[int, str]] = []
     in_fence = False
+    in_callout = False
     for i, raw in enumerate(text.splitlines(), start=1):
         if raw.lstrip().startswith("```"):
             in_fence = not in_fence
             continue
         if in_fence:
+            continue
+        s = raw.strip()
+        # Callout sidebar fences and their key lines (tools/md_to_docx.py) are
+        # structure, not prose; the box body is linted like any paragraph.
+        if s.startswith(":::"):
+            in_callout = s.lower().startswith(":::callout") or s.startswith("::: callout")
+            continue
+        if in_callout and re.match(r"^(evidence|align)\s*:", s, re.IGNORECASE):
             continue
         out.append((i, HTML_COMMENT.sub("", raw)))
     return out
