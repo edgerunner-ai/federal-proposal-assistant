@@ -68,7 +68,15 @@ If you can't write an action caption for a graphic, the graphic has no evaluativ
   - Government-provided components
   - External systems/data
 
-## Default Color Logic — Brand Palette
+## Surface Choice (decide first)
+
+Two surfaces, one brand (`my-company/branding/brand-design-system.md` section 2 and 2a). **A figure that will be embedded in a `.docx` uses the light page surface**: white canvas, panels `#f2f3f5`, hairlines `#c8c8c8`, structure in `#191c20` bars and `#393939` outlines, dense red `#c8102e` reserved for the customer-facing end state, amber for the middle state, no canvas slab or shadow. Slides, pitch decks, and the HTML review copy use the dark surface below. Never mix surfaces in one document.
+
+Mechanics: freeform HTML links `branding/proposal-graphics.css` then `branding/proposal-graphics-light.css`; parametric templates render with `python scripts/render-graphic.py <template> <data> <out.html> --surface light`. Worked example: `proposals/navwar-genai-epss/graphics/fig-anchor-one-workstation-light.html` beside its dark original.
+
+Light-surface rules that differ from the dark defaults below: EdgeRunner components are drawn as strong dark outlines, not red; red marks only the end state (the VAULT orange rule); header bars and summary bands are dark with white uppercase text, matching the callout sidebar header so figures, tables, and callouts read as one family on the page.
+
+## Default Color Logic — Brand Palette (dark surface)
 Use your company's brand palette unless the customer specifies otherwise. Update these values to match your brand:
 - **Background:** `#191c20` (near-black)
 - **Primary accent:** `#ee2929` (brand red) — titles, accent bars, pills, hero elements, glow effects

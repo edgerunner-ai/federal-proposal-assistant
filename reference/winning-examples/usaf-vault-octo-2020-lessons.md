@@ -226,7 +226,7 @@ None of these change the white-paper register. All of them apply to the three re
 | 1. Callout block end to end | Done 2026-09-04 | `tools/md_to_docx.py` (`:::callout` syntax, floating tagged table), `scripts/evidence_check_core.py` (audits the `evidence:` key line), `scripts/prose-lint.py` (fences and key lines are not prose), `proposal-writer` Step 2e, `proposal-editor` preservation rule, `evidence-check` skill note |
 | 3. Register-aware lint and polish | Done 2026-09-04 | `tools/register.py` (type_id to register), `scripts/lint-rendered-artifact.py --proposal/--register`, `tools/polish_docx.py --proposal/--register`; `export-proposal` passes `--proposal` to both |
 | 2. Caption and table rendering | Not started | `tools/md_to_docx.py` |
-| 4. Light-page figure variant | Approved, not started | `my-company/branding/`, `my-company/graphic-templates/` |
+| 4. Light-page figure variant | Done 2026-09-04 | `my-company/branding/proposal-graphics-light.css`, `surfaces.json`, design system section 2a, `render-graphic.py --surface light`, graphics skill "Surface Choice"; worked example `proposals/navwar-genai-epss/graphics/fig-anchor-one-workstation-light.html` |
 | 5. Writer and editor heading and lead-in rules | Not started | skills |
 | 6. Storyboard page budget and density advisory | Not started | `proposal-storyboard`, `lint-rendered-artifact.py` |
 | 7. Half-width figure wrap; graphics-free export | Not started (export now confirmed as a real requirement) | `tools/md_to_docx.py`, `export-proposal` |
