@@ -1946,7 +1946,7 @@
       "proof_strength": null,
       "created_at": "2026-08-27T00:00:00Z",
       "verified_at": "2026-08-27T00:00:00Z",
-      "notes": "Cite specific model results through EV records (EdgeRunner 20B, Mil-Deflect), not through this capability record."
+      "notes": "Cite specific model results through EV records (EdgeRunner 20B, Mil-Deflect), not through this capability record. Current product models are EdgeRunner Light and Medium (EV-134); the 20B figures describe the previous-generation research model."
     },
     {
       "id": "CAP-02",
@@ -2443,6 +2443,98 @@
       ],
       "customer_context": "Customer-agnostic by decision (Bill, 2026-07-16): any cell fielding its own target-ID models on Group 1 to 3 tactical UAS FMV; PED / ISR mission owners. Structurally the pre-strike half of the loop that combat assessment (DAF26TZ06-NV007) would extend post-strike.",
       "notes": "Harvested at Bill's direction 2026-09-02 from the NV007 quick-look register-gap list. Candidate not harvested: an EV record that EVELYN has trained YOLOv8 detectors (fact confirmed by Bill 2026-07-16 per spotter activity log; Gold Team item F-A) has no ledger entry and should be proposed separately."
+    },
+    {
+      "id": "EV-133",
+      "record_class": "evidence",
+      "type": "past_performance",
+      "summary": "U.S. Army Cyber Command (ARCYBER): EdgeRunner on contract from 1 Sep 2026 as a subcontractor under the Army Cyber Analytics and Detection (CAD) OMNIBUS IDIQ (prime contract W909MY26D0002), T&M, NTE $889,800, PoP 1 Sep 2026 to 28 Feb 2027; AI/ML integration for the Army's defensive cyber operations analytics platform",
+      "detail": "THE CONTRACT. Subcontract SOW dated 14 Aug 2026 from Enlighten IT Consulting LLC (an HII company; Columbia, MD) to EdgeRunner AI. Customer/agency: Army. Program: Cyber Analytics and Detection (CAD) OMNIBUS. Prime contract W909MY26D0002 (Enlighten's 5-year single-award Army Defensive Cyber Operations / CAD IDIQ, publicly reported ceiling ~$476M). Contract type: Time & Materials. Period of performance 1 Sep 2026 to 28 Feb 2027 (base). Ceiling $889,800: Cloud Software Engineer Senior 2,040 hrs @ $195 and Cloud Software Engineer SME 2,000 hrs @ $246. No travel. Security: Secret; all personnel verified U.S. citizens; ECA certificates required within 60 days for uncleared staff needing source-code access. Bill Bal confirmed 'officially on contract with ARCYBER' by email 1 Sep 2026; Colton Malkerson (2 Sep) called it 'an actual paid contract with rules around the data access'. Kickoff with the prime's PMO (Nathan Beigel) held 1 Sep 2026. HubSpot deal 'U.S. Army Cyber Command SLM' ($890K, agency Army / Cyber Command, vehicle IDIQ Task Order).\n\nSCOPE (public-safe wording). AI/ML integration for the Army's defensive cyber operations analytics platform: Task 1 develops 'AI enablers' contributed to the Army cyber analytics baseline via a FOSS/AWS solution analysis and cDSO-approved MVPs; Task 2 develops analytics, applications and visualizations and supports government-approved application developers. The SOW is marked HII Proprietary and names internal program/system identifiers; do NOT reproduce those names (the big-data platform aliases, the runtime-stack acronym) in external material. The public IDIQ description ('maintenance, development, and AI/ML integration of the Defensive Cyber Operations analytics platform') is the safe scope phrase.\n\nRULES FOR USE. (1) Cite the customer as U.S. Army Cyber Command / ARCYBER; do NOT name the prime in external collateral (Bill's direction 2026-08-27) -- 'performing as a subcontractor under an Army IDIQ' is the ceiling. (2) This is CONTRACTED work with no performance history yet (started 1 Sep 2026): cite as an active contract / funded engagement, not as completed past performance, and do not offer a PPQ or CPARS reference until a period has been performed. (3) Public announcement: a press release drafted by Colton (31 Aug 2026) is pending the prime's approval; confidential customer-facing collateral may state the engagement, but nothing public until that approval. (4) This is EdgeRunner's first funded cyber-domain contract and the first Army contract with a value above the $23K Space Force order; it does not change the unfunded-pilot status of the other Army deployments (see past-performance.md section 6).",
+      "source_file": "Growth/Opportunities (Drive): '202-EdgeRunner AI CAD_Omnibus SOW 20260814_R1.pdf' (Drive id 1xAtEaDp68ihR3oNBLOQQZLAb5XBpXbR8); bid folder 1gL5UfAwU3AyBanVfX6ZTkzepR9cOxOT1",
+      "source_anchor": "Subcontract SOW 14 Aug 2026, sections 1, 2, 6, 8; Bill Bal email 'Re: OCO AI platform' 2026-09-01; Slack #uscybercom 2026-08-13 and #armycybercom 2026-09-02",
+      "relevance_tags": [
+        "arcyber",
+        "army-cyber-command",
+        "defensive-cyber-operations",
+        "cad",
+        "idiq",
+        "subcontract",
+        "time-and-materials",
+        "on-contract",
+        "cyber",
+        "ai-ml-integration",
+        "prime-not-citable",
+        "restricted-release"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-09-03T00:00:00Z",
+      "verified_at": "2026-09-03T00:00:00Z",
+      "evidentiary_tier": "contracted",
+      "tier_reason": "A signed, funded T&M subcontract with a defined PoP and ceiling. Contracted, not yet performed: no deliverables accepted as of 2026-09-03, so it is an active contract rather than past performance.",
+      "capabilities": [
+        "CAP-01",
+        "CAP-02"
+      ],
+      "customer_context": "U.S. Army Cyber Command via the Army CAD OMNIBUS IDIQ; AI/ML enablers and analytics for defensive cyber operations"
+    },
+    {
+      "id": "EV-134",
+      "record_class": "evidence",
+      "type": "customer_fact",
+      "summary": "Current EdgeRunner product models are EdgeRunner Light and EdgeRunner Medium; the base model is not stated externally",
+      "detail": "Per Bill Bal (VP Growth), 2026-08-31: EdgeRunner migrated its primary light and medium models to a new base a few months earlier and now refers to them only as EdgeRunner Light and EdgeRunner Medium. Collateral and proposals name the products, not the base model. The EdgeRunner 20B paper remains citable as a publication; its model-specific results describe the previous-generation 20B research model and are not attributed to Light or Medium without a fresh measurement.",
+      "source_file": null,
+      "source_anchor": "Bill Bal, 2026-08-31 (direction given in working session)",
+      "relevance_tags": [
+        "model-naming",
+        "edgerunner-light",
+        "edgerunner-medium",
+        "collateral-rule",
+        "layer-1"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "company_statement",
+      "created_at": "2026-09-03T00:00:00Z",
+      "verified_at": "2026-09-03T00:00:00Z",
+      "evidentiary_tier": "internal",
+      "tier_reason": "Company naming rule stated by the VP Growth; not externally verifiable and not a performance claim.",
+      "capabilities": [
+        "CAP-01"
+      ],
+      "customer_context": null
+    },
+    {
+      "id": "EV-135",
+      "record_class": "evidence",
+      "type": "capability_claim",
+      "summary": "EdgeRunner Light 2.0 measured footprint (CTO, 2026-09-03): installs at 7.81 GB; runs in 5.5 GB RAM plus 5 GB VRAM (embeddings 1 GB RAM + 0.8 GB VRAM; Light model 3.5 GB RAM + 4.2 GB VRAM; application 1 GB); lowest-power CPU measured is a 65 W Intel Panther Lake; a 30 W CPU is expected 1.5 to 3x slower in prefill and comparable in decode",
+      "detail": "Source: Vincent Lu (CTO) comment on the Drive copy of the NAVWAR GenAI EPSS Solution Brief v9, 2026-09-03, answering the D1 hardware-envelope fact request (register item 1). Verbatim substance: 'EdgeRunner with Light 2.0 installs at 7.81GB, and the system is measured to use 5.5GB RAM + 5 GB VRAM (1GB RAM + 0.8GB VRAM for the embeddings, 3.5GB RAM + 4.2GB VRAM for the Light model, 1GB for the frontend/backend application). I don't actually have a device like this, the most efficient CPU that we have, which is the Intel Panther Lake, is 65W. We expect a 30W CPU to be 1.5-3x slower than ATAK in prefill, and somewhat comparable in decode. It is highly advised against to do any embedding work outside of querying, or perform long-context operation, on CPU. If it's only counting CPU power, and GPU power is external, then no issues there.' BOUNDARY: the 30 W figure is an expectation, not a measurement; no sub-30 W device has been measured. Supersedes the 8B-era numbers (5 GB storage, 6 GB peak) cited as EV-048 for D1 on this pursuit. Use: storage and memory may be stated as measured; power must be stated as to-be-measured on the Government's platform.",
+      "source_file": "proposals/navwar-genai-epss/drafts/loose/solution-brief-v9-DRIVE-with-comments-2026-09-04.docx (word/comments.xml, comment id 16); Drive id 1OgvCzUl5krFq5tQkeVeUfTJ2LOUqm9PE",
+      "source_anchor": "Vincent Lu (CTO) comment #16 on Drive file 'Solution Brief - v9 (QandA Set 02 aligned, 12pt).docx', 2026-09-03; extracted 2026-09-04",
+      "relevance_tags": [
+        "hardware-footprint",
+        "edgerunner-light",
+        "storage",
+        "memory",
+        "vram",
+        "power",
+        "d1",
+        "navwar-epss",
+        "cto-stated",
+        "power-not-measured"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "medium",
+      "created_at": "2026-09-04T00:00:00Z",
+      "verified_at": "2026-09-04T00:00:00Z",
+      "evidentiary_tier": "measured",
+      "tier_reason": "Storage and memory are stated as measured figures by the CTO in writing; not yet reproduced by a second party or recorded in a test report, so medium rather than high. The 30 W figure is an expectation, not a measurement, and must not be cited as met.",
+      "capabilities": [
+        "CAP-01"
+      ],
+      "customer_context": "Internal engineering measurement of the EdgeRunner Light 2.0 configuration; cited on the NAVWAR GenAI EPSS brief (PMW 160) for Desired attribute D1",
+      "date": "2026-09-03"
     }
   ]
 }
