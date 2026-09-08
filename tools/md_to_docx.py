@@ -77,9 +77,13 @@ TEXT_WIDTH_INCHES = 8.5 - 1.25 - 1.25  # 6.0 inches usable width
 # light page it is reserved for the customer-facing end state inside figures.
 CALLOUT_WIDTH_FRACTION = 0.40
 CALLOUT_HEADER_FILL = "191C20"     # brand near-black
-CALLOUT_BODY_FILL = "F2F2F2"
-CALLOUT_BORDER = "393939"          # brand dark grey
+CALLOUT_BODY_FILL = "FFFFFF"       # white body on a white page; the rule carries the box (VAULT)
+CALLOUT_BORDER = "191C20"          # one 1pt near-black rule around the box
+CALLOUT_BORDER_SZ = "8"            # eighths of a point: 1pt
 CALLOUT_FONT_SIZE = Pt(10)
+CALLOUT_HEADER_SIZE = Pt(9)        # uppercase, letter-spaced, white on the dark bar
+CALLOUT_CELL_MARGIN_DXA = 150      # 0.10in inside the box, left and right
+CALLOUT_GUTTER_DXA = "200"         # 0.14in between the box and the wrapped text
 
 
 # ── Document setup ────────────────────────────────────────────────────────────
@@ -281,10 +285,10 @@ def _float_table(table, width_in: float, align: str) -> None:
     tbl = table._tbl
     tblPr = tbl.tblPr
     pPr = OxmlElement('w:tblpPr')
-    pPr.set(qn('w:leftFromText'), '144')     # 0.1in gutter each side
-    pPr.set(qn('w:rightFromText'), '144')
+    pPr.set(qn('w:leftFromText'), CALLOUT_GUTTER_DXA)
+    pPr.set(qn('w:rightFromText'), CALLOUT_GUTTER_DXA)
     pPr.set(qn('w:topFromText'), '0')
-    pPr.set(qn('w:bottomFromText'), '144')
+    pPr.set(qn('w:bottomFromText'), '160')
     pPr.set(qn('w:vertAnchor'), 'text')
     pPr.set(qn('w:horzAnchor'), 'margin')
     pPr.set(qn('w:tblpXSpec'), 'left' if align == 'left' else 'right')
@@ -313,15 +317,18 @@ def _float_table(table, width_in: float, align: str) -> None:
     layout.set(qn('w:type'), 'fixed')
 
     borders = OxmlElement('w:tblBorders')
-    for edge in ('top', 'left', 'bottom', 'right', 'insideH'):
+    for edge in ('top', 'left', 'bottom', 'right'):
         b = OxmlElement(f'w:{edge}')
-        b.set(qn('w:val'), 'single'); b.set(qn('w:sz'), '6')
+        b.set(qn('w:val'), 'single'); b.set(qn('w:sz'), CALLOUT_BORDER_SZ)
         b.set(qn('w:space'), '0'); b.set(qn('w:color'), CALLOUT_BORDER)
         borders.append(b)
+    for edge in ('insideH', 'insideV'):
+        b = OxmlElement(f'w:{edge}'); b.set(qn('w:val'), 'nil'); borders.append(b)
     tblPr.append(borders)
 
     mar = OxmlElement('w:tblCellMar')
-    for edge, w in (('top', '60'), ('left', '100'), ('bottom', '60'), ('right', '100')):
+    m_lr = str(CALLOUT_CELL_MARGIN_DXA)
+    for edge, w in (('top', '0'), ('left', m_lr), ('bottom', '90'), ('right', m_lr)):
         m = OxmlElement(f'w:{edge}'); m.set(qn('w:w'), w); m.set(qn('w:type'), 'dxa')
         mar.append(m)
     tblPr.append(mar)
@@ -374,10 +381,13 @@ def add_callout(doc: Document, title: str, body_paras: list[str], align: str = '
 
     hp = cell.paragraphs[0]
     hp.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    hp.paragraph_format.space_before = Pt(0)
+    # shading covers the paragraph's own spacing, so before/after set the bar's height
+    hp.paragraph_format.space_before = Pt(3)
     hp.paragraph_format.space_after = Pt(3)
-    hp.paragraph_format.left_indent = -Inches(100 / 1440)     # out to the cell border
-    hp.paragraph_format.right_indent = -Inches(100 / 1440)
+    hp.paragraph_format.line_spacing = 1.0
+    # out past the cell margin by a hair so the bar meets the rule with no white sliver
+    hp.paragraph_format.left_indent = -Inches((CALLOUT_CELL_MARGIN_DXA + 12) / 1440)
+    hp.paragraph_format.right_indent = -Inches((CALLOUT_CELL_MARGIN_DXA + 12) / 1440)
     pPr = hp._p.get_or_add_pPr()
     shd = OxmlElement('w:shd')
     shd.set(qn('w:val'), 'clear'); shd.set(qn('w:color'), 'auto'); shd.set(qn('w:fill'), CALLOUT_HEADER_FILL)
@@ -385,13 +395,17 @@ def add_callout(doc: Document, title: str, body_paras: list[str], align: str = '
     hr = hp.add_run(title.strip())
     hr.bold = True
     hr.font.name = BODY_FONT
-    hr.font.size = CALLOUT_FONT_SIZE
+    hr.font.size = CALLOUT_HEADER_SIZE
     hr.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
+    rPr = hr._r.get_or_add_rPr()              # uppercase with 0.5pt tracking: the figure-bar convention
+    rPr.append(OxmlElement('w:caps'))
+    sp = OxmlElement('w:spacing'); sp.set(qn('w:val'), '10'); rPr.append(sp)
 
-    for text in body_paras:
+    for k, text in enumerate(body_paras):
         para = cell.add_paragraph()
-        para.paragraph_format.space_before = Pt(0)
-        para.paragraph_format.space_after = Pt(3)
+        para.paragraph_format.space_before = Pt(5) if k == 0 else Pt(0)
+        para.paragraph_format.space_after = Pt(4)
+        para.paragraph_format.line_spacing = 1.08
         add_formatted_runs(para, text)
         for run in para.runs:
             run.font.size = CALLOUT_FONT_SIZE
