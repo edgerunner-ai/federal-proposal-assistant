@@ -2,7 +2,7 @@
 
 **Authoritative source for TRL:** Department of Defense, *Technology Readiness Assessment Guidebook*, February 2025 (OUSD(R&E), cleared for public release; supersedes the June 2023 Guidebook, the 2009 TRA Deskbook, and the 2011 TRA Guidance). Tables 2-1 (hardware), 2-2 (software), and 2-3 (terms) are reproduced below with the wording of the Guidebook. The GAO *Technology Readiness Assessment Guide* (GAO-20-48G, January 2020) carries the same nine definitions and its Table 4 matches the DoD supporting-information columns.
 **Source for IRL:** Sauser, Gove, Forbes, and Ramirez-Marquez, "Integration maturity metrics: development of an Integration Readiness Level" (Stevens Institute; INCOSE 2008), Table 1, citing Gove 2007. IRL is a published systems-engineering scale used by DAU and by platforms such as Vulcan; it is not DoD policy the way TRL is.
-**Compiled:** 2026-09-08 for proposal use. Section 4 is EdgeRunner's own rule set for making a TRL claim; everything above it is the Government's language.
+**Compiled:** 2026-09-08. The Government-only version for proposal use (TRL, IRL, SRL, MRL tables, no house commentary) is `reference/readiness-levels-quick-reference.md`. Section 4 here is EdgeRunner's own rule set for making a TRL claim.
 
 ---
 
@@ -47,19 +47,7 @@ The hardware column's descriptions, for completeness: TRL 5 "high-fidelity labor
 
 ## 3. Integration Readiness Level (IRL)
 
-| IRL | Definition (Gove 2007; Sauser et al. 2008) | Description | Stage |
-|---|---|---|---|
-| 9 | Integration is mission proven through successful mission operations. | The integrated technologies are used successfully in the system environment. Reaching IRL 9 also implies maturing the component technology to TRL 9. | Pragmatic |
-| 8 | Actual integration completed and mission qualified through test and demonstration in the system environment. | The integration meets requirements and there is a system-level demonstration in the relevant environment, which reveals defects that only appear when the integrating technologies interact in the system environment. | Pragmatic |
-| 7 | The integration of technologies has been verified and validated with sufficient detail to be actionable. | A significant step beyond IRL 6: the integration works technically and meets requirements such as performance, throughput, and reliability. | Syntactic |
-| 6 | The integrating technologies can accept, translate, and structure information for the intended application. | The highest technical level: control of the integration, plus specifying what information to exchange, unit labels for what the information is, and translation from a foreign data structure to a local one. | Syntactic |
-| 5 | There is sufficient control between technologies to establish, manage, and terminate the integration. | One or more of the integrating technologies can control the integration itself: establish, maintain, terminate. | Syntactic |
-| 4 | There is sufficient detail in the quality and assurance of the integration. | Beyond simple data exchange: the data sent is the data received, and a mechanism exists to check it. Many integration failures never progress past IRL 3 because exchange is mistaken for integration. | Syntactic |
-| 3 | There is compatibility (a common language) between technologies to orderly and efficiently integrate and interact. | The minimum level for successful integration: the technologies influence each other and communicate interpretable data. | Semantic |
-| 2 | There is some specificity to characterize the interaction (ability to influence) between technologies through their interface. | A signalling method is selected so the two technologies can influence each other over the chosen medium; integration proof of concept. | Semantic |
-| 1 | An interface between technologies has been identified with sufficient detail to allow characterization of the relationship. | The lowest level: a medium for integration has been selected. | Semantic |
-
-IRL is scored per integration point, not per system. An offer with three integrations (say, a COP, a simulation engine, and a data feed) has three IRLs, and the lowest one is the honest headline. IRL 7 requires a requirements-level verification of the integration, not a working demo.
+The DoD Guidebook (section 6, Figure 6-1) adopts the 0-to-9 IRL scale that GAO-20-48G adapted from Sauser to align with the TRL environment ladder. That scale, with its evidence descriptions, plus the SRL and MRL tables, is in `reference/readiness-levels-quick-reference.md`, sections 4 to 6. Use that one in proposals. The original Sauser wording (interface, interaction, compatibility, quality assurance, control, information structuring, verification and validation, mission qualified, mission proven) still appears on some platforms; when a solicitation names IRL, check which scale it cites. IRL is scored per integration point, and the lowest integration is the honest headline.
 
 ## 4. EdgeRunner rules for stating a TRL (house doctrine, not Government text)
 
