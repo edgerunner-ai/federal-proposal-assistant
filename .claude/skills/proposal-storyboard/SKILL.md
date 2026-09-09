@@ -98,7 +98,7 @@ For each required section, produce:
 
 **Reader Movement:** <what the reader believes before this section -> what they should believe after it>
 
-**Mission Effect Advanced:** <which element of the spine's Mission Effect Statement this section moves (problem | mission effect | capability | cost | timeline), and the one operator-terms sentence it must land; or "⚠ NONE — advances no element of the mission effect". The executive summary storyboard carries the full five-element paragraph, verbatim or near it.>
+**Mission Effect Advanced:** <which element of the spine's Mission Effect Statement this section moves (problem | mission effect | capability | cost | timeline), and the one operator-terms sentence it must land; or "⚠ NONE — advances no element of the mission effect". The executive summary carries problem, mission effect, and capability as the hook, in prose or as a short "Delivered Outcomes" list; timeline and cost land after the approach sections so they align with what the reader just reviewed (methodology file, "Where the five elements land").>
 
 **Narrative Mode:** <compressed-brief | solution-brief | scored-volume | technical-merit | market-research | pricing-artifact>
 

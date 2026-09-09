@@ -24,7 +24,23 @@ Written once, in `working/narrative-spine.md`, as the first block, signed off wi
 
 **The operator-terms test for the effect.** A mission effect is stated in terms of at least one of: time (to a decision, to a task, to restoration), decisions (made, made earlier, made with evidence), risk (reduced, bounded, detected before harm), availability (works when the network or the expert is absent), or what no longer has to happen (a wrong procedure executed, a retraining cycle, a call to a help desk). "Improves readiness" and "enables decision superiority" fail the test. "A technician at the console gets the right procedure, with its source, faster than a manual, and a wrong answer is stopped before it is executed at sea" passes.
 
-**Length.** About 100 words. It replaces prose in the executive summary; it does not add to it.
+**Length.** About 100 words in the spine.
+
+## Where the five elements land in the document (Bill, 2026-09-09)
+
+The statement is written once, in the spine, with all five elements together. The document carries them in the reader's order, not all at once:
+
+| Position | Elements | Why |
+|---|---|---|
+| Executive summary | Problem, mission effect, capability | The hook. A reader decides here whether to keep reading. |
+| Approach sections | Capability in depth, with the effect each part produces | The reader learns how the outcome is produced. |
+| Timeline and cost, after the approach | Timeline, cost | They align with the approach the reader just reviewed. A number in the executive summary that is out of line with what the reader expects distracts from the hook. |
+
+So the executive summary does not state cost or duration. `check-mission-effect.py` tests the whole document for all five, and the executive summary only for problem, effect, and capability.
+
+**Bullets are welcome where the content is enumerable.** Delivered outcomes, technical objectives, deliverables, and success criteria read faster as a short list than as a paragraph; the prose-lint bullet-ratio floor exists for the same reason. A "Delivered Outcomes:" list of three to five items is a good executive-summary shape. The argument stays in prose; the enumerable parts of it may be listed.
+
+**Register.** Plain over pointed (`reference/editorial-voice-guide.md`, Sentence Discipline). The operator-terms test asks for the effect in the operator's terms; it does not license epigrams.
 
 ## Reading the solicitation: effects or specs
 
