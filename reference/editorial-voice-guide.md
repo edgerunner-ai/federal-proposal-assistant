@@ -155,6 +155,7 @@ These three rules are the generation-side mirror of the deterministic `prose-lin
 - Do not force a theme statement when a plain topic sentence is stronger.
 - Vary section openings; repeated "Our approach..." or "This section..." rhythms create AI smell.
 - Make transitions explain why the next idea follows, not merely that another section has begun.
+- **Plain over pointed (Bill, 2026-09-09).** A functional sentence beats an aphoristic one. The editor's instinct to sharpen an outcome into a memorable line ("the schoolhouse is no longer the only source of current procedure", "found by telemetry rather than by a mishap report") reads as written-for-effect, which a reviewer hears as AI. Say what happens, in the order it happens, with ordinary verbs, and allow a contraction. Bill's calibration example: "Wrong answers are stopped before they're provided, and any changes to procedures are updated without waiting on new curriculum from the Schoolhouse." Mild passive voice is acceptable when the actor is obvious; a "Delivered Outcomes:" lead-in is preferred to a coined label.
 - **Open concern-first, never cinematic.** Lead with the customer's mission problem or the evaluator's question — the concern itself. Do not stage a dramatized scene ("Picture the demonstration room...", "In August, four personas will..."). Cinematic openings read as cheesy and undercut the impression that the offeror truly understands the mission. The human element belongs in visible command of the problem and plain, engaged language — not in theatrics.
 
 ## Section-Level Editing Rules
