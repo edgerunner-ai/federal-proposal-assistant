@@ -312,6 +312,10 @@ Assume competitor-assessment says the likely lead competitor requires cloud conn
 
 ---
 
+## Pattern 5 — Mission-Effect Translation (proposal level)
+
+The four patterns above work at the discriminator, section, and graphic level. Pattern 5 works at the proposal level: one Mission Effect Statement (problem, mission effect, capability, cost, timeline) written in the narrative spine and carried by the executive summary, with every scoring section advancing one element of it. The effect is stated in the operator's terms, not the vendor's. Full rule, operator-terms test, and the translation rule for narrow specifications: `reference/methodology/mission-effect-translation.md`. Adopted 2026-09-09.
+
 ## Self-Positioning Discipline (applies to all types, critical for white papers)
 
 **Rule:** EdgeRunner-specific rows, claims, or paragraphs go in the dedicated EdgeRunner Position section — not inside evidence tables or audits.
@@ -335,6 +339,7 @@ For every major section, the writer should:
 3. **Write action captions** (Pattern 3) for every graphic referenced from the section
 4. **Ghost** (Pattern 4) in sections where a known competitor weakness is in play — but only when applicable per the table above
 5. **Keep self-positioning in self-positioning sections** — evidence sections stay evidentiary
+6. **Carry the mission effect** (Pattern 5): the executive summary states the five elements together; each scoring section lands the operator-terms sentence its storyboard names under "Mission Effect Advanced"
 
 Pattern discipline should improve the prose, not expose the scaffolding. If applying a pattern makes a short white paper or web-form answer sound like a proposal template, compress the pattern into normal prose while preserving the claim, proof, and evaluator value.
 
@@ -345,6 +350,6 @@ For every section, the writer should also check:
 
 ## How `red-team-review` Gold Team checks these patterns
 
-Gold Team's win-theme visibility check, discriminator proof-point check, and ghosting check (see `.claude/skills/red-team-review/SKILL.md`) all map directly to these patterns. If the writer applied them, Gold Team finds them present. If not, they become Weaknesses.
+Gold Team's Mission Effect Check (asked first), win-theme visibility check, discriminator proof-point check, and ghosting check (see `.claude/skills/red-team-review/SKILL.md`) all map directly to these patterns. If the writer applied them, Gold Team finds them present. If not, they become Weaknesses.
 
 This is by design — the writer's job is to produce Gold-Team-pass content on the first draft, not to leave it for cleanup.

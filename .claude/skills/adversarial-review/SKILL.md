@@ -169,8 +169,10 @@ a skim failure, a hand-waved integration is a close-read failure, and they need 
 
 ### 2. Select the panel
 
-Default full-tier panel is 3 personas from `reference/adversarial-personas.md`: **Skeptical
-Evaluator**, **Cold Reader**, **Competitor's Capture Manager**. Add:
+Default full-tier panel is 4 personas from `reference/adversarial-personas.md`: **Skeptical
+Evaluator**, **Cold Reader**, **Competitor's Capture Manager**, **Operational User** (the
+former operator who reads only for what changes for the unit; seated on every type since
+2026-09-09, see `reference/methodology/mission-effect-translation.md`). Add:
 - **Compliance Hawk** when the type has `compliance_sources` (FAR RFP, SBIR, OTA).
 - **Accreditation Reviewer** whenever the document makes security, authorization, ATO/IATT,
   cross-domain, or clearance claims. It reads from the approver's seat (the AO staffer, ISSM, or
@@ -182,7 +184,7 @@ Evaluator**, **Cold Reader**, **Competitor's Capture Manager**. Add:
   as a one-time seating rather than every round (a new persona guarantees new findings, so it
   cannot converge — see per-dimension convergence).
 
-`--tier=quick` runs **Cold Reader + Skeptical Evaluator** only. White papers / RFIs at
+`--tier=quick` runs **Cold Reader + Skeptical Evaluator + Operational User**. White papers / RFIs at
 `--stage=doc` drop the Evaluator and Hawk (no rubric to hold); at `--stage=plan` the panel is
 Skeptical Evaluator + Competitor. The user can override the panel.
 

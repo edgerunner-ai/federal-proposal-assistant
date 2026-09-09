@@ -77,6 +77,7 @@ If no mode is specified, ask before proceeding.
 9. **Narrative spine preservation** — does the draft still carry the approved through-line, or did it collapse into a capability tour?
 10. **Narrative mode fit** — does the prose match the proposal type and page target, or does it over-explain / under-explain for the reader?
 11. **Transition quality** — do transitions show consequence, proof, selection, or decision, or merely announce structure?
+12. **Mission-effect clarity** — first question, asked before the others: what operational outcomes does this proposal enable or support, and can the reviewer state them from the draft alone? Compare the draft against the Mission Effect Statement in `working/narrative-spine.md` (`reference/methodology/mission-effect-translation.md`). An effect that is missing, stated only in technical terms, or assembled by the reviewer from three sections is a finding at the proposal level.
 
 **Output table:**
 | Issue | Severity | Section | Why It Hurts Score | Recommended Fix |
@@ -223,6 +224,20 @@ If no mode is specified, ask before proceeding.
 
 ---
 
+## Mission Effect Check
+
+Asked first. Source: the Mission Effect Statement in `working/narrative-spine.md` (`reference/methodology/mission-effect-translation.md`). Fill from the draft alone, as an evaluator would; cite the paragraph or write "absent".
+
+| Element | Stated in the draft? | Where (cite) | Operator terms? | Note |
+|---|---|---|---|---|
+| Problem (customer's words) | Yes / Partial / Absent | | n/a | |
+| Mission effect (what changes for the operator or unit) | Yes / Partial / Absent | | Yes / No | |
+| Capability (named, evidenced) | Yes / Partial / Absent | | n/a | |
+| Cost (what the number buys) | Yes / Partial / Absent | | n/a | |
+| Timeline (when the effect arrives, who gates it) | Yes / Partial / Absent | | n/a | |
+
+**Verdict:** [Aligned in one place / Assembleable from N sections / Not stated]. "Assembleable" is a Weakness; "Not stated" is a Significant Weakness, recorded under the factor that scores mission impact, operational relevance, or transition value, or under the highest-weighted factor if none does. Then re-read every Strength above: a "Benefit to Government" written as a mechanism ("deterministic verification, no model in the loop") is rewritten as an outcome ("a wrong answer is caught before a Sailor acts on it") or the Strength is downgraded.
+
 ## Win Theme Visibility
 
 | Theme | Status | Notes |
@@ -290,7 +305,7 @@ For white papers, RFIs, ROMs, and sources-sought responses — no Section M exis
 1. Read the draft.
 2. Imagine the intended reader (program officer, market researcher, CO). What's their first reaction?
 3. Assess:
-   - **Clarity of the "so what"** — is it findable in the first page?
+   - **Mission effect** — what operational outcome does this enable, and can the reader state it after page one in the customer's terms? (Replaces the generic "so what"; see `reference/methodology/mission-effect-translation.md`.)
    - **Credibility** — does it read as someone who understands the mission?
    - **Call to action** — is it clear what the reader should do next?
    - **Length discipline** — is it within `page_target` from `proposal-type.md`?

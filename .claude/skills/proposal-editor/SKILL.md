@@ -398,6 +398,7 @@ Before saving:
 2. Ask: "Does this sound like an experienced capture/proposal lead wrote it?"
 3. Ask: "Would a Government evaluator trust this more after the rewrite?"
 4. Ask: "Did the rewrite preserve scoreable content?"
+5. Ask, for every scoring section: "What operational outcome does this section enable or support, and does its opening say so in the operator's terms?" Check it against the Mission Effect Statement in `working/narrative-spine.md` (`reference/methodology/mission-effect-translation.md`). A scoring section whose opening names a mechanism and never an effect is not done; a paragraph that lists capabilities with no effect sentence is a capability tour and is collapsed to problem, answer, proof in every mode, not only Mode 5.
 
 If the answer is no, revise again.
 

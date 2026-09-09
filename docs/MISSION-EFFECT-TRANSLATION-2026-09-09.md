@@ -1,6 +1,6 @@
 # Mission-Effect Translation: fitting the "five things" into the pipeline
 
-**Date:** 2026-09-09 · **Status:** assessment for Bill's decision; nothing implemented yet
+**Date:** 2026-09-09 · **Status:** adopted by Bill 2026-09-09. Stage one implemented the same day: `reference/methodology/mission-effect-translation.md`; the Mission Effect block in the spine; the storyboard's "Mission Effect Advanced" field; Red Team category 12 and the Gold Team Mission Effect Check (Bill's addition: the review itself asks whether the mission impact is clearly articulated); the `operational-user` persona seated on every type; the editor's fifth Final Pass question; Pattern 5. Stages two to six (preflight script, matrix column and bind translation rule, pricing line, quick-look and capture-intent, prose-lint advisory) remain.
 **Trigger:** Paul Van Slett's LinkedIn post of 8 September, relaying Omar Pimentel's SpaceNews essay ("I saw more than 1,000 pitches to the Pentagon ... and a clear pattern for success", early September 2026; Pimentel spent three years at DIU). The post text is captured in full at the end of this file; the essay itself is paywalled and was not read.
 **Bill's instruction:** translate the guidance into how we write and structure proposals without discarding what the pipeline already does well; every proposal review asks "what operational outcomes does this proposal enable or support?"
 

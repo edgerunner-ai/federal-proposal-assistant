@@ -375,7 +375,7 @@ Both files are consumed by `/status`, the Phase B dashboard, and the smoke test.
 - No unsupported adjectives ("robust", "innovative", "scalable" without proof)
 - Prefer concrete descriptions of components, functions, interfaces, workflows, outcomes
 - Write like an evaluator has 15 minutes and a red pen
-- **Apply the four winning patterns** (theme statements, discriminator proof points, action captions, ghosting) per `reference/proposal-writing-patterns.md`, gated by proposal type. These are enforced by `proposal-writer` and scored by `red-team-review` Gold Team.
+- **Apply the four winning patterns** (theme statements, discriminator proof points, action captions, ghosting) per `reference/proposal-writing-patterns.md`, gated by proposal type, and **Pattern 5, mission-effect translation**: one Mission Effect Statement (problem, mission effect, capability, cost, timeline) in the spine, carried by the executive summary, each scoring section advancing one element in the operator's terms. These are enforced by `proposal-writer` and scored by `red-team-review` Gold Team.
 - **Voice doctrine.** See `reference/PROSE-QUALITY-DOCTRINE.md` (canonical, synced from `chakmarebel/proposal-workbench` via `tools/sync-voice-anchors.sh`). The same sync now also pulls the universal doctrine knowledge files into `reference/doctrine/` (`prohibited-claims-doctrine.md`, `output-discipline.md`, `acronyms-federal.md`) and, once the workbench publishes it, the shared `reference/prose-lint-rules.json` rule set. **Do not hand-edit synced files** — change them upstream in the workbench and re-sync. `reference/prose-lint-rules.json` is the single source for `scripts/prose-lint.py`'s rule lists (the script fails closed if it is missing); the FPA copy is authoritative until the workbench adopts it.
 
 ## EdgeRunner AI Default Positioning
@@ -388,6 +388,7 @@ Unless source material says otherwise, emphasize:
 
 ## Review Standard
 Before declaring anything "final," check for:
+- **The mission effect.** What operational outcomes does this proposal enable or support, and can a reader state them from the draft alone, in the customer's terms? Every review asks this first (editor Final Pass, Red Team category 12, Gold Team Mission Effect Check, the `operational-user` adversarial persona). Source of truth is the Mission Effect Statement at the top of `working/narrative-spine.md`; doctrine in `reference/methodology/mission-effect-translation.md` (adopted 2026-09-09).
 - Compliance gaps
 - Unaddressed evaluator concerns
 - Empty claims
