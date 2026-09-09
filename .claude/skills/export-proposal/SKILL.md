@@ -58,9 +58,12 @@ Different types need different export bundles. Read `working/proposal-type.md` a
 
    ```bash
    python scripts/check-editor-staleness.py --proposal <slug>
+   python scripts/check-mission-effect.py --proposal <slug>
    python scripts/prose-lint.py --proposal <slug>
    python scripts/lint-document-structure.py --proposal <slug>
    ```
+
+   `check-mission-effect.py` (added 2026-09-09) exits 1 when `working/narrative-spine.md` has no Mission Effect block or one of its five lines (problem, mission effect, capability, cost, timeline) is missing, and reports as advisory an effect not written in operator terms, a vendor phrase in the effect line, or drafts that no longer carry the effect, cost, or timeline phrases (`--strict` makes an uncarried effect blocking; `--target docx` checks `final/docx/`). Doctrine: `reference/methodology/mission-effect-translation.md`. Writes `reviews/mission-effect-check.md`.
 
    `check-editor-staleness.py` exits 1 when any top-level `drafts/*.md` was modified after the most recent `— proposal-editor —` line in `working/activity.md`, and exits 2 when the editor has never been logged on this proposal. **Either blocks export.** It exists because the editor is a gate that must re-fire whenever the draft materially changes, not a stage that runs once: on the NAVWAR EPSS pursuit the editor ran on 27 Aug and the draft was then rewritten seven times through 2 Sep with `prose-lint` reporting 0 HIGH before every post. A clean regex gate is not an edit. If it fires, run `/proposal-editor` and log it, then re-run preflight.
 

@@ -65,7 +65,12 @@ python scripts/check-strengths.py --proposal <slug> --target docx
 
 # Editor staleness — the draft changed after /proposal-editor last ran (exit 1), or the editor was never logged (exit 2)
 python scripts/check-editor-staleness.py --proposal <slug>
+
+# Mission effect — the spine carries the five-element statement, the effect is in operator terms, the drafts still carry it
+python scripts/check-mission-effect.py --proposal <slug> [--target docx] [--strict]
 ```
+
+`check-mission-effect.py` (added 2026-09-09) is the proposal-level outcome gate for `reference/methodology/mission-effect-translation.md`: HIGH when `working/narrative-spine.md` has no `## Mission Effect` block or a missing element line; advisory when the effect lacks an operator-terms marker, uses a vendor phrase, or is no longer carried by the drafts or the rendered `.docx`. `--selftest` available.
 
 `check-editor-staleness.py` (added 2026-09-02) makes the editor a **gate that re-fires**, not a stage that runs once. It compares every top-level `drafts/*.md` mtime against the latest `## YYYY-MM-DD HH:MM — proposal-editor —` line in `working/activity.md`; `drafts/loose/` is exempt as the pre-edit preimage. It exists because on the NAVWAR EPSS pursuit the editor ran once on 27 Aug and the draft was then rewritten seven times through 2 Sep — restructure, positive-claim pass, prose rebalance, two comment rounds, Q&A alignment — with `prose-lint` reporting 0 HIGH before every post. Two AI tells sat through five posted versions because a clean regex gate looked like a clean edit. **Log every editor run as a `proposal-editor` activity line, with the time**; an untimed entry is read as 00:00 and warned about. `--warn-only` for non-blocking use; `--selftest` available.
 
