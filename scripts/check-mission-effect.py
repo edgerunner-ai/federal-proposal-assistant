@@ -58,7 +58,7 @@ OPERATOR_MARKERS = {
     "no-longer": r"\b(no longer|never has to|never have to|instead of|without having to|without waiting|does not have to|do not have to)\b",
 }
 VENDOR_PHRASES = [
-    "decision superiority", "readiness", "transform", "world-class", "game-chang", "next-generation",
+    "decision superiority", "transform", "world-class", "game-chang", "next-generation",
     "cutting-edge", "synerg", "revolutioni", "best-in-class", "ai-enabled", "leverage", "empower",
 ]
 STOP = set("""the a an and or of to in on for with by from at as is are be that this these those it its
