@@ -4,7 +4,7 @@
 
 ## The rule
 
-Every proposal states, in one place and in one paragraph, the five things a Pentagon room has to agree on before it buys anything: **the problem, the mission effect, the capability, the cost, and the timeline.** The mission effect is the pivot. It is the "why" that the other four serve, and it is the thing an operator in the room would repeat back.
+Every proposal can state the five things a Pentagon room has to agree on before it buys anything, written once in the spine and carried by the document in the reader's order: **the problem, the mission effect, the capability, the cost, and the timeline.** The mission effect is the pivot. It is the "why" that the other four serve, and it is the thing an operator in the room would repeat back.
 
 The pipeline already forces outcome language per discriminator (Feature, Advantage, Benefit), per section (the theme statement), per graphic (the action caption), and per Strength (benefit to the Government). This rule adds the proposal level, so those pieces align instead of merely coexisting.
 
@@ -12,7 +12,7 @@ The pipeline already forces outcome language per discriminator (Feature, Advanta
 
 ## The Mission Effect Statement
 
-Written once, in `working/narrative-spine.md`, as the first block, signed off with the spine. Five labelled lines, then the same content as one paragraph that can be dropped into the executive summary.
+Written once, in `working/narrative-spine.md`, as the first block, signed off with the spine. Five labelled lines, then the same content as one paragraph. The paragraph is the reference the storyboard and the reviews check against; the executive summary carries only its first three elements (see below).
 
 | Element | What it must contain | Test |
 |---|---|---|
@@ -36,7 +36,7 @@ The statement is written once, in the spine, with all five elements together. Th
 | Approach sections | Capability in depth, with the effect each part produces | The reader learns how the outcome is produced. |
 | Timeline and cost, after the approach | Timeline, cost | They align with the approach the reader just reviewed. A number in the executive summary that is out of line with what the reader expects distracts from the hook. |
 
-So the executive summary does not state cost or duration. `check-mission-effect.py` tests the whole document for all five, and the executive summary only for problem, effect, and capability.
+So the executive summary does not state cost or duration. `check-mission-effect.py` tests the document as a whole for all five; the Gold Team Mission Effect Check reads the executive summary for problem, effect, and capability and the later sections for timeline and cost.
 
 **Bullets are welcome where the content is enumerable.** Delivered outcomes, technical objectives, deliverables, and success criteria read faster as a short list than as a paragraph; the prose-lint bullet-ratio floor exists for the same reason. A "Delivered Outcomes:" list of three to five items is a good executive-summary shape. The argument stays in prose; the enumerable parts of it may be listed.
 
