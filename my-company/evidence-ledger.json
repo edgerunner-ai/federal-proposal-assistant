@@ -1,5 +1,5 @@
 {
-  "_comment": "EdgeRunner AI evidence ledger. Seeded 2026-06-03 from U.S. Space Force Order FA701426P0009 (source: contract DD Form 1155 + public press release 2026-04-02). Conforms to reference/schemas/evidence-ledger.schema.json. Append-only; retire rather than delete. | 2026-07-24: file was overwritten by an undetermined process, losing ~49 entries (EV-007..EV-106 range) that were never committed to git. 2026-07-26: the 9 IDs cited by dia-dma-frontier-llm drafts (EV-022/032/040/048/072/073/074/099/102) plus EV-030/031/104 were reconstructed from citation contexts, the 2026-07-22 evidence-check report, and project memory. Remaining lost IDs (heavily cited: EV-014 Navy ICOP, EV-020/023, EV-041-061, EV-070-096, EV-100-106) still need reconstruction before their proposals are reactivated. PREVENTION: commit this file after every append (it IS git-tracked); an uncommitted ledger has no recovery path. | 2026-07-26 full reconstruction: +43 entries (EV-010..EV-106 range) rebuilt from citation contexts + evidence-check reports + memory; EV-030/EV-031 content swapped to match historical numbering (030=Mil-Deflect, 031=frontier-parity); EV-072 enriched with NGC2 TRL-7 anchor. 2026-07-26 (final): EV-007/008/009 (EVELYN throughput, drone dataset, adversarial robustness), EV-077 (EVELYN maturity/xTech), EV-092 (quantization ghost), EV-095 (action-authorization frontier) created from capabilities.md attributions; EV-073 corrected (no TRL claimed for Ground Truth, per capabilities.md 2026-07-23) and EV-094 enriched. Ledger is now complete against every ID referenced anywhere in the workspace. Likely overwrite cause: a ledger \"refresh\"/re-seed during tradewinds-cdao-adl-p2 work (that proposal's evidence-check notes a prior refresh that renumbered IDs). | 2026-08-27: added EV-124..EV-128 covering the ARL CRADA robotics field result (Warthog/Phoenix, Ghost Robotics V60, runtime portability, Osteen public quote) and the JWS fundamental-research characterization. Gap analysis found the CRADA technical result had no ledger coverage; EV-011 and EV-123 cover the relationship only. IDs allocated above max (123); historical gaps left unused. | 2026-08-27 structure change (see docs/CAPABILITY-LEDGER-STRUCTURE-2026-08-27.md): added a record_class discriminator to every item (existing items stamped 'evidence'), and seeded the nine core capabilities as CAP-01..CAP-09 per Bill. Record classes are capability (CAP-##), evidence (EV-###), application (APP-###) and expertise (EXP-##); evidence and application records carry an evidentiary_tier (contracted/measured/demonstrated/designed/adjacent) which gates proposal citation while leaving the whole register readable for opportunity identification. IDs allocate above max PER PREFIX and never into a historical gap. Fed by /ledger-harvest. | 2026-08-27 ledger-harvest: +APP-001/APP-002 (first application records, both designed-tier: Spectrum Sentinel, DV022 team concept), +EXP-01/EXP-02 (first expertise records: FitzGerald, Bal), +EV-129 (DeNOVO teaming, demonstrated, DENOVO-PROVIDED capability basis) - from the five register gaps in reviews/2026-08-27-dv022-team-quick-look.md, approved by Bill 2026-08-27. | 2026-08-27 ledger-harvest: +EV-130 (First Army operational demonstration of the verification layer, demonstrated tier, the TRL 7 basis), +APP-003 (Proposal Co-Pilot commercial ledger use, demonstrated tier, with the personal-repo ownership caveat recorded), and EV-073 ENRICHED: the 'no TRL number is claimed; do not assign one' instruction is superseded by TRL 7 on the operational-environment test. Approved by Bill 2026-08-27. | 2026-09-02 ledger-harvest: +EV-131 (EXTiC 26-2, DIU OnRamp Hub: Arizona with CENTCOM, Playas NM 27-29 Jul 2026; 13 of 13 objectives Successfully Demonstrated, independently assessed by T2L). Records the releasability tension: the T2L memo restricts release and forbids advertising use, while the Managing Director's transmittal letter authorises use in RFIs and solicitations. Cite observations in proposals, never attach the LOO, never call it a DIU endorsement. Directed by Bill 2026-09-02 after it was found missing from the register. | 2026-09-02: +EV-132 (veteran-founded, Tyler Xuan Saltsman is an Army veteran) carrying the boundary that EdgeRunner holds NO socio-economic set-aside status -- say veteran-founded, never veteran-owned/VOSB/SDVOSB. Resolves Colton's 2026-09-01 question. EV-060 enriched: $17.5M is the SERIES A (closed May 2025), not capital to date; a seed round preceded it, so 'has raised $17.5M' understates the company. Both directed by Bill 2026-09-02. | 2026-09-02: +EXP-03 (Bill Bal, targeting and combat assessment: former USAF Combat Targeting Officer, 15+ yrs). Surfaced as the top register gap by the DAF26TZ06-NV007 STTR quick-look; harvested at Bill's direction. Detail limited to Bill's own statement; assignments/units not recorded. | 2026-09-02: +APP-004 (SPOTTER, designed: edge model-update loop for a unit's own target-ID detector on UAS FMV; EVELYN + WarClaw + runtime, CAP-02/03/05). Surfaced by the DAF26TZ06-NV007 quick-look; harvested at Bill's direction. Reframed 2026-07-16 concept is authoritative over capabilities.md line 56.",
+  "_comment": "EdgeRunner AI evidence ledger. Seeded 2026-06-03 from U.S. Space Force Order FA701426P0009 (source: contract DD Form 1155 + public press release 2026-04-02). Conforms to reference/schemas/evidence-ledger.schema.json. Append-only; retire rather than delete. | 2026-07-24: file was overwritten by an undetermined process, losing ~49 entries (EV-007..EV-106 range) that were never committed to git. 2026-07-26: the 9 IDs cited by dia-dma-frontier-llm drafts (EV-022/032/040/048/072/073/074/099/102) plus EV-030/031/104 were reconstructed from citation contexts, the 2026-07-22 evidence-check report, and project memory. Remaining lost IDs (heavily cited: EV-014 Navy ICOP, EV-020/023, EV-041-061, EV-070-096, EV-100-106) still need reconstruction before their proposals are reactivated. PREVENTION: commit this file after every append (it IS git-tracked); an uncommitted ledger has no recovery path. | 2026-07-26 full reconstruction: +43 entries (EV-010..EV-106 range) rebuilt from citation contexts + evidence-check reports + memory; EV-030/EV-031 content swapped to match historical numbering (030=Mil-Deflect, 031=frontier-parity); EV-072 enriched with NGC2 TRL-7 anchor. 2026-07-26 (final): EV-007/008/009 (EVELYN throughput, drone dataset, adversarial robustness), EV-077 (EVELYN maturity/xTech), EV-092 (quantization ghost), EV-095 (action-authorization frontier) created from capabilities.md attributions; EV-073 corrected (no TRL claimed for Ground Truth, per capabilities.md 2026-07-23) and EV-094 enriched. Ledger is now complete against every ID referenced anywhere in the workspace. Likely overwrite cause: a ledger \"refresh\"/re-seed during tradewinds-cdao-adl-p2 work (that proposal's evidence-check notes a prior refresh that renumbered IDs). | 2026-08-27: added EV-124..EV-128 covering the ARL CRADA robotics field result (Warthog/Phoenix, Ghost Robotics V60, runtime portability, Osteen public quote) and the JWS fundamental-research characterization. Gap analysis found the CRADA technical result had no ledger coverage; EV-011 and EV-123 cover the relationship only. IDs allocated above max (123); historical gaps left unused. | 2026-08-27 structure change (see docs/CAPABILITY-LEDGER-STRUCTURE-2026-08-27.md): added a record_class discriminator to every item (existing items stamped 'evidence'), and seeded the nine core capabilities as CAP-01..CAP-09 per Bill. Record classes are capability (CAP-##), evidence (EV-###), application (APP-###) and expertise (EXP-##); evidence and application records carry an evidentiary_tier (contracted/measured/demonstrated/designed/adjacent) which gates proposal citation while leaving the whole register readable for opportunity identification. IDs allocate above max PER PREFIX and never into a historical gap. Fed by /ledger-harvest. | 2026-08-27 ledger-harvest: +APP-001/APP-002 (first application records, both designed-tier: Spectrum Sentinel, DV022 team concept), +EXP-01/EXP-02 (first expertise records: FitzGerald, Bal), +EV-129 (DeNOVO teaming, demonstrated, DENOVO-PROVIDED capability basis) - from the five register gaps in reviews/2026-08-27-dv022-team-quick-look.md, approved by Bill 2026-08-27. | 2026-08-27 ledger-harvest: +EV-130 (First Army operational demonstration of the verification layer, demonstrated tier, the TRL 7 basis), +APP-003 (Proposal Co-Pilot commercial ledger use, demonstrated tier, with the personal-repo ownership caveat recorded), and EV-073 ENRICHED: the 'no TRL number is claimed; do not assign one' instruction is superseded by TRL 7 on the operational-environment test. Approved by Bill 2026-08-27. | 2026-09-02 ledger-harvest: +EV-131 (EXTiC 26-2, DIU OnRamp Hub: Arizona with CENTCOM, Playas NM 27-29 Jul 2026; 13 of 13 objectives Successfully Demonstrated, independently assessed by T2L). Records the releasability tension: the T2L memo restricts release and forbids advertising use, while the Managing Director's transmittal letter authorises use in RFIs and solicitations. Cite observations in proposals, never attach the LOO, never call it a DIU endorsement. Directed by Bill 2026-09-02 after it was found missing from the register. | 2026-09-02: +EV-132 (veteran-founded, Tyler Xuan Saltsman is an Army veteran) carrying the boundary that EdgeRunner holds NO socio-economic set-aside status -- say veteran-founded, never veteran-owned/VOSB/SDVOSB. Resolves Colton's 2026-09-01 question. EV-060 enriched: $17.5M is the SERIES A (closed May 2025), not capital to date; a seed round preceded it, so 'has raised $17.5M' understates the company. Both directed by Bill 2026-09-02. | 2026-09-02: +EXP-03 (Bill Bal, targeting and combat assessment: former USAF Combat Targeting Officer, 15+ yrs). Surfaced as the top register gap by the DAF26TZ06-NV007 STTR quick-look; harvested at Bill's direction. Detail limited to Bill's own statement; assignments/units not recorded. | 2026-09-02: +APP-004 (SPOTTER, designed: edge model-update loop for a unit's own target-ID detector on UAS FMV; EVELYN + WarClaw + runtime, CAP-02/03/05). Surfaced by the DAF26TZ06-NV007 quick-look; harvested at Bill's direction. Reframed 2026-07-16 concept is authoritative over capabilities.md line 56. | 2026-09-25 (Bill Bal): IL-5 ATO with the U.S. Space Force is PENDING; standard wording 'designed to operate in classified environments; in the process of IL-5 certification with the U.S. Space Force' (supersedes the 2026-09-24 'confirmed held' notes on EV-002/004/100/102). FA701426P0009 deployment facts retained and recast as engineering support for IL-5 certification requirements (EV-001/002/004/100/102). Runtime/models TRL 7 replaces TRL 8 (EV-014, EV-099; note on EV-131). IL-6 IATT stated generically as 'authorized to test at IL-6 under an active IATT with the U.S. Navy', still never tied to PMW 120/ICOP, IL-6 authorization pending (EV-022, EV-014, CAP-02, EV-067). No IDs added.",
   "schema_version": "evidence-ledger.v1",
   "generated_at": "2026-09-02T00:00:00Z",
   "owner": "EdgeRunner AI, Inc.",
@@ -7,14 +7,14 @@
     {
       "id": "EV-001",
       "type": "past_performance",
-      "summary": "U.S. Space Force (SAF/SQ) production engagement — EdgeRunner ODIN deployment + SFSC AI agents under firm-fixed-price Order FA701426P0009",
-      "detail": "Current U.S. Space Force engagement (SAF/SQ Office of Acquisition & Integration, with SSC end users; place of performance USSF OCSO, Pentagon). EdgeRunner deploys its on-device ODIN platform into the Space Force IL5 environment, builds a domain-specific Acquisitions (SFSC) model, performs IL5 ATO integration into a new accredited environment, and provides ongoing engineering support. Firm-fixed-price commercial order executed through the CDAO Tradewinds Solutions Marketplace. First documented USSF production deployment of EdgeRunner's platform. Award publicly announced 2026-04-02.",
+      "summary": "U.S. Space Force (SAF/SQ) production engagement — EdgeRunner runtime deployment + SFSC AI agents under firm-fixed-price Order FA701426P0009",
+      "detail": "Current U.S. Space Force engagement (SAF/SQ Office of Acquisition & Integration, with SSC end users; place of performance USSF OCSO, Pentagon). EdgeRunner deploys its on-device runtime into the Space Force IL5 environment, builds a domain-specific Acquisitions (SFSC) model, provides engineering support for IL-5 certification requirements in that new government environment, and provides ongoing engineering support. Firm-fixed-price commercial order executed through the CDAO Tradewinds Solutions Marketplace. First documented USSF production deployment of EdgeRunner's platform. Award publicly announced 2026-04-02. Order extended for an additional 12 months of support beyond the 2026-09-22 base end date (Bill Bal, 2026-09-24).",
       "source_file": "my-company/past-performance.md",
       "source_anchor": "§PPQ Reference — U.S. Space Force (Order FA701426P0009)",
       "contract_number": "FA701426P0009",
       "customer": "U.S. Space Force — SAF/SQ (Office of Acquisition & Integration) and Space Systems Command (SSC); contracting office Air Force District of Washington (AFDW)",
       "contract_value_usd": 23000,
-      "period_of_performance": "2026-03-23 to 2026-09-22 (6 months)",
+      "period_of_performance": "2026-03-23 to 2026-09-22 base (6 months); extended an additional 12 months (Bill Bal, 2026-09-24). Modification number, new end date and extension value to confirm.",
       "relevance_tags": [
         "space-force",
         "ussf",
@@ -28,20 +28,21 @@
         "tradewinds",
         "cdao",
         "acquisitions",
-        "odin",
         "azure-ilz",
-        "firm-fixed-price"
+        "firm-fixed-price",
+        "runtime"
       ],
       "approval_status": "approved",
       "proof_strength": "highest",
       "created_at": "2026-06-03T00:00:00Z",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "NAMING (Bill, 2026-09-24): ODIN is an internal name. It stays only where it quotes contract language (the CLIN 0001 title 'EdgeRunner ODIN Software License'); in drafts say 'the EdgeRunner runtime'. Updated 2026-09-25 per Bill: EdgeRunner's IL-5 ATO with the U.S. Space Force is PENDING (supersedes the 2026-09-24 'confirmed held' note). Standard wording: 'designed to operate in classified environments; in the process of IL-5 certification with the U.S. Space Force.' The FA701426P0009 deployment into the Space Force IL-5 Azure ILZ environment and the engineering support for IL-5 certification requirements remain true deployment facts; never describe them as an EdgeRunner-held ATO."
     },
     {
       "id": "EV-002",
       "type": "customer_deployment",
-      "summary": "EdgeRunner ODIN deployed as a containerized solution into the U.S. Space Force IL5 environment (Azure ILZ), unlimited licenses for SSC + SAF/SQ users",
-      "detail": "CLIN 0001 of Order FA701426P0009. ODIN platform deployed as a containerized solution into the Space Force Azure IL5 (Azure ILZ) environment, licensed for unlimited SSC and SAF/SQ users across the 6-month period of performance. Demonstrates real on-device/on-prem inference inside an accredited government IL5 boundary, not a cloud-API dependency.",
+      "summary": "EdgeRunner runtime deployed as a containerized solution into the U.S. Space Force IL5 environment (Azure ILZ), unlimited licenses for SSC + SAF/SQ users",
+      "detail": "CLIN 0001 of Order FA701426P0009 (contract title: \"EdgeRunner ODIN Software License\"). The EdgeRunner runtime deployed as a containerized solution into the Space Force Azure IL5 (Azure ILZ) environment, licensed for unlimited SSC and SAF/SQ users across the 6-month period of performance. Demonstrates real on-device/on-prem inference inside the Space Force IL-5 (Azure ILZ) government environment, not a cloud-API dependency.",
       "source_file": "my-company/past-performance.md",
       "source_anchor": "§PPQ Reference — CLIN 0001",
       "contract_number": "FA701426P0009",
@@ -56,18 +57,19 @@
         "government-cloud",
         "deployment",
         "on-device",
-        "odin"
+        "runtime"
       ],
       "approval_status": "approved",
       "proof_strength": "highest",
       "created_at": "2026-06-03T00:00:00Z",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "NAMING (Bill, 2026-09-24): ODIN is an internal name. It stays only where it quotes contract language (the CLIN 0001 title 'EdgeRunner ODIN Software License'); in drafts say 'the EdgeRunner runtime'. Updated 2026-09-25 per Bill: EdgeRunner's IL-5 ATO with the U.S. Space Force is PENDING (supersedes the 2026-09-24 'confirmed held' note). Standard wording: 'designed to operate in classified environments; in the process of IL-5 certification with the U.S. Space Force.' The FA701426P0009 deployment into the Space Force IL-5 Azure ILZ environment and the engineering support for IL-5 certification requirements remain true deployment facts; never describe them as an EdgeRunner-held ATO."
     },
     {
       "id": "EV-003",
       "type": "capability_claim",
       "summary": "Built-to-spec domain-specific model (Space Force acquisitions / SFSC agent) delivered under U.S. Space Force contract",
-      "detail": "CLIN 0002 of Order FA701426P0009. EdgeRunner research built an Acquisitions-specific model to spec for a defined Space Force domain and environment, deployed within the ODIN solution for all licensed users. Converts the general 'mission-specific model specialization' capability into a delivered, contracted proof point for a named DoD customer.",
+      "detail": "CLIN 0002 of Order FA701426P0009. EdgeRunner research built an Acquisitions-specific model to spec for a defined Space Force domain and environment, deployed within the EdgeRunner runtime for all licensed users. Converts the general 'mission-specific model specialization' capability into a delivered, contracted proof point for a named DoD customer.",
       "source_file": "my-company/past-performance.md",
       "source_anchor": "§PPQ Reference — CLIN 0002",
       "contract_number": "FA701426P0009",
@@ -79,18 +81,19 @@
         "domain-specific",
         "fine-tuning",
         "agents",
-        "odin"
+        "runtime"
       ],
       "approval_status": "approved",
       "proof_strength": "high",
       "created_at": "2026-06-03T00:00:00Z",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "NAMING (Bill, 2026-09-24): ODIN is an internal name. It stays only where it quotes contract language (the CLIN 0001 title 'EdgeRunner ODIN Software License'); in drafts say 'the EdgeRunner runtime'."
     },
     {
       "id": "EV-004",
       "type": "capability_claim",
-      "summary": "IL5 ATO integration into a new accredited Space Force environment performed under contract (FA701426P0009)",
-      "detail": "CLIN 0003 of Order FA701426P0009. EdgeRunner performed up-front development to bring ODIN into a new government environment and provided engineering support for IL5 ATO requirements. This is delivered ATO/accreditation past performance — stronger than a roadmap claim — usable to substantiate IL5 deployment feasibility on future DoD bids.",
+      "summary": "Engineering support for IL-5 certification requirements while bringing the runtime into a new Space Force IL-5 government environment, performed under contract (FA701426P0009)",
+      "detail": "CLIN 0003 of Order FA701426P0009. EdgeRunner performed up-front development to bring the EdgeRunner runtime into a new government environment and provided engineering support for IL-5 certification requirements (contract CLIN title: 'Integration & IL5 ATO Support'). This is delivered accreditation-support past performance — stronger than a roadmap claim — usable to substantiate IL-5 deployment feasibility on future DoD bids. It is NOT an EdgeRunner-held ATO: EdgeRunner's IL-5 ATO with the U.S. Space Force is pending.",
       "source_file": "my-company/past-performance.md",
       "source_anchor": "§PPQ Reference — CLIN 0003",
       "contract_number": "FA701426P0009",
@@ -107,7 +110,8 @@
       "approval_status": "approved",
       "proof_strength": "high",
       "created_at": "2026-06-03T00:00:00Z",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "NAMING (Bill, 2026-09-24): ODIN is an internal name. It stays only where it quotes contract language (the CLIN 0001 title 'EdgeRunner ODIN Software License'); in drafts say 'the EdgeRunner runtime'. Updated 2026-09-25 per Bill: EdgeRunner's IL-5 ATO with the U.S. Space Force is PENDING (supersedes the 2026-09-24 'confirmed held' note). Standard wording: 'designed to operate in classified environments; in the process of IL-5 certification with the U.S. Space Force.' The FA701426P0009 deployment into the Space Force IL-5 Azure ILZ environment and the engineering support for IL-5 certification requirements remain true deployment facts; never describe them as an EdgeRunner-held ATO."
     },
     {
       "id": "EV-005",
@@ -222,8 +226,8 @@
     {
       "id": "EV-022",
       "type": "capability_claim",
-      "summary": "IL-6 IATT: EdgeRunner AI Runtime + models authorized to test at Impact Level 6 under an active Interim Authority to Test; engineered to accredit at IL-6 and above",
-      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Verified posture (Bill, 2026-07-02): active IL-6 IATT held under the Navy ICOP / NIWC Atlantic / PMW 120 effort; full IL-6 ATO expected October 2026 at ICOP deployment. Covers the EdgeRunner AI Runtime + models ONLY (not WarClaw, Ground Truth, or EVELYN). USAGE RULES: say \"authorized to test at IL-6 under an active IATT,\" never \"IL-6 ATO\"/\"accredited.\" In external collateral state IL-6 IATT as a STANDALONE claim, do not attribute to PMW 120 / Navy ICOP (list ICOP separately as a program-of-record engagement); government submissions may name PMW-120 only when the capture lead directs for that document. An authorization is program-scoped and does not auto-transfer between commands; claim as evidence of security architecture, with reusable RMF artifacts. CUI caution: kept OFF public-platform submissions (per dia-dma no-CUI guardrail).",
+      "summary": "IL-6 IATT: EdgeRunner AI Runtime + models authorized to test at Impact Level 6 under an active Interim Authority to Test with the U.S. Navy; engineered to accredit at IL-6 and above",
+      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Verified posture (Bill, 2026-07-02; updated 2026-09-25): active IL-6 IATT with the U.S. Navy; IL-6 authorization pending (never an IL-6 ATO). Internal provenance only, never stated externally: recorded 2026-07-02 as held under the Navy ICOP / NIWC Atlantic / PMW 120 effort, with full IL-6 ATO then expected October 2026. Covers the EdgeRunner AI Runtime + models ONLY (not WarClaw, Ground Truth, or EVELYN). USAGE RULES: say \"authorized to test at IL-6 under an active IATT with the U.S. Navy,\" never \"IL-6 ATO\"/\"accredited.\" In external collateral name the U.S. Navy generically and nothing narrower: do not attribute to PMW 120 / Navy ICOP (list ICOP separately as a program-of-record engagement); government submissions may name PMW-120 only when the capture lead directs for that document. An authorization is program-scoped and does not auto-transfer between commands; claim as evidence of security architecture, with reusable RMF artifacts. CUI caution: kept OFF public-platform submissions (per dia-dma no-CUI guardrail). Updated 2026-09-28 per Bill: the approved wording \"authorized to test at IL-6 under an active IATT with the U.S. Navy\" (no program office named) IS approved for the IARPA Solutions Marketplace and similar Government-only marketplaces (viewable by .gov/.mil accounts). The caution continues to apply to open public platforms (public web pages, press releases, open social media).",
       "source_file": "my-company/partner-enablement/accreditation-one-pager.md",
       "source_anchor": "IL-6 IATT (corrected from ATO 2026-07-02)",
       "relevance_tags": [
@@ -241,7 +245,8 @@
       "approval_status": "approved",
       "proof_strength": "highest",
       "created_at": "2026-07-26T00:00:00Z",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "Updated 2026-09-25 per Bill: approved wording is 'authorized to test at IL-6 under an active IATT with the U.S. Navy'; IL-6 authorization pending; never IL-6 ATO. The rule against tying the IATT to PMW 120 / Navy ICOP or any named unit stands. | Updated 2026-09-28 per Bill: IATT wording approved for the IARPA Solutions Marketplace and similar Government-only marketplaces; do not name the specific program office."
     },
     {
       "id": "EV-032",
@@ -267,7 +272,7 @@
       "id": "EV-040",
       "type": "capability_claim",
       "summary": "Air-gapped, on-device runtime with no external network dependency; fielded in disconnected, resource-constrained operations including denied, disrupted, intermittent, and limited (DDIL) conditions",
-      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Cited for the air-gapped-integration claims (dia-dma technical-approach: runtime operates air-gapped and on-device, no external network dependency, fielded in DDIL conditions; also cited on the open-API / air-gapped serving sentence). Hardware footprint: VRAM 8 GB min (Light tier) / 16 GB recommended (Medium); Windows/Linux/macOS; silicon-agnostic; laptop, edge server, fly-away kit, TAK device, tablet, or small form factor; binary or containerized install. Local deployment spectrum: on-prem air-gapped, DDIL tactical, embedded.",
+      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Cited for the air-gapped-integration claims (dia-dma technical-approach: runtime operates air-gapped and on-device, no external network dependency, fielded in DDIL conditions; also cited on the open-API / air-gapped serving sentence). Hardware footprint: VRAM 8 GB min (Light tier) / 16 GB recommended (Medium); Windows/Linux/macOS; silicon-agnostic; laptop, edge server, fly-away kit, TAK device, tablet, or small form factor; binary or containerized install. Local deployment spectrum: on-prem air-gapped, DDIL tactical, embedded. Updated 2026-09-25 per Bill (offline/on-prem confirmation): the EdgeRunner AI Runtime runs locally on premises (on-prem) and on-device at the edge, air-gapped and fully offline, with no cloud or internet connection required at any point in inference. It supports disconnected, denied, disrupted, intermittent, and limited (DDIL) operation. Equivalent phrasings approved for writers: \"runs locally\", \"on premises / on-prem\", \"on-device\", \"at the edge\", \"air-gapped\", \"fully offline\", \"no cloud or internet connection required\", \"disconnected / denied (DDIL) operation\". Bill: \"Offline is what we do. We build local AI models that run on prem.\" This confirms deployment mode only; it adds no certification, accreditation, or benchmark claim (IL-5 certification with the U.S. Space Force remains pending; the IL-6 IATT is with the U.S. Navy; TRL 7).",
       "source_file": "my-company/capabilities.md",
       "source_anchor": "air-gapped / DDIL runtime",
       "relevance_tags": [
@@ -277,7 +282,12 @@
         "disconnected",
         "edge",
         "no-cloud-dependency",
-        "deployment"
+        "deployment",
+        "offline",
+        "fully-offline",
+        "on-prem",
+        "local",
+        "no-internet-required"
       ],
       "approval_status": "approved",
       "proof_strength": "highest",
@@ -287,8 +297,8 @@
     {
       "id": "EV-048",
       "type": "capability_claim",
-      "summary": "Model tiers (Light 1-4B / Medium 26B / Heavy >26B) plus domain-aware compression fit a model to the available enclave or tactical hardware; supports progressive upgrades without full retraining",
-      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Cited (with EV-032) for tiers/LoRA/compression scalability claims: the same runtime scales with hardware, compact mission-tuned model on constrained/tactical devices, larger model up to frontier scale on capable enclave/on-prem hardware; compression pipeline auto-tunes model to available hardware; controlled cross-air-gap upgrade path. CUSTOMER-FACING RULE: refer to models by tier name only; never name open-weight source models in proposal prose. Reconstruction note: see EV-032 for the inferred 032/048 split.",
+      "summary": "Model tiers (EdgeRunner Light / Medium / Heavy) plus domain-aware compression fit a model to the available enclave or tactical hardware; supports progressive upgrades without full retraining",
+      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Cited (with EV-032) for tiers/LoRA/compression scalability claims: the same runtime scales with hardware, compact mission-tuned model on constrained/tactical devices, larger model up to frontier scale on capable enclave/on-prem hardware; compression pipeline auto-tunes model to available hardware; controlled cross-air-gap upgrade path. CUSTOMER-FACING RULE: refer to models by tier name only; never name open-weight source models in proposal prose. Reconstruction note: see EV-032 for the inferred 032/048 split. Updated 2026-09-25 per Bill (offline/on-prem confirmation): every EdgeRunner model tier (EdgeRunner Light, Medium, and Heavy) is a local model that runs on premises (on-prem) and on-device at the edge on the EdgeRunner AI Runtime, air-gapped and fully offline, with no cloud or internet connection required; supports disconnected/denied (DDIL) operation. Tier choice sets the hardware class, not the connectivity requirement. This confirms deployment mode only; it adds no certification, accreditation, or benchmark claim (IL-5 certification with the U.S. Space Force remains pending; the IL-6 IATT is with the U.S. Navy; TRL 7).",
       "source_file": "my-company/capabilities.md",
       "source_anchor": "model tiers / compression",
       "relevance_tags": [
@@ -297,12 +307,20 @@
         "scalability",
         "upgrades",
         "hardware-fit",
-        "light-medium-heavy"
+        "light-medium-heavy",
+        "offline",
+        "fully-offline",
+        "on-prem",
+        "local",
+        "on-device",
+        "air-gapped",
+        "no-cloud-required"
       ],
       "approval_status": "approved",
       "proof_strength": "high",
       "created_at": "2026-07-26T00:00:00Z",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "NAMING (Bill, 2026-09-24): Engineering's approved model names are EdgeRunner Light, EdgeRunner Medium and EdgeRunner Heavy. Do not state parameter counts or base-model names for current models; 'EdgeRunner 20B' survives only as the title of the published paper. | Updated 2026-09-28 per Bill: the cross-air-gap model update path is now stated through EV-136 (models delivered as signed packages that a verifier checks; EdgeRunner's current, standard delivery methodology, building on its Docker-based deliveries). Cite EV-136 for that claim. (Updated 2026-09-28 per Bill, 1:32 PM ET: \"planned\" replaced with current delivery methodology, consistent with EV-136.)"
     },
     {
       "id": "EV-072",
@@ -377,8 +395,8 @@
     {
       "id": "EV-099",
       "type": "customer_deployment",
-      "summary": "Operational deployments across special-operations, conventional-force, and Space Force environments: USASOC (TRL 8, subject to public-release confirmation), 4th Infantry Division under NGC2 (TRL 8), 101st Infantry Brigade (TRL 8), U.S. Space Force production; non-traditional defense contractor",
-      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Cited for the non-traditional-contributor / production-deployments claims (dia-dma team section) and, with EV-102, for the USSF IL-5 deployment sentence. Verified operational deployments (company facts, 2026-05-14): USASOC (TRL 8), 4th Infantry Division (TRL 8; drafts cite it under the Next Generation Command and Control (NGC2) effort), 101st Infantry Brigade (TRL 8), Navy ICOP / PMW 120 program of record (TRL 8, list separately from the IL-6 IATT per EV-022 rules), U.S. Space Force production engagement (EV-001). USAGE: USASOC/SOF references are subject to public-release confirmation before naming in external documents; prefer \"U.S. Army special-operations elements\" in public submissions.",
+      "summary": "Operational deployments across special-operations, conventional-force, and Space Force environments: USASOC (TRL 7, subject to public-release confirmation), 4th Infantry Division under NGC2 (TRL 7), 101st Infantry Brigade (TRL 7), U.S. Space Force production; non-traditional defense contractor",
+      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Cited for the non-traditional-contributor / production-deployments claims (dia-dma team section) and, with EV-102, for the USSF IL-5 deployment sentence. Verified operational deployments (company facts, 2026-05-14): USASOC (TRL 7), 4th Infantry Division (TRL 7; drafts cite it under the Next Generation Command and Control (NGC2) effort), 101st Infantry Brigade (TRL 7), Navy ICOP / PMW 120 program of record (TRL 7, list separately from the IL-6 IATT per EV-022 rules), U.S. Space Force production engagement (EV-001). USAGE: USASOC/SOF references are subject to public-release confirmation before naming in external documents; prefer \"U.S. Army special-operations elements\" in public submissions.",
       "source_file": "my-company/past-performance.md",
       "source_anchor": "operational deployments",
       "relevance_tags": [
@@ -389,19 +407,20 @@
         "ngc2",
         "101st",
         "space-force",
-        "trl8",
+        "trl7",
         "non-traditional"
       ],
       "approval_status": "approved",
       "proof_strength": "high",
       "created_at": "2026-07-26T00:00:00Z",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "Updated 2026-09-25 per Bill: EdgeRunner AI Runtime / models are TRL 7 (replaces TRL 8 in the 2026-05-14 company facts)."
     },
     {
       "id": "EV-102",
       "type": "past_performance",
-      "summary": "Deployed the EdgeRunner runtime into an accredited IL-5 government environment with ATO-integration support under U.S. Space Force Order FA701426P0009 — delivered accreditation-integration past performance with reusable RMF-aligned artifacts",
-      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. EdgeRunner-scoped accreditation-integration evidence (per the 2026-07-22 evidence-check note: supports \"RMF-aligned artifacts\" and EdgeRunner-clause claims only — do NOT use it to substantiate a partner's accreditation role). Deployment of the containerized runtime into the accredited Space Force Azure IL-5 (ILZ) environment with IL-5 ATO-integration engineering support, under Order FA701426P0009 (see EV-001/EV-002/EV-004 for the contract-level detail; EV-102 is the reusable claim that EdgeRunner has performed model onboarding into a new accredited government environment, directly analogous to onboarding into another agency's hosting platform).",
+      "summary": "Deployed the EdgeRunner runtime into the Space Force IL-5 (Azure ILZ) government environment with engineering support for IL-5 certification requirements under U.S. Space Force Order FA701426P0009 — delivered accreditation-support past performance with reusable RMF-aligned artifacts",
+      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. EdgeRunner-scoped accreditation-integration evidence (per the 2026-07-22 evidence-check note: supports \"RMF-aligned artifacts\" and EdgeRunner-clause claims only — do NOT use it to substantiate a partner's accreditation role). Deployment of the containerized runtime into the Space Force Azure IL-5 (ILZ) environment with engineering support for IL-5 certification requirements, under Order FA701426P0009 (see EV-001/EV-002/EV-004 for the contract-level detail; EV-102 is the reusable claim that EdgeRunner has performed model onboarding into a new government IL-5 environment, directly analogous to onboarding into another agency's hosting platform).",
       "source_file": "my-company/past-performance.md",
       "source_anchor": "USSF FA701426P0009 / IL-5 ATO integration",
       "contract_number": "FA701426P0009",
@@ -418,13 +437,14 @@
       "approval_status": "approved",
       "proof_strength": "highest",
       "created_at": "2026-07-26T00:00:00Z",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "Updated 2026-09-25 per Bill: EdgeRunner's IL-5 ATO with the U.S. Space Force is PENDING (supersedes the 2026-09-24 'confirmed held' note). Standard wording: 'designed to operate in classified environments; in the process of IL-5 certification with the U.S. Space Force.' The FA701426P0009 deployment into the Space Force IL-5 Azure ILZ environment and the engineering support for IL-5 certification requirements remain true deployment facts; never describe them as an EdgeRunner-held ATO."
     },
     {
       "id": "EV-014",
       "type": "customer_deployment",
-      "summary": "Navy ICOP / PMW 120: EdgeRunner fielded as a Navy program-of-record capability (TRL 8) - Intelligence Carry-On Program engagement with NIWC Atlantic research partnership",
-      "detail": "RECONSTRUCTED 2026-07-26 (original lost in the 2026-07-24 ledger overwrite). Verified company facts: Navy ICOP / PMW 120 engagement is a Program of Record at TRL 8; NIWC Atlantic research partnership active. USAGE RULES: list ICOP/PMW-120 as a program-of-record engagement SEPARATE from the IL-6 IATT claim (EV-022) - do not attribute the IATT to this program in collateral; government submissions may name PMW-120 only when the capture lead directs. CUI caution: ICOP specifics are CUI-sensitive; the dia-dma evidence-check intentionally excluded EV-014 from that public-platform submission. CMI in the ICOP context = Classified Military Information.",
+      "summary": "Navy ICOP / PMW 120: EdgeRunner fielded as a Navy program-of-record capability (TRL 7) - Intelligence Carry-On Program engagement with NIWC Atlantic research partnership",
+      "detail": "RECONSTRUCTED 2026-07-26 (original lost in the 2026-07-24 ledger overwrite). Verified company facts: Navy ICOP / PMW 120 engagement is a Program of Record at TRL 7; NIWC Atlantic research partnership active. USAGE RULES: list ICOP/PMW-120 as a program-of-record engagement SEPARATE from the IL-6 IATT claim (EV-022) - do not attribute the IATT to this program in collateral (state it generically as 'with the U.S. Navy'); government submissions may name PMW-120 only when the capture lead directs. CUI caution: ICOP specifics are CUI-sensitive; the dia-dma evidence-check intentionally excluded EV-014 from that public-platform submission. CMI in the ICOP context = Classified Military Information.",
       "source_file": "my-company/past-performance.md",
       "source_anchor": "Navy ICOP / PMW 120",
       "relevance_tags": [
@@ -432,21 +452,22 @@
         "icop",
         "pmw-120",
         "program-of-record",
-        "trl8",
+        "trl7",
         "niwc-atlantic",
         "cui-sensitive"
       ],
       "approval_status": "restricted",
-      "restrictions": "CUI-sensitive program detail: do not cite on public-platform/no-CUI submissions; standalone-IATT attribution rule applies (see EV-022); confirm with capture lead before naming PMW-120 in any customer-facing document.",
+      "restrictions": "CUI-sensitive program detail: do not cite on public-platform/no-CUI submissions; IATT attribution rule applies: generic 'with the U.S. Navy' only, never this program (see EV-022); confirm with capture lead before naming PMW-120 in any customer-facing document.",
       "proof_strength": "highest",
       "created_at": "2026-07-26T00:00:00Z",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "Updated 2026-09-25 per Bill: runtime/models TRL 7 (replaces TRL 8); IL-6 IATT stated generically as 'with the U.S. Navy', not tied to this program."
     },
     {
       "id": "EV-010",
       "type": "partnership",
       "summary": "Air Force Research Laboratory (AFRL) CRADA 25-0005284-AFRL/RI, 'Dark Saber and NIPRGPT Edge Domain Specific Generative AI' - consortium CRADA with AFRL Information Directorate and Defense Unicorns",
-      "detail": "UPDATED 2026-08-07 from the executed CRADA PDF. Agreement number 25-0005284-AFRL/RI. Air Force Activity: AFRL Information Directorate, 525 Brooks Road, Rome NY 13441-4505 - the same directorate that issues the AFAR BAA. Collaborator Consortium: EdgeRunner AI, Inc. and Defense Unicorns, Inc. Signed for the Air Force by Col Alan K. Louie, Chief, Intelligence Systems Division, 17 Dec 2024; approved by Reviewing Official Col Greg E. Stevens, Director, Information Directorate, 6 Jan 2025. Authority 15 USC 3710a. TERM: twelve (12) months from the Effective Date, unless modified under Article 7. No modification or extension is present in the copy held. DO NOT DESCRIBE AS ACTIVE until an extension is confirmed. Full extraction: proposals/afrl-afar-agentic-edge/inputs/02_yourCompany/afrl-crada-25-0005284.md",
+      "detail": "UPDATED 2026-08-07 from the executed CRADA PDF. Agreement number 25-0005284-AFRL/RI. Air Force Activity: AFRL Information Directorate, 525 Brooks Road, Rome NY 13441-4505 - the same directorate that issues the AFAR BAA. Collaborator Consortium: EdgeRunner AI, Inc. and Defense Unicorns, Inc. Signed for the Air Force by Col Alan K. Louie, Chief, Intelligence Systems Division, 17 Dec 2024; approved by Reviewing Official Col Greg E. Stevens, Director, Information Directorate, 6 Jan 2025. Authority 15 USC 3710a. TERM: twelve (12) months from the Effective Date, unless modified under Article 7. No modification or extension is present in the copy held. DO NOT DESCRIBE AS ACTIVE until an extension is confirmed. Full extraction: proposals/afrl-afar-agentic-edge/inputs/02_yourCompany/afrl-crada-25-0005284.md CURRENCY UPDATE 2026-09-24: Bill Bal confirmed the CRADA ACTIVE on 2026-09-01 (project memory, reference_afrl_crada_and_afar), which implies an Article 7 modification or extension not yet in the copy held. It may be described as active. The current end date is still unknown: obtain the modification before relying on the CRADA to carry a period of performance or a follow-on. STATUS REVIEW 2026-09-30 (Drive and Slack search): No Article 7 modification, extension, or new end date was found. The Drive folder holding the executed CRADA contains only the original agreement, and no Slack message states a term or extension. The working record does show continuous joint activity under the CRADA through 29 Sep 2026, which is consistent with Bill's 1 Sep confirmation that it is active: recurring AFRL/RI syncs (18 Aug, 15 Sep, 29 Sep; 1 Sep cancelled by AFRL); AFRL uploaded C-130J/H technical manuals to EdgeRunner's Azure Government environment (24 Aug, 17 Sep); AFRL's ISSM is using an existing EdgeRunner certificate to fast-track an on-device IATT on Air Force devices (reported 18 Aug, not verified); and AFRL/RI shared battle damage assessment data (20 sample events) for an edge BDA use case (Slack #afrl-crada, 15 and 17 Sep). Rosanne Pelli and Mark (AFRL/RI) were reassigned to other efforts (reported 15 Sep); LTC Dwyer is the active Government lead for the 143d MXS (RIANG) use cases. POSTURE UNCHANGED: may be described as active; do not state an end date or rely on the CRADA for a period of performance until the modification is obtained.",
       "source_file": "proposals/afrl-afar-agentic-edge/inputs/02_yourCompany/afrl-crada-25-0005284.md",
       "source_anchor": "Identification",
       "relevance_tags": [
@@ -464,7 +485,8 @@
       "approval_status": "approved",
       "proof_strength": "high",
       "created_at": "2026-07-26T00:00:00Z",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "Reviewed 2026-09-30: Drive + Slack search found no modification document; activity through 2026-09-29 corroborates ACTIVE. See EV-140 (pending) for the current work."
     },
     {
       "id": "EV-011",
@@ -638,7 +660,7 @@
       "id": "EV-044",
       "type": "capability_claim",
       "summary": "DDIL operation by design: fielded operation in denied, disrupted, intermittent, and limited-connectivity conditions with zero connectivity required",
-      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Companion claim to EV-040 (air-gapped architecture): the operational track record of running in DDIL/EW-contested conditions with SOF formations. No connectivity required for any core function.",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Companion claim to EV-040 (air-gapped architecture): the operational track record of running in DDIL/EW-contested conditions with SOF formations. No connectivity required for any core function. Updated 2026-09-25 per Bill (offline/on-prem confirmation): DDIL operation reflects EdgeRunner's default deployment mode: the Runtime and EdgeRunner models run locally (on premises, on-device, at the edge), air-gapped and fully offline, with no cloud or internet connection required, so disconnected or denied conditions do not degrade core function. This confirms deployment mode only; it adds no certification, accreditation, or benchmark claim (IL-5 certification with the U.S. Space Force remains pending; the IL-6 IATT is with the U.S. Navy; TRL 7).",
       "source_file": "my-company/capabilities.md",
       "source_anchor": "DDIL operation",
       "relevance_tags": [
@@ -646,7 +668,13 @@
         "disconnected",
         "ew-contested",
         "operational",
-        "zero-connectivity"
+        "zero-connectivity",
+        "offline",
+        "fully-offline",
+        "on-prem",
+        "local",
+        "air-gapped",
+        "no-cloud-required"
       ],
       "approval_status": "approved",
       "proof_strength": "high",
@@ -693,8 +721,8 @@
     {
       "id": "EV-047",
       "type": "capability_claim",
-      "summary": "Commodity hardware requirement: 8 GB VRAM minimum (Light) / 16 GB recommended (Medium); runs on fielded GFE such as Panasonic Toughbook and HP Elite ruggedized laptops; silicon-agnostic (Intel/AMD/NVIDIA/Qualcomm/Apple)",
-      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Hardware envelope verified in capabilities.md: 8 GB VRAM min, 16 GB recommended, workstation/edge-server class for Heavy; backends ONNX/CUDA/Vulkan/Metal; no specialized accelerator required.",
+      "summary": "Commodity hardware requirement: EdgeRunner Light runs in phone-level memory (measured footprint in EV-135) / 16 GB recommended (Medium); runs on fielded GFE such as Panasonic Toughbook and HP Elite ruggedized laptops; silicon-agnostic (Intel/AMD/NVIDIA/Qualcomm/Apple); EdgeRunner Light also runs on Android ATAK devices, including two-year-old Samsung Galaxy S24 phones (EV-137)",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Hardware envelope verified in capabilities.md: EdgeRunner Light runs in phone-level memory (measured on a laptop at 5.5 GB RAM plus 5 GB VRAM, EV-135) and on Android ATAK devices such as Samsung Galaxy S24 phones (EV-137); 16 GB VRAM recommended for Medium [the earlier \"8 GB VRAM min\" figure for Light is superseded, Updated 2026-09-28 per Bill], workstation/edge-server class for Heavy; backends ONNX/CUDA/Vulkan/Metal; no specialized accelerator required.",
       "source_file": "my-company/capabilities.md",
       "source_anchor": "hardware envelope",
       "relevance_tags": [
@@ -702,12 +730,18 @@
         "commodity-hardware",
         "gfe",
         "toughbook",
-        "silicon-agnostic"
+        "silicon-agnostic",
+        "edgerunner-light",
+        "android",
+        "atak",
+        "phone",
+        "samsung-galaxy"
       ],
       "approval_status": "approved",
       "proof_strength": "high",
       "created_at": "2026-07-26T00:00:00Z",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "Updated 2026-09-28 per Bill: approved wording for EdgeRunner Light memory is \"runs in phone-level memory\"; the earlier \"8 GB VRAM minimum (Light)\" figure (in the summary and in the detail's capabilities.md hardware envelope) is superseded; measured supporting detail is EV-135 (5.5 GB RAM plus 5 GB VRAM). | Updated 2026-09-28 per Bill: EdgeRunner Light runs on Android ATAK devices (Samsung Galaxy S24 class, about two years old) and on the Samsung Galaxy S26 Ultra; see EV-137 (company statement; approved wording \"EdgeRunner Light runs on Android ATAK devices, including two-year-old Samsung Galaxy S24 phones.\"). The stale \"8 GB VRAM min\" text in the detail was replaced with the EV-135/EV-137 facts."
     },
     {
       "id": "EV-050",
@@ -955,14 +989,21 @@
       "id": "EV-071",
       "type": "capability_claim",
       "summary": "Language capability: cross-lingual translation across 25+ languages, automated language identification, language-agnostic architecture fine-tunable for low-resource languages",
-      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Cited in africom-jwic for 25+ language translation, automated language ID, and fine-tuning for low-resource/low-density languages (90-day commitment was proposal-specific; confirm timeline before re-committing elsewhere). Open-weight models with specific language support deployable as needed.",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Cited in africom-jwic for 25+ language translation, automated language ID, and fine-tuning for low-resource/low-density languages (90-day commitment was proposal-specific; confirm timeline before re-committing elsewhere). Open-weight models with specific language support deployable as needed. Updated 2026-09-25 per Bill (offline/on-prem confirmation): translation and automated language identification run fully offline and locally on the EdgeRunner AI Runtime: on-device and on premises (on-prem), at the edge, inside an air-gapped environment, with no cloud or internet connection required. Usable in disconnected, denied, disrupted, intermittent, and limited (DDIL) collection settings. Bill: \"Offline is what we do. We build local AI models that run on prem.\" Language coverage is unchanged (25+ languages, language ID, low-resource fine-tuning as stated above). This confirms deployment mode only; it adds no certification, accreditation, or benchmark claim (IL-5 certification with the U.S. Space Force remains pending; the IL-6 IATT is with the U.S. Navy; TRL 7).",
       "source_file": "my-company/capabilities.md",
       "source_anchor": "language",
       "relevance_tags": [
         "translation",
         "language-id",
         "multilingual",
-        "low-resource"
+        "low-resource",
+        "offline",
+        "fully-offline",
+        "on-prem",
+        "local",
+        "air-gapped",
+        "no-cloud-required",
+        "ddil"
       ],
       "approval_status": "approved",
       "proof_strength": "high",
@@ -1159,8 +1200,8 @@
     {
       "id": "EV-100",
       "type": "customer_deployment",
-      "summary": "LEGACY ID - U.S. Space Force production deployment inside an accredited IL-5 boundary (same claim as EV-002)",
-      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Legacy-generation ID kept so older drafts (unmanned-ground-recovery-rfi) verify: ODIN deployed in a USSF production environment, running fully inside an accredited IL-5 (Azure ILZ) government boundary with no cloud dependency/reachback. Canonical entry: EV-002. Prefer EV-002 in new work.",
+      "summary": "LEGACY ID - U.S. Space Force production deployment inside the Space Force IL-5 (Azure ILZ) government environment (same claim as EV-002)",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Legacy-generation ID kept so older drafts (unmanned-ground-recovery-rfi) verify: the EdgeRunner runtime deployed in a USSF production environment, running fully inside the Space Force IL-5 (Azure ILZ) government environment with no cloud dependency/reachback. Canonical entry: EV-002. Prefer EV-002 in new work.",
       "source_file": "my-company/past-performance.md",
       "source_anchor": "USSF IL-5 deployment (=EV-002)",
       "relevance_tags": [
@@ -1172,7 +1213,8 @@
       "approval_status": "approved",
       "proof_strength": "highest",
       "created_at": "2026-07-26T00:00:00Z",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "NAMING (Bill, 2026-09-24): ODIN is an internal name. It stays only where it quotes contract language (the CLIN 0001 title 'EdgeRunner ODIN Software License'); in drafts say 'the EdgeRunner runtime'. Updated 2026-09-25 per Bill: EdgeRunner's IL-5 ATO with the U.S. Space Force is PENDING (supersedes the 2026-09-24 'confirmed held' note). Standard wording: 'designed to operate in classified environments; in the process of IL-5 certification with the U.S. Space Force.' The FA701426P0009 deployment into the Space Force IL-5 Azure ILZ environment and the engineering support for IL-5 certification requirements remain true deployment facts; never describe them as an EdgeRunner-held ATO."
     },
     {
       "id": "EV-101",
@@ -1376,7 +1418,7 @@
       "id": "EV-067",
       "type": "capability_claim",
       "summary": "RETIRED — FedRAMP is NOT held. EdgeRunner has not pursued FedRAMP authorization for its application; do not claim any FedRAMP status.",
-      "detail": "RETIRED 2026-07-26 by Bill: \"We do not have FedRAMP authorization for our application itself as we have not had to do it yet. Hold off on claiming any FedRAMP status in our writing.\" Rationale: the product deploys on-premises and air-gapped inside the customer's own accredited boundary rather than as a cloud service, so FedRAMP has not been required. This entry is kept (not deleted) per the append-only/retire convention so that any future citation resolves to an explicit prohibition rather than a missing ID. USE INSTEAD: IL-5 ATO (U.S. Space Force) and IL-6 IATT (EV-022) are the verified authorizations. Consistent with my-company/edgerunner-profile.md section 4 (\"ISO 27001 / SOC 2 / FedRAMP: Not held - do not claim\"). Third-party FedRAMP-authorized environments (a hosting platform, a partner platform such as BigBear's) may be described, but must be attributed to that party and never read as an EdgeRunner authorization.",
+      "detail": "RETIRED 2026-07-26 by Bill: \"We do not have FedRAMP authorization for our application itself as we have not had to do it yet. Hold off on claiming any FedRAMP status in our writing.\" Rationale: the product deploys on-premises and air-gapped inside the customer's own accredited boundary rather than as a cloud service, so FedRAMP has not been required. This entry is kept (not deleted) per the append-only/retire convention so that any future citation resolves to an explicit prohibition rather than a missing ID. USE INSTEAD (updated 2026-09-25 per Bill): the IL-6 IATT with the U.S. Navy (EV-022) is the verified authorization; the IL-5 ATO with the U.S. Space Force is pending ('in the process of IL-5 certification with the U.S. Space Force'). Consistent with my-company/edgerunner-profile.md section 4 (\"ISO 27001 / SOC 2 / FedRAMP: Not held - do not claim\"). Third-party FedRAMP-authorized environments (a hosting platform, a partner platform such as BigBear's) may be described, but must be attributed to that party and never read as an EdgeRunner authorization.",
       "source_file": "my-company/partner-enablement/accreditation-one-pager.md",
       "source_anchor": "open [CONFIRM] gaps",
       "relevance_tags": [
@@ -1537,7 +1579,7 @@
       "proof_strength": "high",
       "approval_status": "approved",
       "summary": "Measured control for information leakage: scoping the model's inputs to only partner-releasable evidence eliminated withholdable content from generated products, tested against its counterfactual - 0 of 5 and 0 of 2 lines withheld when scoped, versus 7 of 12 and 9 of 11 when the same task was run with the model shown everything.",
-      "detail": "The control is architectural rather than probabilistic: the drafting model is only ever given evidence releasable to the target partner, so leakage through paraphrase or inference is structurally impossible rather than merely unlikely - a model cannot disclose what it never received. Output-side redaction, by contrast, is a probabilistic control that eventually fails. This was tested against its opposite rather than asserted: the identical drafting task was run twice per partner, once scoped and once with the full corpus visible. Live EdgeRunner-26B, stable across repeated runs. Unscoped runs produced claims citing NOFORN material, ORCON material, an unparseable marking and a contradictory marking; scoped runs produced nothing the gate had to withhold. The scoping filter additionally excludes non-approved entries and any category an unconditional policy rule denies, so material the gate would always refuse never reaches the drafter. COST: one drafting run per partner rather than one draft filtered N ways. LIMITS: measured on a notional marked corpus; the figures demonstrate the mechanism, not a customer-environment result.\n\nCITATION NOTE: this entry states a property of the pattern and tooling and is citable on its own terms. The demonstrator it was measured on is held RESTRICTED (EV-111) - do not name it or describe it as a capability in customer-facing text.",
+      "detail": "The control is architectural rather than probabilistic: the drafting model is only ever given evidence releasable to the target partner, so leakage through paraphrase or inference is structurally impossible rather than merely unlikely - a model cannot disclose what it never received. Output-side redaction, by contrast, is a probabilistic control that eventually fails. This was tested against its opposite rather than asserted: the identical drafting task was run twice per partner, once scoped and once with the full corpus visible. Live EdgeRunner Medium, stable across repeated runs. Unscoped runs produced claims citing NOFORN material, ORCON material, an unparseable marking and a contradictory marking; scoped runs produced nothing the gate had to withhold. The scoping filter additionally excludes non-approved entries and any category an unconditional policy rule denies, so material the gate would always refuse never reaches the drafter. COST: one drafting run per partner rather than one draft filtered N ways. LIMITS: measured on a notional marked corpus; the figures demonstrate the mechanism, not a customer-environment result.\n\nCITATION NOTE: this entry states a property of the pattern and tooling and is citable on its own terms. The demonstrator it was measured on is held RESTRICTED (EV-111) - do not name it or describe it as a capability in customer-facing text.",
       "relevance_tags": [
         "coalition",
         "cross-domain",
@@ -1550,7 +1592,8 @@
       "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
       "source_anchor": "WICKET/demo_phase2.py results",
       "created_at": "2026-07-28",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "NAMING (Bill, 2026-09-24): Engineering's approved model names are EdgeRunner Light, EdgeRunner Medium and EdgeRunner Heavy. Do not state parameter counts or base-model names for current models; 'EdgeRunner 20B' survives only as the title of the published paper."
     },
     {
       "id": "EV-114",
@@ -1624,8 +1667,8 @@
       "type": "risk_assertion",
       "proof_strength": "high",
       "approval_status": "approved",
-      "summary": "Measured basis for keeping models out of verification: a generative model is unreliable as a verification judge. On a hand-labelled entailment set the on-device 26B scored 7 of 10 (its reasoning variant 6 of 10), and 5 of 10 cases changed verdict across identical runs at temperature zero. A governance gate whose answer varies on identical input is not defensible - so verification must be deterministic and the model must sit outside the decision path.",
-      "detail": "This finding is the empirical justification for EdgeRunner's architecture rather than a defect in it, and it is the reason Ground Truth's core is deterministic with no model in the verification loop. Measurement: a hand-labelled (claim, evidence) set drawn from an ICD 203 and unit-SOP corpus, with every label checkable by inspection. EdgeRunner-26B-Nonthinking scored 7/10 with 4/4 recall on contradictions; the Thinking variant scored 6/10 and missed a contradiction. Repeating the identical set three times at temperature zero produced verdict changes on 5 of 10 cases. Both variants failed most often by over-committing to a relationship where the correct label was NEUTRAL. Design consequences adopted: the deterministic citation path is the only route to an attributed verdict; model-judged entailment is recorded as advisory and labelled as such in output; and where a judge is required, a cross-encoder is the preferred implementation over a generative model. The evaluation harness ships with the capability so the measurement can be repeated after any model or prompt change. LIMITS: small hand-labelled set on a single domain corpus - directional evidence about generative judging, not a formal model evaluation.",
+      "summary": "Measured basis for keeping models out of verification: a generative model is unreliable as a verification judge. On a hand-labelled entailment set on-device EdgeRunner Medium scored 7 of 10 (its reasoning variant 6 of 10), and 5 of 10 cases changed verdict across identical runs at temperature zero. A governance gate whose answer varies on identical input is not defensible - so verification must be deterministic and the model must sit outside the decision path.",
+      "detail": "This finding is the empirical justification for EdgeRunner's architecture rather than a defect in it, and it is the reason Ground Truth's core is deterministic with no model in the verification loop. Measurement: a hand-labelled (claim, evidence) set drawn from an ICD 203 and unit-SOP corpus, with every label checkable by inspection. EdgeRunner Medium with reasoning off scored 7/10 with 4/4 recall on contradictions; with reasoning on it scored 6/10 and missed a contradiction. Repeating the identical set three times at temperature zero produced verdict changes on 5 of 10 cases. Both variants failed most often by over-committing to a relationship where the correct label was NEUTRAL. Design consequences adopted: the deterministic citation path is the only route to an attributed verdict; model-judged entailment is recorded as advisory and labelled as such in output; and where a judge is required, a cross-encoder is the preferred implementation over a generative model. The evaluation harness ships with the capability so the measurement can be repeated after any model or prompt change. LIMITS: small hand-labelled set on a single domain corpus - directional evidence about generative judging, not a formal model evaluation.",
       "relevance_tags": [
         "risk",
         "verification",
@@ -1640,7 +1683,8 @@
       "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
       "source_anchor": "WICKET/judge_bench.py results",
       "created_at": "2026-07-28",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "NAMING (Bill, 2026-09-24): Engineering's approved model names are EdgeRunner Light, EdgeRunner Medium and EdgeRunner Heavy. Do not state parameter counts or base-model names for current models; 'EdgeRunner 20B' survives only as the title of the published paper."
     },
     {
       "id": "EV-118",
@@ -1663,7 +1707,8 @@
       "source_file": "warrant-demo (EdgeRunner internal repo) - MEMO-work-ready-ai.md, SPEC-releasability-gate.md, WarClaw pipelines library",
       "source_anchor": "WarClaw pipelines library - per-folder manifest.json, verify_manifests.py, store/registry",
       "created_at": "2026-07-28",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "Updated 2026-09-28 per Bill: this entry covers workflow packages. Signed, verifier-checked delivery of models is recorded separately in EV-136 (current, standard delivery methodology, building on Docker-based deliveries; Updated 2026-09-28 per Bill, 1:32 PM ET: \"planned\" replaced, consistent with EV-136)."
     },
     {
       "id": "EV-119",
@@ -1711,13 +1756,13 @@
       "id": "EV-121",
       "type": "past_performance",
       "summary": "AFRL CRADA 25-0005284-AFRL/RI: cooperative R&D with the AFRL Information Directorate and Defense Unicorns on NIPRGPT Edge, a 25-35B military-doctrine LLM, AFSC LoRA adapters, and Graph/Hybrid RAG",
-      "detail": "UPDATED 2026-08-07 from the executed CRADA PDF; supersedes the 2026-07-30 entry sourced to the company deck. Fact request F7 is CLOSED for agreement number and AFRL POC. Scope per Joint Work Plan Article D.2: build an open, auditable military-doctrine dataset; build a specialized 25-35B parameter LLM on it; build 10 high-priority AFSC LoRA adapters; provide a NIPRGPT Edge frontend container; collaborate on RAG, Graph RAG, and Hybrid RAG. Defense Unicorns characterized COTS Nvidia Jetson edge kits across model size, concurrent users, tokens/sec, quantization, and node count. AFRL provided the NIPRGPT code base, K8s document containers, H200 idle compute, and Airman testers. Background technology declared by EdgeRunner (Article E.1.2): EdgeRunner Athena v1.0, 32B LLM trained on EdgeRunner's open military-specific dataset (5T tokens), military-specific LoRAs, and AI agents. Estimated contributions: EdgeRunner $17.0M, Defense Unicorns $0.85M, AFRL $0.305M. CAUTION: this is the plan of work, not measured results. The CRADA annual report, the Month 10-12 After Action Review, and the Jetson characterization data are NOT in the workspace. Do not cite a performance number to this CRADA. Term status unconfirmed - see EV-010.",
+      "detail": "UPDATED 2026-08-07 from the executed CRADA PDF; supersedes the 2026-07-30 entry sourced to the company deck. Fact request F7 is CLOSED for agreement number and AFRL POC. Scope per Joint Work Plan Article D.2: build an open, auditable military-doctrine dataset; build a specialized 25-35B parameter LLM on it; build 10 high-priority AFSC LoRA adapters; provide a NIPRGPT Edge frontend container; collaborate on RAG, Graph RAG, and Hybrid RAG. Defense Unicorns characterized COTS Nvidia Jetson edge kits across model size, concurrent users, tokens/sec, quantization, and node count. AFRL provided the NIPRGPT code base, K8s document containers, H200 idle compute, and Airman testers. Background technology declared by EdgeRunner (Article E.1.2): EdgeRunner Athena v1.0, 32B LLM trained on EdgeRunner's open military-specific dataset (5T tokens), military-specific LoRAs, and AI agents. Estimated contributions: EdgeRunner $17.0M, Defense Unicorns $0.85M, AFRL $0.305M. CAUTION: this is the plan of work, not measured results. The CRADA annual report, the Month 10-12 After Action Review, and the Jetson characterization data are NOT in the workspace. Do not cite a performance number to this CRADA. Term: ACTIVE per Bill Bal (confirmed 2026-09-01) and corroborated by joint activity through 2026-09-29; end date unknown, modification not held. See EV-010.",
       "source_file": "proposals/afrl-afar-agentic-edge/inputs/02_yourCompany/afrl-crada-25-0005284.md",
       "source_anchor": "R&D agreements",
       "contract_number": "25-0005284-AFRL/RI",
       "customer": "Air Force Research Laboratory, Information Directorate (AFRL/RI)",
       "contract_value_usd": null,
-      "period_of_performance": "12 months from Effective Date (Air Force signature 17 Dec 2024); extension unconfirmed",
+      "period_of_performance": "Effective 17 Dec 2024 (Air Force signature), original term 12 months; extended by a modification not held; active as of 2026-09-29; current end date unknown",
       "relevance_tags": [
         "afrl",
         "afrl-ri",
@@ -1729,12 +1774,16 @@
         "graph-rag",
         "niprgpt",
         "past-performance",
-        "r-and-d"
+        "r-and-d",
+        "adapter-development",
+        "afsc-adapters",
+        "no-model-training"
       ],
       "approval_status": "approved",
       "proof_strength": "high",
       "created_at": "2026-07-30T00:00:00Z",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "Updated 2026-09-28 per Bill: per Bill Bal (2026-09-28), EdgeRunner's AFRL CRADA work is adapter development (Air Force specialty (AFSC) LoRA adapters), not model training: \"for AFRL ... No model training, just adapter development.\" The Joint Work Plan items for the military-doctrine dataset and the 25-35B LLM remain plan of work, not measured results; do not state that EdgeRunner trained a model under this CRADA, and cite no performance number to it. Army model training is recorded separately in EV-139 (ARL CRADA, AI2C)."
     },
     {
       "id": "EV-122",
@@ -1776,12 +1825,16 @@
         "joint-work-statement",
         "army",
         "r-and-d",
-        "past-performance"
+        "past-performance",
+        "ai2c",
+        "camogpt",
+        "model-training"
       ],
       "approval_status": "approved",
       "proof_strength": "medium",
       "created_at": "2026-07-30T00:00:00Z",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "Updated 2026-09-28 per Bill: scope pointer. Completed model training for the Army with AI2C (Army AI Integration Center) on 16 million CamoGPT prompt sets was done under this ARL CRADA; see EV-139 (company statement, Bill 2026-09-28). Agreement number, PoP, and ARL POC still pending under F7."
     },
     {
       "id": "EV-124",
@@ -1858,7 +1911,6 @@
       "relevance_tags": [
         "arl",
         "crada",
-        "odin",
         "runtime",
         "portability",
         "on-device",
@@ -1931,7 +1983,7 @@
       "record_class": "capability",
       "type": "capability_claim",
       "summary": "Model training for military",
-      "detail": "Multi-stage training of open-weight foundation models into military-specific models: the model understands and speaks military language, refusals of mission-relevant questions are eliminated, and training data is constructed from doctrine, field manuals and other military sources. Canonical statement in capabilities.md Layer 1 (Custom Models).",
+      "detail": "Multi-stage training of open-weight foundation models into military-specific models: the model understands and speaks military language, refusals of mission-relevant questions are eliminated, and training data is constructed from doctrine, field manuals and other military sources. Canonical statement in capabilities.md Layer 1 (Custom Models). Updated 2026-09-25 per Bill (offline/on-prem confirmation): EdgeRunner builds local AI models that run on prem: the resulting military-specific models (EdgeRunner Light, Medium, Heavy) run locally, on premises and on-device at the edge, air-gapped and fully offline, with no cloud or internet connection required; supports disconnected/denied (DDIL) operation. This confirms deployment mode only; it adds no certification, accreditation, or benchmark claim (IL-5 certification with the U.S. Space Force remains pending; the IL-6 IATT is with the U.S. Navy; TRL 7).",
       "maturity": "Fielded",
       "source_file": "my-company/capabilities.md",
       "source_anchor": null,
@@ -1940,37 +1992,51 @@
         "fine-tuning",
         "military-domain",
         "doctrine",
-        "layer-1"
+        "layer-1",
+        "offline",
+        "fully-offline",
+        "on-prem",
+        "local",
+        "on-device",
+        "air-gapped",
+        "no-cloud-required",
+        "public-source-data",
+        "training-data"
       ],
       "approval_status": "approved",
       "proof_strength": null,
       "created_at": "2026-08-27T00:00:00Z",
       "verified_at": "2026-08-27T00:00:00Z",
-      "notes": "Cite specific model results through EV records (EdgeRunner 20B, Mil-Deflect), not through this capability record. Current product models are EdgeRunner Light and Medium (EV-134); the 20B figures describe the previous-generation research model."
+      "notes": "Cite specific model results through EV records (EdgeRunner 20B, Mil-Deflect), not through this capability record. Current product models are EdgeRunner Light and Medium (EV-134); the 20B figures describe the previous-generation research model. NAMING (Bill, 2026-09-24): Engineering's approved model names are EdgeRunner Light, EdgeRunner Medium and EdgeRunner Heavy. Do not state parameter counts or base-model names for current models; 'EdgeRunner 20B' survives only as the title of the published paper. | Updated 2026-09-28 per Bill: EdgeRunner uses a wide variety of public-source military data to train all of its models (Bill 2026-09-28: \"we also use a wide variety of military public source data to train all of our models\"). Company statement; name no specific datasets from this note. Army training with AI2C is recorded in EV-139."
     },
     {
       "id": "CAP-02",
       "record_class": "capability",
       "type": "capability_claim",
       "summary": "Secure runtime for AI in military environments",
-      "detail": "On-device inference runtime, hardware and operating-system agnostic, running LLMs and VLMs on laptops and edge compute, exposing standard APIs and a local vector store. Declared as background IP in ARL JWS 25-0047-J001 Appendix D. Canonical statement in capabilities.md Layer 3 (Secure Runtime).",
+      "detail": "On-device inference runtime, hardware and operating-system agnostic, running LLMs and VLMs on laptops and edge compute, exposing standard APIs and a local vector store. Declared as background IP in ARL JWS 25-0047-J001 Appendix D. Canonical statement in capabilities.md Layer 3 (Secure Runtime). Updated 2026-09-25 per Bill (offline/on-prem confirmation): the secure runtime runs locally on premises (on-prem) and on-device at the edge, air-gapped and fully offline, with no cloud or internet connection required; supports disconnected, denied, disrupted, intermittent, and limited (DDIL) operation. Search phrasings: runs locally; on premises / on-prem; on-device; at the edge; air-gapped; fully offline; no cloud or internet connection required; disconnected / denied (DDIL). This confirms deployment mode only; it adds no certification, accreditation, or benchmark claim (IL-5 certification with the U.S. Space Force remains pending; the IL-6 IATT is with the U.S. Navy; TRL 7).",
       "maturity": "Fielded",
       "source_file": "my-company/capabilities.md",
       "source_anchor": null,
       "relevance_tags": [
         "runtime",
-        "odin",
         "on-device",
         "edge",
         "ddil",
         "secure-deployment",
-        "layer-3"
+        "layer-3",
+        "offline",
+        "fully-offline",
+        "on-prem",
+        "local",
+        "air-gapped",
+        "no-cloud-required"
       ],
       "approval_status": "approved",
       "proof_strength": null,
       "created_at": "2026-08-27T00:00:00Z",
       "verified_at": "2026-08-27T00:00:00Z",
-      "notes": "Accreditation posture is an active IL-6 IATT, not an ATO, and is not attributed to any named unit. IL-5 ATO is U.S. Space Force. No FedRAMP, SOC 2 or ISO 27001. See capabilities.md."
+      "notes": "Accreditation posture is an active IL-6 IATT with the U.S. Navy, not an ATO, and is not attributed to any named unit (no PMW 120 / ICOP). IL-5: designed to operate in classified environments; in the process of IL-5 certification with the U.S. Space Force (ATO pending). Updated 2026-09-25 per Bill. No FedRAMP, SOC 2 or ISO 27001. See capabilities.md."
     },
     {
       "id": "CAP-03",
@@ -2015,7 +2081,7 @@
       "proof_strength": null,
       "created_at": "2026-08-27T00:00:00Z",
       "verified_at": "2026-08-27T00:00:00Z",
-      "notes": "Do not assert a TRL for Ground Truth (capabilities.md, 2026-07-23)."
+      "notes": "Updated 2026-09-28 per Bill: Ground Truth is TRL 7 (Bill assesses 7+: used commercially and tested against a broad array of Government data types and missions); proposals state TRL 7 for consistency. Supersedes the 2026-07-23 note \"Do not assert a TRL for Ground Truth (capabilities.md, 2026-07-23).\" See EV-073, EV-130."
     },
     {
       "id": "CAP-05",
@@ -2324,7 +2390,7 @@
       "id": "EV-131",
       "record_class": "evidence",
       "type": "capability_claim",
-      "summary": "EXTiC 26-2: EdgeRunner AI Platform successfully demonstrated 13 of 13 assessment objectives across 4 Critical Operational Issues at a DIU-sponsored, CENTCOM-aligned field event, independently assessed by T2L Support Services",
+      "summary": "CENTCOM/DIU field exercise (EXTiC 26-2): EdgeRunner AI Platform successfully demonstrated 13 of 13 assessment objectives across 4 Critical Operational Issues at a DIU-sponsored, CENTCOM-aligned field exercise, independently assessed by T2L Support Services",
       "detail": "EVENT. Experimentation: Transforming in Contact (EXTiC) 26-2, Playas Research and Training Center (PRTC), New Mexico, 27-29 July 2026. Sponsored by the Defense Innovation OnRamp Hub: Arizona, a Defense Innovation Unit (DIU) program, in cooperation with United States Central Command (CENTCOM). Invitation only: an open Call for Technology drew 149 submissions across five technology verticals; 23 technologies were selected. Scenario 'Silent Siege', a contested low-altitude / C-UAS problem set across three lanes (Sentinel, Custody, Endurance) over three days of increasing complexity. EdgeRunner participated primarily in the Sentinel lane as the AI-enabled decision layer between sensing/ISR systems and the C-UAS defeat chain.\n\nASSESSMENT. Independent third-party assessment by T2L Support Services LLC using a progressive Baseline / Functional / Vignette methodology, structured on 4 Critical Operational Issues (Performance/Operational Effectiveness; Usability/Suitability; Mission Impact; Production/Sustainment/Exportability) supported by 13 technology-specific objectives. RESULT: 13 of 13 objectives Successfully Demonstrated. T2L recommended advancement to an Operational Demonstration, Operational Assessment, and/or Extended User Evaluation.\n\nSPECIFIC OBSERVATIONS OF NOTE. Locally hosted AI reasoning and retrieval with no external network connectivity. Integration with TAK via the local API and Cursor-on-Target messaging (Obj 2.1). Deployed and operated on representative tactical laptop/workstation-class hardware with no cloud or external compute (Obj 2.2). Operator familiarization measured at approximately 10 to 15 minutes against a 30-minute objective (Obj 2.3). Demonstrated data retrieval from Palantir Foundry and Power BI when connectivity was available (Obj 2.4). Ingested and locally indexed uploaded mission documents and answered operator questions from them via the AI/RAG capability (Obj 2.5). Local REST API served requests from a separate application (Obj 1.4).\n\nTRL. The LOO records that EdgeRunner AI Platform is 'currently assessed/reported by EdgeRunner AI at TRL 8, with the EXTiC C-UAS decision-layer integration demonstrated at the TRL 7 practical assessment level.' NOTE CAREFULLY: those TRL figures are SELF-REPORTED by EdgeRunner and recorded by the assessor, not independently assigned by T2L. The independent finding is the 13 of 13 objective result. Cite the objective result, not the TRL number, when independence matters.\n\nRELEASABILITY. The T2L memorandum carries two restrictions: the document 'may not be released outside DIU ORH:AZ without approval from the office of the Managing Director' and 'may not be cited for advertising or promotional purposes'; it also states the LOO 'does not represent a formal position of the Defense Innovation Unit (DIU) OnRamp Hub: Arizona'. The transmittal letter from Angela Aspito, Managing Director, DIU OnRamp Hub: Arizona -- who is the named approval authority -- states the LOO is 'intended to provide ... credible, government-aligned validation that you can leverage in future engagements, including RFIs, solicitations, and other opportunities.' Bill Bal confirmed 2026-09-02 that the customer verbally reaffirmed clearance to cite it in proposals and to other Government entities.\n\nRULES FOR USE. (1) CITE the observations in proposals and Government-facing material; do NOT attach or distribute the LOO itself outside the Government without the Managing Director's approval. (2) Do NOT use in advertising, marketing, or promotional material -- the restriction is explicit and a proposal is not an advertisement, but a press release or web page is. (3) Do NOT characterize this as a DIU endorsement or a formal DIU position; the LOO forecloses both, and states that use of trade names is not an endorsement. Say 'assessed at a DIU-sponsored, CENTCOM-aligned field event' rather than 'DIU validated EdgeRunner'.\n\nSource document: EXTiC_26-2_LOO_EDGERUNNER_20260820_FINAL_nbc.pdf, dated 20 August 2026, signed Larry Solliday, DM, MPA, Co-Founder and President, T2L Support Services LLC.",
       "source_file": "D:/OneDrive/Documents/work/Aura Digital/Consulting/2024 Agreements/Edgerunner/Growth/Opportunities/EXTiC26-2 CUAS/reviews/EXTiC_26-2_LOO_EDGERUNNER_20260820_FINAL_nbc.pdf",
       "source_anchor": "Letter of Observation, EXTiC 26-2, 20 August 2026; Observation Report, COI 1-4",
@@ -2356,7 +2422,8 @@
         "CAP-03",
         "CAP-04"
       ],
-      "customer_context": "DIU OnRamp Hub: Arizona in cooperation with CENTCOM; C-UAS decision layer between sensing/ISR and the defeat chain"
+      "customer_context": "DIU OnRamp Hub: Arizona in cooperation with CENTCOM; C-UAS decision layer between sensing/ISR and the defeat chain",
+      "notes": "Updated 2026-09-25 per Bill: EdgeRunner now reports the runtime/models at TRL 7. The LOO's quoted 'TRL 8' is a historical self-report recorded by the assessor; quote it only as history, never as a current TRL. | Updated 2026-09-28 per Bill: approved for proposal use, including the IARPA Solutions Marketplace; frame as the \"CENTCOM/DIU field exercise\". APPROVED WORDING: \"At a CENTCOM/DIU field exercise, EdgeRunner successfully demonstrated 13 of 13 assessment objectives, independently assessed.\" Bill rates this stronger evidence than the First Army examples (EV-130); lead with EV-131 and use EV-130 as support. The existing rules for use (do not attach or distribute the LOO; not advertising; not a DIU endorsement or formal DIU position; TRL 8 only as history) still apply."
     },
     {
       "id": "EV-132",
@@ -2483,7 +2550,7 @@
       "record_class": "evidence",
       "type": "customer_fact",
       "summary": "Current EdgeRunner product models are EdgeRunner Light and EdgeRunner Medium; the base model is not stated externally",
-      "detail": "Per Bill Bal (VP Growth), 2026-08-31: EdgeRunner migrated its primary light and medium models to a new base a few months earlier and now refers to them only as EdgeRunner Light and EdgeRunner Medium. Collateral and proposals name the products, not the base model. The EdgeRunner 20B paper remains citable as a publication; its model-specific results describe the previous-generation 20B research model and are not attributed to Light or Medium without a fresh measurement.",
+      "detail": "Per Bill Bal (VP Growth), 2026-08-31: EdgeRunner migrated its primary light and medium models to a new base a few months earlier and now refers to them only as EdgeRunner Light and EdgeRunner Medium. Collateral and proposals name the products, not the base model. The EdgeRunner 20B paper remains citable as a publication; its model-specific results describe the previous-generation 20B research model and are not attributed to Light or Medium without a fresh measurement. Updated 2026-09-25 per Bill (offline/on-prem confirmation): EdgeRunner Light and EdgeRunner Medium are local AI models: they run locally on premises (on-prem) and on-device at the edge on the EdgeRunner AI Runtime, air-gapped and fully offline, with no cloud or internet connection required; supports disconnected/denied (DDIL) operation. This confirms deployment mode only; it adds no certification, accreditation, or benchmark claim (IL-5 certification with the U.S. Space Force remains pending; the IL-6 IATT is with the U.S. Navy; TRL 7).",
       "source_file": null,
       "source_anchor": "Bill Bal, 2026-08-31 (direction given in working session)",
       "relevance_tags": [
@@ -2491,7 +2558,14 @@
         "edgerunner-light",
         "edgerunner-medium",
         "collateral-rule",
-        "layer-1"
+        "layer-1",
+        "offline",
+        "fully-offline",
+        "on-prem",
+        "local",
+        "on-device",
+        "air-gapped",
+        "no-cloud-required"
       ],
       "approval_status": "approved",
       "proof_strength": "company_statement",
@@ -2522,7 +2596,10 @@
         "d1",
         "navwar-epss",
         "cto-stated",
-        "power-not-measured"
+        "power-not-measured",
+        "android",
+        "atak",
+        "phone"
       ],
       "approval_status": "approved",
       "proof_strength": "medium",
@@ -2534,7 +2611,190 @@
         "CAP-01"
       ],
       "customer_context": "Internal engineering measurement of the EdgeRunner Light 2.0 configuration; cited on the NAVWAR GenAI EPSS brief (PMW 160) for Desired attribute D1",
-      "date": "2026-09-03"
+      "date": "2026-09-03",
+      "notes": "Updated 2026-09-28 per Bill: approved external wording is \"EdgeRunner Light runs in phone-level memory\"; the measured figures here (5.5 GB RAM plus 5 GB VRAM; 7.81 GB install) are the supporting detail. Supersedes the 8 GB VRAM minimum in EV-047. | Updated 2026-09-28 per Bill: EdgeRunner Light also runs on Android ATAK devices (Samsung Galaxy S24 class, about two years old) and on the Samsung Galaxy S26 Ultra (EV-137, company statement). The laptop measurement in this record stays as measured; no phone memory, speed, latency, or power figure has been measured or may be stated."
+    },
+    {
+      "id": "EV-136",
+      "record_class": "evidence",
+      "type": "capability_claim",
+      "summary": "Signed model delivery: EdgeRunner delivers its models to military customers as signed packages that a verifier checks. This is EdgeRunner's current, standard delivery methodology for models and builds on its Docker-based deliveries (Updated 2026-09-28 per Bill: current, no longer described as planned).",
+      "detail": "Per Bill Bal (VP Growth), 2026-09-28: models are delivered to the military as signed packages that a verifier checks; this is EdgeRunner's delivery methodology and builds on the current Docker-based deliveries [earlier text read \"planned delivery approach\"; Updated 2026-09-28 per Bill: Bill confirmed \"Yes, [signed model packages] is our delivery methodology.\" State it in the present tense]. APPROVED WORDING: \"EdgeRunner delivers models as signed packages that a verifier checks, its standard delivery method, building on its current Docker-based deliveries.\" Approved for proposal use (first use: IARPA Solutions Marketplace chart C4 and video beat B5). Approved short form (Updated 2026-09-28 per Bill): \"EdgeRunner delivers models as signed packages a verifier checks, building on Docker deliveries.\" LIMITS: this record states the delivery approach only; it does not specify signing algorithms, key custody, tooling, or any cross-domain-solution accreditation, and none should be stated from it; do not describe it as already in place for every customer or every past delivery. Related: EV-118 records signed, verifier-checked delivery demonstrated for workflow packages; EV-048 records model tiers and progressive upgrades. Updated 2026-09-28 per Bill.",
+      "source_file": null,
+      "source_anchor": "Bill Bal, VP Growth, 2026-09-28",
+      "relevance_tags": [
+        "signed-delivery",
+        "model-delivery",
+        "cross-domain-model-update",
+        "supply-chain",
+        "integrity",
+        "docker",
+        "air-gap-update",
+        "current-methodology"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "company_statement",
+      "created_at": "2026-09-28T00:00:00Z",
+      "verified_at": "2026-09-28T00:00:00Z",
+      "evidentiary_tier": "internal",
+      "tier_reason": "Company statement of the current, standard model-delivery methodology by the VP Growth (confirmed 2026-09-28); builds on existing Docker-based deliveries; not independently verified.",
+      "capabilities": [
+        "CAP-01",
+        "CAP-02"
+      ],
+      "customer_context": null,
+      "notes": "Added 2026-09-28 per Bill. Dispositions the claim-envelope theme cross-domain-model-update. | Updated 2026-09-28 per Bill (1:28 PM ET): signed model packages are EdgeRunner's current delivery methodology, not planned (Bill: \"Yes, [signed model packages] is our delivery methodology.\"). Limits unchanged: no signing algorithms, key custody, tooling, or cross-domain-solution accreditation; not 'in place for every customer'."
+    },
+    {
+      "id": "EV-137",
+      "record_class": "evidence",
+      "type": "capability_claim",
+      "summary": "EdgeRunner Light runs on Android ATAK devices: Samsung Galaxy S24-class phones (about two years old) and the Samsung Galaxy S26 Ultra",
+      "detail": "Per Bill Bal (VP Growth), 2026-09-28: \"Light runs on ATAK devices - Android Phones. They're Galaxy S-24 models (2 years old), and run our light models fine. I run it on my newer S-26 ultra and it's very fast.\" APPROVED WORDING: \"EdgeRunner Light runs on Android ATAK devices, including two-year-old Samsung Galaxy S24 phones.\" The Samsung Galaxy S26 Ultra may be named as an additional device it runs on. LIMITS: state no speed, latency, memory, power, or benchmark figure for phones (Bill's \"fine\" and \"very fast\" are qualitative and are not to be quoted as performance claims); do not claim operational fielding on ATAK devices and do not name any unit or program that uses it on ATAK; the EdgeRunner Light laptop measurement (EV-135: 5.5 GB RAM plus 5 GB VRAM; 7.81 GB install) stays as measured and is not a phone measurement. Updated 2026-09-28 per Bill.",
+      "source_file": null,
+      "source_anchor": "Bill Bal, VP Growth, 2026-09-28",
+      "relevance_tags": [
+        "edgerunner-light",
+        "android",
+        "atak",
+        "phone",
+        "samsung-galaxy",
+        "on-device",
+        "edge",
+        "handheld",
+        "offline",
+        "hardware-footprint"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "company_statement",
+      "created_at": "2026-09-28T00:00:00Z",
+      "verified_at": "2026-09-28T00:00:00Z",
+      "evidentiary_tier": "internal",
+      "tier_reason": "Company statement by the VP Growth from direct use; no test report or measurement.",
+      "capabilities": [
+        "CAP-01",
+        "CAP-02"
+      ],
+      "customer_context": null,
+      "notes": "Added 2026-09-28 per Bill. Related: EV-047 (hardware envelope), EV-135 (laptop measurement), EV-134 (model naming)."
+    },
+    {
+      "id": "EXP-04",
+      "record_class": "expertise",
+      "type": "named_personnel",
+      "summary": "Colton Malkerson: Co-Founder and Chief Operating Officer (COO), EdgeRunner AI; colton@edgerunnerai.com",
+      "detail": "Per Bill Bal, 2026-09-28: \"Colton is co-founder and COO.\" Title for external use: Co-Founder & Chief Operating Officer (COO). Contact: colton@edgerunnerai.com; phone +1 (612) 209-6212 (alternate POC details confirmed by Bill 2026-09-25). Also listed among EdgeRunner paper co-authors (edgerunner-profile.md, published-research.md). Updated 2026-09-28 per Bill.",
+      "source_file": null,
+      "source_anchor": "Bill Bal, 2026-09-28",
+      "relevance_tags": [
+        "expertise",
+        "leadership",
+        "co-founder",
+        "coo",
+        "poc",
+        "alternate-poc",
+        "named-personnel"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "company_statement",
+      "created_at": "2026-09-28T00:00:00Z",
+      "verified_at": "2026-09-28T00:00:00Z",
+      "notes": "Added 2026-09-28 per Bill."
+    },
+    {
+      "id": "EV-138",
+      "record_class": "evidence",
+      "type": "capability_claim",
+      "summary": "Licensing and packaging: a license unit can carry any EdgeRunner product or any combination; the EdgeRunner stack comprises all capabilities; WarClaw and Ground Truth are also sold separately and work with any existing AI models",
+      "detail": "Per Bill Bal (VP Growth), 2026-09-28: \"License unit can carry any of our products or any combination of them. The edgerunner stack consists of all capabilities, but WarClaw and Ground Truth can be sold separately to work with any existing AI models.\" Approved statements: (1) An EdgeRunner license unit can carry any EdgeRunner product or any combination of products. (2) The EdgeRunner stack comprises all EdgeRunner capabilities (EdgeRunner AI Runtime and EdgeRunner models, WarClaw orchestration, Ground Truth verification, and the rest of the product line). (3) WarClaw and Ground Truth are also sold separately and are model-agnostic: they work with any existing AI models the customer already runs (consistent with EV-072, WarClaw orchestrates any onboarded model, and EV-073/CAP-04, Ground Truth is model-agnostic). LIMITS: no pricing, rates, price list, or discount statement; this does not name the license unit itself (per deployment, per the Space Force order, EV-002, remains the precedent); selling separately does not change accreditation scope (the IL-5 process and IL-6 IATT cover the Runtime and models only; WarClaw and Ground Truth are not separately accredited); \"works with any existing AI models\" is a design/compatibility statement, not a claim of tested integration with any named model or vendor. Updated 2026-09-28 per Bill.",
+      "source_file": null,
+      "source_anchor": "Bill Bal, VP Growth, 2026-09-28",
+      "relevance_tags": [
+        "licensing",
+        "packaging",
+        "license-unit",
+        "stack",
+        "warclaw",
+        "ground-truth",
+        "model-agnostic",
+        "sold-separately",
+        "commercial"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "company_statement",
+      "created_at": "2026-09-28T00:00:00Z",
+      "verified_at": "2026-09-28T00:00:00Z",
+      "evidentiary_tier": "internal",
+      "tier_reason": "Company statement of commercial packaging by the VP Growth.",
+      "capabilities": [
+        "CAP-01",
+        "CAP-02",
+        "CAP-03",
+        "CAP-04"
+      ],
+      "customer_context": null,
+      "notes": "Added 2026-09-28 per Bill. Dispositions the claim-envelope standing row licensing-packaging. Related: EV-002, EV-046, EV-072, EV-073, EV-078."
+    },
+    {
+      "id": "EV-139",
+      "record_class": "evidence",
+      "type": "capability_claim",
+      "summary": "Completed model training for the Army: EdgeRunner trained models with AI2C (Army AI Integration Center) on 16 million CamoGPT prompt sets, under the ARL CRADA (EV-123)",
+      "detail": "Per Bill Bal (VP Growth), 2026-09-28: \"The completed training for the Army was with AI2C on 16M CammoGPT prompt sets. This is ARL, and for AFRL, you're correct. No model training, just adapter development.\" (Bill typed \"CammoGPT\"; the product is spelled CamoGPT, as in capabilities.md.) Recorded as: EdgeRunner completed model training for the Army with AI2C (Army AI Integration Center) on 16 million CamoGPT prompt sets, under its ARL CRADA (EV-123). APPROVED PROPOSAL WORDING (Updated 2026-09-28 per Bill, 1:32 PM ET): \"EdgeRunner has trained models with the Army's AI2C on millions of data points provided by the military, under its ARL CRADA.\" Bill: \"We can answer the 16 million figure, but we also use a wide variety of military public source data to train all of our models. I'd just keep it generic in the proposal to 'millions of data points provided by the military.'\" The 16 million CamoGPT prompt-set figure is releasable if a Government reader asks, but proposal copy uses the generic phrasing by Bill's direction. [Superseded plain wording: \"EdgeRunner has trained models with the Army's AI2C on 16 million CamoGPT prompt sets under its ARL CRADA.\"] LIMITS: no model size, parameter count, benchmark, metric, or data classification is claimed; in proposal copy describe the data only as \"millions of data points provided by the military\" (in answers, \"16 million CamoGPT prompt sets\" is releasable); never \"government data\" or \"operational data\"; a CRADA is a research agreement, not a contract, so never past performance; name no unit beyond AI2C. The AFRL CRADA involved adapter development, not model training (EV-121). Updated 2026-09-28 per Bill.",
+      "source_file": null,
+      "source_anchor": "Bill Bal, VP Growth, 2026-09-28 (1:28 PM ET)",
+      "relevance_tags": [
+        "model-training",
+        "army",
+        "ai2c",
+        "camogpt",
+        "arl",
+        "crada",
+        "completed-work",
+        "mission-mos-finetuning",
+        "releasable-if-asked",
+        "generic-wording"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "company_statement",
+      "created_at": "2026-09-28T00:00:00Z",
+      "verified_at": "2026-09-28T00:00:00Z",
+      "evidentiary_tier": "internal",
+      "tier_reason": "Company statement by the VP Growth; no training report, dataset record, or agreement copy in the workspace.",
+      "capabilities": [
+        "CAP-01",
+        "CAP-09"
+      ],
+      "customer_context": "Army AI Integration Center (AI2C), under the ARL CRADA (EV-123)",
+      "notes": "Added 2026-09-28 per Bill. Grants the claim-envelope mission-mos-finetuning exception for this engagement only. Related: EV-123 (ARL CRADA), EV-121 (AFRL, adapters only); The 16M figure is releasable if asked; generic wording preferred in copy (Updated 2026-09-28 per Bill); capabilities.md [CONFIRM] flags closed."
+    },
+    {
+      "id": "EV-140",
+      "type": "partnership",
+      "summary": "AFRL CRADA 25-0005284-AFRL/RI current work (Aug-Sep 2026): C-130 maintenance use cases with the 143d MXS (RIANG), on-device authorization path with AFRL's ISSM, and an edge battle damage assessment use case with AFRL-provided BDA data",
+      "detail": "Harvested 2026-09-30 from Slack #afrl-crada (C09UB40TB43) and #army-cybercom. Activity under the AFRL/RI CRADA (EV-010, EV-121): (1) Three RIANG 143d MXS use cases received via AFRL on 24 Jul 2026: part number comparison, scheduled maintenance gap analysis, aircraft metrics predictive planning. AFRL uploaded C-130J and C-130H technical data and manuals to EdgeRunner's Azure Government environment (24 Aug, 17 Sep). Jack FitzGerald built a part-number matching prototype on the WarClaw/Garrison tool framework and it was scheduled for demo at the 29 Sep AFRL sync. (2) Authorization: per the 18 Aug sync, AFRL's ISSM said an existing EdgeRunner certificate can fast-track an on-device IATT, and the RIANG ISSM will work with AFRL to approve deployment on their devices; Tyler Saltsman to confirm the timeline (15 Sep). Not verified; no IATT has been issued. (3) Battle damage assessment at the edge: AFRL/RI raised an edge BDA use case on 18 Aug, initially for ISR and kill-chain purposes, with LTC Dwyer also interested for field-maintenance damage assessment. BDA data with 20 sample events was shared into the project environment (17 Sep); AFRL is interested in collaborating with ARL on it; Jack FitzGerald judged it publishable (15 Sep). (4) AFRL guidance (29 Jan 2026, Colton Malkerson): AFRL intends to fund EdgeRunner but FY26 funds are spent; the route is a white paper to AFAR BAA FA8750-23-S-7008 Focus Area D and a plus-up in a later year. People: LTC Dwyer (RIANG / 143d MXS) is the active Government lead; Rosanne Pelli and Mark (AFRL/RI) reassigned 15 Sep. CAUTION: work in progress, not results. No measured performance, no delivery, and no authorization has been issued. Cite only as an ongoing collaboration after Bill approves.",
+      "source_file": "Slack #afrl-crada (C09UB40TB43), messages 2026-07-24 to 2026-09-29",
+      "source_anchor": "https://edgerunnerai.slack.com/archives/C09UB40TB43/p1789490442485029",
+      "customer": "Air Force Research Laboratory, Information Directorate (AFRL/RI); Rhode Island Air National Guard 143d Maintenance Squadron",
+      "relevance_tags": [
+        "afrl",
+        "afrl-ri",
+        "crada",
+        "air-force",
+        "battle-damage-assessment",
+        "combat-assessment",
+        "c-130",
+        "maintenance",
+        "ato-iatt",
+        "edge-inference",
+        "warclaw",
+        "nv007"
+      ],
+      "approval_status": "pending_review",
+      "proof_strength": "medium",
+      "created_at": "2026-09-30T15:50:22Z",
+      "record_class": "evidence",
+      "notes": "Pending Bill's approval. Relevant to DAF26TZ06-NV007 (combat assessment at the edge, also AFRL/RI). Before citing the BDA data in any proposal, confirm the CRADA's data-use terms permit it and that the AFRL/RI CRADA staff have no role in the NV007 topic."
     }
   ]
 }
