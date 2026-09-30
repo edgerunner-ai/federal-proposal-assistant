@@ -2790,11 +2790,11 @@
         "warclaw",
         "nv007"
       ],
-      "approval_status": "pending_review",
+      "approval_status": "approved",
       "proof_strength": "medium",
       "created_at": "2026-09-30T15:50:22Z",
       "record_class": "evidence",
-      "notes": "Pending Bill's approval. Relevant to DAF26TZ06-NV007 (combat assessment at the edge, also AFRL/RI). Before citing the BDA data in any proposal, confirm the CRADA's data-use terms permit it and that the AFRL/RI CRADA staff have no role in the NV007 topic."
+      "notes": "Approved by Bill Bal 2026-09-30. Relevant to DAF26TZ06-NV007 (combat assessment at the edge, also AFRL/RI). Before citing the BDA data in any proposal, confirm the CRADA's data-use terms permit it and that the AFRL/RI CRADA staff have no role in the NV007 topic."
     }
   ]
 }
