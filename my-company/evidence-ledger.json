@@ -1013,8 +1013,8 @@
     {
       "id": "EV-075",
       "type": "customer_fact",
-      "summary": "Cleared personnel: six cleared staff — four at Secret, two at Top Secret/SCI — available for classified integration, on-site work, and sustainment",
-      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). From the Bill-approved opnav-n8-rcc capability paper (2026-07). PAIR WITH the FCL rule (accreditation memory, Bill 2026-07-02): EdgeRunner employs TS/SCI-cleared individuals but does NOT hold a Top Secret Facility Clearance - classified work is scoped to a cleared integration partner; never claim classified work in EdgeRunner facilities.",
+      "summary": "CORRECTED 2026-10-05 (Bill): EdgeRunner has NO TS/SCI-cleared engineers. The only TS/SCI holder is Bill Bal (VP of Growth, not an engineer). Secret-cleared headcount unconfirmed. No Top Secret FCL. Classified on-site work is staffed by a cleared prime or integration partner, or by new cleared hires.",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). From the Bill-approved opnav-n8-rcc capability paper (2026-07). PAIR WITH the FCL rule (accreditation memory, Bill 2026-07-02): EdgeRunner employs TS/SCI-cleared individuals but does NOT hold a Top Secret Facility Clearance - classified work is scoped to a cleared integration partner; never claim classified work in EdgeRunner facilities. | CORRECTION 2026-10-05 per Bill Bal: the prior summary ('six cleared staff - four at Secret, two at Top Secret/SCI - available for classified integration, on-site work, and sustainment') is WRONG and must not be cited. Bill: 'we don't have any with TS/SCI other than me, and I'm not an engineer. We can hire/on-board TS/SCI engineers if we need to, but otherwise these will have to be prime resources.' Do not claim cleared EdgeRunner engineers in any proposal; assign cleared on-site labor to the prime/partner or price a new cleared hire as an option.",
       "source_file": "proposals/opnav-n8-rcc/drafts/capability-paper.md",
       "source_anchor": "cleared personnel",
       "relevance_tags": [
@@ -1025,9 +1025,10 @@
         "no-fcl"
       ],
       "approval_status": "approved",
-      "proof_strength": "high",
+      "proof_strength": "company_statement",
       "created_at": "2026-07-26T00:00:00Z",
-      "record_class": "evidence"
+      "record_class": "evidence",
+      "notes": "Corrected 2026-10-05 per Bill (caught on onix-cuxs-gsf). Re-confirm Secret-cleared headcount before citing any clearance figure."
     },
     {
       "id": "EV-076",
