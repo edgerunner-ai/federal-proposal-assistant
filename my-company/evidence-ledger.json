@@ -2544,7 +2544,8 @@
         "CAP-01",
         "CAP-02"
       ],
-      "customer_context": "U.S. Army Cyber Command via the Army CAD OMNIBUS IDIQ; AI/ML enablers and analytics for defensive cyber operations"
+      "customer_context": "U.S. Army Cyber Command via the Army CAD OMNIBUS IDIQ; AI/ML enablers and analytics for defensive cyber operations",
+      "notes": "Updated 2026-10-06 per Bill: EdgeRunner's work on this contract is UNCLASSIFIED (sensitive). Do not describe it as classified work, and do not let the SOW's 'Security: Secret' line read as EdgeRunner having performed a classified contract (relevant to questionnaires asking the highest clearance level performed, e.g. USSF MD9 security Q7 = N/A). Approved general wording (MD9 RFI response): 'EdgeRunner is on contract supporting ARCYBER's Defensive Cyber Operations analytics program, providing AI/ML integration as a subcontractor under an Army IDIQ.'"
     },
     {
       "id": "EV-134",
