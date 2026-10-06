@@ -227,7 +227,7 @@
       "id": "EV-022",
       "type": "capability_claim",
       "summary": "IL-6 IATT: EdgeRunner AI Runtime + models authorized to test at Impact Level 6 under an active Interim Authority to Test with the U.S. Navy; engineered to accredit at IL-6 and above",
-      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Verified posture (Bill, 2026-07-02; updated 2026-09-25): active IL-6 IATT with the U.S. Navy; IL-6 authorization pending (never an IL-6 ATO). Internal provenance only, never stated externally: recorded 2026-07-02 as held under the Navy ICOP / NIWC Atlantic / PMW 120 effort, with full IL-6 ATO then expected October 2026. Covers the EdgeRunner AI Runtime + models ONLY (not WarClaw, Ground Truth, or EVELYN). USAGE RULES: say \"authorized to test at IL-6 under an active IATT with the U.S. Navy,\" never \"IL-6 ATO\"/\"accredited.\" In external collateral name the U.S. Navy generically and nothing narrower: do not attribute to PMW 120 / Navy ICOP (list ICOP separately as a program-of-record engagement); government submissions may name PMW-120 only when the capture lead directs for that document. An authorization is program-scoped and does not auto-transfer between commands; claim as evidence of security architecture, with reusable RMF artifacts. CUI caution: kept OFF public-platform submissions (per dia-dma no-CUI guardrail). Updated 2026-09-28 per Bill: the approved wording \"authorized to test at IL-6 under an active IATT with the U.S. Navy\" (no program office named) IS approved for the IARPA Solutions Marketplace and similar Government-only marketplaces (viewable by .gov/.mil accounts). The caution continues to apply to open public platforms (public web pages, press releases, open social media).",
+      "detail": "RECONSTRUCTED 2026-07-26: original entry lost when the ledger was overwritten on 2026-07-24 (cause undetermined; the richer ~55-item ledger was never committed to git, so no copy survived). Rebuilt from citation contexts in proposals/*/drafts, the 2026-07-22 dia-dma evidence-check report, project memory, and my-company/capabilities.md. Verified posture (Bill, 2026-07-02; updated 2026-09-25): active IL-6 IATT with the U.S. Navy; IL-6 authorization pending (never an IL-6 ATO). Internal provenance only, never stated externally: recorded 2026-07-02 as held under the Navy ICOP / NIWC Atlantic / PMW 120 effort, with full IL-6 ATO then expected October 2026. Covers the EdgeRunner AI Runtime + models ONLY (not WarClaw, Ground Truth, or EVELYN). USAGE RULES: say \"authorized to test at IL-6 under an active IATT with the U.S. Navy,\" never \"IL-6 ATO\"/\"accredited.\" In external collateral name the U.S. Navy generically and nothing narrower: do not attribute to PMW 120 / Navy ICOP (list ICOP separately as a program-of-record engagement). Naming PMW-120 / ICOP as a relationship is a PUBLICITY restriction only (Bill 2026-09-30): government submissions cite it freely; the IATT-to-program attribution rule above is separate and stands. An authorization is program-scoped and does not auto-transfer between commands; claim as evidence of security architecture, with reusable RMF artifacts. CUI caution: kept OFF public-platform submissions (per dia-dma no-CUI guardrail). Updated 2026-09-28 per Bill: the approved wording \"authorized to test at IL-6 under an active IATT with the U.S. Navy\" (no program office named) IS approved for the IARPA Solutions Marketplace and similar Government-only marketplaces (viewable by .gov/.mil accounts). The caution continues to apply to open public platforms (public web pages, press releases, open social media).",
       "source_file": "my-company/partner-enablement/accreditation-one-pager.md",
       "source_anchor": "IL-6 IATT (corrected from ATO 2026-07-02)",
       "relevance_tags": [
@@ -444,7 +444,7 @@
       "id": "EV-014",
       "type": "customer_deployment",
       "summary": "Navy ICOP / PMW 120: EdgeRunner fielded as a Navy program-of-record capability (TRL 7) - Intelligence Carry-On Program engagement with NIWC Atlantic research partnership",
-      "detail": "RECONSTRUCTED 2026-07-26 (original lost in the 2026-07-24 ledger overwrite). Verified company facts: Navy ICOP / PMW 120 engagement is a Program of Record at TRL 7; NIWC Atlantic research partnership active. USAGE RULES: list ICOP/PMW-120 as a program-of-record engagement SEPARATE from the IL-6 IATT claim (EV-022) - do not attribute the IATT to this program in collateral (state it generically as 'with the U.S. Navy'); government submissions may name PMW-120 only when the capture lead directs. CUI caution: ICOP specifics are CUI-sensitive; the dia-dma evidence-check intentionally excluded EV-014 from that public-platform submission. CMI in the ICOP context = Classified Military Information.",
+      "detail": "RECONSTRUCTED 2026-07-26 (original lost in the 2026-07-24 ledger overwrite). Verified company facts: Navy ICOP / PMW 120 engagement is a Program of Record at TRL 7; NIWC Atlantic research partnership active. USAGE RULES: list ICOP/PMW-120 as a program-of-record engagement SEPARATE from the IL-6 IATT claim (EV-022) - do not attribute the IATT to this program in collateral (state it generically as 'with the U.S. Navy'). The naming restriction is PUBLICITY-ONLY (Bill 2026-09-30): cite ICOP / PMW 120 / NIWC Atlantic freely in government submissions (proposals, white papers, capability statements sent to the Government); never in public collateral, press, websites, social media, or open public-platform submissions. CUI caution: ICOP specifics are CUI-sensitive; the dia-dma evidence-check intentionally excluded EV-014 from that public-platform submission. CMI in the ICOP context = Classified Military Information.",
       "source_file": "my-company/past-performance.md",
       "source_anchor": "Navy ICOP / PMW 120",
       "relevance_tags": [
@@ -457,11 +457,11 @@
         "cui-sensitive"
       ],
       "approval_status": "restricted",
-      "restrictions": "CUI-sensitive program detail: do not cite on public-platform/no-CUI submissions; IATT attribution rule applies: generic 'with the U.S. Navy' only, never this program (see EV-022); confirm with capture lead before naming PMW-120 in any customer-facing document.",
+      "restrictions": "Publicity restriction only (Bill 2026-09-30): cite in any government submission; never in public collateral, press, websites, social media, or open public-platform (no-CUI) submissions. ICOP program specifics beyond the engagement are CUI-sensitive. IATT attribution rule applies: generic 'with the U.S. Navy' only, never this program (see EV-022).",
       "proof_strength": "highest",
       "created_at": "2026-07-26T00:00:00Z",
       "record_class": "evidence",
-      "notes": "Updated 2026-09-25 per Bill: runtime/models TRL 7 (replaces TRL 8); IL-6 IATT stated generically as 'with the U.S. Navy', not tied to this program."
+      "notes": "Updated 2026-09-25 per Bill: runtime/models TRL 7 (replaces TRL 8); IL-6 IATT stated generically as 'with the U.S. Navy', not tied to this program. Updated 2026-09-30 per Bill: the naming restriction applies to publicity only, not to government disclosure; omitting this item from Navy proposal N26BZ-NV023-0945 drew the evaluator question 'which Navy end user'."
     },
     {
       "id": "EV-010",
@@ -2796,6 +2796,30 @@
       "created_at": "2026-09-30T15:50:22Z",
       "record_class": "evidence",
       "notes": "Approved by Bill Bal 2026-09-30. Relevant to DAF26TZ06-NV007 (combat assessment at the edge, also AFRL/RI). Before citing the BDA data in any proposal, confirm the CRADA's data-use terms permit it and that the AFRL/RI CRADA staff have no role in the NV007 topic."
+    },
+    {
+      "id": "EV-141",
+      "type": "customer_fact",
+      "summary": "Contract vehicles and channel: NASA SEWP V and Army ITES-SW2 active; Carahsoft distributor; Government Acquisitions, Inc. value-added reseller; CDAO Tradewinds Awardable status (converted to a firm-fixed-price order, EV-005)",
+      "detail": "Company fact recorded in the global company-facts reference (verified from the company deck, 2026-05-14): 'Contract vehicles / channel: SEWP V and ITES-SW2 active; Carahsoft distributor; Gov't Acquisitions Inc. VAR; CDAO Tradewinds Awardable status.' Added to the ledger 2026-10-06 so proposals can cite the procurement channel (first use: DAF26TZ06-NV007 commercialization strategy). WORDING: say EdgeRunner products are 'available through' SEWP V and ITES-SW2; do not say EdgeRunner 'holds' either contract until confirmed whether access is direct or through Carahsoft/GAI as the contract holder.",
+      "source_file": "C:/Users/wbal9/.claude/CLAUDE.md (Company Facts: EdgeRunner AI; source company deck PDF 2026-05-14)",
+      "source_anchor": "Company Facts, 'Contract vehicles / channel'",
+      "customer": null,
+      "relevance_tags": [
+        "contract-vehicles",
+        "sewp",
+        "ites-sw2",
+        "carahsoft",
+        "tradewinds",
+        "commercialization",
+        "transition",
+        "company-facts"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "medium",
+      "created_at": "2026-10-06T18:35:39Z",
+      "record_class": "evidence",
+      "notes": "Added and approved by Bill Bal 2026-10-06 (NV007 evidence-check follow-up). Confirm direct vs reseller access before claiming contract-holder status."
     }
   ]
 }
