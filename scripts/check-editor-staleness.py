@@ -15,6 +15,12 @@ Rule: every top-level drafts/*.md must be OLDER than the most recent
     ## YYYY-MM-DD HH:MM — proposal-editor — ...
 line in working/activity.md. drafts/loose/ is the pre-edit preimage and is exempt.
 
+Resolution is one minute, because the log records HH:MM. A draft saved during the same
+minute as the editor entry counts as covered by it: the editor edits, then logs, and both
+usually land in the same minute. (Before 2026-10-06 the comparison used seconds against a
+minute-resolution log, so every edit-then-log pair in one minute read as STALE.) Only a
+save in a LATER minute than the entry is stale.
+
 Exit codes:
   0  clean — every draft predates the last editor run
   1  STALE — one or more drafts changed after the last editor run (blocks export)
@@ -32,7 +38,7 @@ import re
 import sys
 import tempfile
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -99,10 +105,12 @@ def check(proposal_dir: Path, warn_only: bool = False) -> int:
         print(f"editor-staleness [{slug}]: note — a proposal-editor entry lacks HH:MM and was read as 00:00 "
               "that day. Log editor runs as '## YYYY-MM-DD HH:MM — proposal-editor — ...'.")
 
+    # The log is minute-resolution: the entry covers every save up to the end of its minute.
+    cutoff = latest + timedelta(minutes=1)
     stale: list[tuple[Path, datetime]] = []
     for f in files:
         mtime = datetime.fromtimestamp(f.stat().st_mtime)
-        if mtime > latest:
+        if mtime >= cutoff:
             stale.append((f, mtime))
 
     if not stale:
@@ -168,6 +176,19 @@ def selftest() -> int:
         act.write_text("## 2099-01-01 12:00 — proposal-editor — polished → drafts/\n", encoding="utf-8")
         loose.write_text("preimage edited now\n", encoding="utf-8")
         expect("loose/ exempt", check(root), 0)
+
+        # Case 7: draft saved in the SAME minute as the editor entry -> 0 (edit, then log)
+        import os
+        same_min = datetime(2026, 1, 1, 12, 0)
+        act.write_text("## 2026-01-01 12:00 — proposal-editor — polished → drafts/\n", encoding="utf-8")
+        stamp = (same_min + timedelta(seconds=40)).timestamp()
+        os.utime(draft, (stamp, stamp))
+        expect("same-minute save covered", check(root), 0)
+
+        # Case 8: draft saved in the NEXT minute -> 1
+        stamp = (same_min + timedelta(seconds=61)).timestamp()
+        os.utime(draft, (stamp, stamp))
+        expect("next-minute save stale", check(root), 1)
 
         # Case 6: untimed editor entry parses (as 00:00) and does not crash
         act.write_text("## 2099-01-01 — proposal-editor — polished → drafts/\n", encoding="utf-8")
