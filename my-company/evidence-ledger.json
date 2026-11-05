@@ -246,7 +246,7 @@
       "proof_strength": "highest",
       "created_at": "2026-07-26T00:00:00Z",
       "record_class": "evidence",
-      "notes": "Updated 2026-09-25 per Bill: approved wording is 'authorized to test at IL-6 under an active IATT with the U.S. Navy'; IL-6 authorization pending; never IL-6 ATO. The rule against tying the IATT to PMW 120 / Navy ICOP or any named unit stands. | Updated 2026-09-28 per Bill: IATT wording approved for the IARPA Solutions Marketplace and similar Government-only marketplaces; do not name the specific program office."
+      "notes": "Updated 2026-09-25 per Bill: approved wording is 'authorized to test at IL-6 under an active IATT with the U.S. Navy'; IL-6 authorization pending; never IL-6 ATO. The rule against tying the IATT to PMW 120 / Navy ICOP or any named unit stands. | Updated 2026-09-28 per Bill: IATT wording approved for the IARPA Solutions Marketplace and similar Government-only marketplaces; do not name the specific program office. | Updated 2026-10-30 per Bill (USAWHC): status is waiting on the Navy to move the program to operations, which moves the IATT toward an ATO. The delay is not a missing sponsor. Approved wording: 'authorized to test at IL-6 under an active IATT with the U.S. Navy; the next step is the Navy moving the program to operations, which starts the move from IATT to ATO.' Still never 'IL-6 ATO' or 'accredited'."
     },
     {
       "id": "EV-032",
@@ -414,7 +414,7 @@
       "proof_strength": "high",
       "created_at": "2026-07-26T00:00:00Z",
       "record_class": "evidence",
-      "notes": "Updated 2026-09-25 per Bill: EdgeRunner AI Runtime / models are TRL 7 (replaces TRL 8 in the 2026-05-14 company facts)."
+      "notes": "Updated 2026-09-25 per Bill: EdgeRunner AI Runtime / models are TRL 7 (replaces TRL 8 in the 2026-05-14 company facts). USASOC public-release caveat CLEARED per Bill 2026-11-03: USASOC may be named in external collateral for this capability."
     },
     {
       "id": "EV-102",
@@ -546,7 +546,7 @@
       "id": "EV-020",
       "type": "customer_fact",
       "summary": "CDAO Tradewinds Solutions Marketplace — Awardable status (listed, video-assessed, procurable)",
-      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Verified: CDAO Tradewinds Awardable status; demonstrated procurement path (the USSF order was executed through the Marketplace, see EV-005/EV-023).",
+      "detail": "RECONSTRUCTED 2026-07-26 (lost in 2026-07-24 ledger overwrite; rebuilt from citation contexts, evidence-check reports, project memory, and my-company/capabilities.md). Verified: CDAO Tradewinds Awardable status; demonstrated procurement path (the USSF order was executed through the Marketplace, see EV-005/EV-023). Re-confirmed by Bill Bal 2026-10-26 (USAWHC): EdgeRunner is eligible for direct award through Tradewinds.",
       "source_file": "my-company/capabilities.md",
       "source_anchor": "contract vehicles",
       "relevance_tags": [
@@ -2845,7 +2845,7 @@
       "proof_strength": "medium",
       "created_at": "2026-10-13T18:56:52Z",
       "record_class": "evidence",
-      "notes": "Added at Bill Bal's direction 2026-10-13 (AFCENT Industry Day deck follow-up). Capture the demonstration date, the use case shown, and a 911th Wing POC to raise proof strength."
+      "notes": "Added at Bill Bal's direction 2026-10-13 (AFCENT Industry Day deck follow-up). Capture the demonstration date, the use case shown, and a 911th Wing POC to raise proof strength. Updated 2026-11-05 per Bill Bal: for the 911th Wing, WarClaw drew on data sources hosted by the 911th Wing at IL5 and published results to Power BI dashboards hosted in EdgeRunner's Microsoft GCC High environment. Attribute IL5 to the 911th's data sources and GCC High to Microsoft's environment; neither is an EdgeRunner authorization (IL-5 authorization remains pending). Whether the demo exercised node-to-node sync between multiple WarClaw nodes is unconfirmed: describe it as edge-to-enterprise publication. Cited in CONLOG TEM Section 2 (2026-11-05)."
     },
     {
       "id": "EV-143",
@@ -2935,6 +2935,156 @@
       "created_at": "2026-10-16T16:25:34Z",
       "record_class": "evidence",
       "approval_status": "approved"
+    },
+    {
+      "id": "EV-147",
+      "type": "capability_claim",
+      "summary": "Local LLM task class: EdgeRunner models running on premises do the standard work of a capable language model on the customer's own data (reading, summarizing, extracting, categorizing, labeling, deduplicating, reformatting, translating, drafting, writing code and queries), with no usage caps or per-token charges and no data leaving the boundary",
+      "detail": "Per Bill Bal (VP Growth), 2026-10-26: one entry establishes that these general language-model tasks are feasible and practical for a local model, so each customer use of them does not need its own entry. Specific uses for a customer are written as 'an agent can be built to...' and carried as pilot tasks with measures. Supporting: EdgeRunner model evaluation results for Light and Medium; WarClaw agents, pipelines and web apps built by EdgeRunner staff with frontier models and with EdgeRunner Medium; language capability (EV-071); governed pipelines (EV-110). Say 'no usage caps or per-token charges', never 'no token limits' (the model still has a context window). Prohibited: calling a specific customer use demonstrated or fielded without its own entry; unmeasured accuracy or speed figures; agents making decisions without human approval. See claim-envelope.md, local-llm-task-class row. First use: USAWHC COP-builder proposal.",
+      "source_file": "my-company/claim-envelope.md",
+      "source_anchor": "local-llm-task-class, added 2026-10-26 per Bill",
+      "customer": "",
+      "relevance_tags": [
+        "local-llm",
+        "task-class",
+        "data-preparation",
+        "agents",
+        "warclaw",
+        "edgerunner-medium",
+        "no-usage-caps"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "medium",
+      "created_at": "2026-10-26T14:52:08Z",
+      "record_class": "evidence",
+      "notes": "Raise proof strength by attaching the Light/Medium evaluation results and two or three named staff-built examples (one data-cleanup agent, one web app)."
+    },
+    {
+      "id": "EV-148",
+      "type": "customer_fact",
+      "summary": "EdgeRunner AI qualifies as a nontraditional defense contractor (10 USC 3014): no CAS-covered contracts or subcontracts in the preceding year",
+      "detail": "Confirmed by Bill Bal (VP Growth), 2026-10-26, for the USAWHC prototype proposal. Supports 10 USC 4022(d)(1)(A) eligibility for a prototype OT without cost share. Re-confirm annually or if any CAS-covered award is received.",
+      "source_file": "proposals/usawhc-cop-builder/working/pricing-inputs.md",
+      "source_anchor": "Non-traditional contributor analysis",
+      "relevance_tags": [
+        "nontraditional",
+        "ota",
+        "4022",
+        "eligibility",
+        "contracting"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-10-26T00:00:00Z",
+      "record_class": "evidence"
+    },
+    {
+      "id": "EV-149",
+      "type": "customer_fact",
+      "summary": "Acquisition path: EdgeRunner licenses and professional services can be purchased as other direct costs (ODCs) on another contract, such as a prime integrator's award",
+      "detail": "Confirmed by Bill Bal (VP Growth), 2026-10-26. Complements direct award through CDAO Tradewinds (EV-020): a customer whose integrator or existing contract already has the scope can add EdgeRunner software licenses and EdgeRunner professional services (engineering, installation, authorization-package support, training) as ODCs on that contract.",
+      "source_file": "proposals/usawhc-cop-builder/drafts/data-rights-assertions.md",
+      "source_anchor": "Two ways to buy",
+      "relevance_tags": [
+        "acquisition-path",
+        "odc",
+        "contract-vehicle",
+        "professional-services",
+        "integrator"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "high",
+      "created_at": "2026-10-26T00:00:00Z",
+      "record_class": "evidence"
+    },
+    {
+      "id": "EXP-05",
+      "record_class": "expertise",
+      "type": "expertise",
+      "summary": "John Babick: has taken authorization packages through Navy and Air Force security organizations",
+      "detail": "Per Bill Bal, 2026-10-27 (USAWHC pursuit): John Babick, EdgeRunner Head of Product, will serve as program manager and is responsible for pushing the NIPR, SIPR and JWICS approval packages through the customer's process; he has done this before with Navy and Air Force security organizations. Specific programs and authorizations not yet recorded; ask John before citing a named program."
+    },
+    {
+      "type": "product_demo",
+      "record_class": "evidence",
+      "id": "EV-150",
+      "summary": "911th Airlift Wing deployment: the full stack (EdgeRunner AI Runtime with EdgeRunner Medium, WarClaw, and a Neo4j graph database) ran as one hardened container in EdgeRunner's CUI enclave on Microsoft Azure, and WarClaw built agents using EdgeRunner Medium as the developer model, with no frontier model",
+      "detail": "Per Bill Bal (VP Growth), 2026-10-27 (USAWHC pursuit): 'For the 911th Wing demo of EdgeRunner - we built a container with EdgeRunner + model, Warclaw, Neo4J all running in a secure Iron bank container. We deployed this to our govcloud high azure environment, and had warclaw build agents using EdgeRunner [Medium] as the developer.' Hosted in EdgeRunner's CUI enclave on Azure, not in Maven. Same engagement as EV-142 (Power BI integration). Approved wording: 'For the 911th Airlift Wing, EdgeRunner ran the full stack as one hardened container in its CUI enclave on Microsoft Azure; WarClaw built the agents using EdgeRunner Medium.' Do not state the model's parameter count. The Azure environment's FedRAMP High authorization is Microsoft's, not EdgeRunner's. Open: demo date; whether 911th personnel used it hands-on; Neo4j edition (Community vs Enterprise, licensing if shipped to the government).",
+      "approval_status": "approved"
+    },
+    {
+      "type": "product_demo",
+      "record_class": "evidence",
+      "id": "EV-151",
+      "summary": "EdgeRunner's container (runtime, model, WarClaw) is approved in Iron Bank and available to the government; it simplifies installation and use but confers no impact-level authorization. The containerized version is separately in the IL-6 authorization process.",
+      "detail": "Per Bill Bal, 2026-10-27: 'Our Iron Bank container is in the process of being certified for IL6+ environments.' Approved wording: 'EdgeRunner's container is in Iron Bank onboarding.' An Iron Bank listing is hardening and scan evidence, not an authorization; do not describe it as an IL-6 certification. Supersedes the unsupported claim that the EdgeRunner Platform is already available in Iron Bank (John Babick's 23 Oct recap) until a listing is confirmed.",
+      "approval_status": "approved",
+      "notes": "Updated 2026-10-30 per Bill (USAWHC): the containerized version is also in the IL-6 certification process; EdgeRunner is waiting on that process, not on a customer or sponsor. Proposal wording (2026-10-30): 'in Iron Bank onboarding and in the IL-6 authorization process' (authorization vocabulary, consistent with IATT/ATO usage). Not held; never 'certified'. | Updated 2026-10-30 per Bill Bal (USAWHC): 'We have an Iron Bank approved container now. It's available to the Govt. It doesn't guarantee any IL level, but simplifies their ability to install and use.' Prior summary: 'EdgeRunner's container (runtime, model, WarClaw) is in Iron Bank onboarding, in process; intended for environments up to IL-6'. Approved wording: 'Iron Bank-approved container, available to the government, which simplifies installation and use.' Never imply Iron Bank approval is an authorization or an IL level."
+    },
+    {
+      "id": "EV-152",
+      "type": "product_demo",
+      "record_class": "evidence",
+      "summary": "911th Airlift Wing Spark Cell proof of concept (Aug 2026): on the wing's own government-furnished documents, a WarClaw pipeline merged three overlapping problem lists into one deduplicated, cross-linked 98-entry registry and answered 19 of 19 golden test questions correctly, offline on one laptop, with a cited source file on every answer, deterministic computation for totals and counts, and plain refusals on all four questions the corpus could not answer",
+      "detail": "Source: golden-question run report 2026-08-31 (pipeline '911AW Spark Cell QA'): 19/19 PASS, zero hallucinations; 10/10 retrieval facts, 5/5 cross-document reasoning, 4/4 honesty checks (redacted PII, vendor-pick bait, inaccessible folder, absent budget figure); median ~11 s per answer; fully local, no network dependency. Registry: 98 pain points consolidated from the H4D 2023 problem statements, the Oct 2024 H4D seminar report and the Pain Points workbook. Aggregation questions answered by a deterministic compute route over the structured registries; the model narrates computed results. Context: John Babick AAR 2026-08-06 (911th Mission Support Group asked for an agent to make sense of logistics and maintenance data kept in Excel files; no access to Palantir tools; cost-conscious about LLM limits); Dave Anderson notes 2026-08-17 (wing bought in to prove 1-2 workflows; training and readiness tracking; PII constraints). Approved wording: 'In an August 2026 proof of concept on the 911th Airlift Wing's own files, WarClaw merged three overlapping problem lists into one deduplicated registry of 98 entries and answered 19 of 19 test questions correctly, offline on one laptop, citing the source file each time.' Do not state model size or hardware. Do not quote corpus specifics (dollar figures, vendor names, project names): the data was government-furnished and shared in confidence with the PoC team. Proof of concept, not a fielded deployment; the wing has not purchased.",
+      "source_file": "C:/Users/wbal9/Claude Code Projects/911aw-warclaw-demo/demo/golden-run-report.md",
+      "source_anchor": "Golden-Question Run Report, final, 2026-08-31",
+      "customer": "911th Airlift Wing",
+      "relevance_tags": [
+        "warclaw",
+        "data-consolidation",
+        "deduplication",
+        "grounded-qa",
+        "offline",
+        "air-force",
+        "911th-wing",
+        "proof-of-concept"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "medium",
+      "created_at": "2026-10-28T16:00:00Z",
+      "notes": "Added 2026-10-28 at Bill Bal's direction for the USAWHC proposal (911th as the closest-matching proof point). Same engagement as EV-142 and EV-150. Sequence of the laptop PoC and the Azure container run (EV-150) is not established; wording 'also ran' is true either way, so this is not an open item. Screenshots requested from John 2026-10-28."
+    },
+    {
+      "id": "EXP-06",
+      "record_class": "expertise",
+      "type": "expertise",
+      "summary": "Bill Bal: government subject-matter expert for the Common Data Fabric program, which built and deployed a broker between systems on NIPR, SIPR and JWICS and onboarded more than 1,000 systems",
+      "detail": "Per Bill Bal, 2026-10-30 (USAWHC pursuit): Bill served as the government SME for the Common Data Fabric program, which built and deployed a data broker between systems on the same networks USAWHC uses (NIPR, SIPR, JWICS), with over 1,000 systems onboarded. Approved wording: 'Bill Bal was the government subject-matter expert for the Common Data Fabric program, which deployed a broker between systems on these networks and onboarded more than 1,000 systems.' Program dates and sponsoring service not recorded; ask Bill before adding them.",
+      "source_file": "chat: Bill Bal 2026-10-30",
+      "source_anchor": "USAWHC restructure direction, item 5",
+      "relevance_tags": [
+        "expertise",
+        "data-integration",
+        "nipr",
+        "sipr",
+        "jwics",
+        "cross-network",
+        "usawhc"
+      ],
+      "approval_status": "approved",
+      "proof_strength": null,
+      "created_at": "2026-10-30T00:00:00Z",
+      "verified_at": "2026-10-30T00:00:00Z"
+    },
+    {
+      "id": "EV-153",
+      "record_class": "evidence",
+      "type": "customer_fact",
+      "summary": "ATL and Bill Bal have each brought commercial software into DoD IL-6 environments before",
+      "detail": "Per Bill Bal, 2026-10-30 (USAWHC pursuit): 'This isn't the first time ATL has brought an application to IL-6 from the commercial space, nor is it my first time.' Corrected 2026-10-30 per Bill: the runtime and models' IL-6 IATT is waiting on the Navy to move the program to operations (see EV-022); the container is in IL-6 certification (see EV-151). Sponsorship is not the blocker. Specific applications and programs not recorded; cite as team experience only, never as an EdgeRunner authorization.",
+      "source_file": "chat: Bill Bal 2026-10-30",
+      "source_anchor": "USAWHC restructure direction, item 7",
+      "relevance_tags": [
+        "il-6",
+        "authorization",
+        "atl",
+        "team-experience",
+        "usawhc"
+      ],
+      "approval_status": "approved",
+      "proof_strength": "low",
+      "created_at": "2026-10-30T00:00:00Z"
     }
   ]
 }
