@@ -9,7 +9,7 @@ type_id: <short-id>                   # filename stem
 display_name: <human name>            # shown in /new-proposal menu
 solicitation_vehicle: <FAR|BAA|CSO|OTA|SBIR|STTR|RFI|SourcesSought|IDIQ|unsolicited>
 page_target: <string, e.g. "3-10" or "50 excl. cover">
-pricing_artifact: none | rom | sbir-budget | ota-milestones | cso-commercial | far-cost-volume
+pricing_artifact: none | rom | sbir-budget | ota-milestones | cso-commercial | far-cost-volume | gsa-mas-pricing | pricing-model-narrative
 pp_required: false | true | "relevant-experience"
 submission_mechanism: email | document-upload | web-form   # how the proposal physically reaches the customer
 portal_id: <portal-id>                # OPTIONAL — set when submission_mechanism: web-form and a reference format exists in reference/portal-formats/<portal-id>.md

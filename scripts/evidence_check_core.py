@@ -477,17 +477,21 @@ def selftest() -> int:
         ":::\n"
     )
     markers = parse_markers(draft, "t.md")
-    check("marker count", len(markers) == 7)
-    check("marker line numbers", [m["line"] for m in markers] == [3, 4, 5, 6, 7, 8, 9])
+    # 7 inline markers + the callout's key line (line 11); "evidence: EV-999" in the
+    # callout body is prose and must not parse.
+    check("marker count", len(markers) == 8)
+    check("marker line numbers", [m["line"] for m in markers] == [3, 4, 5, 6, 7, 8, 9, 11])
     check("multi-id parse", markers[6]["ids"] == ["EV-001", "EV-002"])
+    check("callout key line parsed", markers[7]["ids"] == ["EV-001"])
+    check("callout body prose ignored", all("EV-999" not in mk["ids"] for mk in markers))
     check("sentence context", markers[4]["sentence"] == "Fastest in the world.")
 
     audit = audit_markers(markers, index)
     m = audit["markers"]
     f = audit["findings"]
-    check("supported", m["supported"] == 2)          # EV-001 solo + mixed marker
+    check("supported", m["supported"] == 3)          # EV-001 solo + mixed marker + callout key line
     check("unsupported", m["unsupported"] == 3)      # CLAIM-UNSUPPORTED + unknown-only + retired-only
-    check("coverage", m["coverage_pct"] == round(2 / 7 * 100, 1))
+    check("coverage", m["coverage_pct"] == round(3 / 8 * 100, 1))
     check("unknown flagged", [r["id"] for r in f["unknown_ids"]] == ["EV-101"])
     check("typo suggestion", f["unknown_ids"][0]["suggestion"] == "EV-001")
     check("retired flagged", sorted(r["line"] for r in f["retired_ids"]) == [5, 9])
