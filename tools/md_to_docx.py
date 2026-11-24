@@ -29,6 +29,9 @@ Supported markdown:
     > blockquote (indented, used for action captions)
     ``` fenced code blocks ``` (verbatim, monospace, auto-sized to fit column)
     <!-- figure: NAME --> (embeds graphics/rendered/NAME.png, centered, fit to column)
+    :::callout TITLE ... ::: (proof-point sidebar: dark header bar, light body, floats
+        right at 40% of the column with text wrapping; `evidence: EV-###` and
+        `align: left` are optional key lines at the top of the block — see add_callout)
     --- horizontal rule (skipped — internal metadata separator)
     <!-- html comments --> (stripped, except figure markers above)
     *Note: ... lines (skipped — internal metadata)
@@ -52,6 +55,13 @@ except ImportError:
     sys.exit(1)
 
 
+try:
+    from register import CALLOUT_TAG  # tools/register.py, same directory
+except ImportError:
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from register import CALLOUT_TAG
+
+
 # ── Constants ─────────────────────────────────────────────────────────────────
 WORKSPACE_ROOT = Path(__file__).parent.parent  # tools/ → workspace root
 BODY_FONT = "Calibri"
@@ -61,6 +71,19 @@ MARGIN_BOTTOM = Inches(1.0)
 MARGIN_LEFT = Inches(1.25)
 MARGIN_RIGHT = Inches(1.25)
 TEXT_WIDTH_INCHES = 8.5 - 1.25 - 1.25  # 6.0 inches usable width
+
+# Callout sidebar (the VAULT proof-point box): 40% of the column, dark header bar with
+# white bold title, light body, thin border. Red is not used here on purpose — on the
+# light page it is reserved for the customer-facing end state inside figures.
+CALLOUT_WIDTH_FRACTION = 0.40
+CALLOUT_HEADER_FILL = "191C20"     # brand near-black
+CALLOUT_BODY_FILL = "FFFFFF"       # white body on a white page; the rule carries the box (VAULT)
+CALLOUT_BORDER = "191C20"          # one 1pt near-black rule around the box
+CALLOUT_BORDER_SZ = "8"            # eighths of a point: 1pt
+CALLOUT_FONT_SIZE = Pt(10)
+CALLOUT_HEADER_SIZE = Pt(9)        # uppercase, letter-spaced, white on the dark bar
+CALLOUT_CELL_MARGIN_DXA = 150      # 0.10in inside the box, left and right
+CALLOUT_GUTTER_DXA = "200"         # 0.14in between the box and the wrapped text
 
 
 # ── Document setup ────────────────────────────────────────────────────────────
@@ -239,6 +262,196 @@ def add_figure(doc: Document, md_path: Path, fig_name: str) -> None:
     doc.add_paragraph()  # breathing room after the figure
 
 
+# ── Callout sidebar ──────────────────────────────────────────────────────────
+
+def _shade(cell, fill_hex: str) -> None:
+    tcPr = cell._tc.get_or_add_tcPr()
+    shd = OxmlElement('w:shd')
+    shd.set(qn('w:val'), 'clear')
+    shd.set(qn('w:color'), 'auto')
+    shd.set(qn('w:fill'), fill_hex)
+    tcPr.append(shd)
+
+
+def _float_table(table, width_in: float, align: str) -> None:
+    """Make `table` a text-wrapped floating table anchored at the current paragraph.
+
+    Word positions a table with <w:tblpPr> relative to the margin and flows the
+    following paragraphs around it. That is the only way python-docx can produce
+    a sidebar; there is no frame or text-box API. Child order inside tblPr is
+    schema-fixed (tblStyle, tblpPr, ..., tblW, ..., tblLayout, ..., tblDescription),
+    so tblpPr goes straight after tblStyle and tblDescription goes last.
+    """
+    tbl = table._tbl
+    tblPr = tbl.tblPr
+    pPr = OxmlElement('w:tblpPr')
+    pPr.set(qn('w:leftFromText'), CALLOUT_GUTTER_DXA)
+    pPr.set(qn('w:rightFromText'), CALLOUT_GUTTER_DXA)
+    pPr.set(qn('w:topFromText'), '0')
+    pPr.set(qn('w:bottomFromText'), '160')
+    pPr.set(qn('w:vertAnchor'), 'text')
+    pPr.set(qn('w:horzAnchor'), 'margin')
+    pPr.set(qn('w:tblpXSpec'), 'left' if align == 'left' else 'right')
+    pPr.set(qn('w:tblpY'), '1')
+    style_el = tblPr.find(qn('w:tblStyle'))
+    if style_el is not None:
+        style_el.addnext(pPr)
+    else:
+        tblPr.insert(0, pPr)
+    overlap = OxmlElement('w:tblOverlap')
+    overlap.set(qn('w:val'), 'never')
+    pPr.addnext(overlap)
+
+    dxa = str(int(width_in * 1440))
+    tblW = tblPr.find(qn('w:tblW'))
+    if tblW is None:
+        tblW = OxmlElement('w:tblW')
+        tblPr.append(tblW)
+    tblW.set(qn('w:w'), dxa)
+    tblW.set(qn('w:type'), 'dxa')
+
+    layout = tblPr.find(qn('w:tblLayout'))
+    if layout is None:
+        layout = OxmlElement('w:tblLayout')
+        tblPr.append(layout)
+    layout.set(qn('w:type'), 'fixed')
+
+    borders = OxmlElement('w:tblBorders')
+    for edge in ('top', 'left', 'bottom', 'right'):
+        b = OxmlElement(f'w:{edge}')
+        b.set(qn('w:val'), 'single'); b.set(qn('w:sz'), CALLOUT_BORDER_SZ)
+        b.set(qn('w:space'), '0'); b.set(qn('w:color'), CALLOUT_BORDER)
+        borders.append(b)
+    for edge in ('insideH', 'insideV'):
+        b = OxmlElement(f'w:{edge}'); b.set(qn('w:val'), 'nil'); borders.append(b)
+    tblPr.append(borders)
+
+    mar = OxmlElement('w:tblCellMar')
+    m_lr = str(CALLOUT_CELL_MARGIN_DXA)
+    for edge, w in (('top', '0'), ('left', m_lr), ('bottom', '90'), ('right', m_lr)):
+        m = OxmlElement(f'w:{edge}'); m.set(qn('w:w'), w); m.set(qn('w:type'), 'dxa')
+        mar.append(m)
+    tblPr.append(mar)
+
+    desc = OxmlElement('w:tblDescription')
+    desc.set(qn('w:val'), CALLOUT_TAG)
+    tblPr.append(desc)
+
+    grid = tbl.find(qn('w:tblGrid'))
+    if grid is not None:
+        for gc in grid.findall(qn('w:gridCol')):
+            gc.set(qn('w:w'), dxa)
+    table.autofit = False
+    for row in table.rows:
+        for cell in row.cells:
+            cell.width = Inches(width_in)
+
+
+def add_callout(doc: Document, title: str, body_paras: list[str], align: str = 'right') -> None:
+    """Render a proof-point sidebar: one cell, header bar then body.
+
+    The header is a paragraph with dark paragraph shading (white bold title) pulled
+    out to the cell edges with negative indents, and the body follows in the same
+    cell on a light fill. One cell rather than two rows because Word ignores
+    keep-with-next inside a FLOATING table and will happily leave a header row on
+    the previous page; a single row marked cantSplit can never break.
+
+    The table floats at CALLOUT_WIDTH_FRACTION of the column and the paragraphs
+    that follow it in the source wrap around it, so the author places the block
+    immediately BEFORE the paragraph it should sit beside. Tagged with
+    tblDescription=CALLOUT_TAG so polish_docx leaves its width and colours alone
+    and lint-rendered-artifact treats it as a sidebar.
+    """
+    width_in = TEXT_WIDTH_INCHES * CALLOUT_WIDTH_FRACTION
+    table = doc.add_table(rows=1, cols=1)
+    _float_table(table, width_in, align)
+    row = table.rows[0]
+    trPr = row._tr.get_or_add_trPr()
+    if trPr.find(qn('w:cantSplit')) is None:
+        trPr.append(OxmlElement('w:cantSplit'))
+
+    cell = row.cells[0]
+    _shade(cell, CALLOUT_BODY_FILL)
+    # zero top margin on this cell so the header bar sits flush with the border
+    tcPr = cell._tc.get_or_add_tcPr()
+    tcMar = OxmlElement('w:tcMar')
+    top = OxmlElement('w:top'); top.set(qn('w:w'), '0'); top.set(qn('w:type'), 'dxa')
+    tcMar.append(top)
+    tcPr.append(tcMar)
+
+    hp = cell.paragraphs[0]
+    hp.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    # shading covers the paragraph's own spacing, so before/after set the bar's height
+    hp.paragraph_format.space_before = Pt(3)
+    hp.paragraph_format.space_after = Pt(3)
+    hp.paragraph_format.line_spacing = 1.0
+    # out past the cell margin by a hair so the bar meets the rule with no white sliver
+    hp.paragraph_format.left_indent = -Inches((CALLOUT_CELL_MARGIN_DXA + 12) / 1440)
+    hp.paragraph_format.right_indent = -Inches((CALLOUT_CELL_MARGIN_DXA + 12) / 1440)
+    pPr = hp._p.get_or_add_pPr()
+    shd = OxmlElement('w:shd')
+    shd.set(qn('w:val'), 'clear'); shd.set(qn('w:color'), 'auto'); shd.set(qn('w:fill'), CALLOUT_HEADER_FILL)
+    pPr.append(shd)
+    hr = hp.add_run(title.strip())
+    hr.bold = True
+    hr.font.name = BODY_FONT
+    hr.font.size = CALLOUT_HEADER_SIZE
+    hr.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
+    rPr = hr._r.get_or_add_rPr()              # uppercase with 0.5pt tracking: the figure-bar convention
+    rPr.append(OxmlElement('w:caps'))
+    sp = OxmlElement('w:spacing'); sp.set(qn('w:val'), '10'); rPr.append(sp)
+
+    for k, text in enumerate(body_paras):
+        para = cell.add_paragraph()
+        para.paragraph_format.space_before = Pt(5) if k == 0 else Pt(0)
+        para.paragraph_format.space_after = Pt(4)
+        para.paragraph_format.line_spacing = 1.08
+        add_formatted_runs(para, text)
+        for run in para.runs:
+            run.font.size = CALLOUT_FONT_SIZE
+
+
+_CALLOUT_OPEN = re.compile(r'^:::\s*callout\b\s*(.*)$')
+_CALLOUT_KEY = re.compile(r'^(evidence|align)\s*:\s*(.+)$', re.IGNORECASE)
+
+
+def parse_callout(lines: list[str], i: int) -> tuple[dict, int]:
+    """Parse a `:::callout TITLE` ... `:::` block starting at lines[i].
+
+    Returns ({title, align, evidence, paras}, index of the first line after the
+    block). Key lines (`evidence:`, `align:`) are only recognised before the
+    first body line. Body paragraphs are blank-line separated; hard-wrapped
+    lines inside a paragraph are joined.
+    """
+    m = _CALLOUT_OPEN.match(lines[i].strip())
+    info = {'title': (m.group(1) if m else '').strip(), 'align': 'right',
+            'evidence': None, 'paras': []}
+    i += 1
+    cur: list[str] = []
+    in_keys = True
+    while i < len(lines) and lines[i].strip() != ':::':
+        s = lines[i].strip()
+        if in_keys and s:
+            km = _CALLOUT_KEY.match(s)
+            if km:
+                key, val = km.group(1).lower(), km.group(2).strip()
+                if key == 'align':
+                    info['align'] = 'left' if val.lower() == 'left' else 'right'
+                else:
+                    info['evidence'] = val
+                i += 1
+                continue
+        if s:
+            in_keys = False
+            cur.append(s)
+        elif cur:
+            info['paras'].append(' '.join(cur)); cur = []
+        i += 1
+    if cur:
+        info['paras'].append(' '.join(cur))
+    return info, i + 1  # consume the closing fence (or step past EOF if unclosed)
+
+
 # ── Core converter ────────────────────────────────────────────────────────────
 
 def strip_html_comments(raw: str) -> str:
@@ -294,6 +507,8 @@ def _starts_new_block(line: str) -> bool:
     if _is_table_line(s):                             # table row
         return True
     if re.match(r'^<!--\s*figure:', s):               # figure marker
+        return True
+    if s.startswith(':::'):                           # callout fence
         return True
     if any(re.match(p, s) for p in _SKIP_PATTERNS):   # dropped metadata
         return True
@@ -420,6 +635,13 @@ def convert_md_to_doc(md_path: Path, doc: Document, page_break: bool = False) ->
             line_count += len(tbl)
             continue
 
+        # Callout sidebar — :::callout TITLE ... :::
+        if _CALLOUT_OPEN.match(stripped):
+            info, nxt = parse_callout(lines, i)
+            if info['title'] or info['paras']:
+                add_callout(doc, info['title'] or 'Proof point', info['paras'], info['align'])
+            line_count += nxt - i; i = nxt; continue
+
         # Figure marker — <!-- figure: NAME --> on its own line
         fig_m = re.match(r'^<!--\s*figure:\s*([A-Za-z0-9._-]+)\s*-->$', stripped)
         if fig_m:
@@ -544,6 +766,7 @@ def selftest() -> int:
         print(f"\n  {label}\n    in  : {src!r}\n    got : {got!r}\n    want: {want!r}")
 
     failures += _selftest_softwrap()
+    failures += _selftest_callout()
 
     print("selftest:", "PASS" if not failures else "FAIL")
     return 0 if not failures else 1
@@ -616,6 +839,61 @@ def _selftest_softwrap() -> list:
         print(f"  [{'ok ' if passed else 'FAIL'}] {label}")
         if not passed:
             failures.append((label, "<soft-wrap sample>", "see above", "joined output"))
+    return failures
+
+
+def _selftest_callout() -> list:
+    """Guard the callout sidebar: parsed, rendered as a tagged floating table, keys
+    not rendered as body, following paragraph still present to wrap around it."""
+    import tempfile
+    from docx import Document as _Doc
+    from register import is_callout_table
+
+    src = (
+        "## 2.1 Architecture\n"
+        "\n"
+        ":::callout Architecture at Kessel Run\n"
+        "evidence: EV-045\n"
+        "align: left\n"
+        "EdgeRunner AI currently leads platform operations for **22 clusters** across three\n"
+        "regions that handle more than 1 billion transactions per month.\n"
+        "\n"
+        "A second paragraph in the box.\n"
+        ":::\n"
+        "\n"
+        "Body paragraph that should wrap around the box and remain in the document as prose.\n"
+    )
+    with tempfile.TemporaryDirectory() as td:
+        md = Path(td) / "c.md"
+        md.write_text(src, encoding="utf-8")
+        doc = _Doc()
+        setup_document(doc)
+        convert_md_to_doc(md, doc)
+        tables = doc.tables
+        t = tables[0] if tables else None
+        cell_paras = [p.text for p in t.rows[0].cells[0].paragraphs] if t else []
+        cell_texts = [cell_paras[0], " ".join(cell_paras[1:])] if cell_paras else []
+        body_text = " ".join(p.text for p in doc.paragraphs)
+        tblPr = t._tbl.tblPr if t else None
+        pPr = tblPr.find(qn('w:tblpPr')) if tblPr is not None else None
+
+    checks = [
+        ("one callout table emitted", len(tables) == 1),
+        ("table is tagged as a callout", t is not None and is_callout_table(t)),
+        ("header row carries the title", bool(cell_texts) and cell_texts[0] == "Architecture at Kessel Run"),
+        ("key lines are not rendered", not any("evidence:" in c or "align:" in c for c in cell_texts)),
+        ("wrapped body joins and bold resolves",
+         len(cell_texts) > 1 and "22 clusters across three regions" in cell_texts[1] and "**" not in cell_texts[1]),
+        ("two body paragraphs kept", t is not None and len(cell_paras) == 3),
+        ("single row so the box can never split", t is not None and len(t.rows) == 1),
+        ("table floats with text wrap", pPr is not None and pPr.get(qn('w:tblpXSpec')) == 'left'),
+        ("following prose survives outside the box", "wrap around the box" in body_text),
+    ]
+    failures = []
+    for label, passed in checks:
+        print(f"  [{'ok ' if passed else 'FAIL'}] {label}")
+        if not passed:
+            failures.append((label, "<callout sample>", "see above", "callout"))
     return failures
 
 

@@ -11,7 +11,8 @@ Two severities:
              customer-facing prose. Exit code 1.
   ADVISORY — worth a look: banned marketing words, self-narration /
              performative-honesty commentary, prohibited-claim diction without a
-             ledger cite, forbidden absolutes, "we will" stacking, repeated
+             ledger cite, forbidden absolutes, self-limiting capability
+             statements and claim withdrawals, "we will" stacking, repeated
              paragraph openings. Exit code 0 (informational).
 
 Usage:
@@ -93,6 +94,31 @@ NEGATION_DISMISSAL = re.compile(_PATTERNS.get("negation_dismissal", _NEVER), re.
 # negation_dismissal: the sentence spends its subject on something that does not happen.
 # Requires BOTH halves, so a bare scope limit ("no VLA is proposed in Phase I") is not flagged.
 RAISE_THEN_PERMIT = re.compile(_PATTERNS.get("raise_then_permit", _NEVER), re.IGNORECASE)
+# ADVISORY: self-limiting capability statement — telling the customer what we do not have or
+# have not measured ("masking is not a current capability", "the 30 W target has not been
+# measured", "asserts no module of its own"). A proposal states how it meets a requirement, or
+# how it will meet it. Convert, do not delete. Deliberately does NOT match negatives that carry
+# a positive claim ("No model participates in the verification check", "no telemetry egress").
+CAPABILITY_DENIAL = re.compile(_PATTERNS.get("capability_denial", _NEVER), re.IGNORECASE)
+# ADVISORY: claim withdrawal — prose that pulls a claim back after making it ("not claimed at
+# TRL 7", "a demonstration rather than a contract delivery", "does not guarantee"). State the
+# maturation path or the delivery path instead.
+CLAIM_WITHDRAWAL = re.compile(_PATTERNS.get("claim_withdrawal", _NEVER), re.IGNORECASE)
+
+# ADVISORY: contrast-construction DENSITY — "not X but Y", ", not Y.", "rather than", "instead
+# of". One is fine and often load-bearing; a density of them reads as a debate brief. Counted per
+# 1,000 words. Adopted 2026-09-02: the NAVWAR brief carried 18 in 3,600 words, and a blind
+# reviewer flagged the pattern before anyone in-house did.
+CONTRAST = re.compile(_PATTERNS.get("contrast_construction", _NEVER), re.IGNORECASE)
+CONTRAST_PER_1000 = _THRESHOLDS.get("contrast_per_1000_words", 3.0)
+# ADVISORY: bullet-to-prose word ratio. Below the low mark is a wall of prose nobody can skim;
+# above the high mark is a paper rewritten as bullets. The same brief went 0% -> 53% -> 20%
+# with nothing measuring it.
+BULLET_RATIO_LOW = _THRESHOLDS.get("bullet_ratio_low", 0.10)
+BULLET_RATIO_HIGH = _THRESHOLDS.get("bullet_ratio_high", 0.35)
+# ADVISORY: phrases a reviewer has explicitly called an AI tell. Seeded from NAVWAR EPSS.
+AI_TELL_TERMS = _TERMS.get("ai_tell_terms", [])
+LIST_ITEM = re.compile(r"^\s*(?:[-*+]|\d+[.)])\s+")
 
 WE_WILL_THRESHOLD = _THRESHOLDS.get("we_will", 8)  # occurrences before it reads as a wall
 REPEATED_OPENING_THRESHOLD = _THRESHOLDS.get("repeated_opening", 3)
@@ -105,11 +131,20 @@ def strip_noise(text: str) -> list[tuple[int, str]]:
     blocks dropped. Line numbers are 1-based and refer to the original file."""
     out: list[tuple[int, str]] = []
     in_fence = False
+    in_callout = False
     for i, raw in enumerate(text.splitlines(), start=1):
         if raw.lstrip().startswith("```"):
             in_fence = not in_fence
             continue
         if in_fence:
+            continue
+        s = raw.strip()
+        # Callout sidebar fences and their key lines (tools/md_to_docx.py) are
+        # structure, not prose; the box body is linted like any paragraph.
+        if s.startswith(":::"):
+            in_callout = s.lower().startswith(":::callout") or s.startswith("::: callout")
+            continue
+        if in_callout and re.match(r"^(evidence|align)\s*:", s, re.IGNORECASE):
             continue
         out.append((i, HTML_COMMENT.sub("", raw)))
     return out
@@ -140,6 +175,9 @@ def lint_file(path: Path) -> list[tuple[str, int, str]]:
                 findings.append(("ADVISORY", ln, f"marketing word: '{w}'"))
         if LEVERAGE.search(line):
             findings.append(("ADVISORY", ln, "'leverage' — use 'use', 'apply', or 'extend'"))
+        for term in AI_TELL_TERMS:
+            if term.lower() in low:
+                findings.append(("ADVISORY", ln, f"AI tell: '{term}' — a reviewer has flagged this phrase as machine-written; say the plain thing"))
 
         meta_hit = next((phrase for phrase in META_COMMENTARY if phrase in low), None)
         if meta_hit:
@@ -196,6 +234,59 @@ def lint_file(path: Path) -> list[tuple[str, int, str]]:
             "negation-stacked dismissal ('...so no X is required') — the sentence's payload is a "
             "non-event; state the affirmative fact and let the negative be the consequence",
         ))
+
+    for m in CAPABILITY_DENIAL.finditer(flat):
+        findings.append((
+            "ADVISORY", _line_of(m.start()),
+            f"self-limiting capability statement: '{m.group(0).strip()}' — state how the solution "
+            "meets the requirement, or how it will meet it under the effort; do not enumerate what "
+            "is missing",
+        ))
+
+    for m in CLAIM_WITHDRAWAL.finditer(flat):
+        findings.append((
+            "ADVISORY", _line_of(m.start()),
+            f"claim withdrawal: '{m.group(0).strip()}' — give the maturation or delivery path "
+            "instead of retracting the claim (accreditation scope: restate as what the effort "
+            "delivers, not as a denial)",
+        ))
+
+    # Contrast-construction density, whole document.
+    total_words = len(re.findall(r"[A-Za-z][\w'-]*", flat))
+    contrasts = list(CONTRAST.finditer(flat))
+    if total_words >= 200 and contrasts:
+        per_1000 = len(contrasts) * 1000.0 / total_words
+        if per_1000 > CONTRAST_PER_1000:
+            sample = "; ".join(m.group(0).strip()[:40] for m in contrasts[:3])
+            findings.append(("ADVISORY", 0,
+                             f"contrast constructions: {len(contrasts)} in {total_words} words "
+                             f"({per_1000:.1f} per 1,000; threshold {CONTRAST_PER_1000:g}) — reads as a "
+                             f"debate brief; keep the load-bearing ones, e.g. '{sample}'"))
+
+    # Bullet-to-prose word ratio, whole document. Headings, tables, and comments excluded.
+    bullet_w = prose_w = 0
+    for para in re.split(r"\n\s*\n", blob):
+        p = para.strip()
+        if not p or p.startswith(("#", "|", ">", "!")):
+            continue
+        n = len(re.findall(r"[A-Za-z][\w'-]*", p))
+        if LIST_ITEM.match(p):
+            bullet_w += n
+        else:
+            prose_w += n
+    body_w = bullet_w + prose_w
+    if body_w >= 300:
+        ratio = bullet_w / body_w
+        if ratio > BULLET_RATIO_HIGH:
+            findings.append(("ADVISORY", 0,
+                             f"bullet ratio {ratio:.0%} of body words (high mark {BULLET_RATIO_HIGH:.0%}) — "
+                             "the document is a paper rewritten as bullets; keep bullets for enumerable "
+                             "items and return arguments to prose"))
+        elif ratio < BULLET_RATIO_LOW:
+            findings.append(("ADVISORY", 0,
+                             f"bullet ratio {ratio:.0%} of body words (low mark {BULLET_RATIO_LOW:.0%}) — "
+                             "a wall of prose; a reviewer triaging a dozen of these will skim, so give the "
+                             "enumerable content (capabilities, deliverables, criteria) a list"))
 
     openers: dict[str, int] = {}
     for para in re.split(r"\n\s*\n", blob):

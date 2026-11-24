@@ -62,9 +62,19 @@ python scripts/lint-document-structure.py --proposal <slug>
 
 # Gold Team Significant Strength preservation — flags MOS-slate-style stripping
 python scripts/check-strengths.py --proposal <slug> --target docx
+
+# Editor staleness — the draft changed after /proposal-editor last ran (exit 1), or the editor was never logged (exit 2)
+python scripts/check-editor-staleness.py --proposal <slug>
+
+# Mission effect — the spine carries the five-element statement, the effect is in operator terms, the drafts still carry it
+python scripts/check-mission-effect.py --proposal <slug> [--target docx] [--strict]
 ```
 
-`prose-lint.py` scans `drafts/*.md` (top-level only; `drafts/loose/` is exempt). HIGH findings — the section-sign glyph, em-/en-dashes or `--` as sentence punctuation, and internal process vocabulary leaking into customer-facing prose — block export (exit 1). Advisories (marketing words, self-narration / performative-honesty commentary, prohibited-claim diction without a ledger cite, forbidden absolutes, "we will" stacking, repeated openings) are informational. The rule lists live in `reference/prose-lint-rules.json` (shared, syncable; the script fails closed if absent) and mirror `reference/PROSE-QUALITY-DOCTRINE.md`, `reference/editorial-voice-guide.md`, and `reference/doctrine/prohibited-claims-doctrine.md`.
+`check-mission-effect.py` (added 2026-09-09) is the proposal-level outcome gate for `reference/methodology/mission-effect-translation.md`: HIGH when `working/narrative-spine.md` has no `## Mission Effect` block or a missing element line; advisory when the effect lacks an operator-terms marker, uses a vendor phrase, or is no longer carried by the drafts or the rendered `.docx`. `--selftest` available.
+
+`check-editor-staleness.py` (added 2026-09-02) makes the editor a **gate that re-fires**, not a stage that runs once. It compares every top-level `drafts/*.md` mtime against the latest `## YYYY-MM-DD HH:MM — proposal-editor —` line in `working/activity.md`; `drafts/loose/` is exempt as the pre-edit preimage. It exists because on the NAVWAR EPSS pursuit the editor ran once on 27 Aug and the draft was then rewritten seven times through 2 Sep — restructure, positive-claim pass, prose rebalance, two comment rounds, Q&A alignment — with `prose-lint` reporting 0 HIGH before every post. Two AI tells sat through five posted versions because a clean regex gate looked like a clean edit. **Log every editor run as a `proposal-editor` activity line, with the time**; an untimed entry is read as 00:00 and warned about. `--warn-only` for non-blocking use; `--selftest` available.
+
+`prose-lint.py` scans `drafts/*.md` (top-level only; `drafts/loose/` is exempt). HIGH findings — the section-sign glyph, em-/en-dashes or `--` as sentence punctuation, and internal process vocabulary leaking into customer-facing prose — block export (exit 1). Advisories (marketing words, self-narration / performative-honesty commentary, prohibited-claim diction without a ledger cite, forbidden absolutes, "we will" stacking, repeated openings, self-limiting capability statements and claim withdrawals, contrast-construction density above 3 per 1,000 words, bullet-to-prose word ratio outside 10–35%, and reviewer-named AI-tell phrases) are informational. The last three were added 2026-09-02 from what blind and team reviewers caught on NAVWAR EPSS that no in-house pass did; the AI-tell list grows whenever a reviewer names a phrase. The rule lists live in `reference/prose-lint-rules.json` (shared, syncable; the script fails closed if absent) and mirror `reference/PROSE-QUALITY-DOCTRINE.md`, `reference/editorial-voice-guide.md`, and `reference/doctrine/prohibited-claims-doctrine.md`.
 
 `check-strengths.py` writes `reviews/strength-preservation.md` with the specific phrases preserved vs. missing for each Significant Strength. Use `--target docx` after `/export-proposal` to verify the rendered Word doc still carries the load-bearing claims; use `--target drafts` (default) for a pre-export sanity check.
 
@@ -72,6 +82,17 @@ python scripts/check-strengths.py --proposal <slug> --target docx
 # Final-file lint — HIGH rules + bracket-placeholder scan on the ACTUAL outgoing .pdf/.docx
 python scripts/lint-submission-file.py final/docx/<name>.docx final/pdf/<name>.pdf
 ```
+
+```bash
+# Rendered-artifact lint — layout and typography on the .docx that will be reviewed or submitted
+python scripts/lint-rendered-artifact.py drafts/<name>.docx --proposal <slug> --pages <N> --font-pt <N> [--exclude-title]
+```
+
+`lint-rendered-artifact.py` (added 2026-09-02) is the late formatting gate, as a script because every check is deterministic. HIGH on: page count over `--pages` (title page excluded with `--exclude-title`), Normal or any body run under `--font-pt`, any non-black run, bold inside a sentence, space-before-punctuation, a shipped bracket placeholder, a figure whose smallest label (2% of canvas width, the 24px-on-1200px convention) renders under 7pt. ADVISORY between 7 and 9pt, and on any table whose widest-content column has far less width than its content share. Every one of those was found late and by accident on NAVWAR EPSS: the 20-page render, 7.5pt figure labels, blue headings, 11pt body against a 12pt instruction, four orphan periods. Page count uses Word COM when pywin32 is present and a labelled word-count estimate otherwise. Run it on review copies, not only the final upload; that is where the defects were found. `--selftest` available.
+
+**Register-aware formatting (2026-09-04).** `tools/register.py` maps `type_id` to a formatting register and is read by `lint-rendered-artifact.py` and `tools/polish_docx.py` through `--proposal <slug>` (or `--register`). `strict` (white papers, briefs, RFIs, SBIR; the default) keeps the 2 September rules exactly. `assertive` (`far-rfp`, `ota-proposal`, `cso-full`, `idiq-to`, `gsa-mas-task-order`, `baa`) is the register of the winning Octo VAULT technical volume (`reference/winning-examples/usaf-vault-octo-2020-lessons.md`): colour in headings and table header rows becomes an advisory (Word's default blue is still named as a machine tell), and one bold key phrase of up to six words per paragraph is allowed as a scanning device; a second one, or a longer one, still fails. The lint should never be the reason a scored volume looks less like the winning example.
+
+**Callout sidebars (2026-09-04).** A `:::callout TITLE` ... `:::` block in a draft, with an `evidence: EV-###` key line, renders through `tools/md_to_docx.py` as a proof-point box: dark header bar with the title, light body, floated at 40 percent of the column with the following paragraph wrapping around it. It is the VAULT device that moves proof out of the prose and beside it. One box is one ledger item; `/evidence-check` audits the key line like an inline marker; `proposal-writer` Step 2e places them in the assertive register only; the editor preserves them; polish and lint recognise them by tag and leave the white-on-dark header alone.
 
 `lint-submission-file.py` (added 2026-07-26 from the DIA DMA submission-diff lessons) extracts text from the file that will actually be uploaded and applies the prose-lint HIGH rules plus a `[NEEDS]`/`[TBD]` bracket scan. It exists because team review forks to Google Docs and the markdown lint never sees the submitted file — it caught a shipped em-dash in the DIA DMA submission that the drafts-only lint could not. Run it as the last gate before upload, on every submission artifact. `--selftest` available.
 
@@ -359,7 +380,7 @@ Both files are consumed by `/status`, the Phase B dashboard, and the smoke test.
 - No unsupported adjectives ("robust", "innovative", "scalable" without proof)
 - Prefer concrete descriptions of components, functions, interfaces, workflows, outcomes
 - Write like an evaluator has 15 minutes and a red pen
-- **Apply the four winning patterns** (theme statements, discriminator proof points, action captions, ghosting) per `reference/proposal-writing-patterns.md`, gated by proposal type. These are enforced by `proposal-writer` and scored by `red-team-review` Gold Team.
+- **Apply the four winning patterns** (theme statements, discriminator proof points, action captions, ghosting) per `reference/proposal-writing-patterns.md`, gated by proposal type, and **Pattern 5, mission-effect translation**: one Mission Effect Statement (problem, mission effect, capability, cost, timeline) in the spine, carried by the executive summary, each scoring section advancing one element in the operator's terms. These are enforced by `proposal-writer` and scored by `red-team-review` Gold Team.
 - **Voice doctrine.** See `reference/PROSE-QUALITY-DOCTRINE.md` (canonical, synced from `chakmarebel/proposal-workbench` via `tools/sync-voice-anchors.sh`). The same sync now also pulls the universal doctrine knowledge files into `reference/doctrine/` (`prohibited-claims-doctrine.md`, `output-discipline.md`, `acronyms-federal.md`) and, once the workbench publishes it, the shared `reference/prose-lint-rules.json` rule set. **Do not hand-edit synced files** — change them upstream in the workbench and re-sync. `reference/prose-lint-rules.json` is the single source for `scripts/prose-lint.py`'s rule lists (the script fails closed if it is missing); the FPA copy is authoritative until the workbench adopts it.
 
 ## EdgeRunner AI Default Positioning
@@ -372,6 +393,7 @@ Unless source material says otherwise, emphasize:
 
 ## Review Standard
 Before declaring anything "final," check for:
+- **The mission effect.** What operational outcomes does this proposal enable or support, and can a reader state them from the draft alone, in the customer's terms? Every review asks this first (editor Final Pass, Red Team category 12, Gold Team Mission Effect Check, the `operational-user` adversarial persona). Source of truth is the Mission Effect Statement at the top of `working/narrative-spine.md`; doctrine in `reference/methodology/mission-effect-translation.md` (adopted 2026-09-09).
 - Compliance gaps
 - Unaddressed evaluator concerns
 - Empty claims

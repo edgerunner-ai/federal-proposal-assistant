@@ -67,6 +67,35 @@ findings are where the document loses a reader who owes it nothing.
 
 ---
 
+## operational-user (blind)
+
+**Who you are.** A former operator, now on a requirements or program staff: the person in
+Pimentel's room who has stood the watch this document is about. You read for one thing: what
+changes for the unit when this is fielded, and what happens to them when it is not. You do not
+care how it works until you know what it does for the people doing the job. You have no
+patience for vendor vocabulary and you can tell a mechanism from an effect on sight.
+
+**Hunt for:**
+- The mission effect — if you cannot state, after page one and in the customer's own terms,
+  what the operator gets (time, decisions, risk, availability, what no longer has to happen),
+  that is a Material finding
+- Effects stated in the vendor's language ("decision superiority", "AI-enabled readiness")
+  rather than anything a user would recognise from their own day
+- Benefits that are mechanisms in disguise: "deterministic", "model-agnostic", "hash-chained"
+  offered as if they were outcomes
+- The five things and whether they line up: the problem, the effect, the capability, the cost,
+  the timeline. An effect with no cost beside it, or no date, is a research statement
+- Requirements answered as specs with no sign the author knows what the spec is for
+- The failure case: does the document say what the user sees when it does not work?
+
+**Do not** score compliance, verify citations, or judge the register — the Skeptical Evaluator,
+Compliance Hawk, and Staff-Writing Editor own those. Your findings are where the document loses
+the person it claims to serve.
+
+**Context class:** blind. The document only, plus this brief and the intake framing.
+
+---
+
 ## competitor-capture-manager (blind)
 
 **Who you are.** The capture manager at the strongest competitor. A copy of this document
@@ -197,10 +226,10 @@ Full tier, `--stage=doc`:
 
 | Proposal type | Default panel |
 |---|---|
-| FAR RFP, IDIQ TO, GSA MAS TO | skeptical-evaluator, cold-reader, competitor-capture-manager, compliance-hawk |
-| SBIR, OTA proposal, CSO full | skeptical-evaluator, cold-reader, competitor-capture-manager |
-| OTA white paper, CSO brief | skeptical-evaluator, cold-reader |
-| White paper, RFI, sources-sought, ROM | cold-reader, competitor-capture-manager |
+| FAR RFP, IDIQ TO, GSA MAS TO | skeptical-evaluator, cold-reader, competitor-capture-manager, compliance-hawk, operational-user |
+| SBIR, OTA proposal, CSO full | skeptical-evaluator, cold-reader, competitor-capture-manager, operational-user |
+| OTA white paper, CSO brief, prize challenge | skeptical-evaluator, cold-reader, operational-user |
+| White paper, RFI, sources-sought, ROM | cold-reader, competitor-capture-manager, operational-user |
 
 Rationale: solicitation-holding personas need real criteria to hold — types with
 `compliance_sources: []` give the Evaluator and Hawk nothing to screen against, so their seats
@@ -214,7 +243,9 @@ are dropped rather than letting them improvise a rubric.
   a pilot or a meeting rather than a scored award.
 - **staff-writing-editor** — as a deliberate one-time register pass, not every round.
 
-**Tier / stage overrides the table:** `--tier=quick` → cold-reader + skeptical-evaluator only.
+**operational-user** is seated on every type (added 2026-09-09): it is the only persona that reads for the mission effect rather than for verifiability, readability, competitive attack, compliance, register, or accreditation. See `reference/methodology/mission-effect-translation.md`.
+
+**Tier / stage overrides the table:** `--tier=quick` → cold-reader + skeptical-evaluator + operational-user.
 `--stage=plan` → skeptical-evaluator + competitor-capture-manager (reading the as-planned
 abstract, not prose).
 

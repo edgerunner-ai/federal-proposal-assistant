@@ -1,6 +1,6 @@
 ---
 name: status
-description: Show the current state of the active proposal — proposal type, stages completed, open compliance gaps, and the next recommended command. Reads working/proposal-type.md, working/activity.md, working/compliance-matrix.md, and working/proposal-plan.md. Writes nothing. Use when returning to a proposal after time away, deciding what to do next, or checking progress before a review.
+description: Show the current state of the active proposal — proposal type, stages completed, whether the spine carries a Mission Effect Statement (scripts/check-mission-effect.py), open compliance gaps, and the next recommended command. Reads working/proposal-type.md, working/activity.md, working/compliance-matrix.md, and working/proposal-plan.md. Writes nothing. Use when returning to a proposal after time away, deciding what to do next, or checking progress before a review.
 phase: inspection
 composes: [proposal-manager, compliance-check]
 conflicts_with: [dashboard]  # per-proposal CLI summary; use dashboard for portfolio-wide view

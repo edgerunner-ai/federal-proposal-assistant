@@ -38,6 +38,16 @@ with new agents against the patched drafts until it converges.
 **Main pipeline:** after `/red-team-review` (all gates passed), before `/export-proposal`.
 **Track B (white paper):** after `/proposal-patcher`, before `/export-proposal`.
 
+**Early register seating (added 2026-09-02).** Run `--tier=quick` **a second time, earlier**:
+immediately after `/proposal-editor` and before any colour-team review, with the
+**Staff-Writing Editor** seated alongside the Cold Reader. This is the one pass that reads
+without the author's context, and on the NAVWAR EPSS pursuit it found a fifteen-instance
+contrast mannerism, five aphoristic closers, and two self-graded honesty claims that
+`/proposal-editor`, `prose-lint`, Red Team, and Gold Team all passed. Roughly 80k tokens — a
+fraction of one rewrite — and it makes the colour teams' first read a read of prose that has
+already survived a stranger. The late run before export still happens; it is a different
+draft by then.
+
 **Required** for the short-form types where a cold read is cheapest and most decisive:
 `ota-white-paper`, `white-paper`, and `cso-brief`. Optional for every other type; run it there
 when the stakes justify extra rounds, or when you would otherwise reach for an external reviewer.
@@ -159,8 +169,10 @@ a skim failure, a hand-waved integration is a close-read failure, and they need 
 
 ### 2. Select the panel
 
-Default full-tier panel is 3 personas from `reference/adversarial-personas.md`: **Skeptical
-Evaluator**, **Cold Reader**, **Competitor's Capture Manager**. Add:
+Default full-tier panel is 4 personas from `reference/adversarial-personas.md`: **Skeptical
+Evaluator**, **Cold Reader**, **Competitor's Capture Manager**, **Operational User** (the
+former operator who reads only for what changes for the unit; seated on every type since
+2026-09-09, see `reference/methodology/mission-effect-translation.md`). Add:
 - **Compliance Hawk** when the type has `compliance_sources` (FAR RFP, SBIR, OTA).
 - **Accreditation Reviewer** whenever the document makes security, authorization, ATO/IATT,
   cross-domain, or clearance claims. It reads from the approver's seat (the AO staffer, ISSM, or
@@ -172,7 +184,7 @@ Evaluator**, **Cold Reader**, **Competitor's Capture Manager**. Add:
   as a one-time seating rather than every round (a new persona guarantees new findings, so it
   cannot converge — see per-dimension convergence).
 
-`--tier=quick` runs **Cold Reader + Skeptical Evaluator** only. White papers / RFIs at
+`--tier=quick` runs **Cold Reader + Skeptical Evaluator + Operational User**. White papers / RFIs at
 `--stage=doc` drop the Evaluator and Hawk (no rubric to hold); at `--stage=plan` the panel is
 Skeptical Evaluator + Competitor. The user can override the panel.
 

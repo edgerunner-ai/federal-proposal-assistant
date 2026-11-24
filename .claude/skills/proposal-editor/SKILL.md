@@ -38,10 +38,18 @@ Recommended workflow:
 ```
 /proposal-writer
 /proposal-editor
+/adversarial-review --tier=quick     # blind Staff-Writing Editor + Cold Reader, BEFORE colour teams
 /compliance-check
 /red-team-review --mode=red
 /red-team-review --mode=gold
 ```
+
+**This editor is a gate, not a stage.** It must re-run whenever `drafts/*.md` materially changes —
+after a restructure, a patch round, a comment round, a Q&A alignment. `scripts/check-editor-staleness.py`
+enforces that at export by comparing draft mtimes to the last `— proposal-editor —` line in
+`working/activity.md`, so **log every run, with the time.** On NAVWAR EPSS this skill ran once and the
+draft was then rewritten seven times with `prose-lint` clean before every post; a clean regex gate is
+not an edit.
 
 ## Inputs
 
@@ -101,6 +109,8 @@ Our platform operated in disconnected mode for 14 months. <!-- evidence: EV-022 
 ```
 
 Do not delete or alter evidence IDs.
+
+**Callout sidebars are evidence too.** A `:::callout TITLE` ... `:::` block (assertive register; see `proposal-writer` Step 2e) is one ledger item rendered as a proof-point box. Preserve the block, its position before the paragraph it proves, its `evidence:` and `align:` key lines, and its header noun phrase. Edit the body for tightness only; never merge the box into the paragraph, never move it to the end of the section, never turn it into a bullet. Do not add callouts in the strict register (white papers, briefs, RFIs, SBIR); if one is present there, flag it in the change log rather than deleting it.
 
 If prose surrounding an unsupported claim is softened, preserve the unsupported marker:
 
@@ -388,6 +398,7 @@ Before saving:
 2. Ask: "Does this sound like an experienced capture/proposal lead wrote it?"
 3. Ask: "Would a Government evaluator trust this more after the rewrite?"
 4. Ask: "Did the rewrite preserve scoreable content?"
+5. Ask, for every scoring section: "What operational outcome does this section enable or support, and does its opening say so in the operator's terms?" Check it against the Mission Effect Statement in `working/narrative-spine.md` (`reference/methodology/mission-effect-translation.md`). A scoring section whose opening names a mechanism and never an effect is not done; a paragraph that lists capabilities with no effect sentence is a capability tour and is collapsed to problem, answer, proof in every mode, not only Mode 5.
 
 If the answer is no, revise again.
 

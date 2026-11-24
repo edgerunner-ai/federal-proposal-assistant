@@ -6,8 +6,8 @@ page_target: "≤5:00 video + prescribed 5-slide package + web submission form"
 pricing_artifact: pricing-model-narrative
 pp_required: false
 submission_mechanism: web-form
-required_skills: [opportunity-quick-look, capture-portal-structure, submission-summary, proposal-manager, customer-intel, capture-intent, proposal-solution-architect, narrative-spine, proposal-graphics, proposal-writer, compliance-check, red-team-review, export-proposal]
-skipped_skills: [past-performance, pricing-analyst, proposal-storyboard, proposal-editor, capture-scorecard, competitor-assessment]
+required_skills: [opportunity-quick-look, capture-portal-structure, submission-summary, proposal-manager, customer-intel, capture-intent, proposal-solution-architect, pricing-analyst, narrative-spine, proposal-graphics, proposal-writer, compliance-check, red-team-review, export-proposal]
+skipped_skills: [past-performance, proposal-storyboard, proposal-editor, capture-scorecard, competitor-assessment]
 section_patterns: marketplace-video-pitch
 compliance_sources: [AnnouncementSubmissionInstructions, AssessmentCriteriaAppendix, SlidePackageAppendix, PortalFormFields]
 evaluator_framing: A three-person peer panel (one Government, one industry, one academic SME) watching a five-minute video against a four-row weighted rubric, with no requirement document to compare you to. They are deciding "awardable / non-awardable" on viability alone. Everything scored must be *said out loud in the video* — the slides only aid the assessment.
@@ -57,7 +57,7 @@ state of the art you defined*.
   additional slides.
 - **Submission form content** — title, keywords, abstract, TRL, focus area, business
   size, FOCI, FedRAMP/ATO/IL/FCL posture, POCs.
-- **Pricing model narrative** (`reference/pricing-artifacts/` — commercial pricing
+- **Pricing model narrative** (`reference/pricing-artifacts/pricing-model-narrative.md` — commercial pricing
   basis, funding structure, award type; no rates).
 - **Marking/release review** — a specific gate confirming nothing proprietary,
   export-controlled, or CUI is in the video, the slides, or the form.

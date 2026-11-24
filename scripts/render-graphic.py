@@ -107,6 +107,9 @@ def main(argv: list[str]) -> int:
     ap.add_argument("data", type=Path, help="Path to data.json")
     ap.add_argument("output", type=Path, help="Path to write filled HTML")
     ap.add_argument("--strict", action="store_true", help="Exit non-zero on any unresolved placeholder")
+    ap.add_argument("--surface", choices=["dark", "light"], default=None,
+                    help="theme preset from my-company/branding/surfaces.json merged over data.theme "
+                         "(light = Word-page figures; dark = slides and HTML review). Default: data.theme as is.")
     args = ap.parse_args(argv)
 
     if not args.template.exists():
@@ -123,6 +126,18 @@ def main(argv: list[str]) -> int:
     # Strip comment-only top-level fields from data (e.g., "_comment")
     if isinstance(data, dict):
         data = {k: v for k, v in data.items() if not k.startswith("_")}
+
+    # Surface preset: the same template renders for a dark slide or a white Word page.
+    if args.surface and isinstance(data, dict):
+        surfaces_path = Path(__file__).resolve().parent.parent / "my-company" / "branding" / "surfaces.json"
+        if not surfaces_path.exists():
+            print(f"error: surfaces file not found: {surfaces_path}", file=sys.stderr)
+            return 1
+        with surfaces_path.open(encoding="utf-8") as f:
+            presets = json.load(f)
+        theme = dict(data.get("theme") or {})
+        theme.update(presets[args.surface])
+        data["theme"] = theme
 
     output = render(template, data, strict=args.strict)
 

@@ -13,6 +13,7 @@ One file per `pricing_artifact` value declared in `reference/proposal-types/*.md
 | [`cso-commercial.md`](cso-commercial.md) | Commercial-item pricing | `drafts/cso-pricing.md` | `cso-full` |
 | [`far-cost-volume.md`](far-cost-volume.md) | FAR/DCAA cost volume with CLINs + BOEs | `drafts/cost-volume.md` | `far-rfp`, `idiq-to`, `baa` |
 | [`gsa-mas-pricing.md`](gsa-mas-pricing.md) | LCAT-mapping narrative + single-sheet pricing workbook (Schedule rates pre-approved, no DCAA buildup) | `drafts/price-narrative.md` + `final/xlsx/pricing-workbook.xlsx` | `gsa-mas-task-order` |
+| [`pricing-model-narrative.md`](pricing-model-narrative.md) | Scored pricing approach, funding structure, and award type, no numbers | `drafts/pricing-model.md` | `marketplace-video-pitch` |
 
 ## Template structure (every artifact file)
 

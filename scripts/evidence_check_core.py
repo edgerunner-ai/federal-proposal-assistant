@@ -51,6 +51,12 @@ DEFAULT_WARRANT_SRC = r"C:\Users\wbal9\CODEX projects\edgerunner-warrant\warrant
 
 MARKER_RE = re.compile(r"<!--\s*evidence:\s*([^>]*?)\s*-->", re.IGNORECASE)
 EV_ID_RE = re.compile(r"EV-\d{3,}", re.IGNORECASE)
+# Callout sidebar (tools/md_to_docx.py): `:::callout TITLE` ... `:::` with an optional
+# `evidence: EV-###` key line before the body. The box IS a proof point, so its key
+# line is audited exactly like an inline marker (2026-09-04).
+CALLOUT_OPEN_RE = re.compile(r"^\s*:::\s*callout\b\s*(.*)$")
+CALLOUT_CLOSE_RE = re.compile(r"^\s*:::\s*$")
+CALLOUT_EVIDENCE_RE = re.compile(r"^\s*evidence\s*:\s*(.+?)\s*$", re.IGNORECASE)
 UNSUPPORTED_TOKEN = "CLAIM-UNSUPPORTED"
 
 KNOWN_STATUSES = ("approved", "retired", "restricted", "pending_review")
@@ -100,9 +106,34 @@ def ledger_counts(index: dict) -> dict:
 # ────────────────────────────────────────────────────────────────
 
 def parse_markers(text: str, filename: str) -> list[dict]:
-    """Extract every <!-- evidence: ... --> marker with file/line/sentence context."""
+    """Extract every <!-- evidence: ... --> marker with file/line/sentence context,
+    plus the `evidence:` key line of every :::callout block (context = the box title)."""
     markers = []
+    callout_title = None          # not None while inside a :::callout block
+    callout_keys_open = False     # key lines are only recognised before the first body line
     for lineno, line in enumerate(text.splitlines(), start=1):
+        om = CALLOUT_OPEN_RE.match(line)
+        if om:
+            callout_title, callout_keys_open = om.group(1).strip(), True
+            continue
+        if callout_title is not None:
+            if CALLOUT_CLOSE_RE.match(line):
+                callout_title, callout_keys_open = None, False
+                continue
+            if callout_keys_open:
+                em = CALLOUT_EVIDENCE_RE.match(line)
+                if em:
+                    body = em.group(1)
+                    markers.append({
+                        "file": filename,
+                        "line": lineno,
+                        "ids": [m.group(0).upper() for m in EV_ID_RE.finditer(body)],
+                        "unsupported_marker": UNSUPPORTED_TOKEN in body.upper(),
+                        "sentence": f"callout: {callout_title}",
+                    })
+                    continue
+                if line.strip() and not re.match(r"^\s*align\s*:", line, re.IGNORECASE):
+                    callout_keys_open = False
         for match in MARKER_RE.finditer(line):
             body = match.group(1)
             ids = [m.group(0).upper() for m in EV_ID_RE.finditer(body)]
@@ -440,19 +471,27 @@ def selftest() -> int:
         "Fastest in the world. <!-- evidence: CLAIM-UNSUPPORTED -->\n"
         "New thing incoming. <!-- evidence: EV-004 -->\n"
         "Mixed cite survives on the approved leg. <!-- evidence: EV-001, EV-002 -->\n"
+        ":::callout Proof at Site X\n"
+        "evidence: EV-001\n"
+        "Body of the box; evidence: EV-999 here is prose, not a key line.\n"
+        ":::\n"
     )
     markers = parse_markers(draft, "t.md")
-    check("marker count", len(markers) == 7)
-    check("marker line numbers", [m["line"] for m in markers] == [3, 4, 5, 6, 7, 8, 9])
+    # 7 inline markers + the callout's key line (line 11); "evidence: EV-999" in the
+    # callout body is prose and must not parse.
+    check("marker count", len(markers) == 8)
+    check("marker line numbers", [m["line"] for m in markers] == [3, 4, 5, 6, 7, 8, 9, 11])
     check("multi-id parse", markers[6]["ids"] == ["EV-001", "EV-002"])
+    check("callout key line parsed", markers[7]["ids"] == ["EV-001"])
+    check("callout body prose ignored", all("EV-999" not in mk["ids"] for mk in markers))
     check("sentence context", markers[4]["sentence"] == "Fastest in the world.")
 
     audit = audit_markers(markers, index)
     m = audit["markers"]
     f = audit["findings"]
-    check("supported", m["supported"] == 2)          # EV-001 solo + mixed marker
+    check("supported", m["supported"] == 3)          # EV-001 solo + mixed marker + callout key line
     check("unsupported", m["unsupported"] == 3)      # CLAIM-UNSUPPORTED + unknown-only + retired-only
-    check("coverage", m["coverage_pct"] == round(2 / 7 * 100, 1))
+    check("coverage", m["coverage_pct"] == round(3 / 8 * 100, 1))
     check("unknown flagged", [r["id"] for r in f["unknown_ids"]] == ["EV-101"])
     check("typo suggestion", f["unknown_ids"][0]["suggestion"] == "EV-001")
     check("retired flagged", sorted(r["line"] for r in f["retired_ids"]) == [5, 9])

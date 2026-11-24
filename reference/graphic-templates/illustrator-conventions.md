@@ -6,6 +6,8 @@ Calibrated structural and styling conventions distilled from author-owned winnin
 
 **Calibration source:** Air Force IDIQ technical volume, 52 pages, 2026-04-23. No source-proposal imagery stored in the repo; this doc captures only generalized structural patterns.
 
+**See also (2026-09-04):** `reference/winning-examples/usaf-vault-octo-2020-lessons.md`, a second pass over the same source with measured density, the callout content rule, tone analysis, and a rule-by-rule wiring plan into the writer, renderer, and lints. As of that date nothing in `.claude/skills/` or `scripts/` reads this file; the wiring plan there is how it gets applied.
+
 ---
 
 ## 1. Page-level layout taxonomy

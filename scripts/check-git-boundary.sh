@@ -67,6 +67,9 @@ is_sensitive_path() {
   # are already covered by proposals/*). Allow the scaffold .gitkeep sentinels.
   case "$p" in
     drafts/.gitkeep|working/.gitkeep|reviews/.gitkeep|signals/.gitkeep) return 1 ;;
+    # Explicit per-file exceptions, each individually approved by Bill.
+    # 2026-08-27: DV022 team quick-look — already shared externally with DeNOVO.
+    reviews/2026-08-27-dv022-team-quick-look.md) return 1 ;;
     drafts/*|working/*|reviews/*|signals/*) return 0 ;;
   esac
 

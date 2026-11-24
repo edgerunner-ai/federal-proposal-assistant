@@ -97,6 +97,28 @@
       "the challenge exists to fund",
       "that is the design working",
       "that is a scoping decision"
+    ],
+    "ai_tell_terms": [
+      "not aspirational",
+      "not yet ours to claim",
+      "a feature, not a failure",
+      "is not a bug",
+      "it's worth noting",
+      "it is worth noting",
+      "at its core",
+      "in essence",
+      "seamlessly",
+      "delve",
+      "tapestry",
+      "testament to",
+      "game-changer",
+      "game changer",
+      "paradigm shift",
+      "holistic",
+      "synergy",
+      "unlock",
+      "elevate",
+      "empower"
     ]
   },
   "patterns": {
@@ -104,14 +126,25 @@
     "leverage": "\\bleverag(?:e|es|ed|ing)\\b",
     "explainer_tail": ",\\s*which\\s+(?:is|are|means|allows|makes|enables)\\b",
     "negation_dismissal": "\\b(?:so|therefore|which means|meaning)\\b[^.;]{0,120}?\\b(?:no|not|none)\\b[^.;]{0,80}?\\b(?:required|needed|necessary|applies|apply|applicable|claimed)\\b",
-    "raise_then_permit": "\\b(?:is|are|was|were)\\s+not\\s+(?:required|claimed|proposed)\\b[^.;]{0,140}?\\b(?:acceptable|permitted|permissible|is not claimed|are not claimed)\\b"
+    "raise_then_permit": "\\b(?:is|are|was|were)\\s+not\\s+(?:required|claimed|proposed)\\b[^.;]{0,140}?\\b(?:acceptable|permitted|permissible|is not claimed|are not claimed)\\b",
+    "capability_denial": "\\b(?:has|have|had)\\s+not\\s+been\\s+(?:measured|tested|validated|benchmarked|demonstrated|characteri[sz]ed)\\b|\\bnot\\s+a\\s+current\\s+capability\\b|\\b(?:has|have)\\s+no\\s+(?:fielded|measured|validated|current)\\b|\\bno\\s+(?:fielded\\s+\\w+|measured\\s+architecture)\\b|\\bassert(?:s|ed)?\\s+no\\b|\\bis\\s+not\\s+(?:yet\\s+)?(?:fielded|measured|available)\\b|\\bno\\s+[\\w\\s,'-]{0,50}?\\b(?:has|have)\\s+been\\s+(?:measured|tested|validated|benchmarked|demonstrated|characteri[sz]ed)\\b|\\bdo(?:es)?\\s+not\\s+assert\\b",
+    "claim_withdrawal": "\\b(?:is|are|was|were)\\s+not\\s+claimed\\b|\\bnot\\s+claimed\\s+(?:as|at|to)\\b|\\bdo(?:es)?\\s+not\\s+claim\\b|\\bdo(?:es)?\\s+not\\s+(?:transfer|guarantee)\\b|\\bdo(?:es)?\\s+not\\s+extend\\s+to\\b|\\bneither\\s+transfers?\\b|\\brather\\s+than\\s+(?:a\\s+)?(?:contract\\s+delivery|program\\s+of\\s+record|current\\s+practice)\\b",
+    "contrast_construction": "\\bnot\\s+(?:a|an|the|to|just|merely|simply|only)?\\s*[\\w'-]+(?:\\s+[\\w'-]+){0,4}?,?\\s+but\\s+(?:a|an|the|to)?\\s*\\w+|,\\s+not\\s+(?:a|an|the|to)?\\s*[\\w'-]+(?:\\s+[\\w'-]+){0,3}[.;:]|\\brather\\s+than\\b|\\binstead\\s+of\\b"
   },
   "thresholds": {
     "we_will": 8,
-    "repeated_opening": 3
+    "repeated_opening": 3,
+    "contrast_per_1000_words": 3.0,
+    "bullet_ratio_low": 0.1,
+    "bullet_ratio_high": 0.35
   },
   "_pattern_notes": {
     "negation_dismissal": "Catches '...so no X is required' — a sentence whose payload is a non-event. Known false positive: a negative conclusion that has no affirmative form ('IRB review therefore does not apply'). ADVISORY, so it informs rather than blocks. Added 2026-08-18 from the arl-collaborative-aitr-sbir volume, where five instances survived two editorial passes because no mechanical rule existed.",
-    "raise_then_permit": "Catches 'X is not required ... Y is acceptable'. Requires BOTH halves so a bare scope limit ('no VLA is proposed in Phase I') is not flagged."
+    "raise_then_permit": "Catches 'X is not required ... Y is acceptable'. Requires BOTH halves so a bare scope limit ('no VLA is proposed in Phase I') is not flagged.",
+    "capability_denial": "ADVISORY. Self-limiting capability statements: telling the customer what we do not have or have not measured. Adopted 2026-08-31 (EdgeRunner). A proposal states how it meets a requirement, or how it will meet it; it does not enumerate the requirements it misses. Convert, do not delete: 'masking is not a current capability' becomes 'on-device masking is designed, built, and tested under the prototype'. Deliberately does NOT match negatives that carry a POSITIVE claim ('No model participates in the verification check', 'no telemetry egress', 'closed-book generation is disabled') — those say the offeror is better, not worse. Also deliberately does not match the status value 'partially met', which is legitimate in a compliance matrix.",
+    "claim_withdrawal": "ADVISORY. Same family as capability_denial: prose that pulls a claim back after making it ('not claimed at TRL 7', 'a demonstration rather than a contract delivery', 'does not guarantee', 'neither transfers'). State the maturation path or the delivery path instead. Accreditation scope is the one place a boundary limit is load-bearing — restate it as what the prototype delivers rather than as a denial, and keep prohibited-claim rules (FedRAMP, SOC 2, ISO 27001) intact.",
+    "contrast_construction": "ADVISORY, density-based. Counts 'not X but Y', ', not Y.', 'rather than', 'instead of' per 1,000 words and fires above thresholds.contrast_per_1000_words. Adopted 2026-09-02 (NAVWAR EPSS): the brief carried 18 in 3,600 words and a blind reviewer said it read like a debate brief. Each instance is fine alone; the density is the finding. Keep the load-bearing ones.",
+    "bullet_ratio": "ADVISORY, computed by the harness from paragraph shape, no regex. Share of body WORDS that sit in list items. Fires below thresholds.bullet_ratio_low (a wall of prose that cannot be skimmed) and above thresholds.bullet_ratio_high (a paper rewritten as bullets). Adopted 2026-09-02: the same brief went from 0% to 53% and back with nothing measuring it. The Mystic Depot Phase I briefs that advanced sat at 42% of PARAGRAPHS, roughly 20-25% of words.",
+    "ai_tell_terms": "ADVISORY term list. Seeded from phrases reviewers explicitly called 'an AI tell' on NAVWAR EPSS (Jack FitzGerald, 2026-09-01) plus the usual suspects. Add to it whenever a reviewer names one; do not pad it with words that merely sound corporate."
   }
 }

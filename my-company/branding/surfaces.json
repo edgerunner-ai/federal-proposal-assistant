@@ -1,0 +1,35 @@
+{
+  "_comment": "Theme presets for the parametric graphic templates ({{theme.*}} placeholders). scripts/render-graphic.py --surface <name> merges the preset over data.theme. `dark` is the original proposal surface (slides, pitch decks, HTML review); `light` is the Word-page surface (2026-09-04) for figures embedded in a .docx. Tokens mirror my-company/branding/proposal-graphics.css and proposal-graphics-light.css.",
+  "dark": {
+    "bg": "#191c20",
+    "accent": "#ee2929",
+    "panel": "#2a2d31",
+    "panel_border": "#393939",
+    "panel_sunken": "#1e2124",
+    "text": "#ffffff",
+    "muted": "#9f9f9f",
+    "body": "#c8c8c8",
+    "ink": "#ffffff",
+    "band": "#2a2d31",
+    "band_text": "#ffffff",
+    "amber": "#c8a200",
+    "canvas_border": "transparent",
+    "canvas_shadow": "0 8px 32px rgba(0,0,0,.4)"
+  },
+  "light": {
+    "bg": "#ffffff",
+    "accent": "#c8102e",
+    "panel": "#f2f3f5",
+    "panel_border": "#c8c8c8",
+    "panel_sunken": "#e4e6ea",
+    "text": "#191c20",
+    "muted": "#6f6f6f",
+    "body": "#393939",
+    "ink": "#191c20",
+    "band": "#191c20",
+    "band_text": "#ffffff",
+    "amber": "#8a6a00",
+    "canvas_border": "#c8c8c8",
+    "canvas_shadow": "none"
+  }
+}

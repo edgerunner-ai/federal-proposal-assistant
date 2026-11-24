@@ -21,6 +21,7 @@ conflicts_with: []  # dispatch on pricing_artifact yields one artifact per type;
 | `cso-commercial` | `reference/pricing-artifacts/cso-commercial.md` | `drafts/cso-pricing.md` | `.docx` only (commercial-item pricing is short) |
 | `far-cost-volume` | `reference/pricing-artifacts/far-cost-volume.md` | `drafts/cost-volume.md` | `.docx` narrative + **`.xlsx` appendix** (CLIN tables, rate buildups, WBS × LCAT hours) |
 | `gsa-mas-pricing` | `reference/pricing-artifacts/gsa-mas-pricing.md` | `drafts/price-narrative.md` | `.docx` narrative (2-3 pp, LCAT mapping table) + **single-sheet `.xlsx`** with Schedule-rate × period × LCAT computation (`"$"#,##0.00` format, `=ROUND(CELL*N,N)` and `=SUM(CELL:CELL)` patterns) |
+| `pricing-model-narrative` | `reference/pricing-artifacts/pricing-model-narrative.md` | `drafts/pricing-model.md` | `.docx` only (one paragraph per element; also lands on one slide and in the video script) |
 
 **Process:**
 1. Read `working/proposal-type.md`.

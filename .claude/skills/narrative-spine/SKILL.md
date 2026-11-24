@@ -69,10 +69,23 @@ After writing it, **stop and hand it to the human** (see Human Sign-Off Gate).
 
 ## The Spine Standard
 
-`working/narrative-spine.md` contains exactly five parts, in this order:
+`working/narrative-spine.md` contains exactly six parts, in this order. The first is the Mission Effect Statement (`reference/methodology/mission-effect-translation.md`); it is the part the human sign-off is really approving.
 
 ```markdown
 # Narrative Spine — [Proposal Name]
+
+## Mission Effect
+
+<Five labelled lines, then the same content as one paragraph of about 100 words
+that the executive summary can carry verbatim.
+Problem: the customer's problem in the customer's words, cited.
+Mission effect: what changes for the operator or unit when this is fielded, in
+  operator terms (time, decisions, risk, availability, what no longer has to happen).
+Capability: what we deliver that produces the effect, named, with ledger IDs.
+Cost: the pricing artifact's headline, stated as what it buys.
+Timeline: when the effect arrives and who controls each gate.
+The effect line must pass the operator-terms test in the methodology file; a
+vendor phrase ("decision superiority") fails it.>
 
 ## Positioning
 
@@ -118,6 +131,7 @@ modes specific to this opportunity.>
 - **Read the customer's own words.** Quote one or two short phrases from the solicitation that the argument must answer. The spine earns its keep by being demonstrably *about this customer's problem*, not a generic case.
 - **Length-aware.** Match the spine's ambition to `page_target`. A 2-3 page white paper has no room to teach abstract concepts — its spine is ~150 words and compresses the argument into the tightest possible form. A 20-40 page proposal can afford to teach — its spine is up to one page and may name what each movement will explain. Do not write a 30-page-proposal spine for a white paper.
 - **Mode-aware.** The selected narrative mode changes the spine's job. A `compressed-brief` spine should make the recommendation feel inevitable quickly. A `scored-volume` spine should keep compliance sections connected by one evaluator-facing case. A `technical-merit` spine should make the technical hypothesis, proof plan, and transition logic coherent.
+- **Effect before mechanism.** The Mission Effect Statement is written first and the Through-Line must be a consequence of it. If the effect cannot be stated in operator terms from the solicitation and capture-intent, that is a capture gap to surface, not a sentence to invent.
 - **One argument, not a list.** The spine asserts a single coherent case. If you cannot state it in one positioning sentence, the capture strategy is not resolved — say so plainly and recommend the user revisit `/capture-intent` rather than papering over it.
 - **Honest.** The spine argues with the real evidence and the real weaknesses from `capture-intent.md`. It does not wish. A spine built on an unsupported claim produces a proposal built on an unsupported claim.
 - **Do not draft proposal prose.** The spine is the plan for the argument. The storyboard decomposes it; the writer drafts it. Writing section text here defeats the purpose and collides with `/proposal-writer`.
@@ -142,7 +156,7 @@ The spine is the one stage designed for human judgment. Surface it and wait.
 
 - **`/proposal-storyboard`** decomposes the *approved* spine into sections. Each section storyboard should advance one movement of the argument; a section that advances no movement is a candidate for cutting.
 - **`/proposal-writer`** reads `working/narrative-spine.md` first, as primary orientation. Every drafted section should be traceable to a movement of the spine. The writer drafts the argument; it does not invent a new one.
-- **`/red-team-review`** checks whether the drafted proposal still carries the spine's through-line — a proposal that lost its spine in drafting is a red-team finding.
+- **`/red-team-review`** checks whether the drafted proposal still carries the spine's through-line — a proposal that lost its spine in drafting is a red-team finding. Its Gold Team Mission Effect Check reads the Mission Effect Statement from this file and tests whether the draft carries all five elements.
 
 ## Anti-Patterns to Prevent
 

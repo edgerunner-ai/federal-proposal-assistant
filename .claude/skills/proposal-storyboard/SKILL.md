@@ -98,6 +98,8 @@ For each required section, produce:
 
 **Reader Movement:** <what the reader believes before this section -> what they should believe after it>
 
+**Mission Effect Advanced:** <which element of the spine's Mission Effect Statement this section moves (problem | mission effect | capability | cost | timeline), and the one operator-terms sentence it must land; or "⚠ NONE — advances no element of the mission effect". The executive summary carries problem, mission effect, and capability as the hook, in prose or as a short "Delivered Outcomes" list; timeline and cost land after the approach sections so they align with what the reader just reviewed (methodology file, "Where the five elements land").>
+
 **Narrative Mode:** <compressed-brief | solution-brief | scored-volume | technical-merit | market-research | pricing-artifact>
 
 **Transition Job:** <consequence | selection | proof | decision | none/formal response>
@@ -162,6 +164,7 @@ section must win, and list them in `Target Evaluation Factors` by EC-ID. Map by 
 subject-matter overlap between the factor's distinctive terms and the section's title plus its
 mapped compliance rows — not by wishful assignment. Then:
 
+- **A scoring section that advances no element of the Mission Effect Statement gets the warning verbatim:** `⚠ NONE — advances no element of the mission effect`. Two such sections in a row are a structure problem: the draft is heading toward a capability tour. Non-scoring sections (reps and certs, CDRLs, rosters) may carry "n/a".
 - **A section with no factor gets the warning verbatim:** `⚠ NONE — no evaluation factor maps
   to this section`. That warning is a strong "why is this section here?" signal — either the
   section earns its place another way (mandatory boilerplate, reader orientation) or it is a
